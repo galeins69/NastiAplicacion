@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="16b910a67cde449fb86fe079d544bc85" Name="Diagram1" ZoomLevel="111">
+        <EntityTypeShape EntityType="KippaModel.EMPRESA" Width="1.5" PointX="6.125" PointY="0.5" />
+        <EntityTypeShape EntityType="KippaModel.USUARIO" Width="1.5" PointX="6.125" PointY="11.75" />
+        <EntityTypeShape EntityType="KippaModel.USUARIOEMPRESA" Width="1.5" PointX="8.375" PointY="3.375" />
+        <AssociationConnector Association="KippaModel.FK_USUARIOEMPRESA_EMPRESA" />
+        <AssociationConnector Association="KippaModel.FK_USUARIOEMPRESA_USUARIO" />
+        <EntityTypeShape EntityType="KippaModel.ELEMENTO" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="KippaModel.TIPOELEMENTO" Width="1.5" PointX="0.75" PointY="1.375" />
+        <AssociationConnector Association="KippaModel.FK_TIPO_ELEMENTO" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="KippaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ELEMENTO">
+          <Key>
+            <PropertyRef Name="CODIGOELEMENTO" />
+          </Key>
+          <Property Name="CODIGOELEMENTO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+          <Property Name="GRAFICO" Type="varchar" MaxLength="100" />
+          <Property Name="ORDEN" Type="int" />
+          <Property Name="CODIGOTIPOELEMENTO" Type="bigint" />
+          <Property Name="TIPO" Type="varchar" MaxLength="10" />
+          <Property Name="ACCION" Type="varchar" MaxLength="100" />
+          <Property Name="codigoelemento_" Type="bigint" />
+        </EntityType>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="CODIGOEMPRESA" />
+          </Key>
+          <Property Name="CODIGOEMPRESA" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="DIRECCION1" Type="varchar" MaxLength="70" />
+          <Property Name="TELEFONO1" Type="varchar" MaxLength="70" />
+          <Property Name="DIRECCION2" Type="varchar" MaxLength="70" />
+          <Property Name="TELEFONO2" Type="varchar" MaxLength="70" />
+          <Property Name="RUC" Type="varchar" MaxLength="15" />
+          <Property Name="DURACIONDIA" Type="int" />
+          <Property Name="LUGAR" Type="varchar" MaxLength="20" />
+          <Property Name="FAC" Type="varchar" MaxLength="20" />
+          <Property Name="MASCTA" Type="varchar" MaxLength="20" />
+          <Property Name="CIUDAD" Type="char" MaxLength="20" />
+          <Property Name="INICIOPERIODO" Type="datetime" />
+          <Property Name="FINPERIODO" Type="datetime" />
+          <Property Name="PERIODO" Type="varchar" MaxLength="4" />
+          <Property Name="CODIGOCUENTA" Type="varchar" MaxLength="50" />
+          <Property Name="CUENTAINGRESO" Type="varchar" MaxLength="50" />
+          <Property Name="CUENTAGASTO" Type="varchar" MaxLength="50" />
+          <Property Name="FECHACIERRE" Type="datetime" />
+          <Property Name="CODIGOUSUARIO" Type="varchar" MaxLength="10" />
+          <Property Name="FECHAACTUALIZACION" Type="datetime" />
+          <Property Name="EMPRESAACT" Type="varchar" MaxLength="10" />
+          <Property Name="EMPRESACON" Type="varchar" MaxLength="1" />
+          <Property Name="CUENTAACTIVO" Type="varchar" MaxLength="10" />
+          <Property Name="CUENTAPASIVO" Type="varchar" MaxLength="10" />
+          <Property Name="CUENTAPATRIMONIO" Type="varchar" MaxLength="10" />
+          <Property Name="CODIGOMONEDA" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="FECHACAL" Type="datetime" />
+          <Property Name="TIPO" Type="varchar" MaxLength="1" />
+          <Property Name="CORREOELECTRONICO" Type="varchar" MaxLength="60" />
+          <Property Name="IDENTIFICACIONREPRESENTANTE" Type="varchar" MaxLength="10" />
+          <Property Name="RUCCONTADOR" Type="varchar" MaxLength="13" />
+          <Property Name="TIPOIDENTIFICACIONREPRESENTANTE" Type="varchar" MaxLength="2" />
+          <Property Name="AUTORIZACION" Type="varchar" MaxLength="15" />
+          <Property Name="CUENTAGASTO2" Type="varchar" MaxLength="10" />
+          <Property Name="CUENTAORDEN" Type="varchar" MaxLength="10" />
+          <Property Name="CUENTAORDEN2" Type="varchar" MaxLength="10" />
+          <Property Name="TIPOCUENTAS" Type="varchar" MaxLength="2" />
+          <Property Name="CODIGOENTIDAD" Type="varchar" MaxLength="7" />
+          <Property Name="NUMESTABLECIMIENTOS" Type="varchar" MaxLength="3" />
+          <Property Name="FIRMAELECTRONICA" Type="binary" MaxLength="1" />
+          <Property Name="ESTABLECIMIENTO" Type="varchar" MaxLength="3" />
+          <Property Name="CLAVEFIRMA" Type="varchar" MaxLength="50" />
+          <Property Name="LOGO" Type="varbinary(max)" />
+          <Property Name="NOMBRECOMERCIAL" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="TIPOELEMENTO">
+          <Key>
+            <PropertyRef Name="CODIGOTIPOELEMENTO" />
+          </Key>
+          <Property Name="CODIGOTIPOELEMENTO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="CODIGOUSUARIO" />
+          </Key>
+          <Property Name="CODIGOUSUARIO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TIPOUSUARIO" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FECHAINGRESO" Type="datetime" />
+          <Property Name="FECHAEXPIDE" Type="datetime" />
+          <Property Name="TIPOACCESO" Type="varchar" MaxLength="1" />
+          <Property Name="FECHAACTUALIZACION" Type="datetime" />
+          <Property Name="nombreCompleto" Type="varchar" MaxLength="200" />
+          <Property Name="conectado" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="USUARIOEMPRESA">
+          <Key>
+            <PropertyRef Name="CODIGOUSUARIOEMPRESA" />
+          </Key>
+          <Property Name="CODIGOUSUARIOEMPRESA" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGOUSUARIO" Type="bigint" Nullable="false" />
+          <Property Name="CODIGOEMPRESA" Type="bigint" Nullable="false" />
+          <Property Name="CODIGOESTADO" Type="bigint" />
+          <Property Name="CODIGOESTABLECIMIENTO" Type="bigint" />
+          <Property Name="CENTROCOSTO" Type="varchar" MaxLength="20" />
+          <Property Name="TIPO_CO" Type="varchar" MaxLength="2" />
+          <Property Name="TIPO_FC" Type="varchar" MaxLength="2" />
+          <Property Name="TIPO_FV" Type="varchar" MaxLength="2" />
+          <Property Name="TIPO_PP" Type="varchar" MaxLength="2" />
+          <Property Name="TIPO_CC" Type="varchar" MaxLength="2" />
+          <Property Name="SUPERVISOR" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <Association Name="FK_TIPO_ELEMENTO">
+          <End Role="TIPOELEMENTO" Type="Self.TIPOELEMENTO" Multiplicity="0..1" />
+          <End Role="ELEMENTO" Type="Self.ELEMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOELEMENTO">
+              <PropertyRef Name="CODIGOTIPOELEMENTO" />
+            </Principal>
+            <Dependent Role="ELEMENTO">
+              <PropertyRef Name="CODIGOTIPOELEMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOEMPRESA_EMPRESA">
+          <End Role="EMPRESA" Type="Self.EMPRESA" Multiplicity="1" />
+          <End Role="USUARIOEMPRESA" Type="Self.USUARIOEMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Principal>
+            <Dependent Role="USUARIOEMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOEMPRESA_USUARIO">
+          <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+          <End Role="USUARIOEMPRESA" Type="Self.USUARIOEMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="CODIGOUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOEMPRESA">
+              <PropertyRef Name="CODIGOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KippaModelStoreContainer">
+          <EntitySet Name="ELEMENTO" EntityType="Self.ELEMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EMPRESA" EntityType="Self.EMPRESA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOELEMENTO" EntityType="Self.TIPOELEMENTO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USUARIOEMPRESA" EntityType="Self.USUARIOEMPRESA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TIPO_ELEMENTO" Association="Self.FK_TIPO_ELEMENTO">
+            <End Role="TIPOELEMENTO" EntitySet="TIPOELEMENTO" />
+            <End Role="ELEMENTO" EntitySet="ELEMENTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOEMPRESA_EMPRESA" Association="Self.FK_USUARIOEMPRESA_EMPRESA">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="USUARIOEMPRESA" EntitySet="USUARIOEMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOEMPRESA_USUARIO" Association="Self.FK_USUARIOEMPRESA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIOEMPRESA" EntitySet="USUARIOEMPRESA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KippaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="KippaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EMPRESA" EntityType="KippaModel.EMPRESA" />
+          <EntitySet Name="USUARIO" EntityType="KippaModel.USUARIO" />
+          <EntitySet Name="USUARIOEMPRESA" EntityType="KippaModel.USUARIOEMPRESA" />
+          <AssociationSet Name="FK_USUARIOEMPRESA_EMPRESA" Association="KippaModel.FK_USUARIOEMPRESA_EMPRESA">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="USUARIOEMPRESA" EntitySet="USUARIOEMPRESA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_USUARIOEMPRESA_USUARIO" Association="KippaModel.FK_USUARIOEMPRESA_USUARIO">
+            <End Role="USUARIO" EntitySet="USUARIO" />
+            <End Role="USUARIOEMPRESA" EntitySet="USUARIOEMPRESA" />
+          </AssociationSet>
+          <EntitySet Name="ELEMENTO" EntityType="KippaModel.ELEMENTO" />
+          <EntitySet Name="TIPOELEMENTO" EntityType="KippaModel.TIPOELEMENTO" />
+          <AssociationSet Name="FK_TIPO_ELEMENTO" Association="KippaModel.FK_TIPO_ELEMENTO">
+            <End Role="TIPOELEMENTO" EntitySet="TIPOELEMENTO" />
+            <End Role="ELEMENTO" EntitySet="ELEMENTO" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="EMPRESA">
+          <Key>
+            <PropertyRef Name="CODIGOEMPRESA" />
+          </Key>
+          <Property Name="CODIGOEMPRESA" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="RUC" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="DURACIONDIA" Type="Int32" />
+          <Property Name="LUGAR" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FAC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="MASCTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CIUDAD" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="INICIOPERIODO" Type="DateTime" Precision="3" />
+          <Property Name="FINPERIODO" Type="DateTime" Precision="3" />
+          <Property Name="PERIODO" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOCUENTA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAINGRESO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAGASTO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACIERRE" Type="DateTime" Precision="3" />
+          <Property Name="CODIGOUSUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="3" />
+          <Property Name="EMPRESAACT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EMPRESACON" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAACTIVO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAPASIVO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAPATRIMONIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOMONEDA" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACAL" Type="DateTime" Precision="3" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CORREOELECTRONICO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="IDENTIFICACIONREPRESENTANTE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RUCCONTADOR" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="TIPOIDENTIFICACIONREPRESENTANTE" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="AUTORIZACION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAGASTO2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAORDEN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CUENTAORDEN2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="TIPOCUENTAS" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOENTIDAD" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="NUMESTABLECIMIENTOS" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="FIRMAELECTRONICA" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="ESTABLECIMIENTO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVEFIRMA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIOEMPRESA" Relationship="KippaModel.FK_USUARIOEMPRESA_EMPRESA" FromRole="EMPRESA" ToRole="USUARIOEMPRESA" />
+          <Property Name="LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="NOMBRECOMERCIAL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="CODIGOUSUARIO" />
+          </Key>
+          <Property Name="CODIGOUSUARIO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TIPOUSUARIO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAINGRESO" Type="DateTime" Precision="3" />
+          <Property Name="FECHAEXPIDE" Type="DateTime" Precision="3" />
+          <Property Name="TIPOACCESO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="3" />
+          <Property Name="nombreCompleto" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="conectado" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="USUARIOEMPRESA" Relationship="KippaModel.FK_USUARIOEMPRESA_USUARIO" FromRole="USUARIO" ToRole="USUARIOEMPRESA" />
+        </EntityType>
+        <EntityType Name="USUARIOEMPRESA">
+          <Key>
+            <PropertyRef Name="CODIGOUSUARIOEMPRESA" />
+          </Key>
+          <Property Name="CODIGOUSUARIOEMPRESA" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGOUSUARIO" Type="Int64" Nullable="false" />
+          <Property Name="CODIGOEMPRESA" Type="Int64" Nullable="false" />
+          <Property Name="CODIGOESTADO" Type="Int64" />
+          <Property Name="CODIGOESTABLECIMIENTO" Type="Int64" />
+          <Property Name="CENTROCOSTO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_CO" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_FC" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_FV" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_PP" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_CC" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="SUPERVISOR" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_USUARIOEMPRESA_EMPRESA" FromRole="USUARIOEMPRESA" ToRole="EMPRESA" />
+          <NavigationProperty Name="USUARIO" Relationship="KippaModel.FK_USUARIOEMPRESA_USUARIO" FromRole="USUARIOEMPRESA" ToRole="USUARIO" />
+        </EntityType>
+        <Association Name="FK_USUARIOEMPRESA_EMPRESA">
+          <End Type="KippaModel.EMPRESA" Role="EMPRESA" Multiplicity="1" />
+          <End Type="KippaModel.USUARIOEMPRESA" Role="USUARIOEMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Principal>
+            <Dependent Role="USUARIOEMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_USUARIOEMPRESA_USUARIO">
+          <End Type="KippaModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+          <End Type="KippaModel.USUARIOEMPRESA" Role="USUARIOEMPRESA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIO">
+              <PropertyRef Name="CODIGOUSUARIO" />
+            </Principal>
+            <Dependent Role="USUARIOEMPRESA">
+              <PropertyRef Name="CODIGOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ELEMENTO">
+          <Key>
+            <PropertyRef Name="CODIGOELEMENTO" />
+          </Key>
+          <Property Name="CODIGOELEMENTO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GRAFICO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ORDEN" Type="Int32" />
+          <Property Name="CODIGOTIPOELEMENTO" Type="Int64" />
+          <Property Name="TIPO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ACCION" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TIPOELEMENTO" Relationship="KippaModel.FK_TIPO_ELEMENTO" FromRole="ELEMENTO" ToRole="TIPOELEMENTO" />
+          <Property Name="CODIGOELEMENTO_" Type="Int64" />
+        </EntityType>
+        <EntityType Name="TIPOELEMENTO">
+          <Key>
+            <PropertyRef Name="CODIGOTIPOELEMENTO" />
+          </Key>
+          <Property Name="CODIGOTIPOELEMENTO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ELEMENTO" Relationship="KippaModel.FK_TIPO_ELEMENTO" FromRole="TIPOELEMENTO" ToRole="ELEMENTO" />
+        </EntityType>
+        <Association Name="FK_TIPO_ELEMENTO">
+          <End Type="KippaModel.TIPOELEMENTO" Role="TIPOELEMENTO" Multiplicity="0..1" />
+          <End Type="KippaModel.ELEMENTO" Role="ELEMENTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOELEMENTO">
+              <PropertyRef Name="CODIGOTIPOELEMENTO" />
+            </Principal>
+            <Dependent Role="ELEMENTO">
+              <PropertyRef Name="CODIGOTIPOELEMENTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KippaModelStoreContainer" CdmEntityContainer="KippaEntities">
+          <EntitySetMapping Name="EMPRESA">
+            <EntityTypeMapping TypeName="KippaModel.EMPRESA">
+              <MappingFragment StoreEntitySet="EMPRESA">
+                <ScalarProperty Name="NOMBRECOMERCIAL" ColumnName="NOMBRECOMERCIAL" />
+                <ScalarProperty Name="LOGO" ColumnName="LOGO" />
+                <ScalarProperty Name="CLAVEFIRMA" ColumnName="CLAVEFIRMA" />
+                <ScalarProperty Name="ESTABLECIMIENTO" ColumnName="ESTABLECIMIENTO" />
+                <ScalarProperty Name="FIRMAELECTRONICA" ColumnName="FIRMAELECTRONICA" />
+                <ScalarProperty Name="NUMESTABLECIMIENTOS" ColumnName="NUMESTABLECIMIENTOS" />
+                <ScalarProperty Name="CODIGOENTIDAD" ColumnName="CODIGOENTIDAD" />
+                <ScalarProperty Name="TIPOCUENTAS" ColumnName="TIPOCUENTAS" />
+                <ScalarProperty Name="CUENTAORDEN2" ColumnName="CUENTAORDEN2" />
+                <ScalarProperty Name="CUENTAORDEN" ColumnName="CUENTAORDEN" />
+                <ScalarProperty Name="CUENTAGASTO2" ColumnName="CUENTAGASTO2" />
+                <ScalarProperty Name="AUTORIZACION" ColumnName="AUTORIZACION" />
+                <ScalarProperty Name="TIPOIDENTIFICACIONREPRESENTANTE" ColumnName="TIPOIDENTIFICACIONREPRESENTANTE" />
+                <ScalarProperty Name="RUCCONTADOR" ColumnName="RUCCONTADOR" />
+                <ScalarProperty Name="IDENTIFICACIONREPRESENTANTE" ColumnName="IDENTIFICACIONREPRESENTANTE" />
+                <ScalarProperty Name="CORREOELECTRONICO" ColumnName="CORREOELECTRONICO" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="FECHACAL" ColumnName="FECHACAL" />
+                <ScalarProperty Name="CODIGOMONEDA" ColumnName="CODIGOMONEDA" />
+                <ScalarProperty Name="CUENTAPATRIMONIO" ColumnName="CUENTAPATRIMONIO" />
+                <ScalarProperty Name="CUENTAPASIVO" ColumnName="CUENTAPASIVO" />
+                <ScalarProperty Name="CUENTAACTIVO" ColumnName="CUENTAACTIVO" />
+                <ScalarProperty Name="EMPRESACON" ColumnName="EMPRESACON" />
+                <ScalarProperty Name="EMPRESAACT" ColumnName="EMPRESAACT" />
+                <ScalarProperty Name="FECHAACTUALIZACION" ColumnName="FECHAACTUALIZACION" />
+                <ScalarProperty Name="CODIGOUSUARIO" ColumnName="CODIGOUSUARIO" />
+                <ScalarProperty Name="FECHACIERRE" ColumnName="FECHACIERRE" />
+                <ScalarProperty Name="CUENTAGASTO" ColumnName="CUENTAGASTO" />
+                <ScalarProperty Name="CUENTAINGRESO" ColumnName="CUENTAINGRESO" />
+                <ScalarProperty Name="CODIGOCUENTA" ColumnName="CODIGOCUENTA" />
+                <ScalarProperty Name="PERIODO" ColumnName="PERIODO" />
+                <ScalarProperty Name="FINPERIODO" ColumnName="FINPERIODO" />
+                <ScalarProperty Name="INICIOPERIODO" ColumnName="INICIOPERIODO" />
+                <ScalarProperty Name="CIUDAD" ColumnName="CIUDAD" />
+                <ScalarProperty Name="MASCTA" ColumnName="MASCTA" />
+                <ScalarProperty Name="FAC" ColumnName="FAC" />
+                <ScalarProperty Name="LUGAR" ColumnName="LUGAR" />
+                <ScalarProperty Name="DURACIONDIA" ColumnName="DURACIONDIA" />
+                <ScalarProperty Name="RUC" ColumnName="RUC" />
+                <ScalarProperty Name="TELEFONO2" ColumnName="TELEFONO2" />
+                <ScalarProperty Name="DIRECCION2" ColumnName="DIRECCION2" />
+                <ScalarProperty Name="TELEFONO1" ColumnName="TELEFONO1" />
+                <ScalarProperty Name="DIRECCION1" ColumnName="DIRECCION1" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="KippaModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="conectado" ColumnName="conectado" />
+                <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
+                <ScalarProperty Name="FECHAACTUALIZACION" ColumnName="FECHAACTUALIZACION" />
+                <ScalarProperty Name="TIPOACCESO" ColumnName="TIPOACCESO" />
+                <ScalarProperty Name="FECHAEXPIDE" ColumnName="FECHAEXPIDE" />
+                <ScalarProperty Name="FECHAINGRESO" ColumnName="FECHAINGRESO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="TIPOUSUARIO" ColumnName="TIPOUSUARIO" />
+                <ScalarProperty Name="CODIGOUSUARIO" ColumnName="CODIGOUSUARIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USUARIOEMPRESA">
+            <EntityTypeMapping TypeName="KippaModel.USUARIOEMPRESA">
+              <MappingFragment StoreEntitySet="USUARIOEMPRESA">
+                <ScalarProperty Name="SUPERVISOR" ColumnName="SUPERVISOR" />
+                <ScalarProperty Name="TIPO_CC" ColumnName="TIPO_CC" />
+                <ScalarProperty Name="TIPO_PP" ColumnName="TIPO_PP" />
+                <ScalarProperty Name="TIPO_FV" ColumnName="TIPO_FV" />
+                <ScalarProperty Name="TIPO_FC" ColumnName="TIPO_FC" />
+                <ScalarProperty Name="TIPO_CO" ColumnName="TIPO_CO" />
+                <ScalarProperty Name="CENTROCOSTO" ColumnName="CENTROCOSTO" />
+                <ScalarProperty Name="CODIGOESTABLECIMIENTO" ColumnName="CODIGOESTABLECIMIENTO" />
+                <ScalarProperty Name="CODIGOESTADO" ColumnName="CODIGOESTADO" />
+                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
+                <ScalarProperty Name="CODIGOUSUARIO" ColumnName="CODIGOUSUARIO" />
+                <ScalarProperty Name="CODIGOUSUARIOEMPRESA" ColumnName="CODIGOUSUARIOEMPRESA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ELEMENTO">
+            <EntityTypeMapping TypeName="KippaModel.ELEMENTO">
+              <MappingFragment StoreEntitySet="ELEMENTO">
+                <ScalarProperty Name="CODIGOELEMENTO_" ColumnName="codigoelemento_" />
+                <ScalarProperty Name="ACCION" ColumnName="ACCION" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="CODIGOTIPOELEMENTO" ColumnName="CODIGOTIPOELEMENTO" />
+                <ScalarProperty Name="ORDEN" ColumnName="ORDEN" />
+                <ScalarProperty Name="GRAFICO" ColumnName="GRAFICO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGOELEMENTO" ColumnName="CODIGOELEMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOELEMENTO">
+            <EntityTypeMapping TypeName="KippaModel.TIPOELEMENTO">
+              <MappingFragment StoreEntitySet="TIPOELEMENTO">
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGOTIPOELEMENTO" ColumnName="CODIGOTIPOELEMENTO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
