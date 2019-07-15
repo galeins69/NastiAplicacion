@@ -38,15 +38,21 @@
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.labelControlEmpresa = new DevExpress.XtraEditors.LabelControl();
             this.lookUpEditEmpresa = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControlEstablecimiento = new DevExpress.XtraEditors.LabelControl();
+            this.lookUpEditEstablecimiento = new DevExpress.XtraEditors.LookUpEdit();
+            this.lookUpEditPuntoEmision = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControlPuntoEmision = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClave.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEmpresa.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEstablecimiento.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPuntoEmision.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditUsuario
             // 
-            this.textEditUsuario.Location = new System.Drawing.Point(116, 32);
+            this.textEditUsuario.Location = new System.Drawing.Point(117, 8);
             this.textEditUsuario.Name = "textEditUsuario";
             this.textEditUsuario.Size = new System.Drawing.Size(261, 20);
             this.textEditUsuario.TabIndex = 0;
@@ -54,7 +60,7 @@
             // 
             // textEditClave
             // 
-            this.textEditClave.Location = new System.Drawing.Point(116, 73);
+            this.textEditClave.Location = new System.Drawing.Point(117, 37);
             this.textEditClave.Name = "textEditClave";
             this.textEditClave.Properties.UseSystemPasswordChar = true;
             this.textEditClave.Size = new System.Drawing.Size(261, 20);
@@ -62,7 +68,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(62, 35);
+            this.labelControl1.Location = new System.Drawing.Point(68, 11);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(40, 13);
             this.labelControl1.TabIndex = 2;
@@ -70,7 +76,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(62, 76);
+            this.labelControl2.Location = new System.Drawing.Point(77, 40);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(31, 13);
             this.labelControl2.TabIndex = 3;
@@ -79,7 +85,7 @@
             // simpleButtonIngresar
             // 
             this.simpleButtonIngresar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.simpleButtonIngresar.Location = new System.Drawing.Point(122, 154);
+            this.simpleButtonIngresar.Location = new System.Drawing.Point(124, 185);
             this.simpleButtonIngresar.Name = "simpleButtonIngresar";
             this.simpleButtonIngresar.Size = new System.Drawing.Size(93, 23);
             this.simpleButtonIngresar.TabIndex = 4;
@@ -89,7 +95,7 @@
             // simpleButtonSalir
             // 
             this.simpleButtonSalir.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.simpleButtonSalir.Location = new System.Drawing.Point(221, 154);
+            this.simpleButtonSalir.Location = new System.Drawing.Point(223, 185);
             this.simpleButtonSalir.Name = "simpleButtonSalir";
             this.simpleButtonSalir.Size = new System.Drawing.Size(93, 23);
             this.simpleButtonSalir.TabIndex = 5;
@@ -102,7 +108,7 @@
             // 
             // labelControlEmpresa
             // 
-            this.labelControlEmpresa.Location = new System.Drawing.Point(62, 115);
+            this.labelControlEmpresa.Location = new System.Drawing.Point(63, 70);
             this.labelControlEmpresa.Name = "labelControlEmpresa";
             this.labelControlEmpresa.Size = new System.Drawing.Size(45, 13);
             this.labelControlEmpresa.TabIndex = 7;
@@ -111,7 +117,7 @@
             // 
             // lookUpEditEmpresa
             // 
-            this.lookUpEditEmpresa.Location = new System.Drawing.Point(116, 112);
+            this.lookUpEditEmpresa.Location = new System.Drawing.Point(117, 67);
             this.lookUpEditEmpresa.Name = "lookUpEditEmpresa";
             this.lookUpEditEmpresa.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -124,13 +130,66 @@
             this.lookUpEditEmpresa.Visible = false;
             this.lookUpEditEmpresa.EditValueChanged += new System.EventHandler(this.lookUpEditEmpresa_EditValueChanged);
             // 
+            // labelControlEstablecimiento
+            // 
+            this.labelControlEstablecimiento.Location = new System.Drawing.Point(30, 103);
+            this.labelControlEstablecimiento.Name = "labelControlEstablecimiento";
+            this.labelControlEstablecimiento.Size = new System.Drawing.Size(78, 13);
+            this.labelControlEstablecimiento.TabIndex = 9;
+            this.labelControlEstablecimiento.Text = "Establecimiento:";
+            this.labelControlEstablecimiento.Visible = false;
+            // 
+            // lookUpEditEstablecimiento
+            // 
+            this.lookUpEditEstablecimiento.Location = new System.Drawing.Point(117, 100);
+            this.lookUpEditEstablecimiento.Name = "lookUpEditEstablecimiento";
+            this.lookUpEditEstablecimiento.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditEstablecimiento.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NUMERO", "Establecimiento"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DIRECCION", "Dirección")});
+            this.lookUpEditEstablecimiento.Properties.NullText = "[Seleccione establecimiento]";
+            this.lookUpEditEstablecimiento.Size = new System.Drawing.Size(261, 20);
+            this.lookUpEditEstablecimiento.TabIndex = 10;
+            this.lookUpEditEstablecimiento.Visible = false;
+            this.lookUpEditEstablecimiento.EditValueChanged += new System.EventHandler(this.lookUpEditEstablecimiento_EditValueChanged);
+            // 
+            // lookUpEditPuntoEmision
+            // 
+            this.lookUpEditPuntoEmision.Location = new System.Drawing.Point(117, 136);
+            this.lookUpEditPuntoEmision.Name = "lookUpEditPuntoEmision";
+            this.lookUpEditPuntoEmision.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditPuntoEmision.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("NOMBRE", "Punto de Emisión"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ELECTRONICO", "Electrónico")});
+            this.lookUpEditPuntoEmision.Properties.NullText = "[Seleccione punto de emisión]";
+            this.lookUpEditPuntoEmision.Size = new System.Drawing.Size(261, 20);
+            this.lookUpEditPuntoEmision.TabIndex = 12;
+            this.lookUpEditPuntoEmision.Visible = false;
+            this.lookUpEditPuntoEmision.EditValueChanged += new System.EventHandler(this.lookUpEditPuntoEmision_EditValueChanged);
+            // 
+            // labelControlPuntoEmision
+            // 
+            this.labelControlPuntoEmision.Location = new System.Drawing.Point(30, 139);
+            this.labelControlPuntoEmision.Name = "labelControlPuntoEmision";
+            this.labelControlPuntoEmision.Size = new System.Drawing.Size(70, 13);
+            this.labelControlPuntoEmision.TabIndex = 11;
+            this.labelControlPuntoEmision.Text = "Punto Emisión:";
+            this.labelControlPuntoEmision.Visible = false;
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.simpleButtonIngresar;
+            this.ActiveGlowColor = System.Drawing.Color.White;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(445, 202);
+            this.ClientSize = new System.Drawing.Size(455, 239);
             this.ControlBox = false;
+            this.Controls.Add(this.lookUpEditPuntoEmision);
+            this.Controls.Add(this.labelControlPuntoEmision);
+            this.Controls.Add(this.lookUpEditEstablecimiento);
+            this.Controls.Add(this.labelControlEstablecimiento);
             this.Controls.Add(this.lookUpEditEmpresa);
             this.Controls.Add(this.labelControlEmpresa);
             this.Controls.Add(this.simpleButtonSalir);
@@ -139,6 +198,7 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.textEditClave);
             this.Controls.Add(this.textEditUsuario);
+            this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.Shadow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
@@ -146,12 +206,13 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bienvenido a Nasti";
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClave.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEmpresa.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEstablecimiento.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPuntoEmision.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,5 +229,9 @@
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.LabelControl labelControlEmpresa;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditEmpresa;
+        private DevExpress.XtraEditors.LabelControl labelControlEstablecimiento;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditEstablecimiento;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditPuntoEmision;
+        private DevExpress.XtraEditors.LabelControl labelControlPuntoEmision;
     }
 }

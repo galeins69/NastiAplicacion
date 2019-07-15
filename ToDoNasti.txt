@@ -1,0 +1,5 @@
+1. Lista de precios:
+	1.1 tipos de lista de precios
+	1.1 por fecha
+ 	1.2 por tipo (descuento, por precio, por porcentaje, por valor)
+	1.3 Si no está en la lista consultar el precio del producto

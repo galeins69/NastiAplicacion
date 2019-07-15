@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.6.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="Report1" ScriptsSource="using NastiAplicacion.Data;&#xD;&#xA;using System.Linq;&#xD;&#xA;using System.Linq.Expressions;&#xD;&#xA;using System.Collections.Generic;&#xD;&#xA;private void Report1_DataSourceDemanded(object sender, System.EventArgs e) {&#xD;&#xA;   KippaEntities kippaEnt = new KippaEntities();&#xD;&#xA;    List&lt;COMPROBANTE&gt; articulo= (from comp in kippaEnt.COMPROBANTE select comp).ToList();&#xD;&#xA;    eFDataSource1 = articulo; &#xD;&#xA;}&#xD;&#xA;" PageWidth="850" PageHeight="1100" Version="18.1">
+  <Bands>
+    <Item1 Ref="1" ControlType="TopMarginBand" Name="TopMargin" />
+    <Item2 Ref="2" ControlType="DetailBand" Name="Detail">
+      <Controls>
+        <Item1 Ref="3" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" SizeF="100,23" LocationFloat="10.0000067, 10.0000067" Padding="2,2,0,0,96" />
+        <Item2 Ref="4" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="341.666656,23" LocationFloat="127.083336, 10.0000067" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="5" Expression="[ARTICULO].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item2>
+      </Controls>
+    </Item2>
+    <Item3 Ref="6" ControlType="BottomMarginBand" Name="BottomMargin" />
+  </Bands>
+  <Scripts Ref="7" OnDataSourceDemanded="Report1_DataSourceDemanded" />
+  <ComponentStorage>
+    <Item1 Ref="8" ObjectType="DevExpress.DataAccess.EntityFramework.EFDataSource,DevExpress.DataAccess.v18.1" Name="eFDataSource1" ConnectionStringName="KippaEntities" ConnectionString="" Source="NastiAplicacion.Data.KippaEntities, NastiAplicacion, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" FiltersSerialized="PEZpbHRlcnM+PERCU2V0RmlsdGVyIERCU2V0TmFtZT0iQ09NUFJPQkFOVEUiIEZpbHRlclN0cmluZz0iW05VTUVST0NPTVBST0JBTlRFXSA9IDEiIC8+PC9GaWx0ZXJzPg==" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

@@ -25,7 +25,7 @@ namespace NastiAplicacion.Servicio
         public IEnumerable<ELEMENTO> getElementos(long codigoElemento)
         {
             IEnumerable<ELEMENTO> registros;
-            registros = (from elemento in kippaEntities.ELEMENTO orderby elemento.ORDEN where elemento.CODIGOELEMENTO_ == codigoElemento select elemento ).ToList();
+            registros = (from elemento in kippaEntities.ELEMENTO orderby elemento.ORDEN where elemento.codigoelemento_ == codigoElemento select elemento ).ToList();
             if (registros.Count() > 0)
                 return registros;
             return null;

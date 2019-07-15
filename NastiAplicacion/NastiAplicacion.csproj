@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\linq2db.PostgreSQL.2.6.2\build\linq2db.PostgreSQL.props" Condition="Exists('..\packages\linq2db.PostgreSQL.2.6.2\build\linq2db.PostgreSQL.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +28,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -48,34 +51,153 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 18.1\Components\Bin\Framework\DevExpress.Data.v18.1.dll</HintPath>
-    </Reference>
+    <Reference Include="DevExpress.Charts.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v18.1.UI, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v18.1.Export, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1.UI, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Extensions, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v18.1.Wizard, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v18.1.Core, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 18.1\Components\Bin\Framework\DevExpress.XtraLayout.v18.1.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.XtraNavBar.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\DevExpress 18.1\Components\Bin\Framework\DevExpress.XtraNavBar.v18.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v18.1.Extensions, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraWizard.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework6.Npgsql, Version=3.2.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework6.Npgsql.3.2.0\lib\net45\EntityFramework6.Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader, Version=3.5.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.5.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.5.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.DataSet.3.5.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db, Version=2.6.2.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.2.6.2\lib\net46\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.4.0.4\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql.EntityFrameworkCore.PostgreSQL, Version=2.2.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.EntityFrameworkCore.PostgreSQL.2.2.0\lib\netstandard2.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq, Version=2.2.0.0, Culture=neutral, PublicKeyToken=fee00910d6e5f53b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Remotion.Linq.2.2.0\lib\net45\Remotion.Linq.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Interactive.Async, Version=3.2.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.3.2.0\lib\net46\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.1\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.4.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.1\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.1\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,34 +209,136 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\ARTICULO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ARTICULOIMPUESTO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BODEGA.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\BODEGASTOCK.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CLIENTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\COMPROBANTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\COMPROBANTEFORMAPAGO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\CONDICIONPAGO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DETALLECOMPROBANTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DETALLELISTADEPRECIO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\ELEMENTO.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\EMPRESA.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\NastiModelo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>NastiModelo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\NastiModelo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
+    <Compile Include="Data\ESTABLECIMIENTO.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\NastiModelo.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Include="Data\ESTADOCOMPROBANTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\FORMAPAGO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IMPUESTO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\IMPUESTOCOMPROBANTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\LISTADEPRECIO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\MARCA.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\NastiModelo.Context.cs">
+      <DependentUpon>NastiModelo.Context.tt</DependentUpon>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\NastiModelo.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\NastiModelo.Designer.cs">
       <DependentUpon>NastiModelo.edmx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Data\PARAMETRO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PROVEEDOR.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PUNTOEMISION.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PUNTOEMISIONAUTORIZACION.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PUNTOEMISIONDOCUMENTO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\SOCIONEGOCIO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TABLAIMPUESTOS.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOAMBIENTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOARTICULO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOCOMPROBANTE.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\TIPOELEMENTO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOESTADO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOFORMAPAGO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOIDENTIFICACION.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\TIPOIMPUESTO.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\UNIDAD.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\USUARIO.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\USUARIOEMPRESA.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VENDEDOR.cs">
+      <DependentUpon>NastiModelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\V_SOCIONEGOCIO.cs">
       <DependentUpon>NastiModelo.tt</DependentUpon>
     </Compile>
     <Compile Include="Enumerador\Enumeradores.cs" />
@@ -124,15 +348,10 @@
     <Compile Include="FormaBase.Designer.cs">
       <DependentUpon>FormaBase.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPrincipal.Designer.cs">
-      <DependentUpon>FormPrincipal.cs</DependentUpon>
-    </Compile>
     <Compile Include="General\Commando.cs" />
     <Compile Include="General\CredencialUsuario.cs" />
-    <Compile Include="General\ICommand.cs" />
+    <Compile Include="General\ErrorNasti.cs" />
+    <Compile Include="General\Interfaces.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +360,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Prueba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba.Designer.cs">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pruebas\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pruebas\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pruebas\XtraUserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,7 +388,80 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ResourceNasti.resx</DependentUpon>
     </Compile>
-    <Compile Include="Servicio\LoginServicio.cs" />
+    <Compile Include="Reportes\Facturación\FacturaReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Facturación\FacturaReport.Designer.cs">
+      <DependentUpon>FacturaReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\NastiReporteView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reportes\NastiReporteView.Designer.cs">
+      <DependentUpon>NastiReporteView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ProductosReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ProductosReport.Designer.cs">
+      <DependentUpon>ProductosReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportView.Designer.cs">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportViewerForm.Designer.cs">
+      <DependentUpon>ReportViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ServicioImpresion.cs" />
+    <Compile Include="Servicio\ArticuloServicio.cs" />
+    <Compile Include="Servicio\FacturaServicio.cs" />
+    <Compile Include="Servicio\GeneralServicio.cs" />
+    <Compile Include="Servicio\ReportesServicio.cs" />
+    <Compile Include="Vistas\Facturacion\ArticuloFormView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\ArticuloFormView.Designer.cs">
+      <DependentUpon>ArticuloFormView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\ArticuloGridControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\ArticuloGridControl.Designer.cs">
+      <DependentUpon>ArticuloGridControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\ArticuloView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\ArticuloView.Designer.cs">
+      <DependentUpon>ArticuloView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\EstadoGeneral.cs" />
+    <Compile Include="Vistas\Facturacion\EstadosComprobanteElectronico.cs" />
+    <Compile Include="Vistas\Facturacion\FacturaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FacturaForm.Designer.cs">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FormBuscarComprobante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FormBuscarComprobante.Designer.cs">
+      <DependentUpon>FormBuscarComprobante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FormBuscarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FormBuscarProducto.Designer.cs">
+      <DependentUpon>FormBuscarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\LoginServicio.cs" />
     <Compile Include="Servicio\MenuServicio.cs" />
     <Compile Include="SplashScreenNasti.cs">
       <SubType>Form</SubType>
@@ -160,42 +469,102 @@
     <Compile Include="SplashScreenNasti.Designer.cs">
       <DependentUpon>SplashScreenNasti.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utiles\Utiles.cs" />
     <Compile Include="Vistas\ControlGeneralNasti.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Vistas\ControlGeneralNasti.Designer.cs">
       <DependentUpon>ControlGeneralNasti.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\FacturaView.cs">
+    <Compile Include="Vistas\Facturacion\Cliente.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Vistas\FacturaView.Designer.cs">
+    <Compile Include="Vistas\Facturacion\Cliente.Designer.cs">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FacturaView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FacturaView.Designer.cs">
       <DependentUpon>FacturaView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\PagoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\PagoForm.Designer.cs">
+      <DependentUpon>PagoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\PrecioVariableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\PrecioVariableForm.Designer.cs">
+      <DependentUpon>PrecioVariableForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\RecuperarPendienteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\RecuperarPendienteForm.Designer.cs">
+      <DependentUpon>RecuperarPendienteForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\General\ControlGenerico.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\General\ControlGenerico.Designer.cs">
+      <DependentUpon>ControlGenerico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\General\DataUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\General\DataUserControl.Designer.cs">
+      <DependentUpon>DataUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\General\EventosGenerales.cs" />
     <Compile Include="Vistas\General\FactoryNasti.cs" />
+    <Compile Include="Vistas\General\FormProgressBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\General\FormProgressBar.Designer.cs">
+      <DependentUpon>FormProgressBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\General\MenuPrincipal.cs" />
     <Compile Include="Vistas\General\MetodosFactory.cs" />
     <Compile Include="Vistas\General\NavBarPrincipal.cs" />
+    <Compile Include="Vistas\SocioNegocio\DatoCliente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vistas\SocioNegocio\DatoCliente.Designer.cs">
+      <DependentUpon>DatoCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SocioNegocio\FormBuscarSocioNegocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\SocioNegocio\FormBuscarSocioNegocio.Designer.cs">
+      <DependentUpon>FormBuscarSocioNegocio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\SocioNegocio\FormDatoCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\SocioNegocio\FormDatoCliente.Designer.cs">
+      <DependentUpon>FormDatoCliente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FormaBase.resx">
       <DependentUpon>FormaBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPrincipal.resx">
-      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="Prueba.resx">
+      <DependentUpon>Prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pruebas\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pruebas\XtraUserControl1.resx">
       <DependentUpon>XtraUserControl1.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,23 +572,152 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ResourceNasti.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Facturación\FacturaReport.resx">
+      <DependentUpon>FacturaReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\NastiReporteView.resx">
+      <DependentUpon>NastiReporteView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ProductosReport.resx">
+      <DependentUpon>ProductosReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportView.resx">
+      <DependentUpon>ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportViewerForm.resx">
+      <DependentUpon>ReportViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreenNasti.resx">
       <DependentUpon>SplashScreenNasti.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ControlGeneralNasti.resx">
       <DependentUpon>ControlGeneralNasti.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\FacturaView.resx">
+    <EmbeddedResource Include="Vistas\Facturacion\ArticuloFormView.resx">
+      <DependentUpon>ArticuloFormView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\ArticuloGridControl.resx">
+      <DependentUpon>ArticuloGridControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\ArticuloView.resx">
+      <DependentUpon>ArticuloView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\Cliente.resx">
+      <DependentUpon>Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\FacturaForm.resx">
+      <DependentUpon>FacturaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\FacturaView.resx">
       <DependentUpon>FacturaView.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\NastiModelo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NastiModelo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <EmbeddedResource Include="Vistas\Facturacion\FormBuscarComprobante.resx">
+      <DependentUpon>FormBuscarComprobante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\FormBuscarProducto.resx">
+      <DependentUpon>FormBuscarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\PagoForm.resx">
+      <DependentUpon>PagoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\PrecioVariableForm.resx">
+      <DependentUpon>PrecioVariableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\RecuperarPendienteForm.resx">
+      <DependentUpon>RecuperarPendienteForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\General\ControlGenerico.resx">
+      <DependentUpon>ControlGenerico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\General\DataUserControl.resx">
+      <DependentUpon>DataUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\General\FormProgressBar.resx">
+      <DependentUpon>FormProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\SocioNegocio\DatoCliente.resx">
+      <DependentUpon>DatoCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\SocioNegocio\FormBuscarSocioNegocio.resx">
+      <DependentUpon>FormBuscarSocioNegocio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\SocioNegocio\FormDatoCliente.resx">
+      <DependentUpon>FormDatoCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Data\NastiModelo.edmx.diagram">
       <DependentUpon>NastiModelo.edmx</DependentUpon>
     </None>
+    <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
+    <None Include="LinqToDB.Templates\DataModel.ttinclude" />
+    <None Include="LinqToDB.Templates\EditableObject.ttinclude" />
+    <None Include="LinqToDB.Templates\Humanizer.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.PostgreSQL.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.PostgreSQL.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.Tools.ttinclude" />
+    <None Include="LinqToDB.Templates\LinqToDB.ttinclude" />
+    <None Include="LinqToDB.Templates\MultipleFiles.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyDataErrorInfo.ttinclude" />
+    <None Include="LinqToDB.Templates\NotifyPropertyChanged.ttinclude" />
+    <None Include="LinqToDB.Templates\ObsoleteAttributes.ttinclude" />
+    <None Include="LinqToDB.Templates\PluralizationService.ttinclude" />
+    <None Include="LinqToDB.Templates\T4Model.ttinclude" />
+    <None Include="LinqToDB.Templates\Validation.ttinclude" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULOIMPUESTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.BODEGA.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.BODEGASTOCK.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.CLIENTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.CLIENTE1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTE1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTEFORMAPAGO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.CONDICIONPAGO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.CONDICIONPAGO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLECOMPROBANTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLECOMPROBANTE1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLELISTADEPRECIO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ELEMENTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.EMPRESA.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.EMPRESA1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTABLECIMIENTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTABLECIMIENTO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTADOCOMPROBANTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.FORMAPAGO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTOCOMPROBANTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTOCOMPROBANTE1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.KippaEntities.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.LISTADEPRECIO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.LISTADEPRECIO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.PROVEEDOR.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISION.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISION1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.SOCIONEGOCIO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.SOCIONEGOCIO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TABLAIMPUESTOS.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOARTICULO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOCOMPROBANTE.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOCOMPROBANTE1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOELEMENTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOESTADO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOFORMAPAGO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOIDENTIFICACION.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOIMPUESTO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.UNIDAD.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.UNIDAD1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.USUARIO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.USUARIOEMPRESA.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.VENDEDOR.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.VENDEDOR1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.V_SOCIONEGOCIO.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Data.V_SOCIONEGOCIO1.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Servicio.ArticuloServicio.datasource" />
+    <None Include="Properties\DataSources\NastiAplicacion.Servicio.FacturaServicio.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -231,17 +729,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Data\NastiModelo.Context.tt">
+      <DependentUpon>NastiModelo.edmx</DependentUpon>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NastiModelo.Context.cs</LastGenOutput>
-      <DependentUpon>NastiModelo.edmx</DependentUpon>
     </Content>
     <Content Include="Data\NastiModelo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>NastiModelo.edmx</DependentUpon>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>NastiModelo.cs</LastGenOutput>
     </Content>
     <Content Include="Kippa.mdf">
@@ -251,6 +751,47 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Kippa.mdf</DependentUpon>
     </Content>
+    <Content Include="LinqToDB.Templates\CopyMe.PostgreSQL.tt.txt" />
+    <None Include="Resources\apply_16x16.png" />
+    <None Include="Resources\apply_32x32.png" />
+    <None Include="Resources\apply_32x321.png" />
+    <None Include="Resources\add_32x32.png" />
+    <Content Include="Resources\boproduct_32x32.png" />
+    <Content Include="Resources\boproduct_32x321.png" />
+    <Content Include="Resources\bo_product.svg" />
+    <Content Include="Resources\bo_product_group.svg" />
+    <None Include="Resources\exporttoxls_16x16.png" />
+    <None Include="Resources\exporttoxls_32x32.png" />
+    <None Include="Resources\exporttopdf_16x16.png" />
+    <None Include="Resources\exporttopdf_32x32.png" />
+    <None Include="Resources\exporttocsv_16x16.png" />
+    <None Include="Resources\exporttocsv_32x32.png" />
+    <None Include="Resources\find_16x16.png" />
+    <None Include="Resources\find_32x32.png" />
+    <None Include="Resources\doublefirst_16x16.png" />
+    <None Include="Resources\doublefirst_32x32.png" />
+    <None Include="Resources\doublelast_16x16.png" />
+    <None Include="Resources\doublelast_32x32.png" />
+    <None Include="Resources\cancel_16x16.png" />
+    <None Include="Resources\cancel_32x32.png" />
+    <None Include="Resources\converttorange_32x32.png" />
+    <None Include="Resources\financial_32x32.png" />
+    <Content Include="Resources\IconoProducto16x16.bmp" />
+    <None Include="Resources\open2_16x16.png" />
+    <None Include="Resources\loadmap_16x16.png" />
+    <None Include="Resources\loadmap_32x32.png" />
+    <None Include="Resources\loadmap_16x161.png" />
+    <None Include="Resources\loadmap_32x321.png" />
+    <None Include="Resources\prev_16x16.png" />
+    <None Include="Resources\prev_32x32.png" />
+    <None Include="Resources\next_16x16.png" />
+    <None Include="Resources\next_32x32.png" />
+    <None Include="Resources\loadfrom_32x32.png" />
+    <Content Include="Resources\product_16x16.png" />
+    <Content Include="Resources\product_16x161.png" />
+    <Content Include="Resources\product_16x162.png" />
+    <None Include="Resources\recurrence_32x32.png" />
+    <None Include="Resources\recurrence_16x16.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -277,5 +818,18 @@
       <Name>RecursosNasti</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="Data\NastiModelo.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NastiModelo.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\linq2db.PostgreSQL.2.6.2\build\linq2db.PostgreSQL.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\linq2db.PostgreSQL.2.6.2\build\linq2db.PostgreSQL.props'))" />
+  </Target>
 </Project>

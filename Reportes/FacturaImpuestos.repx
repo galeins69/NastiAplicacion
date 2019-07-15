@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="18.1.6.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="Report1" ScriptsSource="using System.Linq;&#xD;&#xA;using DevExpress.XtraReports.Parameters;&#xD;&#xA;using System;&#xD;&#xA;long parametro =2;&#xD;&#xA;private void Report1_ParametersRequestValueChanged(object sender, DevExpress.XtraReports.Parameters.ParametersRequestValueChangedEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void Report1_ParametersRequestSubmit(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e) {&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void Report1_DataSourceDemanded(object sender, System.EventArgs e) {&#xD;&#xA;this.parametro=(long)this.Parameters[&quot;CodigoComprobante&quot;].Value;&#xD;&#xA;  NastiAplicacion.Data.KippaEntities kippaEntities = new NastiAplicacion.Data.KippaEntities();&#xD;&#xA;DataSource = (from c in kippaEntities.IMPUESTOCOMPROBANTE where c.CODIGOCOMPROBANTE == 50034 select c).ToList();&#xD;&#xA;&#xD;&#xA;  }&#xD;&#xA;&#xD;&#xA;private void Report1_ParametersRequestBeforeShow(object sender, DevExpress.XtraReports.Parameters.ParametersRequestEventArgs e) {&#xD;&#xA;   &#xD;&#xA;           foreach (ParameterInfo info in e.ParametersInformation) &#xD;&#xA;{&#xD;&#xA;        if (info.Parameter.Name == &quot;CodigoComprobante&quot;) {&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;&#x9;this.parametro=(long) info.Parameter.Value;&#xD;&#xA;                   }&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;}&#xD;&#xA;" Margins="100, 100, 3, 38" PageWidth="850" PageHeight="1100" Version="18.1" FilterString="[CODIGOCOMPROBANTE] = ?CodigoComprobante" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Description="DESCUENTO TOTAL DE LA FACTURA" ValueInfo="0" Name="DESCUENTO" Type="#Ref-2" />
+    <Item2 Ref="4" Description="VALOR TOTAL DE LA FACTURA" ValueInfo="0" Name="VALORTOTAL" Type="#Ref-2" />
+    <Item3 Ref="6" Description="Codigo de comprobante" ValueInfo="0" Name="CodigoComprobante" Type="#Ref-5" />
+  </Parameters>
+  <CalculatedFields>
+    <Item1 Ref="7" Name="calculatedField1" />
+  </CalculatedFields>
+  <Bands>
+    <Item1 Ref="8" ControlType="TopMarginBand" Name="TopMargin" HeightF="3" />
+    <Item2 Ref="9" ControlType="DetailBand" Name="Detail" HeightF="14.9999933">
+      <Controls>
+        <Item1 Ref="10" ControlType="XRTable" Name="table1" SizeF="320.3125,14.9999933" LocationFloat="0, 0" Font="Times New Roman, 8pt" BorderColor="Black" Borders="Left, Top, Right">
+          <Rows>
+            <Item1 Ref="11" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="12" ControlType="XRTableCell" Name="tableCell1" Weight="2.203125" Multiline="true" Text="tableCell1" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="13" Expression="'SUBTOTAL '+[IMPUESTO].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="14" UseFont="false" />
+                </Item1>
+                <Item2 Ref="15" ControlType="XRTableCell" Name="tableCell2" Weight="1" TextFormatString="{0:}" Multiline="true" Text="tableCell2" TextAlignment="TopRight" Padding="2,20,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="16" Expression="[BASEIMPONIBLE]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="17" UsePadding="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="18" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="19" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="37.5" />
+    <Item4 Ref="20" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="53.125">
+      <Controls>
+        <Item1 Ref="21" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" SizeF="124.519188,22.9999981" LocationFloat="330.3125, 16.666666" ForeColor="Blue" BackColor="Transparent" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="22" Expression="iif(SUM([BASEIMPONIBLE])-[Parameters].[DESCUENTO]+sum(IIF([IMPUESTO].[CODIGOTIPOIMPUESTO]==2,[VALORIMPUESTO],0))!=[Parameters].[VALORTOTAL],'FACTURA No CUADRA','')" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="23" UseForeColor="false" UseBackColor="false" />
+        </Item1>
+        <Item2 Ref="24" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="124.519188,16.6666679" LocationFloat="330.3125, 0" Padding="2,2,0,0,100" Visible="false">
+          <ExpressionBindings>
+            <Item1 Ref="25" Expression="SUM([BASEIMPONIBLE])-[Parameters].[DESCUENTO]+sum(IIF([IMPUESTO].[CODIGOTIPOIMPUESTO]==2,[VALORIMPUESTO],0))" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item2>
+        <Item3 Ref="26" ControlType="XRTable" Name="table2" SizeF="320.312469,52.0833359" LocationFloat="3.17891427E-05, 0" Font="Times New Roman, 7pt" Padding="0,0,0,0,100" Borders="All">
+          <Rows>
+            <Item1 Ref="27" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="28" ControlType="XRTableCell" Name="tableCell3" Weight="2.203125" RowSpan="0" Text="SUBTOTAL SIN IMPUESTOS" Target="_blank" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="29" UseFont="false" />
+                </Item1>
+                <Item2 Ref="30" ControlType="XRTableCell" Name="tableCell5" Weight="1" TextFormatString="{0:0.00}" Multiline="true" Text="tableCell5" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="31" Expression="SUM([BASEIMPONIBLE])" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="32" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item1>
+            <Item2 Ref="33" ControlType="XRTableRow" Name="tableRow3" Weight="1">
+              <Cells>
+                <Item1 Ref="34" ControlType="XRTableCell" Name="tableCell4" Weight="2.203125" Multiline="true" Text="DESCUENTO" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="35" UseFont="false" UsePadding="false" />
+                </Item1>
+                <Item2 Ref="36" ControlType="XRTableCell" Name="tableCell6" Weight="1" TextFormatString="{0:0.00}" Multiline="true" Text="tableCell6" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="37" Expression="[Parameters].[DESCUENTO]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="38" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item2>
+            <Item3 Ref="39" ControlType="XRTableRow" Name="tableRow4" Weight="1">
+              <Cells>
+                <Item1 Ref="40" ControlType="XRTableCell" Name="tableCell7" Weight="2.203125" Multiline="true" Text="IVA 12%&#x9;" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="41" UseFont="false" UsePadding="false" />
+                </Item1>
+                <Item2 Ref="42" ControlType="XRTableCell" Name="tableCell8" Weight="1" TextFormatString="{0:0.00}" Multiline="true" Text="tableCell8" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="43" Expression="sum(IIF([IMPUESTO].[CODIGOTIPOIMPUESTO]==2,[VALORIMPUESTO],0))" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="44" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item3>
+            <Item4 Ref="45" ControlType="XRTableRow" Name="tableRow5" Weight="1">
+              <Cells>
+                <Item1 Ref="46" ControlType="XRTableCell" Name="tableCell9" Weight="2.203125" Multiline="true" Text="VALOR TOTAL" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                  <StylePriority Ref="47" UseFont="false" UsePadding="false" />
+                </Item1>
+                <Item2 Ref="48" ControlType="XRTableCell" Name="tableCell10" Weight="1" TextFormatString="{0:0.00}" Multiline="true" Text="tableCell10" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                  <ExpressionBindings>
+                    <Item1 Ref="49" Expression="[Parameters].[VALORTOTAL]" PropertyName="Text" EventName="BeforePrint" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="50" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                </Item2>
+              </Cells>
+            </Item4>
+          </Rows>
+          <StylePriority Ref="51" UseFont="false" UsePadding="false" />
+        </Item3>
+      </Controls>
+    </Item4>
+  </Bands>
+  <Scripts Ref="52" OnParametersRequestBeforeShow="Report1_ParametersRequestBeforeShow" OnParametersRequestValueChanged="Report1_ParametersRequestValueChanged" OnParametersRequestSubmit="Report1_ParametersRequestSubmit" OnDataSourceDemanded="Report1_DataSourceDemanded" />
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v18.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiPjxEYXRhU291cmNlIFR5cGU9Ik5hc3RpQXBsaWNhY2lvbi5EYXRhLklNUFVFU1RPQ09NUFJPQkFOVEUsIE5hc3RpQXBsaWNhY2lvbiwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PERhdGFNZW1iZXI+PC9EYXRhTWVtYmVyPjxDb25zdHJ1Y3RvciAvPjwvT2JqZWN0RGF0YVNvdXJjZT4=" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="2" Content="System.Double" Type="System.Type" />
+    <Item2 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v18.1" Ref="5" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

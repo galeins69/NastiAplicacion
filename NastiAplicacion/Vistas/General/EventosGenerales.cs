@@ -32,12 +32,8 @@ namespace NastiAplicacion.Vistas.General
         public void NavBarItem1_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             ControlesNasti controles =  ControlesNasti.getInstancia();
-            UserControl control=controles.crearControl(((DevExpress.XtraNavBar.NavBarItem)sender).Tag.ToString());
-            FormPrincipal.getInstancia().asignarControlNasti(control,"","");
-            //Ventana.AbrirVentana(CType(sender, DevExpress.XtraNavBar.NavBarItem).Caption, Schl.Vista.Administracion.FrmMDIPrincipal.Instancia)
-        }
-
-       
-        
+            ControlGeneralNasti control=controles.crearControl(((DevExpress.XtraNavBar.NavBarItem)sender).Tag.ToString());
+            FormaBase.getInstancia().asignarControlNasti(control,((DevExpress.XtraNavBar.NavBarItem)sender).ImageOptions.SmallImage);
+         }  
     }
 }

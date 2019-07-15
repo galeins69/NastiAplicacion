@@ -35,7 +35,8 @@ namespace NastiAplicacion.Vistas.General
                     item = navBargen.Items.Add();
                     item.Caption = opcion.NOMBRE;
                     item.Tag = opcion.ACCION;
-                    item.ImageOptions.SmallImage = (Image)ResourceNasti.ResourceManager.GetObject(opcion.GRAFICO);
+                    if (opcion.GRAFICO != null)
+                        item.ImageOptions.SmallImage = (Image)ResourceNasti.ResourceManager.GetObject(opcion.GRAFICO);
                     item.LinkClicked += new NavBarLinkEventHandler(eventoGeneral.NavBarItem1_LinkClicked);
                     navBargen.ActiveGroup.ItemLinks.Add(item);
                 }

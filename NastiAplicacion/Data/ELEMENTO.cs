@@ -21,7 +21,7 @@ namespace NastiAplicacion.Data
         public Nullable<long> CODIGOTIPOELEMENTO { get; set; }
         public string TIPO { get; set; }
         public string ACCION { get; set; }
-        public Nullable<long> CODIGOELEMENTO_ { get; set; }
+        public Nullable<long> codigoelemento_ { get; set; }
     
         public virtual TIPOELEMENTO TIPOELEMENTO { get; set; }
     }

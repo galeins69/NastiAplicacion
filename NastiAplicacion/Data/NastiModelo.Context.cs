@@ -25,10 +25,44 @@ namespace NastiAplicacion.Data
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<ARTICULO> ARTICULO { get; set; }
+        public virtual DbSet<ARTICULOIMPUESTO> ARTICULOIMPUESTO { get; set; }
+        public virtual DbSet<BODEGA> BODEGA { get; set; }
+        public virtual DbSet<BODEGASTOCK> BODEGASTOCK { get; set; }
+        public virtual DbSet<COMPROBANTE> COMPROBANTE { get; set; }
+        public virtual DbSet<COMPROBANTEFORMAPAGO> COMPROBANTEFORMAPAGO { get; set; }
+        public virtual DbSet<CONDICIONPAGO> CONDICIONPAGO { get; set; }
+        public virtual DbSet<DETALLECOMPROBANTE> DETALLECOMPROBANTE { get; set; }
+        public virtual DbSet<DETALLELISTADEPRECIO> DETALLELISTADEPRECIO { get; set; }
+        public virtual DbSet<ELEMENTO> ELEMENTO { get; set; }
         public virtual DbSet<EMPRESA> EMPRESA { get; set; }
+        public virtual DbSet<ESTABLECIMIENTO> ESTABLECIMIENTO { get; set; }
+        public virtual DbSet<ESTADOCOMPROBANTE> ESTADOCOMPROBANTE { get; set; }
+        public virtual DbSet<FORMAPAGO> FORMAPAGO { get; set; }
+        public virtual DbSet<IMPUESTO> IMPUESTO { get; set; }
+        public virtual DbSet<IMPUESTOCOMPROBANTE> IMPUESTOCOMPROBANTE { get; set; }
+        public virtual DbSet<LISTADEPRECIO> LISTADEPRECIO { get; set; }
+        public virtual DbSet<MARCA> MARCA { get; set; }
+        public virtual DbSet<PARAMETRO> PARAMETRO { get; set; }
+        public virtual DbSet<PROVEEDOR> PROVEEDOR { get; set; }
+        public virtual DbSet<PUNTOEMISION> PUNTOEMISION { get; set; }
+        public virtual DbSet<PUNTOEMISIONAUTORIZACION> PUNTOEMISIONAUTORIZACION { get; set; }
+        public virtual DbSet<PUNTOEMISIONDOCUMENTO> PUNTOEMISIONDOCUMENTO { get; set; }
+        public virtual DbSet<SOCIONEGOCIO> SOCIONEGOCIO { get; set; }
+        public virtual DbSet<TIPOAMBIENTE> TIPOAMBIENTE { get; set; }
+        public virtual DbSet<TIPOARTICULO> TIPOARTICULO { get; set; }
+        public virtual DbSet<TIPOCOMPROBANTE> TIPOCOMPROBANTE { get; set; }
+        public virtual DbSet<TIPOELEMENTO> TIPOELEMENTO { get; set; }
+        public virtual DbSet<TIPOESTADO> TIPOESTADO { get; set; }
+        public virtual DbSet<TIPOFORMAPAGO> TIPOFORMAPAGO { get; set; }
+        public virtual DbSet<TIPOIDENTIFICACION> TIPOIDENTIFICACION { get; set; }
+        public virtual DbSet<TIPOIMPUESTO> TIPOIMPUESTO { get; set; }
+        public virtual DbSet<UNIDAD> UNIDAD { get; set; }
         public virtual DbSet<USUARIO> USUARIO { get; set; }
         public virtual DbSet<USUARIOEMPRESA> USUARIOEMPRESA { get; set; }
-        public virtual DbSet<ELEMENTO> ELEMENTO { get; set; }
-        public virtual DbSet<TIPOELEMENTO> TIPOELEMENTO { get; set; }
+        public virtual DbSet<VENDEDOR> VENDEDOR { get; set; }
+        public virtual DbSet<CLIENTE> CLIENTE { get; set; }
+        public virtual DbSet<TABLAIMPUESTOS> TABLAIMPUESTOS { get; set; }
+        public virtual DbSet<V_SOCIONEGOCIO> V_SOCIONEGOCIO { get; set; }
     }
 }

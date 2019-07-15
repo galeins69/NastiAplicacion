@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
 using NastiAplicacion.General;
+using NastiAplicacion.Reportes;
+using NastiAplicacion.Vistas.SocioNegocio;
 
 namespace NastiAplicacion
 {
@@ -19,13 +21,15 @@ namespace NastiAplicacion
         static void Main(string[] arguments)
         {
             WindowsFormsSettings.ApplyDemoSettings();
+            //ReportView form = new ReportView();
+            //Application.Run(form);
             Application.Run(new LoginForm());
             DevExpress.Utils.LocalizationHelper.SetCurrentCulture(arguments);
             CultureInfo nastiCulture = (CultureInfo)Application.CurrentCulture.Clone();
             nastiCulture.NumberFormat.CurrencySymbol = "$";
             nastiCulture.NumberFormat.CurrencyDecimalDigits = 2;
-            if (CredencialUsuario.getInstancia().getUsuario()!=null)
-                Application.Run(FormPrincipal.getInstancia());
+            if (CredencialUsuario.getInstancia().getUsuario() != null)
+                Application.Run(FormaBase.getInstancia());
         }
     }
 }

@@ -20,6 +20,7 @@ namespace NastiAplicacion
 
         LoginServicio loginServicio = new LoginServicio();
         CredencialUsuario credencial = CredencialUsuario.getInstancia();
+        ConditionValidationRule notEmptyValidationRule = new ConditionValidationRule();
 
         public LoginForm()
         {
@@ -44,7 +45,7 @@ namespace NastiAplicacion
 
         public void asignarErrores()
         {
-            ConditionValidationRule notEmptyValidationRule = new ConditionValidationRule();
+            
             notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
             notEmptyValidationRule.ErrorText = "Ingrese un nombre de usuario...";
             dxValidationProvider1.SetValidationRule(this.textEditUsuario, notEmptyValidationRule);
@@ -84,7 +85,7 @@ namespace NastiAplicacion
                     this.lookUpEditEmpresa.Properties.ValueMember = "CODIGOEMPRESA";
                     this.lookUpEditEmpresa.Visible = true;
                     this.labelControlEmpresa.Visible = true;
-                    ConditionValidationRule notEmptyValidationRule = new ConditionValidationRule();
+                    notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
                     notEmptyValidationRule.ErrorText = "Seleccione una empresa";
                     dxValidationProvider1.SetValidationRule(this.lookUpEditEmpresa, notEmptyValidationRule);
                 }
@@ -101,6 +102,35 @@ namespace NastiAplicacion
         {
             
             credencial.setEmpresaSeleccionada((EMPRESA)((DevExpress.XtraEditors.LookUpEdit)sender).GetSelectedDataRow());
+            this.lookUpEditEstablecimiento.Properties.DataSource = this.loginServicio.getEstablecientoPorEmpresa(credencial.getEmpresaSeleccionada().CODIGOEMPRESA);
+            this.lookUpEditEstablecimiento.Properties.DisplayMember = "NUMERO";
+            this.lookUpEditEstablecimiento.Properties.ValueMember = "CODIGOESTABLECIMIENTO";
+            this.lookUpEditEstablecimiento.Visible = true;
+            this.labelControlEstablecimiento.Visible = true;
+            notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
+            notEmptyValidationRule.ErrorText = "Seleccione un establecimiento";
+            dxValidationProvider1.SetValidationRule(this.lookUpEditEstablecimiento, notEmptyValidationRule);
+        }
+
+        
+
+        private void lookUpEditEstablecimiento_EditValueChanged(object sender, EventArgs e)
+        {
+            credencial.setEstablecimientoSeleccionado((ESTABLECIMIENTO)((DevExpress.XtraEditors.LookUpEdit)sender).GetSelectedDataRow());
+            this.lookUpEditPuntoEmision.Properties.DataSource = this.loginServicio.getPuntoEmisionPorEstablecimiento(credencial.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
+            this.lookUpEditPuntoEmision.Properties.DisplayMember = "NOMBRE";
+            this.lookUpEditPuntoEmision.Properties.ValueMember = "CODIGOPUNTOEMISION";
+            this.lookUpEditPuntoEmision.Visible = true;
+            this.labelControlPuntoEmision.Visible = true;            
+            notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
+            notEmptyValidationRule.ErrorText = "Seleccione un punto de emisión";
+            dxValidationProvider1.SetValidationRule(this.lookUpEditPuntoEmision, notEmptyValidationRule);
+
+        }
+
+        private void lookUpEditPuntoEmision_EditValueChanged(object sender, EventArgs e)
+        {
+            credencial.setPuntoDeEmision((PUNTOEMISION)((DevExpress.XtraEditors.LookUpEdit)sender).GetSelectedDataRow());
         }
     }
 }

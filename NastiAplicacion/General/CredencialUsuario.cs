@@ -14,6 +14,8 @@ namespace NastiAplicacion.General
         private USUARIO usuario;
         private IEnumerable<EMPRESA> empresas;
         private EMPRESA empresaSeleccionada;
+        private ESTABLECIMIENTO establecimientoSeleccionado;
+        private PUNTOEMISION puntoDeEmisionSeleccionado;
 
         private CredencialUsuario()
         {
@@ -55,5 +57,25 @@ namespace NastiAplicacion.General
         {
             this.empresaSeleccionada = empresa;
         }
-    }
+
+        public ESTABLECIMIENTO getEstablecimientoSeleccionado()
+        {
+            return this.establecimientoSeleccionado;
+        }
+
+        public void setEstablecimientoSeleccionado(ESTABLECIMIENTO establecimiento)
+        {
+            this.establecimientoSeleccionado = establecimiento;
+        }
+        public void setPuntoDeEmision(PUNTOEMISION puntoemision)
+        {
+            this.puntoDeEmisionSeleccionado = puntoemision;
+        }
+        public PUNTOEMISION getPuntoDeEmision()
+        {
+            return this.puntoDeEmisionSeleccionado;
+        }
+
+
+        }
 }

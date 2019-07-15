@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NastiAplicacion.Reportes;
+using NastiAplicacion.Vistas.Facturacion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -46,8 +48,24 @@ namespace NastiAplicacion.Vistas.General
 
             ControlGeneralNasti controlNasti = null;
             IMetodosFactory IMetodosFactory = new MetodosFactory();
-            if (nombreControl == "FacturaView")
-                controlNasti = FacturaView.getInstancia(IMetodosFactory);
+            if (nombreControl == "FacturaFormView")
+            {
+
+                controlNasti = FacturaFormView.getInstancia(IMetodosFactory);
+                controlNasti.setDatosIniciales();
+            }
+            if (nombreControl == "ArticuloView")
+            {
+
+                controlNasti = ArticuloView.getInstancia(IMetodosFactory);
+                controlNasti.setDatosIniciales();
+            }
+            if (nombreControl == "NastiReporteView")
+            {
+
+                controlNasti = NastiReporteView.getInstancia(IMetodosFactory);
+                controlNasti.setDatosIniciales();
+            }
             //else if (nombreControl=="otro control")
             return controlNasti;
         }
