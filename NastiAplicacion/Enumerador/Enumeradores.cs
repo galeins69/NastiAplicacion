@@ -75,7 +75,8 @@ namespace NastiAplicacion.Enumerador
             GUIADEREMISION=4,
             COMPROBANTEDERETENCION=5,
             PROFORMA=6,
-            GUIACONFACTURA=7
+            GUIACONFACTURA=7,
+            LIQUIDACIONCOMPRA=8
     }
 
 
@@ -106,5 +107,14 @@ namespace NastiAplicacion.Enumerador
         TARDETACREDITO=6,
         CHEQUETRANSFERENCIA=7,
         ENDOSODETITULO=8
+    }
+
+    internal enum EnumUnidadTiempo
+    {
+        DIAS = 1,
+        MESES = 2,
+        ANIOS = 3,
+        HORAS = 4,
+        MINUTOS = 5,
     }
 }

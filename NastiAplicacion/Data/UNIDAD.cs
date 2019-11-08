@@ -18,6 +18,7 @@ namespace NastiAplicacion.Data
         public UNIDAD()
         {
             this.ARTICULO = new HashSet<ARTICULO>();
+            this.ARTICULOCOMPONENTE = new HashSet<ARTICULOCOMPONENTE>();
         }
     
         public long CODIGOUNIDAD { get; set; }
@@ -26,6 +27,8 @@ namespace NastiAplicacion.Data
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARTICULO> ARTICULO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ARTICULOCOMPONENTE> ARTICULOCOMPONENTE { get; set; }
         public virtual EMPRESA EMPRESA { get; set; }
     }
 }

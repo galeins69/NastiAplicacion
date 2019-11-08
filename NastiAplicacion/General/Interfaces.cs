@@ -64,6 +64,7 @@ namespace NastiAplicacion.General
         void validar();
         void firmar();
         void autorizar();
+        void anular();
     }
 
 }

@@ -17,6 +17,8 @@ namespace NastiAplicacion.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ARTICULO()
         {
+            this.ARTICULOCOMPONENTE = new HashSet<ARTICULOCOMPONENTE>();
+            this.ARTICULOCOMPONENTE1 = new HashSet<ARTICULOCOMPONENTE>();
             this.ARTICULOIMPUESTO = new HashSet<ARTICULOIMPUESTO>();
             this.BODEGASTOCK = new HashSet<BODEGASTOCK>();
             this.DETALLECOMPROBANTE = new HashSet<DETALLECOMPROBANTE>();
@@ -51,9 +53,12 @@ namespace NastiAplicacion.Data
         public string PRECIOVARIABLE { get; set; }
     
         public virtual EMPRESA EMPRESA { get; set; }
-        public virtual IMPUESTO IMPUESTO { get; set; }
         public virtual TIPOARTICULO TIPOARTICULO { get; set; }
         public virtual UNIDAD UNIDAD { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ARTICULOCOMPONENTE> ARTICULOCOMPONENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ARTICULOCOMPONENTE> ARTICULOCOMPONENTE1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARTICULOIMPUESTO> ARTICULOIMPUESTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,5 +67,6 @@ namespace NastiAplicacion.Data
         public virtual ICollection<DETALLECOMPROBANTE> DETALLECOMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLELISTADEPRECIO> DETALLELISTADEPRECIO { get; set; }
+        public virtual IMPUESTO IMPUESTO { get; set; }
     }
 }

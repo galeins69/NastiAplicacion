@@ -13,19 +13,19 @@
           <Property Name="CODIGOARTICULO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CODIGO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="COSTO" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="PRECIOVENTA" Type="numeric" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="CANTIDAD" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="COSTO" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="PRECIOVENTA" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CANTIDAD" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="CODIGOIMPUESTO" Type="bigint" Nullable="false" />
           <Property Name="ESTADO" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="CODIGOUNIDAD" Type="bigint" />
           <Property Name="SECCION" Type="varchar" MaxLength="20" />
-          <Property Name="INGRESOS" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="EGRESOS" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="SALDOINICIAL" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="INGRESOS" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EGRESOS" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SALDOINICIAL" Type="decimal" Precision="18" Scale="2" />
           <Property Name="DESCRIPCIONCORTA" Type="varchar" MaxLength="100" />
-          <Property Name="STOCKMINIMO" Type="numeric" Precision="18" Scale="2" />
-          <Property Name="STOCKMAXIMO" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="STOCKMINIMO" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="STOCKMAXIMO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ENPANTALLA" Type="varchar" MaxLength="1" />
           <Property Name="GRAFICO" Type="varbinary(max)" />
           <Property Name="CODIGOTIPOARTICULO" Type="bigint" Nullable="false" />
@@ -35,6 +35,17 @@
           <Property Name="FECHACREACION" Type="datetime" Nullable="false" />
           <Property Name="FECHAMODIFICACION" Type="datetime" Nullable="false" />
           <Property Name="PRECIOVARIABLE" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="ARTICULOCOMPONENTE">
+          <Key>
+            <PropertyRef Name="CODIGOARTICULOCOMPONENTE" />
+          </Key>
+          <Property Name="CODIGOARTICULOCOMPONENTE" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CODIGOARTICULO" Type="bigint" />
+          <Property Name="CANTIDAD" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CODIGOUNIDAD" Type="bigint" />
+          <Property Name="ESTADO" Type="varchar" MaxLength="1" />
+          <Property Name="CODIGOARTICULOCOMP" Type="bigint" />
         </EntityType>
         <EntityType Name="ARTICULOIMPUESTO">
           <Key>
@@ -60,12 +71,10 @@
           <Property Name="CODIGOBODEGASTOCK" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CODIGOBODEGA" Type="bigint" Nullable="false" />
           <Property Name="CODIGOARTICULO" Type="bigint" Nullable="false" />
-          <Property Name="STOCKACTUAL" Type="numeric" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PRECIO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="COSTO" Type="numeric" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="STOCKACTUAL" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="PRECIO" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="COSTO" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\NASTI\KIPPA.MDF.dbo.CLIENTE' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="CLIENTE">
           <Key>
             <PropertyRef Name="CODIGOCLIENTE" />
@@ -76,18 +85,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOSOCIONEGOCIO" Type="bigint" Nullable="false" />
           <Property Name="CODIGOEMPRESA" Type="bigint" />
           <Property Name="APLICAIVA" Type="varchar" MaxLength="1" Nullable="false" />
-          <Property Name="LIMITECREDITO" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="LIMITECREDITO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="LISTAPRECIO" Type="varchar" MaxLength="1" />
           <Property Name="TIPOCLIENTE" Type="varchar" MaxLength="1" />
-          <Property Name="PORCENTAJEDESCUENTO" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="PORCENTAJEDESCUENTO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="CODIGOSUB" Type="varchar" MaxLength="8" />
           <Property Name="NUMEROPAGO" Type="bigint" />
           <Property Name="PLAZOPAGO" Type="bigint" />
-          <Property Name="SALDO" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="SALDO" Type="decimal" Precision="18" Scale="2" />
           <Property Name="FORMAPAGO" Type="varchar" MaxLength="1" />
           <Property Name="GRUPOCLIENTE" Type="varchar" MaxLength="3" />
           <Property Name="TIPO" Type="char" MaxLength="1" />
-          <Property Name="FECHACORTE" Type="date" />
+          <Property Name="FECHACORTE" Type="datetime" />
           <Property Name="SECTOR" Type="varchar" MaxLength="8" />
           <Property Name="RISE" Type="varchar" MaxLength="40" />
           <Property Name="PARTERELACIONADA" Type="varchar" MaxLength="2" />
@@ -131,7 +140,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="OBSERVACION" Type="varchar" MaxLength="300" />
           <Property Name="CODIGOCOMPROBANTE" Type="bigint" Nullable="false" />
           <Property Name="PLAZO" Type="int" Nullable="false" />
-          <Property Name="UNIDADTIEMPO" Type="bigint" />
+          <Property Name="CODIGOUNIDADTIEMPO" Type="bigint" />
         </EntityType>
         <EntityType Name="CONDICIONPAGO">
           <Key>
@@ -243,6 +252,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CONTRIBUYENTEESPECIAL" Type="varchar" MaxLength="1" Nullable="false" />
           <Property Name="LLEVACONTABILIDAD" Type="varchar" MaxLength="1" />
           <Property Name="NUMERORESOLUCION" Type="varchar" MaxLength="5" />
+          <Property Name="FECHACADUCIDAD" Type="datetime" />
         </EntityType>
         <EntityType Name="ESTABLECIMIENTO">
           <Key>
@@ -305,13 +315,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOEMPRESA" Type="bigint" Nullable="false" />
           <Property Name="CODIGOSOCIONEGOCIO" Type="bigint" />
         </EntityType>
-        <EntityType Name="MARCA">
-          <Key>
-            <PropertyRef Name="CODIGOMARCA" />
-          </Key>
-          <Property Name="CODIGOMARCA" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MARCA" Type="varchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="PARAMETRO">
           <Key>
             <PropertyRef Name="CODIGOPARAMETRO" />
@@ -327,6 +330,20 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="DESCRIPCION" Type="char" MaxLength="250" />
           <Property Name="CODIGOEMPRESA" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="int" Nullable="false" />
+          <Property Name="CODIGO_PRINCIPAL" Type="varchar" MaxLength="70" />
+          <Property Name="CODIGO_AUXILIAR" Type="varchar" MaxLength="70" />
+          <Property Name="NOMBRE" Type="varchar" MaxLength="100" />
+          <Property Name="VALOR_UNITARIO" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="TIPO_PRODUCTO" Type="varchar" MaxLength="1" />
+          <Property Name="IVA" Type="varchar" MaxLength="1" />
+          <Property Name="ICE" Type="varchar" MaxLength="1" />
+          <Property Name="IRBPNR" Type="char" MaxLength="1" />
+        </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
             <PropertyRef Name="CODIGOPROVEEDOR" />
@@ -338,9 +355,9 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOCLASE" Type="varchar" MaxLength="5" />
           <Property Name="APLICAIVA" Type="varchar" MaxLength="1" />
           <Property Name="ESTATUS" Type="varchar" MaxLength="1" />
-          <Property Name="LIMITECREDITO" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="LIMITECREDITO" Type="decimal" Precision="10" Scale="2" />
           <Property Name="CODIGOUSUARIO" Type="varchar" MaxLength="10" />
-          <Property Name="FECHAACTUALIZACION" Type="date" />
+          <Property Name="FECHAACTUALIZACION" Type="datetime" />
           <Property Name="PLANPAGO" Type="bigint" />
           <Property Name="NUMEROPAGO" Type="bigint" />
           <Property Name="DESCHEQUE" Type="varchar" MaxLength="80" />
@@ -349,8 +366,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CUENTABANCO" Type="varchar" MaxLength="30" />
           <Property Name="BANCO" Type="varchar" MaxLength="5" />
           <Property Name="CODIGOTIPO" Type="varchar" MaxLength="3" />
-          <Property Name="FECHAEMISION" Type="date" />
-          <Property Name="FECHAVALIDEZ" Type="date" />
+          <Property Name="FECHAEMISION" Type="datetime" />
+          <Property Name="FECHAVALIDEZ" Type="datetime" />
           <Property Name="NUMEROCONTRIBUYENTE" Type="varchar" MaxLength="50" />
           <Property Name="NUMEROIMPRENTA" Type="varchar" MaxLength="20" />
           <Property Name="SERIE" Type="varchar" MaxLength="6" />
@@ -402,24 +419,22 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CONTACTO" Type="varchar" MaxLength="30" />
           <Property Name="ESTATUS" Type="varchar" MaxLength="1" />
           <Property Name="CODIGOUSUARIO" Type="varchar" MaxLength="10" />
-          <Property Name="FECHAACTUALIZACION" Type="date" />
+          <Property Name="FECHAACTUALIZACION" Type="datetime" />
           <Property Name="CIUDAD" Type="varchar" MaxLength="70" />
           <Property Name="EMAIL" Type="varchar" MaxLength="120" />
           <Property Name="COMENTARIO" Type="varchar" MaxLength="60" />
           <Property Name="CODIGOPROVINCIA" Type="varchar" MaxLength="4" />
           <Property Name="ESTADOCIVIL" Type="varchar" MaxLength="1" />
-          <Property Name="FECHANACIMIENTO" Type="date" />
+          <Property Name="FECHANACIMIENTO" Type="datetime" />
           <Property Name="NOMBRECOMERCIAL" Type="varchar" MaxLength="300" />
           <Property Name="SUELDO" Type="decimal" Precision="20" Scale="4" />
           <Property Name="CODIGOTIPOIDENTIFICACION" Type="bigint" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\NASTI\KIPPA.MDF.dbo.TABLAIMPUESTOS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="TABLAIMPUESTOS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Tipo" Type="int" />
           <Property Name="Descripcion" Type="char" MaxLength="255" />
           <Property Name="Codigo" Type="char" MaxLength="255" />
@@ -450,6 +465,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="NOMBRE" Type="varchar" MaxLength="254" />
           <Property Name="AFECTAINVENTARIO" Type="varchar" MaxLength="1" />
           <Property Name="FORMATO" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="SIGNO" Type="varchar" MaxLength="1" />
+          <Property Name="VERSION" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="TIPOELEMENTO">
           <Key>
@@ -496,6 +513,14 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOEMPRESA" Type="bigint" Nullable="false" />
           <Property Name="DESCRIPCION" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="UNIDADTIEMPO">
+          <Key>
+            <PropertyRef Name="CODIGOUNIDADTIEMPO" />
+          </Key>
+          <Property Name="CODIGOUNIDADTIEMPO" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DESCRIPCION" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="NUMERODIAS" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="USUARIO">
           <Key>
             <PropertyRef Name="CODIGOUSUARIO" />
@@ -538,7 +563,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOSOCIONEGOCIO" Type="bigint" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\NASTI\KIPPA.MDF.dbo.V_SOCIONEGOCIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\APPDATA\ROAMING\NASTI\KIPPA.MDF.dbo.V_SOCIONEGOCIO' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="V_SOCIONEGOCIO">
           <Key>
             <PropertyRef Name="TIPOSOCIONEGOCIO" />
@@ -603,6 +628,42 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               <PropertyRef Name="CODIGOUNIDAD" />
             </Principal>
             <Dependent Role="ARTICULO">
+              <PropertyRef Name="CODIGOUNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOCOMPONENTE_ARTICULO">
+          <End Role="ARTICULO" Type="Self.ARTICULO" Multiplicity="0..1" />
+          <End Role="ARTICULOCOMPONENTE" Type="Self.ARTICULOCOMPONENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULO">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Principal>
+            <Dependent Role="ARTICULOCOMPONENTE">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOCOMPONENTE_ARTICULOCOMP">
+          <End Role="ARTICULO" Type="Self.ARTICULO" Multiplicity="0..1" />
+          <End Role="ARTICULOCOMPONENTE" Type="Self.ARTICULOCOMPONENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULO">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Principal>
+            <Dependent Role="ARTICULOCOMPONENTE">
+              <PropertyRef Name="CODIGOARTICULOCOMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOCOMPONENTE_UNIDAD">
+          <End Role="UNIDAD" Type="Self.UNIDAD" Multiplicity="0..1" />
+          <End Role="ARTICULOCOMPONENTE" Type="Self.ARTICULOCOMPONENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDAD">
+              <PropertyRef Name="CODIGOUNIDAD" />
+            </Principal>
+            <Dependent Role="ARTICULOCOMPONENTE">
               <PropertyRef Name="CODIGOUNIDAD" />
             </Dependent>
           </ReferentialConstraint>
@@ -748,6 +809,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Principal>
             <Dependent Role="COMPROBANTEFORMAPAGO">
               <PropertyRef Name="CODIGOFORMAPAGO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO">
+          <End Role="UNIDADTIEMPO" Type="Self.UNIDADTIEMPO" Multiplicity="0..1" />
+          <End Role="COMPROBANTEFORMAPAGO" Type="Self.COMPROBANTEFORMAPAGO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIDADTIEMPO">
+              <PropertyRef Name="CODIGOUNIDADTIEMPO" />
+            </Principal>
+            <Dependent Role="COMPROBANTEFORMAPAGO">
+              <PropertyRef Name="CODIGOUNIDADTIEMPO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1173,9 +1246,11 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
         </Association>
         <EntityContainer Name="KippaModelStoreContainer">
           <EntitySet Name="ARTICULO" EntityType="Self.ARTICULO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ARTICULOCOMPONENTE" EntityType="Self.ARTICULOCOMPONENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ARTICULOIMPUESTO" EntityType="Self.ARTICULOIMPUESTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BODEGA" EntityType="Self.BODEGA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BODEGASTOCK" EntityType="Self.BODEGASTOCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMPROBANTE" EntityType="Self.COMPROBANTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMPROBANTEFORMAPAGO" EntityType="Self.COMPROBANTEFORMAPAGO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CONDICIONPAGO" EntityType="Self.CONDICIONPAGO" Schema="dbo" store:Type="Tables" />
@@ -1189,13 +1264,14 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySet Name="IMPUESTO" EntityType="Self.IMPUESTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="IMPUESTOCOMPROBANTE" EntityType="Self.IMPUESTOCOMPROBANTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LISTADEPRECIO" EntityType="Self.LISTADEPRECIO" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PARAMETRO" EntityType="Self.PARAMETRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PROVEEDOR" EntityType="Self.PROVEEDOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUNTOEMISION" EntityType="Self.PUNTOEMISION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUNTOEMISIONAUTORIZACION" EntityType="Self.PUNTOEMISIONAUTORIZACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PUNTOEMISIONDOCUMENTO" EntityType="Self.PUNTOEMISIONDOCUMENTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SOCIONEGOCIO" EntityType="Self.SOCIONEGOCIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TABLAIMPUESTOS" EntityType="Self.TABLAIMPUESTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPOAMBIENTE" EntityType="Self.TIPOAMBIENTE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPOARTICULO" EntityType="Self.TIPOARTICULO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPOCOMPROBANTE" EntityType="Self.TIPOCOMPROBANTE" Schema="dbo" store:Type="Tables" />
@@ -1205,42 +1281,10 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySet Name="TIPOIDENTIFICACION" EntityType="Self.TIPOIDENTIFICACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TIPOIMPUESTO" EntityType="Self.TIPOIMPUESTO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIDAD" EntityType="Self.UNIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UNIDADTIEMPO" EntityType="Self.UNIDADTIEMPO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOEMPRESA" EntityType="Self.USUARIOEMPRESA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VENDEDOR" EntityType="Self.VENDEDOR" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CLIENTE].[CODIGOCLIENTE] AS [CODIGOCLIENTE], 
-    [CLIENTE].[CODIGOSOCIONEGOCIO] AS [CODIGOSOCIONEGOCIO], 
-    [CLIENTE].[CODIGOEMPRESA] AS [CODIGOEMPRESA], 
-    [CLIENTE].[APLICAIVA] AS [APLICAIVA], 
-    [CLIENTE].[LIMITECREDITO] AS [LIMITECREDITO], 
-    [CLIENTE].[LISTAPRECIO] AS [LISTAPRECIO], 
-    [CLIENTE].[TIPOCLIENTE] AS [TIPOCLIENTE], 
-    [CLIENTE].[PORCENTAJEDESCUENTO] AS [PORCENTAJEDESCUENTO], 
-    [CLIENTE].[CODIGOSUB] AS [CODIGOSUB], 
-    [CLIENTE].[NUMEROPAGO] AS [NUMEROPAGO], 
-    [CLIENTE].[PLAZOPAGO] AS [PLAZOPAGO], 
-    [CLIENTE].[SALDO] AS [SALDO], 
-    [CLIENTE].[FORMAPAGO] AS [FORMAPAGO], 
-    [CLIENTE].[GRUPOCLIENTE] AS [GRUPOCLIENTE], 
-    [CLIENTE].[TIPO] AS [TIPO], 
-    [CLIENTE].[FECHACORTE] AS [FECHACORTE], 
-    [CLIENTE].[SECTOR] AS [SECTOR], 
-    [CLIENTE].[RISE] AS [RISE], 
-    [CLIENTE].[PARTERELACIONADA] AS [PARTERELACIONADA]
-    FROM [dbo].[CLIENTE] AS [CLIENTE]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="TABLAIMPUESTOS" EntityType="Self.TABLAIMPUESTOS" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [TABLAIMPUESTOS].[Id] AS [Id], 
-    [TABLAIMPUESTOS].[Tipo] AS [Tipo], 
-    [TABLAIMPUESTOS].[Descripcion] AS [Descripcion], 
-    [TABLAIMPUESTOS].[Codigo] AS [Codigo], 
-    [TABLAIMPUESTOS].[Porcentaje] AS [Porcentaje], 
-    [TABLAIMPUESTOS].[CodigoAlterno] AS [CodigoAlterno]
-    FROM [dbo].[TABLAIMPUESTOS] AS [TABLAIMPUESTOS]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="V_SOCIONEGOCIO" EntityType="Self.V_SOCIONEGOCIO" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [V_SOCIONEGOCIO].[TIPOSOCIONEGOCIO] AS [TIPOSOCIONEGOCIO], 
@@ -1273,6 +1317,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_ARTICULO_UNIDAD" Association="Self.FK_ARTICULO_UNIDAD">
             <End Role="UNIDAD" EntitySet="UNIDAD" />
             <End Role="ARTICULO" EntitySet="ARTICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_ARTICULO" Association="Self.FK_ARTICULOCOMPONENTE_ARTICULO">
+            <End Role="ARTICULO" EntitySet="ARTICULO" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_ARTICULOCOMP" Association="Self.FK_ARTICULOCOMPONENTE_ARTICULOCOMP">
+            <End Role="ARTICULO" EntitySet="ARTICULO" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_UNIDAD" Association="Self.FK_ARTICULOCOMPONENTE_UNIDAD">
+            <End Role="UNIDAD" EntitySet="UNIDAD" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_ARTICULOIMPUESTO_ARTICULO" Association="Self.FK_ARTICULOIMPUESTO_ARTICULO">
             <End Role="ARTICULO" EntitySet="ARTICULO" />
@@ -1320,6 +1376,10 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           </AssociationSet>
           <AssociationSet Name="FK_COMPROBANTEFORMAPAGO_FORMAPAGO" Association="Self.FK_COMPROBANTEFORMAPAGO_FORMAPAGO">
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
+            <End Role="COMPROBANTEFORMAPAGO" EntitySet="COMPROBANTEFORMAPAGO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" Association="Self.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO">
+            <End Role="UNIDADTIEMPO" EntitySet="UNIDADTIEMPO" />
             <End Role="COMPROBANTEFORMAPAGO" EntitySet="COMPROBANTEFORMAPAGO" />
           </AssociationSet>
           <AssociationSet Name="FK_DETALLECOMPROBANTE_ARTICULO" Association="Self.FK_DETALLECOMPROBANTE_ARTICULO">
@@ -1469,9 +1529,11 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
       <Schema Namespace="KippaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="KippaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ARTICULO" EntityType="KippaModel.ARTICULO" />
+          <EntitySet Name="ARTICULOCOMPONENTE" EntityType="KippaModel.ARTICULOCOMPONENTE" />
           <EntitySet Name="ARTICULOIMPUESTO" EntityType="KippaModel.ARTICULOIMPUESTO" />
           <EntitySet Name="BODEGA" EntityType="KippaModel.BODEGA" />
           <EntitySet Name="BODEGASTOCK" EntityType="KippaModel.BODEGASTOCK" />
+          <EntitySet Name="CLIENTE" EntityType="KippaModel.CLIENTE" />
           <EntitySet Name="COMPROBANTE" EntityType="KippaModel.COMPROBANTE" />
           <EntitySet Name="COMPROBANTEFORMAPAGO" EntityType="KippaModel.COMPROBANTEFORMAPAGO" />
           <EntitySet Name="CONDICIONPAGO" EntityType="KippaModel.CONDICIONPAGO" />
@@ -1482,16 +1544,16 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySet Name="ESTABLECIMIENTO" EntityType="KippaModel.ESTABLECIMIENTO" />
           <EntitySet Name="ESTADOCOMPROBANTE" EntityType="KippaModel.ESTADOCOMPROBANTE" />
           <EntitySet Name="FORMAPAGO" EntityType="KippaModel.FORMAPAGO" />
-          <EntitySet Name="IMPUESTO" EntityType="KippaModel.IMPUESTO" />
           <EntitySet Name="IMPUESTOCOMPROBANTE" EntityType="KippaModel.IMPUESTOCOMPROBANTE" />
           <EntitySet Name="LISTADEPRECIO" EntityType="KippaModel.LISTADEPRECIO" />
-          <EntitySet Name="MARCA" EntityType="KippaModel.MARCA" />
           <EntitySet Name="PARAMETRO" EntityType="KippaModel.PARAMETRO" />
+          <EntitySet Name="PRODUCTO" EntityType="KippaModel.PRODUCTO" />
           <EntitySet Name="PROVEEDOR" EntityType="KippaModel.PROVEEDOR" />
           <EntitySet Name="PUNTOEMISION" EntityType="KippaModel.PUNTOEMISION" />
           <EntitySet Name="PUNTOEMISIONAUTORIZACION" EntityType="KippaModel.PUNTOEMISIONAUTORIZACION" />
           <EntitySet Name="PUNTOEMISIONDOCUMENTO" EntityType="KippaModel.PUNTOEMISIONDOCUMENTO" />
           <EntitySet Name="SOCIONEGOCIO" EntityType="KippaModel.SOCIONEGOCIO" />
+          <EntitySet Name="TABLAIMPUESTOS" EntityType="KippaModel.TABLAIMPUESTOS" />
           <EntitySet Name="TIPOAMBIENTE" EntityType="KippaModel.TIPOAMBIENTE" />
           <EntitySet Name="TIPOARTICULO" EntityType="KippaModel.TIPOARTICULO" />
           <EntitySet Name="TIPOCOMPROBANTE" EntityType="KippaModel.TIPOCOMPROBANTE" />
@@ -1501,18 +1563,13 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySet Name="TIPOIDENTIFICACION" EntityType="KippaModel.TIPOIDENTIFICACION" />
           <EntitySet Name="TIPOIMPUESTO" EntityType="KippaModel.TIPOIMPUESTO" />
           <EntitySet Name="UNIDAD" EntityType="KippaModel.UNIDAD" />
+          <EntitySet Name="UNIDADTIEMPO" EntityType="KippaModel.UNIDADTIEMPO" />
           <EntitySet Name="USUARIO" EntityType="KippaModel.USUARIO" />
           <EntitySet Name="USUARIOEMPRESA" EntityType="KippaModel.USUARIOEMPRESA" />
           <EntitySet Name="VENDEDOR" EntityType="KippaModel.VENDEDOR" />
-          <EntitySet Name="CLIENTE" EntityType="KippaModel.CLIENTE" />
-          <EntitySet Name="TABLAIMPUESTOS" EntityType="KippaModel.TABLAIMPUESTOS" />
           <EntitySet Name="V_SOCIONEGOCIO" EntityType="KippaModel.V_SOCIONEGOCIO" />
           <AssociationSet Name="FK_ARTICULO_EMPRESA" Association="KippaModel.FK_ARTICULO_EMPRESA">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
-            <End Role="ARTICULO" EntitySet="ARTICULO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ARTICULO_IMPUESTO" Association="KippaModel.FK_ARTICULO_IMPUESTO">
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
             <End Role="ARTICULO" EntitySet="ARTICULO" />
           </AssociationSet>
           <AssociationSet Name="FK_ARTICULO_TIPOARTICULO" Association="KippaModel.FK_ARTICULO_TIPOARTICULO">
@@ -1522,6 +1579,14 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_ARTICULO_UNIDAD" Association="KippaModel.FK_ARTICULO_UNIDAD">
             <End Role="UNIDAD" EntitySet="UNIDAD" />
             <End Role="ARTICULO" EntitySet="ARTICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_ARTICULO" Association="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULO">
+            <End Role="ARTICULO" EntitySet="ARTICULO" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_ARTICULOCOMP" Association="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULOCOMP">
+            <End Role="ARTICULO" EntitySet="ARTICULO" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_ARTICULOIMPUESTO_ARTICULO" Association="KippaModel.FK_ARTICULOIMPUESTO_ARTICULO">
             <End Role="ARTICULO" EntitySet="ARTICULO" />
@@ -1539,9 +1604,9 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             <End Role="ARTICULO" EntitySet="ARTICULO" />
             <End Role="DETALLELISTADEPRECIO" EntitySet="DETALLELISTADEPRECIO" />
           </AssociationSet>
-          <AssociationSet Name="FK_ARTICULOIMPUESTO_IMPUESTO" Association="KippaModel.FK_ARTICULOIMPUESTO_IMPUESTO">
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
-            <End Role="ARTICULOIMPUESTO" EntitySet="ARTICULOIMPUESTO" />
+          <AssociationSet Name="FK_ARTICULOCOMPONENTE_UNIDAD" Association="KippaModel.FK_ARTICULOCOMPONENTE_UNIDAD">
+            <End Role="UNIDAD" EntitySet="UNIDAD" />
+            <End Role="ARTICULOCOMPONENTE" EntitySet="ARTICULOCOMPONENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_BODEGA_EMPRESA" Association="KippaModel.FK_BODEGA_EMPRESA">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
@@ -1562,6 +1627,14 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_DETALLECOMPROBANTE_BODEGA" Association="KippaModel.FK_DETALLECOMPROBANTE_BODEGA">
             <End Role="BODEGA" EntitySet="BODEGA" />
             <End Role="DETALLECOMPROBANTE" EntitySet="DETALLECOMPROBANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLIENTE_SOCIONEGOCIO" Association="KippaModel.FK_CLIENTE_SOCIONEGOCIO">
+            <End Role="SOCIONEGOCIO" EntitySet="SOCIONEGOCIO" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CODIGOEMPRESA" Association="KippaModel.FK_CODIGOEMPRESA">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_COMPROBANTE_ESTADOCOMPROBANTE" Association="KippaModel.FK_COMPROBANTE_ESTADOCOMPROBANTE">
             <End Role="ESTADOCOMPROBANTE" EntitySet="ESTADOCOMPROBANTE" />
@@ -1607,9 +1680,9 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
             <End Role="COMPROBANTEFORMAPAGO" EntitySet="COMPROBANTEFORMAPAGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_DETALLECOMPROBANTE_IMPUESTO" Association="KippaModel.FK_DETALLECOMPROBANTE_IMPUESTO">
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
-            <End Role="DETALLECOMPROBANTE" EntitySet="DETALLECOMPROBANTE" />
+          <AssociationSet Name="FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" Association="KippaModel.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO">
+            <End Role="UNIDADTIEMPO" EntitySet="UNIDADTIEMPO" />
+            <End Role="COMPROBANTEFORMAPAGO" EntitySet="COMPROBANTEFORMAPAGO" />
           </AssociationSet>
           <AssociationSet Name="FK_DETALLELISTADEPRECIO" Association="KippaModel.FK_DETALLELISTADEPRECIO">
             <End Role="LISTADEPRECIO" EntitySet="LISTADEPRECIO" />
@@ -1618,10 +1691,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_TIPO_ELEMENTO" Association="KippaModel.FK_TIPO_ELEMENTO">
             <End Role="TIPOELEMENTO" EntitySet="TIPOELEMENTO" />
             <End Role="ELEMENTO" EntitySet="ELEMENTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CODIGOEMPRESA" Association="KippaModel.FK_CODIGOEMPRESA">
-            <End Role="EMPRESA" EntitySet="EMPRESA" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
           </AssociationSet>
           <AssociationSet Name="FK_EMPRESA" Association="KippaModel.FK_EMPRESA">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
@@ -1638,10 +1707,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_FORMAPAGO_EMPRESA" Association="KippaModel.FK_FORMAPAGO_EMPRESA">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IMPUESTO_EMPRESA" Association="KippaModel.FK_IMPUESTO_EMPRESA">
-            <End Role="EMPRESA" EntitySet="EMPRESA" />
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
           </AssociationSet>
           <AssociationSet Name="FK_LISTADEPRECIO_EMPRESA" Association="KippaModel.FK_LISTADEPRECIO_EMPRESA">
             <End Role="EMPRESA" EntitySet="EMPRESA" />
@@ -1675,14 +1740,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             <End Role="TIPOFORMAPAGO" EntitySet="TIPOFORMAPAGO" />
             <End Role="FORMAPAGO" EntitySet="FORMAPAGO" />
           </AssociationSet>
-          <AssociationSet Name="FK_IMPUESTO_TIPOIMPUESTO" Association="KippaModel.FK_IMPUESTO_TIPOIMPUESTO">
-            <End Role="TIPOIMPUESTO" EntitySet="TIPOIMPUESTO" />
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
-          </AssociationSet>
-          <AssociationSet Name="FK_IMPUESTOCOMPROBANTE_IMPUESTO" Association="KippaModel.FK_IMPUESTOCOMPROBANTE_IMPUESTO">
-            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
-            <End Role="IMPUESTOCOMPROBANTE" EntitySet="IMPUESTOCOMPROBANTE" />
-          </AssociationSet>
           <AssociationSet Name="FK_LISTADEPRECIO_SOCIONEGOCIO" Association="KippaModel.FK_LISTADEPRECIO_SOCIONEGOCIO">
             <End Role="SOCIONEGOCIO" EntitySet="SOCIONEGOCIO" />
             <End Role="LISTADEPRECIO" EntitySet="LISTADEPRECIO" />
@@ -1699,10 +1756,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             <End Role="TIPOCOMPROBANTE" EntitySet="TIPOCOMPROBANTE" />
             <End Role="PUNTOEMISIONDOCUMENTO" EntitySet="PUNTOEMISIONDOCUMENTO" />
           </AssociationSet>
-          <AssociationSet Name="FK_CLIENTE_SOCIONEGOCIO" Association="KippaModel.FK_CLIENTE_SOCIONEGOCIO">
-            <End Role="SOCIONEGOCIO" EntitySet="SOCIONEGOCIO" />
-            <End Role="CLIENTE" EntitySet="CLIENTE" />
-          </AssociationSet>
           <AssociationSet Name="FK_SOCIONEGOCIO_TIPOIDENTIFICACION" Association="KippaModel.FK_SOCIONEGOCIO_TIPOIDENTIFICACION">
             <End Role="TIPOIDENTIFICACION" EntitySet="TIPOIDENTIFICACION" />
             <End Role="SOCIONEGOCIO" EntitySet="SOCIONEGOCIO" />
@@ -1710,6 +1763,31 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <AssociationSet Name="FK_USUARIOEMPRESA_USUARIO" Association="KippaModel.FK_USUARIOEMPRESA_USUARIO">
             <End Role="USUARIO" EntitySet="USUARIO" />
             <End Role="USUARIOEMPRESA" EntitySet="USUARIOEMPRESA" />
+          </AssociationSet>
+          <EntitySet Name="IMPUESTO" EntityType="KippaModel.IMPUESTO" />
+          <AssociationSet Name="FK_ARTICULO_IMPUESTO" Association="KippaModel.FK_ARTICULO_IMPUESTO">
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+            <End Role="ARTICULO" EntitySet="ARTICULO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ARTICULOIMPUESTO_IMPUESTO" Association="KippaModel.FK_ARTICULOIMPUESTO_IMPUESTO">
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+            <End Role="ARTICULOIMPUESTO" EntitySet="ARTICULOIMPUESTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DETALLECOMPROBANTE_IMPUESTO" Association="KippaModel.FK_DETALLECOMPROBANTE_IMPUESTO">
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+            <End Role="DETALLECOMPROBANTE" EntitySet="DETALLECOMPROBANTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMPUESTO_EMPRESA" Association="KippaModel.FK_IMPUESTO_EMPRESA">
+            <End Role="EMPRESA" EntitySet="EMPRESA" />
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMPUESTO_TIPOIMPUESTO" Association="KippaModel.FK_IMPUESTO_TIPOIMPUESTO">
+            <End Role="TIPOIMPUESTO" EntitySet="TIPOIMPUESTO" />
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IMPUESTOCOMPROBANTE_IMPUESTO" Association="KippaModel.FK_IMPUESTOCOMPROBANTE_IMPUESTO">
+            <End Role="IMPUESTO" EntitySet="IMPUESTO" />
+            <End Role="IMPUESTOCOMPROBANTE" EntitySet="IMPUESTOCOMPROBANTE" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="ARTICULO">
@@ -1743,13 +1821,29 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="FECHAMODIFICACION" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="PRECIOVARIABLE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_ARTICULO_EMPRESA" FromRole="ARTICULO" ToRole="EMPRESA" />
-          <NavigationProperty Name="IMPUESTO" Relationship="KippaModel.FK_ARTICULO_IMPUESTO" FromRole="ARTICULO" ToRole="IMPUESTO" />
           <NavigationProperty Name="TIPOARTICULO" Relationship="KippaModel.FK_ARTICULO_TIPOARTICULO" FromRole="ARTICULO" ToRole="TIPOARTICULO" />
           <NavigationProperty Name="UNIDAD" Relationship="KippaModel.FK_ARTICULO_UNIDAD" FromRole="ARTICULO" ToRole="UNIDAD" />
+          <NavigationProperty Name="ARTICULOCOMPONENTE" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULO" FromRole="ARTICULO" ToRole="ARTICULOCOMPONENTE" />
+          <NavigationProperty Name="ARTICULOCOMPONENTE1" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULOCOMP" FromRole="ARTICULO" ToRole="ARTICULOCOMPONENTE" />
           <NavigationProperty Name="ARTICULOIMPUESTO" Relationship="KippaModel.FK_ARTICULOIMPUESTO_ARTICULO" FromRole="ARTICULO" ToRole="ARTICULOIMPUESTO" />
           <NavigationProperty Name="BODEGASTOCK" Relationship="KippaModel.FK_BODEGASTOCK_ARTICULO" FromRole="ARTICULO" ToRole="BODEGASTOCK" />
           <NavigationProperty Name="DETALLECOMPROBANTE" Relationship="KippaModel.FK_DETALLECOMPROBANTE_ARTICULO" FromRole="ARTICULO" ToRole="DETALLECOMPROBANTE" />
           <NavigationProperty Name="DETALLELISTADEPRECIO" Relationship="KippaModel.FK_DETALLELISTADEPRECIOARTICULO" FromRole="ARTICULO" ToRole="DETALLELISTADEPRECIO" />
+          <NavigationProperty Name="IMPUESTO" Relationship="KippaModel.FK_ARTICULO_IMPUESTO" FromRole="ARTICULO" ToRole="IMPUESTO" />
+        </EntityType>
+        <EntityType Name="ARTICULOCOMPONENTE">
+          <Key>
+            <PropertyRef Name="CODIGOARTICULOCOMPONENTE" />
+          </Key>
+          <Property Name="CODIGOARTICULOCOMPONENTE" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGOARTICULO" Type="Int64" />
+          <Property Name="CANTIDAD" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CODIGOUNIDAD" Type="Int64" />
+          <Property Name="ESTADO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOARTICULOCOMP" Type="Int64" />
+          <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULO" FromRole="ARTICULOCOMPONENTE" ToRole="ARTICULO" />
+          <NavigationProperty Name="ARTICULO1" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_ARTICULOCOMP" FromRole="ARTICULOCOMPONENTE" ToRole="ARTICULO" />
+          <NavigationProperty Name="UNIDAD" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_UNIDAD" FromRole="ARTICULOCOMPONENTE" ToRole="UNIDAD" />
         </EntityType>
         <EntityType Name="ARTICULOIMPUESTO">
           <Key>
@@ -1787,6 +1881,34 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="COSTO" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_BODEGASTOCK_ARTICULO" FromRole="BODEGASTOCK" ToRole="ARTICULO" />
           <NavigationProperty Name="BODEGA" Relationship="KippaModel.FK_BODEGASTOCK_BODEGA" FromRole="BODEGASTOCK" ToRole="BODEGA" />
+        </EntityType>
+        <EntityType Name="CLIENTE">
+          <Key>
+            <PropertyRef Name="CODIGOCLIENTE" />
+            <PropertyRef Name="CODIGOSOCIONEGOCIO" />
+            <PropertyRef Name="APLICAIVA" />
+          </Key>
+          <Property Name="CODIGOCLIENTE" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGOSOCIONEGOCIO" Type="Int64" Nullable="false" />
+          <Property Name="CODIGOEMPRESA" Type="Int64" />
+          <Property Name="APLICAIVA" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LIMITECREDITO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LISTAPRECIO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TIPOCLIENTE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="PORCENTAJEDESCUENTO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CODIGOSUB" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="NUMEROPAGO" Type="Int64" />
+          <Property Name="PLAZOPAGO" Type="Int64" />
+          <Property Name="SALDO" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="FORMAPAGO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="GRUPOCLIENTE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="FECHACORTE" Type="DateTime" Precision="3" />
+          <Property Name="SECTOR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="RISE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="PARTERELACIONADA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SOCIONEGOCIO" Relationship="KippaModel.FK_CLIENTE_SOCIONEGOCIO" FromRole="CLIENTE" ToRole="SOCIONEGOCIO" />
+          <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_CODIGOEMPRESA" FromRole="CLIENTE" ToRole="EMPRESA" />
         </EntityType>
         <EntityType Name="COMPROBANTE">
           <Key>
@@ -1837,10 +1959,11 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="VALOR" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="OBSERVACION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOCOMPROBANTE" Type="Int64" Nullable="false" />
+          <Property Name="PLAZO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGOUNIDADTIEMPO" Type="Int64" />
           <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_COMPROBANTEFORMAPAGO_COMPROBANTE" FromRole="COMPROBANTEFORMAPAGO" ToRole="COMPROBANTE" />
           <NavigationProperty Name="FORMAPAGO" Relationship="KippaModel.FK_COMPROBANTEFORMAPAGO_FORMAPAGO" FromRole="COMPROBANTEFORMAPAGO" ToRole="FORMAPAGO" />
-          <Property Name="PLAZO" Type="Int32" Nullable="false" />
-          <Property Name="UNIDADTIEMPO" Type="Int64" />
+          <NavigationProperty Name="UNIDADTIEMPO" Relationship="KippaModel.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" FromRole="COMPROBANTEFORMAPAGO" ToRole="UNIDADTIEMPO" />
         </EntityType>
         <EntityType Name="CONDICIONPAGO">
           <Key>
@@ -1956,23 +2079,24 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="LOGO" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="NOMBRECOMERCIAL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOTIPOAMBIENTE" Type="Int64" />
+          <Property Name="CONTRIBUYENTEESPECIAL" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="LLEVACONTABILIDAD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERORESOLUCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="FECHACADUCIDAD" Type="DateTime" Precision="3" />
           <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_ARTICULO_EMPRESA" FromRole="EMPRESA" ToRole="ARTICULO" />
           <NavigationProperty Name="BODEGA" Relationship="KippaModel.FK_BODEGA_EMPRESA" FromRole="EMPRESA" ToRole="BODEGA" />
-          <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_EMPRESACOMPROBANTE" FromRole="EMPRESA" ToRole="COMPROBANTE" />
           <NavigationProperty Name="CLIENTE" Relationship="KippaModel.FK_CODIGOEMPRESA" FromRole="EMPRESA" ToRole="CLIENTE" />
+          <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_EMPRESACOMPROBANTE" FromRole="EMPRESA" ToRole="COMPROBANTE" />
           <NavigationProperty Name="UNIDAD" Relationship="KippaModel.FK_EMPRESA" FromRole="EMPRESA" ToRole="UNIDAD" />
           <NavigationProperty Name="TIPOAMBIENTE" Relationship="KippaModel.FK_EMPRESA_TIPOAMBIENTE" FromRole="EMPRESA" ToRole="TIPOAMBIENTE" />
           <NavigationProperty Name="ESTABLECIMIENTO1" Relationship="KippaModel.FK_ESTABLECIMIENTO_ToTable" FromRole="EMPRESA" ToRole="ESTABLECIMIENTO" />
           <NavigationProperty Name="FORMAPAGO" Relationship="KippaModel.FK_FORMAPAGO_EMPRESA" FromRole="EMPRESA" ToRole="FORMAPAGO" />
-          <NavigationProperty Name="IMPUESTO" Relationship="KippaModel.FK_IMPUESTO_EMPRESA" FromRole="EMPRESA" ToRole="IMPUESTO" />
           <NavigationProperty Name="LISTADEPRECIO" Relationship="KippaModel.FK_LISTADEPRECIO_EMPRESA" FromRole="EMPRESA" ToRole="LISTADEPRECIO" />
           <NavigationProperty Name="PARAMETRO" Relationship="KippaModel.FK_PARAMETROS_EMPRESA" FromRole="EMPRESA" ToRole="PARAMETRO" />
           <NavigationProperty Name="PROVEEDOR" Relationship="KippaModel.FK_PROVEEDOREMPRESA" FromRole="EMPRESA" ToRole="PROVEEDOR" />
           <NavigationProperty Name="USUARIOEMPRESA" Relationship="KippaModel.FK_USUARIOEMPRESA_EMPRESA" FromRole="EMPRESA" ToRole="USUARIOEMPRESA" />
           <NavigationProperty Name="VENDEDOR" Relationship="KippaModel.FK_VENDOREMPRESA" FromRole="EMPRESA" ToRole="VENDEDOR" />
-          <Property Name="CONTRIBUYENTEESPECIAL" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="LLEVACONTABILIDAD" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="NUMERORESOLUCION" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="IMPUESTO" Relationship="KippaModel.FK_IMPUESTO_EMPRESA" FromRole="EMPRESA" ToRole="IMPUESTO" />
         </EntityType>
         <EntityType Name="ESTABLECIMIENTO">
           <Key>
@@ -2009,27 +2133,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_FORMAPAGO_EMPRESA" FromRole="FORMAPAGO" ToRole="EMPRESA" />
           <NavigationProperty Name="TIPOFORMAPAGO" Relationship="KippaModel.FK_FORMAPAGO_TIPOFORMAPAGO" FromRole="FORMAPAGO" ToRole="TIPOFORMAPAGO" />
         </EntityType>
-        <EntityType Name="IMPUESTO">
-          <Key>
-            <PropertyRef Name="CODIGOIMPUESTO" />
-          </Key>
-          <Property Name="CODIGOIMPUESTO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CODIGOTIPOIMPUESTO" Type="Int32" Nullable="false" />
-          <Property Name="PORCENTAJE" Type="Decimal" Nullable="false" Precision="14" Scale="2" />
-          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="FECHADESDE" Type="DateTime" Precision="3" />
-          <Property Name="FECHAHASTA" Type="DateTime" Precision="3" />
-          <Property Name="CODIGOSRI" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="DESGLOSADO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="CODIGOEMPRESA" Type="Int64" />
-          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_ARTICULO_IMPUESTO" FromRole="IMPUESTO" ToRole="ARTICULO" />
-          <NavigationProperty Name="ARTICULOIMPUESTO" Relationship="KippaModel.FK_ARTICULOIMPUESTO_IMPUESTO" FromRole="IMPUESTO" ToRole="ARTICULOIMPUESTO" />
-          <NavigationProperty Name="DETALLECOMPROBANTE" Relationship="KippaModel.FK_DETALLECOMPROBANTE_IMPUESTO" FromRole="IMPUESTO" ToRole="DETALLECOMPROBANTE" />
-          <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_IMPUESTO_EMPRESA" FromRole="IMPUESTO" ToRole="EMPRESA" />
-          <NavigationProperty Name="TIPOIMPUESTO" Relationship="KippaModel.FK_IMPUESTO_TIPOIMPUESTO" FromRole="IMPUESTO" ToRole="TIPOIMPUESTO" />
-          <NavigationProperty Name="IMPUESTOCOMPROBANTE" Relationship="KippaModel.FK_IMPUESTOCOMPROBANTE_IMPUESTO" FromRole="IMPUESTO" ToRole="IMPUESTOCOMPROBANTE" />
-        </EntityType>
         <EntityType Name="IMPUESTOCOMPROBANTE">
           <Key>
             <PropertyRef Name="CODIGOIMPUESTOCOMPROBANTE" />
@@ -2055,13 +2158,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_LISTADEPRECIO_EMPRESA" FromRole="LISTADEPRECIO" ToRole="EMPRESA" />
           <NavigationProperty Name="SOCIONEGOCIO" Relationship="KippaModel.FK_LISTADEPRECIO_SOCIONEGOCIO" FromRole="LISTADEPRECIO" ToRole="SOCIONEGOCIO" />
         </EntityType>
-        <EntityType Name="MARCA">
-          <Key>
-            <PropertyRef Name="CODIGOMARCA" />
-          </Key>
-          <Property Name="CODIGOMARCA" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MARCA1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="PARAMETRO">
           <Key>
             <PropertyRef Name="CODIGOPARAMETRO" />
@@ -2078,6 +2174,20 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOEMPRESA" Type="Int64" Nullable="false" />
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_PARAMETROS_EMPRESA" FromRole="PARAMETRO" ToRole="EMPRESA" />
         </EntityType>
+        <EntityType Name="PRODUCTO">
+          <Key>
+            <PropertyRef Name="CODIGO" />
+          </Key>
+          <Property Name="CODIGO" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_PRINCIPAL" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_AUXILIAR" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="VALOR_UNITARIO" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="TIPO_PRODUCTO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IVA" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ICE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IRBPNR" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+        </EntityType>
         <EntityType Name="PROVEEDOR">
           <Key>
             <PropertyRef Name="CODIGOPROVEEDOR" />
@@ -2091,7 +2201,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="ESTATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="LIMITECREDITO" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="CODIGOUSUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="0" />
+          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="3" />
           <Property Name="PLANPAGO" Type="Int64" />
           <Property Name="NUMEROPAGO" Type="Int64" />
           <Property Name="DESCHEQUE" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
@@ -2100,8 +2210,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CUENTABANCO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="BANCO" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOTIPO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="FECHAEMISION" Type="DateTime" Precision="0" />
-          <Property Name="FECHAVALIDEZ" Type="DateTime" Precision="0" />
+          <Property Name="FECHAEMISION" Type="DateTime" Precision="3" />
+          <Property Name="FECHAVALIDEZ" Type="DateTime" Precision="3" />
           <Property Name="NUMEROCONTRIBUYENTE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NUMEROIMPRENTA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="SERIE" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
@@ -2117,10 +2227,10 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="SERIE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOESTABLECIMIENTO" Type="Int64" />
           <Property Name="ELECTRONICO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECTORIOREPORTES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_PUNTOEMISIONCOMPROBANTE" FromRole="PUNTOEMISION" ToRole="COMPROBANTE" />
           <NavigationProperty Name="ESTABLECIMIENTO" Relationship="KippaModel.FK_PUNTOEMISIONESTABLECIMIENTO" FromRole="PUNTOEMISION" ToRole="ESTABLECIMIENTO" />
           <NavigationProperty Name="PUNTOEMISIONDOCUMENTO" Relationship="KippaModel.FK_PUNTOEMISIONDOCUMENTO_PUNTOEMISION" FromRole="PUNTOEMISION" ToRole="PUNTOEMISIONDOCUMENTO" />
-          <Property Name="DIRECTORIOREPORTES" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="PUNTOEMISIONAUTORIZACION">
           <Key>
@@ -2137,7 +2247,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Key>
             <PropertyRef Name="CODIGOPUNTOEMISIONDOCUMENTO" />
           </Key>
-          <Property Name="CODIGOPUNTOEMISIONDOCUMENTO" Type="Int64" Nullable="false" />
+          <Property Name="CODIGOPUNTOEMISIONDOCUMENTO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CODIGOPUNTOEMISION" Type="Int64" />
           <Property Name="CODIGOTIPOCOMPROBANTE" Type="Int64" />
           <Property Name="NUMERODOCUMENTO" Type="Int64" />
@@ -2161,21 +2271,32 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CONTACTO" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ESTATUS" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOUSUARIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="0" />
+          <Property Name="FECHAACTUALIZACION" Type="DateTime" Precision="3" />
           <Property Name="CIUDAD" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
           <Property Name="EMAIL" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
           <Property Name="COMENTARIO" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <Property Name="CODIGOPROVINCIA" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
           <Property Name="ESTADOCIVIL" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="0" />
+          <Property Name="FECHANACIMIENTO" Type="DateTime" Precision="3" />
           <Property Name="NOMBRECOMERCIAL" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="SUELDO" Type="Decimal" Precision="20" Scale="4" />
           <Property Name="CODIGOTIPOIDENTIFICACION" Type="Int64" />
+          <NavigationProperty Name="CLIENTE" Relationship="KippaModel.FK_CLIENTE_SOCIONEGOCIO" FromRole="SOCIONEGOCIO" ToRole="CLIENTE" />
           <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_SOCIONEGOCIOCOMPROBANTE" FromRole="SOCIONEGOCIO" ToRole="COMPROBANTE" />
           <NavigationProperty Name="COMPROBANTE1" Relationship="KippaModel.FK_VENDEDORCOMPROBANTE" FromRole="SOCIONEGOCIO" ToRole="COMPROBANTE" />
           <NavigationProperty Name="LISTADEPRECIO" Relationship="KippaModel.FK_LISTADEPRECIO_SOCIONEGOCIO" FromRole="SOCIONEGOCIO" ToRole="LISTADEPRECIO" />
-          <NavigationProperty Name="CLIENTE" Relationship="KippaModel.FK_CLIENTE_SOCIONEGOCIO" FromRole="SOCIONEGOCIO" ToRole="CLIENTE" />
           <NavigationProperty Name="TIPOIDENTIFICACION" Relationship="KippaModel.FK_SOCIONEGOCIO_TIPOIDENTIFICACION" FromRole="SOCIONEGOCIO" ToRole="TIPOIDENTIFICACION" />
+        </EntityType>
+        <EntityType Name="TABLAIMPUESTOS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tipo" Type="Int32" />
+          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
+          <Property Name="Porcentaje" Type="Int32" />
+          <Property Name="CodigoAlterno" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="TIPOAMBIENTE">
           <Key>
@@ -2202,9 +2323,11 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOSRI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="AFECTAINVENTARIO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FORMATO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SIGNO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="VERSION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="COMPROBANTE" Relationship="KippaModel.FK_TIPOCOMPROBANTECOMPROBANTE" FromRole="TIPOCOMPROBANTE" ToRole="COMPROBANTE" />
           <NavigationProperty Name="PUNTOEMISIONDOCUMENTO" Relationship="KippaModel.FK_PUNTOEMISIONDOCUMENTOTIPOCOMPROBANTE" FromRole="TIPOCOMPROBANTE" ToRole="PUNTOEMISIONDOCUMENTO" />
-          <Property Name="FORMATO" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TIPOELEMENTO">
           <Key>
@@ -2256,7 +2379,17 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOEMPRESA" Type="Int64" Nullable="false" />
           <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_ARTICULO_UNIDAD" FromRole="UNIDAD" ToRole="ARTICULO" />
+          <NavigationProperty Name="ARTICULOCOMPONENTE" Relationship="KippaModel.FK_ARTICULOCOMPONENTE_UNIDAD" FromRole="UNIDAD" ToRole="ARTICULOCOMPONENTE" />
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_EMPRESA" FromRole="UNIDAD" ToRole="EMPRESA" />
+        </EntityType>
+        <EntityType Name="UNIDADTIEMPO">
+          <Key>
+            <PropertyRef Name="CODIGOUNIDADTIEMPO" />
+          </Key>
+          <Property Name="CODIGOUNIDADTIEMPO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERODIAS" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="COMPROBANTEFORMAPAGO" Relationship="KippaModel.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" FromRole="UNIDADTIEMPO" ToRole="COMPROBANTEFORMAPAGO" />
         </EntityType>
         <EntityType Name="USUARIO">
           <Key>
@@ -2303,45 +2436,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <Property Name="CODIGOSOCIONEGOCIO" Type="Int64" />
           <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_VENDOREMPRESA" FromRole="VENDEDOR" ToRole="EMPRESA" />
         </EntityType>
-        <EntityType Name="CLIENTE">
-          <Key>
-            <PropertyRef Name="CODIGOCLIENTE" />
-            <PropertyRef Name="CODIGOSOCIONEGOCIO" />
-            <PropertyRef Name="APLICAIVA" />
-          </Key>
-          <Property Name="CODIGOCLIENTE" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CODIGOSOCIONEGOCIO" Type="Int64" Nullable="false" />
-          <Property Name="CODIGOEMPRESA" Type="Int64" />
-          <Property Name="APLICAIVA" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="LIMITECREDITO" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LISTAPRECIO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="TIPOCLIENTE" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="PORCENTAJEDESCUENTO" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="CODIGOSUB" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="NUMEROPAGO" Type="Int64" />
-          <Property Name="PLAZOPAGO" Type="Int64" />
-          <Property Name="SALDO" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="FORMAPAGO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="GRUPOCLIENTE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
-          <Property Name="TIPO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-          <Property Name="FECHACORTE" Type="DateTime" Precision="0" />
-          <Property Name="SECTOR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="RISE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="PARTERELACIONADA" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_CODIGOEMPRESA" FromRole="CLIENTE" ToRole="EMPRESA" />
-          <NavigationProperty Name="SOCIONEGOCIO" Relationship="KippaModel.FK_CLIENTE_SOCIONEGOCIO" FromRole="CLIENTE" ToRole="SOCIONEGOCIO" />
-        </EntityType>
-        <EntityType Name="TABLAIMPUESTOS">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Tipo" Type="Int32" />
-          <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
-          <Property Name="Codigo" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
-          <Property Name="Porcentaje" Type="Int32" />
-          <Property Name="CodigoAlterno" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
-        </EntityType>
         <EntityType Name="V_SOCIONEGOCIO">
           <Key>
             <PropertyRef Name="TIPOSOCIONEGOCIO" />
@@ -2374,18 +2468,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ARTICULO_IMPUESTO">
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
-          <End Type="KippaModel.ARTICULO" Role="ARTICULO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IMPUESTO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
-            </Principal>
-            <Dependent Role="ARTICULO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ARTICULO_TIPOARTICULO">
           <End Type="KippaModel.TIPOARTICULO" Role="TIPOARTICULO" Multiplicity="1" />
           <End Type="KippaModel.ARTICULO" Role="ARTICULO" Multiplicity="*" />
@@ -2407,6 +2489,30 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Principal>
             <Dependent Role="ARTICULO">
               <PropertyRef Name="CODIGOUNIDAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOCOMPONENTE_ARTICULO">
+          <End Type="KippaModel.ARTICULO" Role="ARTICULO" Multiplicity="0..1" />
+          <End Type="KippaModel.ARTICULOCOMPONENTE" Role="ARTICULOCOMPONENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULO">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Principal>
+            <Dependent Role="ARTICULOCOMPONENTE">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOCOMPONENTE_ARTICULOCOMP">
+          <End Type="KippaModel.ARTICULO" Role="ARTICULO" Multiplicity="0..1" />
+          <End Type="KippaModel.ARTICULOCOMPONENTE" Role="ARTICULOCOMPONENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ARTICULO">
+              <PropertyRef Name="CODIGOARTICULO" />
+            </Principal>
+            <Dependent Role="ARTICULOCOMPONENTE">
+              <PropertyRef Name="CODIGOARTICULOCOMP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2458,15 +2564,15 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ARTICULOIMPUESTO_IMPUESTO">
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
-          <End Type="KippaModel.ARTICULOIMPUESTO" Role="ARTICULOIMPUESTO" Multiplicity="*" />
+        <Association Name="FK_ARTICULOCOMPONENTE_UNIDAD">
+          <End Type="KippaModel.UNIDAD" Role="UNIDAD" Multiplicity="0..1" />
+          <End Type="KippaModel.ARTICULOCOMPONENTE" Role="ARTICULOCOMPONENTE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IMPUESTO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
+            <Principal Role="UNIDAD">
+              <PropertyRef Name="CODIGOUNIDAD" />
             </Principal>
-            <Dependent Role="ARTICULOIMPUESTO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
+            <Dependent Role="ARTICULOCOMPONENTE">
+              <PropertyRef Name="CODIGOUNIDAD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2527,6 +2633,30 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Principal>
             <Dependent Role="DETALLECOMPROBANTE">
               <PropertyRef Name="CODIGOBODEGA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLIENTE_SOCIONEGOCIO">
+          <End Type="KippaModel.SOCIONEGOCIO" Role="SOCIONEGOCIO" Multiplicity="1" />
+          <End Type="KippaModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOCIONEGOCIO">
+              <PropertyRef Name="CODIGOSOCIONEGOCIO" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="CODIGOSOCIONEGOCIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CODIGOEMPRESA">
+          <End Type="KippaModel.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
+          <End Type="KippaModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Principal>
+            <Dependent Role="CLIENTE">
+              <PropertyRef Name="CODIGOEMPRESA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2662,15 +2792,15 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DETALLECOMPROBANTE_IMPUESTO">
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
-          <End Type="KippaModel.DETALLECOMPROBANTE" Role="DETALLECOMPROBANTE" Multiplicity="*" />
+        <Association Name="FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO">
+          <End Type="KippaModel.UNIDADTIEMPO" Role="UNIDADTIEMPO" Multiplicity="0..1" />
+          <End Type="KippaModel.COMPROBANTEFORMAPAGO" Role="COMPROBANTEFORMAPAGO" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="IMPUESTO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
+            <Principal Role="UNIDADTIEMPO">
+              <PropertyRef Name="CODIGOUNIDADTIEMPO" />
             </Principal>
-            <Dependent Role="DETALLECOMPROBANTE">
-              <PropertyRef Name="CODIGOIMPUESTO" />
+            <Dependent Role="COMPROBANTEFORMAPAGO">
+              <PropertyRef Name="CODIGOUNIDADTIEMPO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2695,18 +2825,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Principal>
             <Dependent Role="ELEMENTO">
               <PropertyRef Name="CODIGOTIPOELEMENTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CODIGOEMPRESA">
-          <End Type="KippaModel.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
-          <End Type="KippaModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPRESA">
-              <PropertyRef Name="CODIGOEMPRESA" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="CODIGOEMPRESA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2754,18 +2872,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               <PropertyRef Name="CODIGOEMPRESA" />
             </Principal>
             <Dependent Role="FORMAPAGO">
-              <PropertyRef Name="CODIGOEMPRESA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IMPUESTO_EMPRESA">
-          <End Type="KippaModel.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EMPRESA">
-              <PropertyRef Name="CODIGOEMPRESA" />
-            </Principal>
-            <Dependent Role="IMPUESTO">
               <PropertyRef Name="CODIGOEMPRESA" />
             </Dependent>
           </ReferentialConstraint>
@@ -2866,30 +2972,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_IMPUESTO_TIPOIMPUESTO">
-          <End Type="KippaModel.TIPOIMPUESTO" Role="TIPOIMPUESTO" Multiplicity="1" />
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPOIMPUESTO">
-              <PropertyRef Name="CODIGOTIPOIMPUESTO" />
-            </Principal>
-            <Dependent Role="IMPUESTO">
-              <PropertyRef Name="CODIGOTIPOIMPUESTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_IMPUESTOCOMPROBANTE_IMPUESTO">
-          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
-          <End Type="KippaModel.IMPUESTOCOMPROBANTE" Role="IMPUESTOCOMPROBANTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="IMPUESTO">
-              <PropertyRef Name="CODIGOIMPUESTO" />
-            </Principal>
-            <Dependent Role="IMPUESTOCOMPROBANTE">
-              <PropertyRef Name="CODIGOIMPUESTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_LISTADEPRECIO_SOCIONEGOCIO">
           <End Type="KippaModel.SOCIONEGOCIO" Role="SOCIONEGOCIO" Multiplicity="0..1" />
           <End Type="KippaModel.LISTADEPRECIO" Role="LISTADEPRECIO" Multiplicity="*" />
@@ -2938,18 +3020,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CLIENTE_SOCIONEGOCIO">
-          <End Type="KippaModel.SOCIONEGOCIO" Role="SOCIONEGOCIO" Multiplicity="1" />
-          <End Type="KippaModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SOCIONEGOCIO">
-              <PropertyRef Name="CODIGOSOCIONEGOCIO" />
-            </Principal>
-            <Dependent Role="CLIENTE">
-              <PropertyRef Name="CODIGOSOCIONEGOCIO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SOCIONEGOCIO_TIPOIDENTIFICACION">
           <End Type="KippaModel.TIPOIDENTIFICACION" Role="TIPOIDENTIFICACION" Multiplicity="0..1" />
           <End Type="KippaModel.SOCIONEGOCIO" Role="SOCIONEGOCIO" Multiplicity="*" />
@@ -2971,6 +3041,99 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
             </Principal>
             <Dependent Role="USUARIOEMPRESA">
               <PropertyRef Name="CODIGOUSUARIO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IMPUESTO">
+          <Key>
+            <PropertyRef Name="CODIGOIMPUESTO" />
+          </Key>
+          <Property Name="CODIGOIMPUESTO" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CODIGOTIPOIMPUESTO" Type="Int32" Nullable="false" />
+          <Property Name="PORCENTAJE" Type="Decimal" Nullable="false" Precision="14" Scale="2" />
+          <Property Name="DESCRIPCION" Type="String" Nullable="false" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="FECHADESDE" Type="DateTime" Precision="3" />
+          <Property Name="FECHAHASTA" Type="DateTime" Precision="3" />
+          <Property Name="CODIGOSRI" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="DESGLOSADO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGOEMPRESA" Type="Int64" />
+          <Property Name="ESTADO" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ARTICULO" Relationship="KippaModel.FK_ARTICULO_IMPUESTO" FromRole="IMPUESTO" ToRole="ARTICULO" />
+          <NavigationProperty Name="ARTICULOIMPUESTO" Relationship="KippaModel.FK_ARTICULOIMPUESTO_IMPUESTO" FromRole="IMPUESTO" ToRole="ARTICULOIMPUESTO" />
+          <NavigationProperty Name="DETALLECOMPROBANTE" Relationship="KippaModel.FK_DETALLECOMPROBANTE_IMPUESTO" FromRole="IMPUESTO" ToRole="DETALLECOMPROBANTE" />
+          <NavigationProperty Name="EMPRESA" Relationship="KippaModel.FK_IMPUESTO_EMPRESA" FromRole="IMPUESTO" ToRole="EMPRESA" />
+          <NavigationProperty Name="TIPOIMPUESTO" Relationship="KippaModel.FK_IMPUESTO_TIPOIMPUESTO" FromRole="IMPUESTO" ToRole="TIPOIMPUESTO" />
+          <NavigationProperty Name="IMPUESTOCOMPROBANTE" Relationship="KippaModel.FK_IMPUESTOCOMPROBANTE_IMPUESTO" FromRole="IMPUESTO" ToRole="IMPUESTOCOMPROBANTE" />
+        </EntityType>
+        <Association Name="FK_ARTICULO_IMPUESTO">
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
+          <End Type="KippaModel.ARTICULO" Role="ARTICULO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMPUESTO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Principal>
+            <Dependent Role="ARTICULO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ARTICULOIMPUESTO_IMPUESTO">
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
+          <End Type="KippaModel.ARTICULOIMPUESTO" Role="ARTICULOIMPUESTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMPUESTO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Principal>
+            <Dependent Role="ARTICULOIMPUESTO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DETALLECOMPROBANTE_IMPUESTO">
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
+          <End Type="KippaModel.DETALLECOMPROBANTE" Role="DETALLECOMPROBANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMPUESTO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Principal>
+            <Dependent Role="DETALLECOMPROBANTE">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMPUESTO_EMPRESA">
+          <End Type="KippaModel.EMPRESA" Role="EMPRESA" Multiplicity="0..1" />
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EMPRESA">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Principal>
+            <Dependent Role="IMPUESTO">
+              <PropertyRef Name="CODIGOEMPRESA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMPUESTO_TIPOIMPUESTO">
+          <End Type="KippaModel.TIPOIMPUESTO" Role="TIPOIMPUESTO" Multiplicity="1" />
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOIMPUESTO">
+              <PropertyRef Name="CODIGOTIPOIMPUESTO" />
+            </Principal>
+            <Dependent Role="IMPUESTO">
+              <PropertyRef Name="CODIGOTIPOIMPUESTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IMPUESTOCOMPROBANTE_IMPUESTO">
+          <End Type="KippaModel.IMPUESTO" Role="IMPUESTO" Multiplicity="1" />
+          <End Type="KippaModel.IMPUESTOCOMPROBANTE" Role="IMPUESTOCOMPROBANTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IMPUESTO">
+              <PropertyRef Name="CODIGOIMPUESTO" />
+            </Principal>
+            <Dependent Role="IMPUESTOCOMPROBANTE">
+              <PropertyRef Name="CODIGOIMPUESTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3012,6 +3175,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ARTICULOCOMPONENTE">
+            <EntityTypeMapping TypeName="KippaModel.ARTICULOCOMPONENTE">
+              <MappingFragment StoreEntitySet="ARTICULOCOMPONENTE">
+                <ScalarProperty Name="CODIGOARTICULOCOMP" ColumnName="CODIGOARTICULOCOMP" />
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CODIGOUNIDAD" ColumnName="CODIGOUNIDAD" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
+                <ScalarProperty Name="CODIGOARTICULO" ColumnName="CODIGOARTICULO" />
+                <ScalarProperty Name="CODIGOARTICULOCOMPONENTE" ColumnName="CODIGOARTICULOCOMPONENTE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ARTICULOIMPUESTO">
             <EntityTypeMapping TypeName="KippaModel.ARTICULOIMPUESTO">
               <MappingFragment StoreEntitySet="ARTICULOIMPUESTO">
@@ -3040,6 +3215,31 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
                 <ScalarProperty Name="CODIGOARTICULO" ColumnName="CODIGOARTICULO" />
                 <ScalarProperty Name="CODIGOBODEGA" ColumnName="CODIGOBODEGA" />
                 <ScalarProperty Name="CODIGOBODEGASTOCK" ColumnName="CODIGOBODEGASTOCK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLIENTE">
+            <EntityTypeMapping TypeName="KippaModel.CLIENTE">
+              <MappingFragment StoreEntitySet="CLIENTE">
+                <ScalarProperty Name="PARTERELACIONADA" ColumnName="PARTERELACIONADA" />
+                <ScalarProperty Name="RISE" ColumnName="RISE" />
+                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
+                <ScalarProperty Name="FECHACORTE" ColumnName="FECHACORTE" />
+                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+                <ScalarProperty Name="GRUPOCLIENTE" ColumnName="GRUPOCLIENTE" />
+                <ScalarProperty Name="FORMAPAGO" ColumnName="FORMAPAGO" />
+                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
+                <ScalarProperty Name="PLAZOPAGO" ColumnName="PLAZOPAGO" />
+                <ScalarProperty Name="NUMEROPAGO" ColumnName="NUMEROPAGO" />
+                <ScalarProperty Name="CODIGOSUB" ColumnName="CODIGOSUB" />
+                <ScalarProperty Name="PORCENTAJEDESCUENTO" ColumnName="PORCENTAJEDESCUENTO" />
+                <ScalarProperty Name="TIPOCLIENTE" ColumnName="TIPOCLIENTE" />
+                <ScalarProperty Name="LISTAPRECIO" ColumnName="LISTAPRECIO" />
+                <ScalarProperty Name="LIMITECREDITO" ColumnName="LIMITECREDITO" />
+                <ScalarProperty Name="APLICAIVA" ColumnName="APLICAIVA" />
+                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
+                <ScalarProperty Name="CODIGOSOCIONEGOCIO" ColumnName="CODIGOSOCIONEGOCIO" />
+                <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3076,7 +3276,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySetMapping Name="COMPROBANTEFORMAPAGO">
             <EntityTypeMapping TypeName="KippaModel.COMPROBANTEFORMAPAGO">
               <MappingFragment StoreEntitySet="COMPROBANTEFORMAPAGO">
-                <ScalarProperty Name="UNIDADTIEMPO" ColumnName="UNIDADTIEMPO" />
+                <ScalarProperty Name="CODIGOUNIDADTIEMPO" ColumnName="CODIGOUNIDADTIEMPO" />
                 <ScalarProperty Name="PLAZO" ColumnName="PLAZO" />
                 <ScalarProperty Name="CODIGOCOMPROBANTE" ColumnName="CODIGOCOMPROBANTE" />
                 <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
@@ -3150,6 +3350,7 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySetMapping Name="EMPRESA">
             <EntityTypeMapping TypeName="KippaModel.EMPRESA">
               <MappingFragment StoreEntitySet="EMPRESA">
+                <ScalarProperty Name="FECHACADUCIDAD" ColumnName="FECHACADUCIDAD" />
                 <ScalarProperty Name="NUMERORESOLUCION" ColumnName="NUMERORESOLUCION" />
                 <ScalarProperty Name="LLEVACONTABILIDAD" ColumnName="LLEVACONTABILIDAD" />
                 <ScalarProperty Name="CONTRIBUYENTEESPECIAL" ColumnName="CONTRIBUYENTEESPECIAL" />
@@ -3231,22 +3432,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="IMPUESTO">
-            <EntityTypeMapping TypeName="KippaModel.IMPUESTO">
-              <MappingFragment StoreEntitySet="IMPUESTO">
-                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
-                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
-                <ScalarProperty Name="DESGLOSADO" ColumnName="DESGLOSADO" />
-                <ScalarProperty Name="CODIGOSRI" ColumnName="CODIGOSRI" />
-                <ScalarProperty Name="FECHAHASTA" ColumnName="FECHAHASTA" />
-                <ScalarProperty Name="FECHADESDE" ColumnName="FECHADESDE" />
-                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
-                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
-                <ScalarProperty Name="CODIGOTIPOIMPUESTO" ColumnName="CODIGOTIPOIMPUESTO" />
-                <ScalarProperty Name="CODIGOIMPUESTO" ColumnName="CODIGOIMPUESTO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="IMPUESTOCOMPROBANTE">
             <EntityTypeMapping TypeName="KippaModel.IMPUESTOCOMPROBANTE">
               <MappingFragment StoreEntitySet="IMPUESTOCOMPROBANTE">
@@ -3269,14 +3454,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MARCA">
-            <EntityTypeMapping TypeName="KippaModel.MARCA">
-              <MappingFragment StoreEntitySet="MARCA">
-                <ScalarProperty Name="MARCA1" ColumnName="MARCA" />
-                <ScalarProperty Name="CODIGOMARCA" ColumnName="CODIGOMARCA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PARAMETRO">
             <EntityTypeMapping TypeName="KippaModel.PARAMETRO">
               <MappingFragment StoreEntitySet="PARAMETRO">
@@ -3290,6 +3467,21 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
                 <ScalarProperty Name="VALORSTRING" ColumnName="VALORSTRING" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
                 <ScalarProperty Name="CODIGOPARAMETRO" ColumnName="CODIGOPARAMETRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTO">
+            <EntityTypeMapping TypeName="KippaModel.PRODUCTO">
+              <MappingFragment StoreEntitySet="PRODUCTO">
+                <ScalarProperty Name="IRBPNR" ColumnName="IRBPNR" />
+                <ScalarProperty Name="ICE" ColumnName="ICE" />
+                <ScalarProperty Name="IVA" ColumnName="IVA" />
+                <ScalarProperty Name="TIPO_PRODUCTO" ColumnName="TIPO_PRODUCTO" />
+                <ScalarProperty Name="VALOR_UNITARIO" ColumnName="VALOR_UNITARIO" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="CODIGO_AUXILIAR" ColumnName="CODIGO_AUXILIAR" />
+                <ScalarProperty Name="CODIGO_PRINCIPAL" ColumnName="CODIGO_PRINCIPAL" />
+                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3384,6 +3576,18 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TABLAIMPUESTOS">
+            <EntityTypeMapping TypeName="KippaModel.TABLAIMPUESTOS">
+              <MappingFragment StoreEntitySet="TABLAIMPUESTOS">
+                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
+                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="TIPOAMBIENTE">
             <EntityTypeMapping TypeName="KippaModel.TIPOAMBIENTE">
               <MappingFragment StoreEntitySet="TIPOAMBIENTE">
@@ -3404,6 +3608,8 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
           <EntitySetMapping Name="TIPOCOMPROBANTE">
             <EntityTypeMapping TypeName="KippaModel.TIPOCOMPROBANTE">
               <MappingFragment StoreEntitySet="TIPOCOMPROBANTE">
+                <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+                <ScalarProperty Name="SIGNO" ColumnName="SIGNO" />
                 <ScalarProperty Name="FORMATO" ColumnName="FORMATO" />
                 <ScalarProperty Name="AFECTAINVENTARIO" ColumnName="AFECTAINVENTARIO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
@@ -3463,6 +3669,15 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="UNIDADTIEMPO">
+            <EntityTypeMapping TypeName="KippaModel.UNIDADTIEMPO">
+              <MappingFragment StoreEntitySet="UNIDADTIEMPO">
+                <ScalarProperty Name="NUMERODIAS" ColumnName="NUMERODIAS" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="CODIGOUNIDADTIEMPO" ColumnName="CODIGOUNIDADTIEMPO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="USUARIO">
             <EntityTypeMapping TypeName="KippaModel.USUARIO">
               <MappingFragment StoreEntitySet="USUARIO">
@@ -3507,43 +3722,6 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="CLIENTE">
-            <EntityTypeMapping TypeName="KippaModel.CLIENTE">
-              <MappingFragment StoreEntitySet="CLIENTE">
-                <ScalarProperty Name="PARTERELACIONADA" ColumnName="PARTERELACIONADA" />
-                <ScalarProperty Name="RISE" ColumnName="RISE" />
-                <ScalarProperty Name="SECTOR" ColumnName="SECTOR" />
-                <ScalarProperty Name="FECHACORTE" ColumnName="FECHACORTE" />
-                <ScalarProperty Name="TIPO" ColumnName="TIPO" />
-                <ScalarProperty Name="GRUPOCLIENTE" ColumnName="GRUPOCLIENTE" />
-                <ScalarProperty Name="FORMAPAGO" ColumnName="FORMAPAGO" />
-                <ScalarProperty Name="SALDO" ColumnName="SALDO" />
-                <ScalarProperty Name="PLAZOPAGO" ColumnName="PLAZOPAGO" />
-                <ScalarProperty Name="NUMEROPAGO" ColumnName="NUMEROPAGO" />
-                <ScalarProperty Name="CODIGOSUB" ColumnName="CODIGOSUB" />
-                <ScalarProperty Name="PORCENTAJEDESCUENTO" ColumnName="PORCENTAJEDESCUENTO" />
-                <ScalarProperty Name="TIPOCLIENTE" ColumnName="TIPOCLIENTE" />
-                <ScalarProperty Name="LISTAPRECIO" ColumnName="LISTAPRECIO" />
-                <ScalarProperty Name="LIMITECREDITO" ColumnName="LIMITECREDITO" />
-                <ScalarProperty Name="APLICAIVA" ColumnName="APLICAIVA" />
-                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
-                <ScalarProperty Name="CODIGOSOCIONEGOCIO" ColumnName="CODIGOSOCIONEGOCIO" />
-                <ScalarProperty Name="CODIGOCLIENTE" ColumnName="CODIGOCLIENTE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TABLAIMPUESTOS">
-            <EntityTypeMapping TypeName="KippaModel.TABLAIMPUESTOS">
-              <MappingFragment StoreEntitySet="TABLAIMPUESTOS">
-                <ScalarProperty Name="CodigoAlterno" ColumnName="CodigoAlterno" />
-                <ScalarProperty Name="Porcentaje" ColumnName="Porcentaje" />
-                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="V_SOCIONEGOCIO">
             <EntityTypeMapping TypeName="KippaModel.V_SOCIONEGOCIO">
               <MappingFragment StoreEntitySet="V_SOCIONEGOCIO">
@@ -3560,6 +3738,22 @@ advertencia 6002: La tabla o vista 'C:\USERS\ROBAY\ONEDRIVE\KIPPA\FUENTES\DATOS\
                 <ScalarProperty Name="RAZONSOCIAL" ColumnName="RAZONSOCIAL" />
                 <ScalarProperty Name="CODIGOSOCIONEGOCIO" ColumnName="CODIGOSOCIONEGOCIO" />
                 <ScalarProperty Name="TIPOSOCIONEGOCIO" ColumnName="TIPOSOCIONEGOCIO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IMPUESTO">
+            <EntityTypeMapping TypeName="KippaModel.IMPUESTO">
+              <MappingFragment StoreEntitySet="IMPUESTO">
+                <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+                <ScalarProperty Name="CODIGOEMPRESA" ColumnName="CODIGOEMPRESA" />
+                <ScalarProperty Name="DESGLOSADO" ColumnName="DESGLOSADO" />
+                <ScalarProperty Name="CODIGOSRI" ColumnName="CODIGOSRI" />
+                <ScalarProperty Name="FECHAHASTA" ColumnName="FECHAHASTA" />
+                <ScalarProperty Name="FECHADESDE" ColumnName="FECHADESDE" />
+                <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+                <ScalarProperty Name="PORCENTAJE" ColumnName="PORCENTAJE" />
+                <ScalarProperty Name="CODIGOTIPOIMPUESTO" ColumnName="CODIGOTIPOIMPUESTO" />
+                <ScalarProperty Name="CODIGOIMPUESTO" ColumnName="CODIGOIMPUESTO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -19,23 +19,23 @@ namespace NastiAplicacion.General
 
         private CredencialUsuario()
         {
-
         }
+
         public static CredencialUsuario getInstancia()
         {
-            if (Instancia == null)
-                Instancia = new CredencialUsuario();
-            return Instancia;
+            if (CredencialUsuario.Instancia == null)
+                CredencialUsuario.Instancia = new CredencialUsuario();
+            return CredencialUsuario.Instancia;
         }
 
         public IEnumerable<EMPRESA> getEmpresas()
         {
-            return empresas;
+            return this.empresas;
         }
 
         public void setEmpresas(IEnumerable<EMPRESA> empresas)
         {
-            this.empresas=empresas;
+            this.empresas = empresas;
         }
 
         public void setUsuario(USUARIO usuario)
@@ -67,15 +67,15 @@ namespace NastiAplicacion.General
         {
             this.establecimientoSeleccionado = establecimiento;
         }
+
         public void setPuntoDeEmision(PUNTOEMISION puntoemision)
         {
             this.puntoDeEmisionSeleccionado = puntoemision;
         }
+
         public PUNTOEMISION getPuntoDeEmision()
         {
             return this.puntoDeEmisionSeleccionado;
         }
-
-
-        }
+    }   
 }

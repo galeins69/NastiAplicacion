@@ -17,10 +17,10 @@ namespace NastiAplicacion.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SOCIONEGOCIO()
         {
+            this.CLIENTE = new HashSet<CLIENTE>();
             this.COMPROBANTE = new HashSet<COMPROBANTE>();
             this.COMPROBANTE1 = new HashSet<COMPROBANTE>();
             this.LISTADEPRECIO = new HashSet<LISTADEPRECIO>();
-            this.CLIENTE = new HashSet<CLIENTE>();
         }
     
         public long CODIGOSOCIONEGOCIO { get; set; }
@@ -46,13 +46,13 @@ namespace NastiAplicacion.Data
         public Nullable<long> CODIGOTIPOIDENTIFICACION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LISTADEPRECIO> LISTADEPRECIO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CLIENTE> CLIENTE { get; set; }
         public virtual TIPOIDENTIFICACION TIPOIDENTIFICACION { get; set; }
     }
 }

@@ -26,6 +26,8 @@ namespace NastiAplicacion.Data
         public string NOMBRE { get; set; }
         public string AFECTAINVENTARIO { get; set; }
         public string FORMATO { get; set; }
+        public string SIGNO { get; set; }
+        public string VERSION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }

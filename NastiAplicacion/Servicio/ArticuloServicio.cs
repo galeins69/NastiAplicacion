@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NastiAplicacion.Data;
-using NastiAplicacion.Enumerador;
-using System.Data.Entity;
-using System.Linq.Expressions;
-using System.Windows.Forms;
+﻿using NastiAplicacion.Data;
 using NastiAplicacion.General;
-using System.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Linq.SqlClient;
+using System.Linq;
+
 
 namespace NastiAplicacion.Servicio
 {
@@ -119,7 +115,7 @@ namespace NastiAplicacion.Servicio
 
         }
 
-        public IEnumerable<ARTICULO> getArticuloGeneral(long codigoEmpresa, string descripcion)
+        public IEnumerable<ARTICULO> getArticuloGeneral(long codigoEmpresa, string descripcion, long codigoEstablecimiento)
         {
 
              return (from articulo in kippaEntities.ARTICULO where articulo.CODIGOEMPRESA == codigoEmpresa && ( articulo.DESCRIPCION.Contains(descripcion) || articulo.CODIGO.Contains(descripcion) || articulo.PRECIOVENTA.ToString().Contains(descripcion)) select articulo).ToList();
@@ -151,5 +147,11 @@ namespace NastiAplicacion.Servicio
            
 
         }
+
+        public IEnumerable<BODEGASTOCK> getArticuloStock(long codigoEstablecimiento, string descripcion)
+        {
+            return (from bodegastock in kippaEntities.BODEGASTOCK where bodegastock.BODEGA.CODIGOESTABLECIMIENTO == codigoEstablecimiento || SqlMethods.Like(bodegastock.ARTICULO.DESCRIPCION, '%' + descripcion + '%') select bodegastock).ToList();
+        }
+    
     }
 }

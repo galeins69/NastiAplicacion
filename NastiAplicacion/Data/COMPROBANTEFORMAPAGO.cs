@@ -20,9 +20,10 @@ namespace NastiAplicacion.Data
         public string OBSERVACION { get; set; }
         public long CODIGOCOMPROBANTE { get; set; }
         public int PLAZO { get; set; }
-        public Nullable<long> UNIDADTIEMPO { get; set; }
+        public Nullable<long> CODIGOUNIDADTIEMPO { get; set; }
     
         public virtual COMPROBANTE COMPROBANTE { get; set; }
         public virtual FORMAPAGO FORMAPAGO { get; set; }
+        public virtual UNIDADTIEMPO UNIDADTIEMPO { get; set; }
     }
 }

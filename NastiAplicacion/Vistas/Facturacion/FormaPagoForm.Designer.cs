@@ -260,7 +260,7 @@
             this.checkButtonRetencion.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonRetencion.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonRetencion.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.checkButtonRetencion.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.botask_32x321;
+            //this.checkButtonRetencion.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.botask_32x321;
             this.checkButtonRetencion.Location = new System.Drawing.Point(13, 288);
             this.checkButtonRetencion.Name = "checkButtonRetencion";
             this.checkButtonRetencion.Size = new System.Drawing.Size(123, 44);
@@ -273,7 +273,7 @@
             this.checkButtonNotaCredito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonNotaCredito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonNotaCredito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.checkButtonNotaCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.sendbehindtext_32x321;
+//            this.checkButtonNotaCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.sendbehindtext_32x321;
             this.checkButtonNotaCredito.Location = new System.Drawing.Point(13, 231);
             this.checkButtonNotaCredito.Name = "checkButtonNotaCredito";
             this.checkButtonNotaCredito.Size = new System.Drawing.Size(123, 44);
@@ -286,7 +286,7 @@
             this.checkButtonCheque.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonCheque.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonCheque.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.checkButtonCheque.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.chartsrotate_32x321;
+//            this.checkButtonCheque.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.chartsrotate_32x321;
             this.checkButtonCheque.Location = new System.Drawing.Point(13, 72);
             this.checkButtonCheque.Name = "checkButtonCheque";
             this.checkButtonCheque.Size = new System.Drawing.Size(123, 44);
@@ -299,7 +299,7 @@
             this.checkButtonDebito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonDebito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonDebito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.checkButtonDebito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.contact_32x321;
+//            this.checkButtonDebito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.contact_32x321;
             this.checkButtonDebito.Location = new System.Drawing.Point(13, 178);
             this.checkButtonDebito.Name = "checkButtonDebito";
             this.checkButtonDebito.Size = new System.Drawing.Size(123, 44);
@@ -313,7 +313,7 @@
             this.checkButtonCredito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonCredito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonCredito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.checkButtonCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.bocontact2_32x321;
+//            this.checkButtonCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.bocontact2_32x321;
             this.checkButtonCredito.Location = new System.Drawing.Point(13, 126);
             this.checkButtonCredito.Name = "checkButtonCredito";
             this.checkButtonCredito.Size = new System.Drawing.Size(123, 44);
@@ -325,7 +325,7 @@
             // 
             this.checkButtonEfectivo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.checkButtonEfectivo.Checked = true;
-            this.checkButtonEfectivo.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.currency_32x3211;
+//            this.checkButtonEfectivo.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.currency_32x3211;
             this.checkButtonEfectivo.Location = new System.Drawing.Point(13, 16);
             this.checkButtonEfectivo.Name = "checkButtonEfectivo";
             this.checkButtonEfectivo.Size = new System.Drawing.Size(123, 44);

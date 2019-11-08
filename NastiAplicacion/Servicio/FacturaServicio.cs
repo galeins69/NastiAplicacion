@@ -223,197 +223,298 @@ namespace NastiAplicacion.Servicio
         /// <param name="socioNegocio"></param>
         /// <param name="empresa"></param>
         /// <returns></returns>
-        public COMPROBANTE grabarComprobante(COMPROBANTE comprobante, List<DETALLECOMPROBANTE> detalleComprobanteList, List<IMPUESTOCOMPROBANTE> impuestoComprobanteList, List<COMPROBANTEFORMAPAGO> formasPagoList, SOCIONEGOCIO socioNegocio, CredencialUsuario credencialUsuario)
+        public COMPROBANTE grabarComprobante(COMPROBANTE comprobante, List<DETALLECOMPROBANTE> detalleComprobanteList, List<IMPUESTOCOMPROBANTE> impuestoComprobanteList, List<COMPROBANTEFORMAPAGO> formasPagoList, SOCIONEGOCIO socioNegocio, CredencialUsuario credencialUsuario, TIPOCOMPROBANTE tipoComprobante)
         {
-            DbContextTransaction dbcxtransaction = null;
-            if (comprobante.CODIGOCOMPROBANTE > 0)
+            DbContextTransaction contextTransaction = (DbContextTransaction)null;
+            if (comprobante.CODIGOESTADOCOMPROBANTE == 9L)
             {
                 try
                 {
-                    using (var context = new KippaEntities())
+                    contextTransaction = this.kippaEntities.Database.BeginTransaction();
+                    COMPROBANTE entity1 = this.kippaEntities.COMPROBANTE.FirstOrDefault<COMPROBANTE>((Expression<Func<COMPROBANTE, bool>>)(a => a.CODIGOCOMPROBANTE == comprobante.CODIGOCOMPROBANTE));
+                    if (entity1 == null)
+                        return (COMPROBANTE)null;
+                    this.kippaEntities.Entry<COMPROBANTE>(entity1).CurrentValues.SetValues((object)comprobante);
+                    foreach (DETALLECOMPROBANTE detalleComprobante in detalleComprobanteList)
                     {
-                        dbcxtransaction = context.Database.BeginTransaction();
-                        comprobante.FECHAEMISION = DateTime.Now;
-                        COMPROBANTE resultado = context.COMPROBANTE.FirstOrDefault(a => a.CODIGOCOMPROBANTE == comprobante.CODIGOCOMPROBANTE);
-                        if (resultado == null) return null;
-                        if (comprobante.CODIGOESTADOCOMPROBANTE == (long)EnumEstadoComprobante.AUTORIZADO)
+                        DETALLECOMPROBANTE detalle = detalleComprobante;
+                        BODEGASTOCK entity2 = this.kippaEntities.BODEGASTOCK.Where<BODEGASTOCK>((Expression<Func<BODEGASTOCK, bool>>)(bodegas => bodegas.CODIGOARTICULO == detalle.CODIGOARTICULO && bodegas.CODIGOBODEGA == detalle.CODIGOBODEGA)).FirstOrDefault<BODEGASTOCK>();
+                        if (tipoComprobante.AFECTAINVENTARIO == "S")
                         {
-                            PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
-                            comprobante.NUMEROCOMPROBANTE = (long)puntoEmisionDocumento.NUMERODOCUMENTO;
-                            if (puntoEmisionDocumento.PUNTOEMISION.ELECTRONICO == "S")
-                                comprobante.CLAVEDEACCESO = new Utiles.Utiles().generaClave(comprobante.FECHAEMISION, "01", socioNegocio.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE, comprobante.NUMEROCOMPROBANTE.ToString(), comprobante.NUMEROCOMPROBANTE.ToString(), "2");
-                            puntoEmisionDocumento.NUMERODOCUMENTO = puntoEmisionDocumento.NUMERODOCUMENTO + 1;
-                            PUNTOEMISIONDOCUMENTO _puntoemisiondocumento = context.PUNTOEMISIONDOCUMENTO.FirstOrDefault(a => a.CODIGOPUNTOEMISIONDOCUMENTO == puntoEmisionDocumento.CODIGOPUNTOEMISIONDOCUMENTO);
-                            if (_puntoemisiondocumento != null)
-                                context.Entry(_puntoemisiondocumento).CurrentValues.SetValues(puntoEmisionDocumento);
+                            if (tipoComprobante.SIGNO == "-")
+                                entity2.STOCKACTUAL += detalle.CANTIDAD;
+                            if (tipoComprobante.SIGNO == "+")
+                                entity2.STOCKACTUAL -= detalle.CANTIDAD;
+                            if (entity2 != null)
+                                this.kippaEntities.Entry<BODEGASTOCK>(entity2).State = EntityState.Modified;
                         }
-                        context.Entry(resultado).CurrentValues.SetValues(comprobante);
-                        DETALLECOMPROBANTE _detalleComprobante;
-                        foreach (DETALLECOMPROBANTE detalle in detalleComprobanteList)
-                        {
-                            if (detalle.CODIGODETALLECOMPROBANTE == 0)
-                            {
-                                _detalleComprobante = new DETALLECOMPROBANTE();
-                                detalle.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                                context.DETALLECOMPROBANTE.Add(_detalleComprobante);
-                                context.Entry(_detalleComprobante).CurrentValues.SetValues(detalle);
-                            }
-                            else
-                            {
-                                _detalleComprobante = context.DETALLECOMPROBANTE.FirstOrDefault(a => a.CODIGODETALLECOMPROBANTE == detalle.CODIGODETALLECOMPROBANTE);
-                                if (_detalleComprobante != null)
-                                    context.Entry(_detalleComprobante).CurrentValues.SetValues(detalle);
-                            }
-                        }
-                        IMPUESTOCOMPROBANTE _impuestoComprobante;
-                        foreach (IMPUESTOCOMPROBANTE impuesto in impuestoComprobanteList)
-                        {
-                            if (impuesto.CODIGOIMPUESTOCOMPROBANTE == 0)
-                            {
-                                _impuestoComprobante = new IMPUESTOCOMPROBANTE();
-                                impuesto.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                                context.IMPUESTOCOMPROBANTE.Add(_impuestoComprobante);
-                                context.Entry(_impuestoComprobante).CurrentValues.SetValues(impuesto);
-                            }
-                            else
-                                context.IMPUESTOCOMPROBANTE.Attach(impuesto);
-                        }
-                        COMPROBANTEFORMAPAGO _formasPago;
-                        foreach (COMPROBANTEFORMAPAGO formas in formasPagoList)
-                        {
-                            if (formas.CODIGOCOMPROBANTEFORMAPAGO == 0)
-                            {
-                                _formasPago = new COMPROBANTEFORMAPAGO();
-                                _formasPago.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                                _formasPago.CODIGOFORMAPAGO = formas.CODIGOFORMAPAGO;
-                                _formasPago.OBSERVACION = formas.OBSERVACION;
-                                _formasPago.VALOR = formas.VALOR;
-                                context.COMPROBANTEFORMAPAGO.Add(_formasPago);
-                                //context.Entry(_formasPago).CurrentValues.SetValues(formas);
-                            }
-                            else
-                            {
-                                _formasPago = context.COMPROBANTEFORMAPAGO.FirstOrDefault(a => a.CODIGOCOMPROBANTEFORMAPAGO == formas.CODIGOCOMPROBANTEFORMAPAGO);
-                                if (_formasPago != null)
-                                    context.Entry(_formasPago).CurrentValues.SetValues(formas);
-                            }
-                        }
-
-                       
-                        context.SaveChanges();
-                        dbcxtransaction.Commit();
-                        
+                        this.kippaEntities.SaveChanges();
                     }
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show(ex.InnerException.ToString());
-                    dbcxtransaction.Rollback();
+                    int num = (int)XtraMessageBox.Show(ex.InnerException.ToString());
+                    contextTransaction.Rollback();
+                }
+                contextTransaction.Commit();
+                return comprobante;
+            }
+            if (comprobante.CODIGOCOMPROBANTE > 0L)
+            {
+                try
+                {
+                    contextTransaction = this.kippaEntities.Database.BeginTransaction();
+                    comprobante.FECHAEMISION = DateTime.Now;
+                    PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = (PUNTOEMISIONDOCUMENTO)null;
+                    COMPROBANTE entity1 = this.kippaEntities.COMPROBANTE.FirstOrDefault<COMPROBANTE>((Expression<Func<COMPROBANTE, bool>>)(a => a.CODIGOCOMPROBANTE == comprobante.CODIGOCOMPROBANTE));
+                    if (entity1 == null)
+                        return (COMPROBANTE)null;
+                    long? nullable1;
+                    if (comprobante.CODIGOESTADOCOMPROBANTE == 7L)
+                    {
+                        puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
+                        comprobante.NUMEROCOMPROBANTE = puntoEmisionDocumento.NUMERODOCUMENTO.Value;
+                        if (puntoEmisionDocumento.PUNTOEMISION.ELECTRONICO == "S")
+                            comprobante.CLAVEDEACCESO = new NastiAplicacion.Utiles.Utiles().generaClave(comprobante.FECHAEMISION, "01", socioNegocio.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE, comprobante.NUMEROCOMPROBANTE.ToString(), comprobante.NUMEROCOMPROBANTE.ToString(), "2");
+                        PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
+                        nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
+                        long num = 1;
+                        long? nullable2 = nullable1.HasValue ? new long?(nullable1.GetValueOrDefault() + num) : new long?();
+                        puntoemisiondocumento.NUMERODOCUMENTO = nullable2;
+                        PUNTOEMISIONDOCUMENTO entity2 = this.kippaEntities.PUNTOEMISIONDOCUMENTO.FirstOrDefault<PUNTOEMISIONDOCUMENTO>((Expression<Func<PUNTOEMISIONDOCUMENTO, bool>>)(a => a.CODIGOPUNTOEMISIONDOCUMENTO == puntoEmisionDocumento.CODIGOPUNTOEMISIONDOCUMENTO));
+                        if (entity2 != null)
+                            this.kippaEntities.Entry<PUNTOEMISIONDOCUMENTO>(entity2).CurrentValues.SetValues((object)puntoEmisionDocumento);
+                    }
+                    if (comprobante.CODIGOESTADOCOMPROBANTE != 10L)
+                    {
+                        COMPROBANTE comprobante1 = comprobante;
+                        nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
+                        long num1 = nullable1.Value;
+                        comprobante1.NUMEROCOMPROBANTE = num1;
+                        COMPROBANTE comprobante2 = comprobante;
+                        NastiAplicacion.Utiles.Utiles utiles = new NastiAplicacion.Utiles.Utiles();
+                        DateTime fechaemision = comprobante.FECHAEMISION;
+                        string tipoComprobante1 = "01";
+                        string numerodocumento = socioNegocio.NUMERODOCUMENTO;
+                        nullable1 = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE;
+                        string ambiente = nullable1.ToString();
+                        string serie = credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE;
+                        string numeroComprobante = comprobante.NUMEROCOMPROBANTE.ToString();
+                        string codigoNumerico = comprobante.NUMEROCOMPROBANTE.ToString();
+                        string tipoEmision = "2";
+                        string str = utiles.generaClave(fechaemision, tipoComprobante1, numerodocumento, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
+                        comprobante2.CLAVEDEACCESO = str;
+                        PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
+                        nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
+                        long num2 = 1;
+                        long? nullable2 = nullable1.HasValue ? new long?(nullable1.GetValueOrDefault() + num2) : new long?();
+                        puntoemisiondocumento.NUMERODOCUMENTO = nullable2;
+                        this.kippaEntities.SaveChanges();
+                    }
+                    this.kippaEntities.Entry<COMPROBANTE>(entity1).CurrentValues.SetValues((object)comprobante);
+                    foreach (DETALLECOMPROBANTE detalleComprobante in detalleComprobanteList)
+                    {
+                        DETALLECOMPROBANTE detalle = detalleComprobante;
+                        if (detalle.CODIGODETALLECOMPROBANTE == 0L)
+                        {
+                            DETALLECOMPROBANTE entity2 = new DETALLECOMPROBANTE();
+                            detalle.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                            this.kippaEntities.DETALLECOMPROBANTE.Add(entity2);
+                            this.kippaEntities.Entry<DETALLECOMPROBANTE>(entity2).CurrentValues.SetValues((object)detalle);
+                        }
+                        else
+                        {
+                            DETALLECOMPROBANTE entity2 = this.kippaEntities.DETALLECOMPROBANTE.FirstOrDefault<DETALLECOMPROBANTE>((Expression<Func<DETALLECOMPROBANTE, bool>>)(a => a.CODIGODETALLECOMPROBANTE == detalle.CODIGODETALLECOMPROBANTE));
+                            if (entity2 != null)
+                                this.kippaEntities.Entry<DETALLECOMPROBANTE>(entity2).CurrentValues.SetValues((object)detalle);
+                        }
+                    }
+                    foreach (IMPUESTOCOMPROBANTE impuestoComprobante in impuestoComprobanteList)
+                    {
+                        if (impuestoComprobante.CODIGOIMPUESTOCOMPROBANTE == 0L)
+                        {
+                            IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
+                            impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                            this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
+                            this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                        }
+                        else
+                            this.kippaEntities.IMPUESTOCOMPROBANTE.Attach(impuestoComprobante);
+                    }
+                    foreach (COMPROBANTEFORMAPAGO formasPago in formasPagoList)
+                    {
+                        COMPROBANTEFORMAPAGO formas = formasPago;
+                        if (formas.CODIGOCOMPROBANTEFORMAPAGO == 0L)
+                        {
+                            this.kippaEntities.COMPROBANTEFORMAPAGO.Add(new COMPROBANTEFORMAPAGO()
+                            {
+                                CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE,
+                                CODIGOFORMAPAGO = formas.CODIGOFORMAPAGO,
+                                OBSERVACION = formas.OBSERVACION,
+                                VALOR = formas.VALOR
+                            });
+                        }
+                        else
+                        {
+                            COMPROBANTEFORMAPAGO entity2 = this.kippaEntities.COMPROBANTEFORMAPAGO.FirstOrDefault<COMPROBANTEFORMAPAGO>((Expression<Func<COMPROBANTEFORMAPAGO, bool>>)(a => a.CODIGOCOMPROBANTEFORMAPAGO == formas.CODIGOCOMPROBANTEFORMAPAGO));
+                            if (entity2 != null)
+                                this.kippaEntities.Entry<COMPROBANTEFORMAPAGO>(entity2).CurrentValues.SetValues((object)formas);
+                        }
+                    }
+                    if (comprobante.CODIGOESTADOCOMPROBANTE != 10L)
+                    {
+                        foreach (DETALLECOMPROBANTE detalleComprobante in detalleComprobanteList)
+                        {
+                            DETALLECOMPROBANTE detalle = detalleComprobante;
+                            BODEGASTOCK entity2 = this.kippaEntities.BODEGASTOCK.Where<BODEGASTOCK>((Expression<Func<BODEGASTOCK, bool>>)(bodegas => bodegas.CODIGOARTICULO == detalle.CODIGOARTICULO && bodegas.CODIGOBODEGA == detalle.CODIGOBODEGA)).FirstOrDefault<BODEGASTOCK>();
+                            if (tipoComprobante.AFECTAINVENTARIO == "S")
+                            {
+                                if (tipoComprobante.SIGNO == "-")
+                                    entity2.STOCKACTUAL -= detalle.CANTIDAD;
+                                if (tipoComprobante.SIGNO == "+")
+                                    entity2.STOCKACTUAL += detalle.CANTIDAD;
+                                if (entity2 != null)
+                                    this.kippaEntities.Entry<BODEGASTOCK>(entity2).State = EntityState.Modified;
+                            }
+                            this.kippaEntities.SaveChanges();
+                        }
+                    }
+                    this.kippaEntities.SaveChanges();
+                    contextTransaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    int num = (int)XtraMessageBox.Show(ex.InnerException.ToString());
+                    contextTransaction.Rollback();
                 }
             }
             else
             {
-                /*Nuevo Registro*/
                 try
                 {
-                    using (var context = new KippaEntities())
+                    contextTransaction = this.kippaEntities.Database.BeginTransaction();
+                    this.kippaEntities.COMPROBANTE.Create();
+                    comprobante.FECHAEMISION = DateTime.Now;
+                    COMPROBANTE entity1 = comprobante;
+                    this.kippaEntities.COMPROBANTE.Add(entity1);
+                    PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
+                    if (puntoEmisionDocumento == null)
                     {
-
-                        dbcxtransaction = context.Database.BeginTransaction();
-                        var _comprobante = context.COMPROBANTE.Create();
-                        comprobante.FECHAEMISION = DateTime.Now;                        
-                        _comprobante = comprobante;
-                        context.COMPROBANTE.Add(_comprobante);
-                        PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
-                        if (puntoEmisionDocumento == null)
+                        puntoEmisionDocumento = new PUNTOEMISIONDOCUMENTO();
+                        puntoEmisionDocumento.CODIGOPUNTOEMISION = new long?(comprobante.CODIGOPUNTOEMISION);
+                        puntoEmisionDocumento.CODIGOTIPOCOMPROBANTE = new long?(comprobante.CODIGOTIPOCOMPROBANTE);
+                        puntoEmisionDocumento.NUMERODOCUMENTO = new long?(1L);
+                        puntoEmisionDocumento.NUMEROPENDIENTE = new long?(1L);
+                        this.kippaEntities.PUNTOEMISIONDOCUMENTO.Add(puntoEmisionDocumento);
+                    }
+                    else
+                    {
+                        if (comprobante.CODIGOESTADOCOMPROBANTE != 10L)
                         {
-                            puntoEmisionDocumento = new PUNTOEMISIONDOCUMENTO();
-                            puntoEmisionDocumento.CODIGOPUNTOEMISION = comprobante.CODIGOPUNTOEMISION;
-                            puntoEmisionDocumento.CODIGOTIPOCOMPROBANTE = comprobante.CODIGOTIPOCOMPROBANTE;
-                            puntoEmisionDocumento.NUMERODOCUMENTO = 1;
-                            puntoEmisionDocumento.NUMEROPENDIENTE = 1;
-                            context.PUNTOEMISIONDOCUMENTO.Add(puntoEmisionDocumento);
+                            COMPROBANTE comprobante1 = comprobante;
+                            long? nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
+                            long num1 = nullable1.Value;
+                            comprobante1.NUMEROCOMPROBANTE = num1;
+                            COMPROBANTE comprobante2 = comprobante;
+                            NastiAplicacion.Utiles.Utiles utiles = new NastiAplicacion.Utiles.Utiles();
+                            DateTime fechaemision = comprobante.FECHAEMISION;
+                            string tipoComprobante1 = "01";
+                            string numerodocumento = socioNegocio.NUMERODOCUMENTO;
+                            nullable1 = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE;
+                            string ambiente = nullable1.ToString();
+                            string serie = credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE;
+                            string numeroComprobante = comprobante.NUMEROCOMPROBANTE.ToString();
+                            string codigoNumerico = comprobante.NUMEROCOMPROBANTE.ToString();
+                            string tipoEmision = "2";
+                            string str = utiles.generaClave(fechaemision, tipoComprobante1, numerodocumento, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
+                            comprobante2.CLAVEDEACCESO = str;
+                            PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
+                            nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
+                            long num2 = 1;
+                            long? nullable2 = nullable1.HasValue ? new long?(nullable1.GetValueOrDefault() + num2) : new long?();
+                            puntoemisiondocumento.NUMERODOCUMENTO = nullable2;
+                            this.kippaEntities.SaveChanges();
                         }
                         else
                         {
-                            if (comprobante.CODIGOESTADOCOMPROBANTE != (long)EnumEstadoComprobante.PENDIENTE)
-                            {
-                                comprobante.NUMEROCOMPROBANTE = (long)puntoEmisionDocumento.NUMERODOCUMENTO;
-                                if (puntoEmisionDocumento.PUNTOEMISION.ELECTRONICO =="S")
-                                    comprobante.CLAVEDEACCESO = new Utiles.Utiles().generaClave(comprobante.FECHAEMISION, "01", socioNegocio.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE, comprobante.NUMEROCOMPROBANTE.ToString(), comprobante.NUMEROCOMPROBANTE.ToString(), "2");
-                                puntoEmisionDocumento.NUMERODOCUMENTO = puntoEmisionDocumento.NUMERODOCUMENTO + 1;
-                                
-                                context.SaveChanges();
-                            }
-                            else
-                            {
-                                comprobante.NUMEROCOMPROBANTE = (long)puntoEmisionDocumento.NUMEROPENDIENTE;
-                                puntoEmisionDocumento.NUMEROPENDIENTE = puntoEmisionDocumento.NUMEROPENDIENTE + 1;
-                            }
-                            PUNTOEMISIONDOCUMENTO _puntoemisiondocumento = context.PUNTOEMISIONDOCUMENTO.FirstOrDefault(a => a.CODIGOPUNTOEMISIONDOCUMENTO == puntoEmisionDocumento.CODIGOPUNTOEMISIONDOCUMENTO);
-                            if (_puntoemisiondocumento != null)
-                                context.Entry(_puntoemisiondocumento).CurrentValues.SetValues(puntoEmisionDocumento);
+                            COMPROBANTE comprobante1 = comprobante;
+                            long? numeropendiente = puntoEmisionDocumento.NUMEROPENDIENTE;
+                            long num1 = numeropendiente.Value;
+                            comprobante1.NUMEROCOMPROBANTE = num1;
+                            PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
+                            numeropendiente = puntoEmisionDocumento.NUMEROPENDIENTE;
+                            long num2 = 1;
+                            long? nullable = numeropendiente.HasValue ? new long?(numeropendiente.GetValueOrDefault() + num2) : new long?();
+                            puntoemisiondocumento.NUMEROPENDIENTE = nullable;
                         }
-                        context.SaveChanges();
-                        DETALLECOMPROBANTE _detalleComprobante;
-                        foreach (DETALLECOMPROBANTE detalle in detalleComprobanteList)
-                        {
-                            _detalleComprobante = new DETALLECOMPROBANTE();
-                            detalle.CODIGOCOMPROBANTE = _comprobante.CODIGOCOMPROBANTE;
-                            context.DETALLECOMPROBANTE.Add(_detalleComprobante);
-                            context.Entry(_detalleComprobante).CurrentValues.SetValues(detalle);
-                        }
-                        IMPUESTOCOMPROBANTE _impuestoComprobante;
-                        foreach (IMPUESTOCOMPROBANTE impuesto in impuestoComprobanteList)
-                        {
-                            _impuestoComprobante = new IMPUESTOCOMPROBANTE();
-                            impuesto.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                            context.IMPUESTOCOMPROBANTE.Add(_impuestoComprobante);
-                            context.Entry(_impuestoComprobante).CurrentValues.SetValues(impuesto);
-                        }
-                        context.SaveChanges();
-                        COMPROBANTEFORMAPAGO _formasPago;
-                        foreach (COMPROBANTEFORMAPAGO formas in formasPagoList)
-                        {
-                            if (formas.CODIGOCOMPROBANTEFORMAPAGO == 0)
-                            {
-                                formas.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                                _formasPago = new COMPROBANTEFORMAPAGO();
-                                context.COMPROBANTEFORMAPAGO.Add(_formasPago);
-                                context.Entry(_formasPago).CurrentValues.SetValues(formas);
-                            }
-                            else
-                            {
-                                _formasPago = context.COMPROBANTEFORMAPAGO.FirstOrDefault(a => a.CODIGOCOMPROBANTEFORMAPAGO == formas.CODIGOCOMPROBANTEFORMAPAGO);
-                                if (_formasPago != null)
-                                    context.Entry(_formasPago).CurrentValues.SetValues(formas);
-                            }
-                        }
-                        context.SaveChanges();
-                        /*actualizar stock*/
-                        if (comprobante.CODIGOESTADOCOMPROBANTE != (long)EnumEstadoComprobante.PENDIENTE)
-                        {
-                            foreach (DETALLECOMPROBANTE detalle in detalleComprobanteList)
-                            {
-                                BODEGASTOCK _bodegaStock = (from bodegas in kippaEntities.BODEGASTOCK where bodegas.CODIGOARTICULO == detalle.CODIGOARTICULO && bodegas.CODIGOBODEGA == detalle.CODIGOBODEGA select bodegas).FirstOrDefault();
-                                BODEGASTOCK bode;
-                                bode = _bodegaStock;
-                                _bodegaStock.STOCKACTUAL = _bodegaStock.STOCKACTUAL - detalle.CANTIDAD;
-                                context.SaveChanges();
-                            }
-                        }
-                        context.SaveChanges();
-                        dbcxtransaction.Commit();
+                        PUNTOEMISIONDOCUMENTO entity2 = this.kippaEntities.PUNTOEMISIONDOCUMENTO.FirstOrDefault<PUNTOEMISIONDOCUMENTO>((Expression<Func<PUNTOEMISIONDOCUMENTO, bool>>)(a => a.CODIGOPUNTOEMISIONDOCUMENTO == puntoEmisionDocumento.CODIGOPUNTOEMISIONDOCUMENTO));
+                        if (entity2 != null)
+                            this.kippaEntities.Entry<PUNTOEMISIONDOCUMENTO>(entity2).CurrentValues.SetValues((object)puntoEmisionDocumento);
                     }
+                    this.kippaEntities.SaveChanges();
+                    foreach (DETALLECOMPROBANTE detalleComprobante in detalleComprobanteList)
+                    {
+                        DETALLECOMPROBANTE entity2 = new DETALLECOMPROBANTE();
+                        detalleComprobante.CODIGOCOMPROBANTE = entity1.CODIGOCOMPROBANTE;
+                        this.kippaEntities.DETALLECOMPROBANTE.Add(entity2);
+                        this.kippaEntities.Entry<DETALLECOMPROBANTE>(entity2).CurrentValues.SetValues((object)detalleComprobante);
+                    }
+                    foreach (IMPUESTOCOMPROBANTE impuestoComprobante in impuestoComprobanteList)
+                    {
+                        IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
+                        impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                        this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
+                        this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                    }
+                    this.kippaEntities.SaveChanges();
+                    foreach (COMPROBANTEFORMAPAGO formasPago in formasPagoList)
+                    {
+                        COMPROBANTEFORMAPAGO formas = formasPago;
+                        if (formas.CODIGOCOMPROBANTEFORMAPAGO == 0L)
+                        {
+                            formas.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                            COMPROBANTEFORMAPAGO entity2 = new COMPROBANTEFORMAPAGO();
+                            this.kippaEntities.COMPROBANTEFORMAPAGO.Add(entity2);
+                            this.kippaEntities.Entry<COMPROBANTEFORMAPAGO>(entity2).CurrentValues.SetValues((object)formas);
+                        }
+                        else
+                        {
+                            COMPROBANTEFORMAPAGO entity2 = this.kippaEntities.COMPROBANTEFORMAPAGO.FirstOrDefault<COMPROBANTEFORMAPAGO>((Expression<Func<COMPROBANTEFORMAPAGO, bool>>)(a => a.CODIGOCOMPROBANTEFORMAPAGO == formas.CODIGOCOMPROBANTEFORMAPAGO));
+                            if (entity2 != null)
+                                this.kippaEntities.Entry<COMPROBANTEFORMAPAGO>(entity2).CurrentValues.SetValues((object)formas);
+                        }
+                    }
+                    this.kippaEntities.SaveChanges();
+                    if (comprobante.CODIGOESTADOCOMPROBANTE != 10L)
+                    {
+                        foreach (DETALLECOMPROBANTE detalleComprobante in detalleComprobanteList)
+                        {
+                            DETALLECOMPROBANTE detalle = detalleComprobante;
+                            BODEGASTOCK entity2 = this.kippaEntities.BODEGASTOCK.Where<BODEGASTOCK>((Expression<Func<BODEGASTOCK, bool>>)(bodegas => bodegas.CODIGOARTICULO == detalle.CODIGOARTICULO && bodegas.CODIGOBODEGA == detalle.CODIGOBODEGA)).FirstOrDefault<BODEGASTOCK>();
+                            if (tipoComprobante.AFECTAINVENTARIO == "S")
+                            {
+                                if (tipoComprobante.SIGNO == "-")
+                                    entity2.STOCKACTUAL -= detalle.CANTIDAD;
+                                if (tipoComprobante.SIGNO == "+")
+                                    entity2.STOCKACTUAL += detalle.CANTIDAD;
+                                if (entity2 != null)
+                                    this.kippaEntities.Entry<BODEGASTOCK>(entity2).State = EntityState.Modified;
+                                this.kippaEntities.SaveChanges();
+                            }
+                        }
+                    }
+                    this.kippaEntities.SaveChanges();
+                    contextTransaction.Commit();
                 }
                 catch (Exception ex)
                 {
-                    XtraMessageBox.Show(ex.InnerException.Message.ToString());
-                    dbcxtransaction.Rollback();
+                    int num = (int)XtraMessageBox.Show(ex.InnerException.Message.ToString());
+                    contextTransaction.Rollback();
                 }
             }
             return comprobante;
         }
+
 
         public SOCIONEGOCIO grabarSocioNegocio(SOCIONEGOCIO socioNegocio)
         {
@@ -481,10 +582,14 @@ namespace NastiAplicacion.Servicio
         {
             return (from bodegaStock in kippaEntities.BODEGASTOCK where bodegaStock.CODIGOARTICULO == codigoArticulo && bodegaStock.CODIGOBODEGA == codigoBodega select bodegaStock).FirstOrDefault();
         }
-        public IEnumerable<BODEGA> getBodega(long codigoEmpresa)
+        public IEnumerable<BODEGA> getBodega(long codigoEmpresa, long codigoEstablecimiento)
         {
-            return (from bodega in kippaEntities.BODEGA where bodega.CODIGOEMPRESA == codigoEmpresa select bodega).ToList();
-        }    
+            return (IEnumerable<BODEGA>)this.kippaEntities.BODEGA.Where<BODEGA>((Expression<Func<BODEGA, bool>>)(bodega => bodega.CODIGOEMPRESA == codigoEmpresa && bodega.CODIGOESTABLECIMIENTO == codigoEstablecimiento)).ToList<BODEGA>();
+        }
+        public COMPROBANTE getComprobante(long codigoComprobante)
+        {
+            return this.kippaEntities.COMPROBANTE.Where<COMPROBANTE>((Expression<Func<COMPROBANTE, bool>>)(comprobantes => comprobantes.CODIGOCOMPROBANTE == codigoComprobante)).FirstOrDefault<COMPROBANTE>();
+        }
     }
      
 }

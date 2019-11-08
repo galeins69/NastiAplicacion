@@ -108,30 +108,20 @@ namespace NastiAplicacion
 
         public void asignarControlNasti(ControlGeneralNasti control,System.Drawing.Image imagen)
         {
-            if (control == null) return;
-            if (!this.existeTabPage(control.Tag.ToString()))
-            {
-                Form forma = new Form();
-                forma.Text = (control.Tag == null ? "PENDIENTE" : control.Tag.ToString()); 
-                forma.Name = control.Name;
-                forma.Controls.Add(control);                
-                forma.MdiParent = this;                
-                forma.TopMost = true;
-                forma.Show();
-                //XtraTabPage pageFactura = new XtraTabPage();
-                //pageFactura.Name = control.Name;
-                //pageFactura.Text = (control.Tag==null ? "PENDIENTE":control.Tag.ToString());
-                //pageFactura.ImageOptions.Image = imagen;
-                //pageFactura.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-                ////control.setDatosIniciales();
-                //pageFactura.Controls.Add(control);
-                //control.Dock = DockStyle.Fill;
-                //this.xtraTabControlNasti.TabPages.Add(pageFactura);
-
-            }
-
+            if (control == null || this.existeTabPage(control.Tag.ToString()))
+                return;
+            Form form = new Form();
+            form.Text = control.Tag == null ? "PENDIENTE" : control.Tag.ToString();
+            form.Name = control.Name;
+            form.Controls.Add((Control)control);
+            form.MdiParent = (Form)this;
+            form.TopMost = true;
+            form.Show();
 
         }
+
+
+        
 
 
 

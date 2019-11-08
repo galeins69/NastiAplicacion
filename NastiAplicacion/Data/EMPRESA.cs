@@ -19,17 +19,17 @@ namespace NastiAplicacion.Data
         {
             this.ARTICULO = new HashSet<ARTICULO>();
             this.BODEGA = new HashSet<BODEGA>();
-            this.COMPROBANTE = new HashSet<COMPROBANTE>();
             this.CLIENTE = new HashSet<CLIENTE>();
+            this.COMPROBANTE = new HashSet<COMPROBANTE>();
             this.UNIDAD = new HashSet<UNIDAD>();
             this.ESTABLECIMIENTO1 = new HashSet<ESTABLECIMIENTO>();
             this.FORMAPAGO = new HashSet<FORMAPAGO>();
-            this.IMPUESTO = new HashSet<IMPUESTO>();
             this.LISTADEPRECIO = new HashSet<LISTADEPRECIO>();
             this.PARAMETRO = new HashSet<PARAMETRO>();
             this.PROVEEDOR = new HashSet<PROVEEDOR>();
             this.USUARIOEMPRESA = new HashSet<USUARIOEMPRESA>();
             this.VENDEDOR = new HashSet<VENDEDOR>();
+            this.IMPUESTO = new HashSet<IMPUESTO>();
         }
     
         public long CODIGOEMPRESA { get; set; }
@@ -81,15 +81,16 @@ namespace NastiAplicacion.Data
         public string CONTRIBUYENTEESPECIAL { get; set; }
         public string LLEVACONTABILIDAD { get; set; }
         public string NUMERORESOLUCION { get; set; }
+        public Nullable<System.DateTime> FECHACADUCIDAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ARTICULO> ARTICULO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BODEGA> BODEGA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UNIDAD> UNIDAD { get; set; }
         public virtual TIPOAMBIENTE TIPOAMBIENTE { get; set; }
@@ -97,8 +98,6 @@ namespace NastiAplicacion.Data
         public virtual ICollection<ESTABLECIMIENTO> ESTABLECIMIENTO1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FORMAPAGO> FORMAPAGO { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IMPUESTO> IMPUESTO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LISTADEPRECIO> LISTADEPRECIO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -109,5 +108,7 @@ namespace NastiAplicacion.Data
         public virtual ICollection<USUARIOEMPRESA> USUARIOEMPRESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VENDEDOR> VENDEDOR { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IMPUESTO> IMPUESTO { get; set; }
     }
 }

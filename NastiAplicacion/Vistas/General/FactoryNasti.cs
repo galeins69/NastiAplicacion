@@ -46,28 +46,24 @@ namespace NastiAplicacion.Vistas.General
         protected override ControlGeneralNasti desplegarControl(string nombreControl)
         {
 
-            ControlGeneralNasti controlNasti = null;
-            IMetodosFactory IMetodosFactory = new MetodosFactory();
+            ControlGeneralNasti controlGeneralNasti = (ControlGeneralNasti)null;
+            IMetodosFactory IMetodosFactory = (IMetodosFactory)new MetodosFactory();
             if (nombreControl == "FacturaFormView")
             {
-
-                controlNasti = FacturaFormView.getInstancia(IMetodosFactory);
-                controlNasti.setDatosIniciales();
+                controlGeneralNasti = (ControlGeneralNasti)FacturaForm.getInstancia(IMetodosFactory);
+                controlGeneralNasti.setDatosIniciales();
             }
             if (nombreControl == "ArticuloView")
             {
-
-                controlNasti = ArticuloView.getInstancia(IMetodosFactory);
-                controlNasti.setDatosIniciales();
+                controlGeneralNasti = (ControlGeneralNasti)ArticuloView.getInstancia(IMetodosFactory);
+                controlGeneralNasti.setDatosIniciales();
             }
             if (nombreControl == "NastiReporteView")
             {
-
-                controlNasti = NastiReporteView.getInstancia(IMetodosFactory);
-                controlNasti.setDatosIniciales();
+                controlGeneralNasti = (ControlGeneralNasti)NastiReporteView.getInstancia(IMetodosFactory);
+                controlGeneralNasti.setDatosIniciales();
             }
-            //else if (nombreControl=="otro control")
-            return controlNasti;
+            return controlGeneralNasti;
         }
     }
 

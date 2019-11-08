@@ -34,7 +34,7 @@ namespace NastiAplicacion.Data
         public string RISE { get; set; }
         public string PARTERELACIONADA { get; set; }
     
-        public virtual EMPRESA EMPRESA { get; set; }
         public virtual SOCIONEGOCIO SOCIONEGOCIO { get; set; }
+        public virtual EMPRESA EMPRESA { get; set; }
     }
 }

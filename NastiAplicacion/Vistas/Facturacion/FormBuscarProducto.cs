@@ -1,7 +1,10 @@
-﻿using NastiAplicacion.Data;
+﻿using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraGrid.Views.Grid;
+using NastiAplicacion.Data;
 using NastiAplicacion.General;
 using NastiAplicacion.Servicio;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,53 +18,48 @@ namespace NastiAplicacion.Vistas.Facturacion
 {
     public partial class FormBuscarProducto : Form
     {
-        ArticuloServicio articuloServicio=new ArticuloServicio();
-        ARTICULO articuloSeleccionado;
+        private ArticuloServicio articuloServicio = new ArticuloServicio();
+        private BODEGASTOCK articuloSeleccionado;
 
-        public void setSocioNegocioSeleccionado(ARTICULO articulo)
+        public void setSocioNegocioSeleccionado(BODEGASTOCK articulo)
         {
             this.articuloSeleccionado = articulo;
         }
 
-        public ARTICULO getProductoSeleccionado()
+        public BODEGASTOCK getProductoSeleccionado()
         {
             return this.articuloSeleccionado;
         }
 
-
         public FormBuscarProducto()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
-        public FormBuscarProducto(IEnumerable<ARTICULO> listadoArticulos)
+        public FormBuscarProducto(IEnumerable<BODEGASTOCK> listadoArticulos)
         {
-            InitializeComponent();
-            gridControlBusqueda.DataSource = listadoArticulos;
+            this.InitializeComponent();
+            this.gridControlBusqueda.DataSource = (object)listadoArticulos;
         }
-        private void textEdit1_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+
+        private void textEdit1_EditValueChanging(object sender, ChangingEventArgs e)
         {
-            if (e.NewValue == e.OldValue || e.NewValue.ToString().Length<5) return;
-
-            IEnumerable<ARTICULO> articulo=null;
-            articulo = articuloServicio.getArticuloGeneral(CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA, e.NewValue.ToString());
-            gridControlBusqueda.DataSource = articulo;
-
-
+            if (e.NewValue == e.OldValue || e.NewValue.ToString().Length < 5)
+                return;
+            this.gridControlBusqueda.DataSource = (object)this.articuloServicio.getArticuloStock(CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, e.NewValue.ToString());
         }
 
         private void simpleButtonOK_Click(object sender, EventArgs e)
         {
-            if (gridViewArticulo.GetSelectedRows().Count() == 0)
+            if (((IEnumerable<int>)this.gridViewArticulo.GetSelectedRows()).Count<int>() == 0)
             {
-                MessageBox.Show("Seleccione un producto");
-                return;
+                int num = (int)MessageBox.Show("Seleccione un producto");
             }
-            this.articuloSeleccionado= (ARTICULO)gridViewArticulo.GetRow(gridViewArticulo.GetSelectedRows()[0]);
-            this.DialogResult = DialogResult.OK;
-            
-            //  MessageBox.Show("Cliente seleccionado: " + socionegocio.RAZONSOCIAL);
-            //DataRow data = gridViewSocioNegocio.GetDataRow();
+            else
+            {
+                this.articuloSeleccionado = (BODEGASTOCK)this.gridViewArticulo.GetRow(this.gridViewArticulo.GetSelectedRows()[0]);
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
@@ -71,15 +69,34 @@ namespace NastiAplicacion.Vistas.Facturacion
 
         private void gridViewArticulo_DoubleClick(object sender, EventArgs e)
         {
-
-            if (gridViewArticulo.FocusedRowHandle >= 0)
-            {
-                gridViewArticulo.SelectRow(gridViewArticulo.FocusedRowHandle);
-                this.articuloSeleccionado = (ARTICULO)gridViewArticulo.GetRow(gridViewArticulo.FocusedRowHandle);
-                this.DialogResult = DialogResult.OK;
-            }
-            
+            if (this.gridViewArticulo.FocusedRowHandle < 0)
+                return;
+            this.gridViewArticulo.SelectRow(this.gridViewArticulo.FocusedRowHandle);
+            this.articuloSeleccionado = (BODEGASTOCK)this.gridViewArticulo.GetRow(this.gridViewArticulo.FocusedRowHandle);
+            this.DialogResult = DialogResult.OK;
         }
-    }
 
+        private void gridViewStock_MasterRowEmpty(object sender, MasterRowEmptyEventArgs e)
+        {
+            ARTICULO row = (ARTICULO)this.gridViewArticulo.GetRow(e.RowHandle);
+            e.IsEmpty = row.BODEGASTOCK.Count == 0;
+        }
+
+        private void gridViewStock_MasterRowGetRelationCount(object sender, MasterRowGetRelationCountEventArgs e)
+        {
+            e.RelationCount = 1;
+        }
+
+        private void gridViewStock_MasterRowGetRelationName(object sender, MasterRowGetRelationNameEventArgs e)
+        {
+            e.RelationName = "BODEGASTOCK";
+        }
+
+        private void gridViewStock_MasterRowGetChildList(object sender, MasterRowGetChildListEventArgs e)
+        {
+            ARTICULO row = (ARTICULO)this.gridViewArticulo.GetRow(e.RowHandle);
+            e.ChildList = (IList)new BindingSource((object)row, "BODEGASTOCK");
+        }
+
+    }
 }
