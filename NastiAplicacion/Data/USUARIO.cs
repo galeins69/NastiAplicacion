@@ -28,8 +28,9 @@ namespace NastiAplicacion.Data
         public Nullable<System.DateTime> FECHAEXPIDE { get; set; }
         public string TIPOACCESO { get; set; }
         public Nullable<System.DateTime> FECHAACTUALIZACION { get; set; }
-        public string nombreCompleto { get; set; }
+        public string NOMBRECOMPLETO { get; set; }
         public string conectado { get; set; }
+        public string EMAIL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USUARIOEMPRESA> USUARIOEMPRESA { get; set; }

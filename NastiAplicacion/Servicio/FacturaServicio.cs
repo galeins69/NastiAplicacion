@@ -16,6 +16,7 @@ namespace NastiAplicacion.Servicio
 
         public IEnumerable<ARTICULO> getProductos(long codigoEmpresa)
         {
+            
             IEnumerable<ARTICULO> productos;
             productos = (from articulos in kippaEntities.ARTICULO orderby articulos.DESCRIPCION ascending where articulos.ESTADO != null && articulos.CODIGOEMPRESA == codigoEmpresa select articulos).ToList();
             //kippaEntities.Dispose();
@@ -40,11 +41,10 @@ namespace NastiAplicacion.Servicio
         }
 
 
-        public IEnumerable<V_SOCIONEGOCIO> getVendedores(long codigoEmpresa)
+        public IEnumerable<SOCIONEGOCIO> getVendedores(long codigoEmpresa)
         {
-            IEnumerable<V_SOCIONEGOCIO> vendedoresList;
-            vendedoresList = (from vendedores in kippaEntities.V_SOCIONEGOCIO where vendedores.TIPOSOCIONEGOCIO == (int)EnumTipoSocioNegocio.VENDEDOR && vendedores.CODIGOEMPRESA == codigoEmpresa orderby vendedores.NOMBRECOMERCIAL select vendedores).ToList();
-            //kippaEntities.Dispose();
+            IEnumerable<SOCIONEGOCIO> vendedoresList;
+            vendedoresList = (from socionegocio in kippaEntities.SOCIONEGOCIO join vendedor in kippaEntities.VENDEDOR on socionegocio.CODIGOSOCIONEGOCIO equals vendedor.CODIGOSOCIONEGOCIO where vendedor.CODIGOEMPRESA == codigoEmpresa  orderby socionegocio.RAZONSOCIAL select socionegocio).ToList();
             return vendedoresList;
         }
 
@@ -54,49 +54,47 @@ namespace NastiAplicacion.Servicio
             return (from condiciones in kippaEntities.CONDICIONPAGO orderby condiciones.DIASCREDITO ascending select condiciones).ToList();
         }*/
 
-        public V_SOCIONEGOCIO getCLiente(String documento, long codigoEmpresa)
+        public SOCIONEGOCIO getCLiente(String documento, long codigoEmpresa)
         {
-            IEnumerable<V_SOCIONEGOCIO> registros;
-            registros = (from cliente in kippaEntities.V_SOCIONEGOCIO where cliente.TIPOSOCIONEGOCIO == (int)EnumTipoSocioNegocio.CLIENTE && cliente.NUMERODOCUMENTO.Trim() == documento.Trim() && cliente.CODIGOEMPRESA == codigoEmpresa select cliente).ToList();
+            IEnumerable<SOCIONEGOCIO> registros;
+            registros = (from cliente in kippaEntities.SOCIONEGOCIO where cliente.NUMERODOCUMENTO.Trim() == documento.Trim() && cliente.CODIGOEMPRESA == codigoEmpresa select cliente).ToList();
+            if (registros.Count() > 0)
+                return registros.ElementAt(0);
+            return null;
+        }
+
+        public SOCIONEGOCIO buscarCliente(String texto, long codigoEmpresa)
+        {
+            IEnumerable<SOCIONEGOCIO> registros;
+            registros = (from cliente in kippaEntities.SOCIONEGOCIO where  (cliente.RAZONSOCIAL.Trim().Contains(texto.Trim()) || cliente.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) && cliente.CODIGOEMPRESA == codigoEmpresa select cliente).ToList();
+            if (registros.Count() > 0)
+                return registros.ElementAt(0);
+            return null;
+        }
+
+        public SOCIONEGOCIO buscarProveedor(String texto, long codigoEmpresa)
+        {
+            IEnumerable<SOCIONEGOCIO> registros;
+            registros = (from socionegocio in kippaEntities.SOCIONEGOCIO join proveedor in kippaEntities.PROVEEDOR on socionegocio.CODIGOSOCIONEGOCIO equals proveedor.CODIGOSOCIONEGOCIO  where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) && socionegocio.CODIGOEMPRESA == codigoEmpresa select socionegocio).ToList();
             //kippaEntities.Dispose();
             if (registros.Count() > 0)
                 return registros.ElementAt(0);
             return null;
         }
 
-        public V_SOCIONEGOCIO buscarCliente(String texto, long codigoEmpresa)
-        {
-            IEnumerable<V_SOCIONEGOCIO> registros;
-            registros = (from cliente in kippaEntities.V_SOCIONEGOCIO where cliente.TIPOSOCIONEGOCIO == (int)EnumTipoSocioNegocio.CLIENTE && (cliente.RAZONSOCIAL.Trim().Contains(texto.Trim()) || cliente.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) && cliente.CODIGOEMPRESA == codigoEmpresa select cliente).ToList();
-            //kippaEntities.Dispose();
-            if (registros.Count() > 0)
-                return registros.ElementAt(0);
-            return null;
-        }
-
-        public V_SOCIONEGOCIO buscarProveedor(String texto, long codigoEmpresa)
-        {
-            IEnumerable<V_SOCIONEGOCIO> registros;
-            registros = (from cliente in kippaEntities.V_SOCIONEGOCIO where cliente.TIPOSOCIONEGOCIO == (int)EnumTipoSocioNegocio.PROVEEDOR && (cliente.RAZONSOCIAL.Trim().Contains(texto.Trim()) || cliente.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) && cliente.CODIGOEMPRESA == codigoEmpresa select cliente).ToList();
-            //kippaEntities.Dispose();
-            if (registros.Count() > 0)
-                return registros.ElementAt(0);
-            return null;
-        }
-
-        public SOCIONEGOCIO buscarSocioNegocio(String texto)
+        public SOCIONEGOCIO buscarSocioNegocio(String texto,long codigoEmpresa)
         {
             SOCIONEGOCIO registro;
-            registro = (from socionegocio in kippaEntities.SOCIONEGOCIO where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) select socionegocio).FirstOrDefault();
+            registro = (from socionegocio in kippaEntities.SOCIONEGOCIO where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim()) && socionegocio.CODIGOEMPRESA==codigoEmpresa) select socionegocio).FirstOrDefault();
             //kippaEntities.Dispose();
             return registro;
 
         }
 
-        public IEnumerable<SOCIONEGOCIO> buscarSociosDeNegocio(String texto)
+        public IEnumerable<SOCIONEGOCIO> buscarSociosDeNegocio(String texto,long codigoEmpresa)
         {
             IEnumerable<SOCIONEGOCIO> registros;
-            registros = (from socionegocio in kippaEntities.SOCIONEGOCIO where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) select socionegocio).ToList();
+            registros = (from socionegocio in kippaEntities.SOCIONEGOCIO where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim()) && socionegocio.CODIGOEMPRESA==codigoEmpresa) select socionegocio).ToList();
             //kippaEntities.Dispose();
             return registros;
         }
@@ -270,12 +268,12 @@ namespace NastiAplicacion.Servicio
                     if (entity1 == null)
                         return (COMPROBANTE)null;
                     long? nullable1;
-                    if (comprobante.CODIGOESTADOCOMPROBANTE == 7L)
+                    if (comprobante.CODIGOESTADOCOMPROBANTE == 3L)
                     {
                         puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
                         comprobante.NUMEROCOMPROBANTE = puntoEmisionDocumento.NUMERODOCUMENTO.Value;
                         if (puntoEmisionDocumento.PUNTOEMISION.ELECTRONICO == "S")
-                            comprobante.CLAVEDEACCESO = new NastiAplicacion.Utiles.Utiles().generaClave(comprobante.FECHAEMISION, "01", socioNegocio.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE, comprobante.NUMEROCOMPROBANTE.ToString(), comprobante.NUMEROCOMPROBANTE.ToString(), "2");
+                            comprobante.CLAVEDEACCESO = new NastiAplicacion.Utiles.Utiles().generaClave(comprobante.FECHAEMISION, "01", credencialUsuario.getEmpresaSeleccionada().RUC, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE, comprobante.NUMEROCOMPROBANTE.ToString(), comprobante.NUMEROCOMPROBANTE.ToString(), "1");
                         PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
                         nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
                         long num = 1;
@@ -302,7 +300,7 @@ namespace NastiAplicacion.Servicio
                         string numeroComprobante = comprobante.NUMEROCOMPROBANTE.ToString();
                         string codigoNumerico = comprobante.NUMEROCOMPROBANTE.ToString();
                         string tipoEmision = "2";
-                        string str = utiles.generaClave(fechaemision, tipoComprobante1, numerodocumento, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
+                        string str = utiles.generaClave(fechaemision, tipoComprobante1, credencialUsuario.getEmpresaSeleccionada().RUC, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
                         comprobante2.CLAVEDEACCESO = str;
                         PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
                         nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
@@ -333,10 +331,13 @@ namespace NastiAplicacion.Servicio
                     {
                         if (impuestoComprobante.CODIGOIMPUESTOCOMPROBANTE == 0L)
                         {
-                            IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
-                            impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                            this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
-                            this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                            if (impuestoComprobante.BASEIMPONIBLE > 0)
+                            {
+                                IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
+                                impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                                this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
+                                this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                            }
                         }
                         else
                             this.kippaEntities.IMPUESTOCOMPROBANTE.Attach(impuestoComprobante);
@@ -425,8 +426,8 @@ namespace NastiAplicacion.Servicio
                             string serie = credencialUsuario.getEstablecimientoSeleccionado().NUMERO + credencialUsuario.getPuntoDeEmision().NOMBRE;
                             string numeroComprobante = comprobante.NUMEROCOMPROBANTE.ToString();
                             string codigoNumerico = comprobante.NUMEROCOMPROBANTE.ToString();
-                            string tipoEmision = "2";
-                            string str = utiles.generaClave(fechaemision, tipoComprobante1, numerodocumento, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
+                            string tipoEmision = "1";
+                            string str = utiles.generaClave(fechaemision, tipoComprobante1, credencialUsuario.getEmpresaSeleccionada().RUC, ambiente, serie, numeroComprobante, codigoNumerico, tipoEmision);
                             comprobante2.CLAVEDEACCESO = str;
                             PUNTOEMISIONDOCUMENTO puntoemisiondocumento = puntoEmisionDocumento;
                             nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
@@ -461,10 +462,13 @@ namespace NastiAplicacion.Servicio
                     }
                     foreach (IMPUESTOCOMPROBANTE impuestoComprobante in impuestoComprobanteList)
                     {
-                        IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
-                        impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
-                        this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
-                        this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                        if (impuestoComprobante.BASEIMPONIBLE > 0)
+                        { 
+                            IMPUESTOCOMPROBANTE entity2 = new IMPUESTOCOMPROBANTE();
+                            impuestoComprobante.CODIGOCOMPROBANTE = comprobante.CODIGOCOMPROBANTE;
+                            this.kippaEntities.IMPUESTOCOMPROBANTE.Add(entity2);
+                            this.kippaEntities.Entry<IMPUESTOCOMPROBANTE>(entity2).CurrentValues.SetValues((object)impuestoComprobante);
+                        }
                     }
                     this.kippaEntities.SaveChanges();
                     foreach (COMPROBANTEFORMAPAGO formasPago in formasPagoList)
@@ -588,7 +592,34 @@ namespace NastiAplicacion.Servicio
         }
         public COMPROBANTE getComprobante(long codigoComprobante)
         {
+            this.kippaEntities.Configuration.LazyLoadingEnabled = true;
+            //return this.kippaEntities.COMPROBANTE.Where<COMPROBANTE>((Expression<Func<COMPROBANTE, bool>>)(comprobantes => comprobantes.CODIGOCOMPROBANTE == codigoComprobante)).Include("TIPOCOMPROBANTE").Include("EMPRESA").Include("EMPRESA.TIPOAMBIENTE").Include("ESTABLECIMIENTO").Include("PUNTOEMISION").Include("SOCIONEGOCIO").Include("COMPROBANTEFORMAPAGO").Include("COMPROBANTEFORMAPAGO.FORMAPAGO").Include("SOCIONEGOCIO.TIPOIDENTIFICACION").Include("IMPUESTOCOMPROBANTE").Include("IMPUESTOCOMPROBANTE.IMPUESTO").FirstOrDefault<COMPROBANTE>();
             return this.kippaEntities.COMPROBANTE.Where<COMPROBANTE>((Expression<Func<COMPROBANTE, bool>>)(comprobantes => comprobantes.CODIGOCOMPROBANTE == codigoComprobante)).FirstOrDefault<COMPROBANTE>();
+            this.kippaEntities.Configuration.LazyLoadingEnabled = false;
+        }
+
+        public void actualizarComprobante(COMPROBANTE comprobante)
+        {
+            DbContextTransaction dbcxtransaction = null;
+            dbcxtransaction = kippaEntities.Database.BeginTransaction();
+            COMPROBANTE _comprobante = kippaEntities.COMPROBANTE.Where(a => a.CODIGOCOMPROBANTE == comprobante.CODIGOCOMPROBANTE).FirstOrDefault();
+            if (_comprobante != null)
+            {
+                kippaEntities.Entry(_comprobante).CurrentValues.SetValues(comprobante);
+            }            
+            try
+            {
+                kippaEntities.SaveChanges();
+                dbcxtransaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                dbcxtransaction.Rollback();
+                XtraMessageBox.Show(ex.ToString());
+                return;
+            }
+            dbcxtransaction.Dispose();
+            return ;
         }
     }
      

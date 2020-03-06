@@ -25,6 +25,7 @@ namespace NastiAplicacion.Data
         public Nullable<long> CODIGOTIPOCOMPROBANTE { get; set; }
         public Nullable<long> NUMERODOCUMENTO { get; set; }
         public Nullable<long> NUMEROPENDIENTE { get; set; }
+        public byte[] ARCHIVOREPORTE { get; set; }
     
         public virtual PUNTOEMISION PUNTOEMISION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -82,9 +82,11 @@ namespace NastiAplicacion.Enumerador
 
     enum EnumEstadoComprobante
     {
+        RECIBIDOSRI = 1,
         NUEVO = 3,
         XMLGENERADO=4,
         FIRMADO=5,
+        EMITIDO=6,
         AUTORIZADO=7,
         NOAUTORIZADO=8,
         ANULADO=9,
@@ -93,7 +95,7 @@ namespace NastiAplicacion.Enumerador
         ENPROCESO=12,
         VALIDO=13,//AUTORIZADO NO ELECTRONICO
         NOVALIDO=14,
-
+       
 
     }
     

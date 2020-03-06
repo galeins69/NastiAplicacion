@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="411a66f6f2074ddaa5e6a0ce3266bac5" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="Model.ARTICULO" Width="1.5" PointX="10.5" PointY="62.75" />
+        <EntityTypeShape EntityType="Model.ARTICULOCOMPONENTE" Width="1.5" PointX="14.75" PointY="79.125" />
+        <EntityTypeShape EntityType="Model.ARTICULOIMPUESTO" Width="1.5" PointX="12.75" PointY="52" />
+        <EntityTypeShape EntityType="Model.BODEGA" Width="1.5" PointX="7.5" PointY="57.625" />
+        <EntityTypeShape EntityType="Model.BODEGASTOCK" Width="1.5" PointX="15.75" PointY="61.875" />
+        <EntityTypeShape EntityType="Model.CLIENTE" Width="1.5" PointX="10.5" PointY="43.875" />
+        <EntityTypeShape EntityType="Model.COMPROBANTE" Width="1.5" PointX="12.75" PointY="62" />
+        <EntityTypeShape EntityType="Model.COMPROBANTEFORMAPAGO" Width="1.5" PointX="18" PointY="52.375" />
+        <EntityTypeShape EntityType="Model.CONDICIONPAGO" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.DETALLECOMPROBANTE" Width="1.5" PointX="15" PointY="51.25" />
+        <EntityTypeShape EntityType="Model.DETALLELISTADEPRECIO" Width="1.5" PointX="12.75" PointY="55.625" />
+        <EntityTypeShape EntityType="Model.EJERCICIOFISCAL" Width="1.5" PointX="5.25" PointY="90.875" />
+        <EntityTypeShape EntityType="Model.ELEMENTO" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Model.EMPRESA" Width="1.5" PointX="3" PointY="37.375" />
+        <EntityTypeShape EntityType="Model.ESTABLECIMIENTO" Width="1.5" PointX="5.25" PointY="78" />
+        <EntityTypeShape EntityType="Model.ESTADOCOMPROBANTE" Width="1.5" PointX="10.5" PointY="72.125" />
+        <EntityTypeShape EntityType="Model.FORMAPAGO" Width="1.5" PointX="5.25" PointY="39.125" />
+        <EntityTypeShape EntityType="Model.IMPUESTO" Width="1.5" PointX="8.25" PointY="37.375" />
+        <EntityTypeShape EntityType="Model.IMPUESTOCOMPROBANTE" Width="1.5" PointX="18" PointY="48.625" />
+        <EntityTypeShape EntityType="Model.LISTADEPRECIO" Width="1.5" PointX="5.25" PointY="43.125" />
+        <EntityTypeShape EntityType="Model.PARAMETRO" Width="1.5" PointX="5.25" PointY="65.25" />
+        <EntityTypeShape EntityType="Model.PRODUCTO" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.PROVEEDOR" Width="1.5" PointX="5.25" PointY="84.25" />
+        <EntityTypeShape EntityType="Model.PROVEEDORCERTIFICADO" Width="1.5" PointX="0.75" PointY="43.5" />
+        <EntityTypeShape EntityType="Model.PUNTOEMISION" Width="1.5" PointX="7.5" PointY="77.875" />
+        <EntityTypeShape EntityType="Model.PUNTOEMISIONAUTORIZACION" Width="1.5" PointX="12" PointY="78.25" />
+        <EntityTypeShape EntityType="Model.PUNTOEMISIONDOCUMENTO" Width="1.5" PointX="9.75" PointY="78" />
+        <EntityTypeShape EntityType="Model.SOCIONEGOCIO" Width="1.5" PointX="5.25" PointY="47.125" />
+        <EntityTypeShape EntityType="Model.TABLAIMPUESTOS" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.TIPOAMBIENTE" Width="1.5" PointX="0.75" PointY="40.625" />
+        <EntityTypeShape EntityType="Model.TIPOARTICULO" Width="1.5" PointX="8.25" PointY="65.875" />
+        <EntityTypeShape EntityType="Model.TIPOCOMPROBANTE" Width="1.5" PointX="10.5" PointY="58.375" />
+        <EntityTypeShape EntityType="Model.TIPOELEMENTO" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Model.TIPOESTADO" Width="1.5" PointX="8.25" PointY="72.375" />
+        <EntityTypeShape EntityType="Model.TIPOFORMAPAGO" Width="1.5" PointX="3" PointY="34.5" />
+        <EntityTypeShape EntityType="Model.TIPOIDENTIFICACION" Width="1.5" PointX="3" PointY="52.5" />
+        <EntityTypeShape EntityType="Model.TIPOIMPUESTO" Width="1.5" PointX="6" PointY="36.625" />
+        <EntityTypeShape EntityType="Model.UNIDAD" Width="1.5" PointX="5.25" PointY="94" />
+        <EntityTypeShape EntityType="Model.UNIDADTIEMPO" Width="1.5" PointX="15.75" PointY="48" />
+        <EntityTypeShape EntityType="Model.USUARIOEMPRESA" Width="1.5" PointX="8.25" PointY="42.5" />
+        <EntityTypeShape EntityType="Model.VENDEDOR" Width="1.5" PointX="5.25" PointY="81.5" />
+        <AssociationConnector Association="Model.FK_ARTICULO_EMPRESA" />
+        <AssociationConnector Association="Model.FK_ARTICULO_IMPUESTO" />
+        <AssociationConnector Association="Model.FK_ARTICULO_TIPOARTICULO" />
+        <AssociationConnector Association="Model.FK_ARTICULO_UNIDAD" />
+        <AssociationConnector Association="Model.FK_ARTICULOCOMPONENTE_ARTICULO" />
+        <AssociationConnector Association="Model.FK_ARTICULOCOMPONENTE_ARTICULOCOMP" />
+        <AssociationConnector Association="Model.FK_ARTICULOIMPUESTO_ARTICULO" />
+        <AssociationConnector Association="Model.FK_BODEGASTOCK_ARTICULO" />
+        <AssociationConnector Association="Model.FK_DETALLECOMPROBANTE_ARTICULO" />
+        <AssociationConnector Association="Model.FK_DETALLELISTADEPRECIOARTICULO" />
+        <AssociationConnector Association="Model.FK_ARTICULOCOMPONENTE_UNIDAD" />
+        <AssociationConnector Association="Model.FK_ARTICULOIMPUESTO_IMPUESTO" />
+        <AssociationConnector Association="Model.FK_BODEGA_EMPRESA" />
+        <AssociationConnector Association="Model.FK_BODEGA_ESTABLECIMIENTO" />
+        <AssociationConnector Association="Model.FK_BODEGASTOCK_BODEGA" />
+        <AssociationConnector Association="Model.FK_COMPROBANTE_BODEGA" />
+        <AssociationConnector Association="Model.FK_DETALLECOMPROBANTE_BODEGA" />
+        <AssociationConnector Association="Model.FK_CLIENTE_SOCIONEGOCIO" />
+        <AssociationConnector Association="Model.FK_CODIGOEMPRESA" />
+        <AssociationConnector Association="Model.FK_COMPROBANTE_EJERCICIOFISCAL" />
+        <AssociationConnector Association="Model.FK_COMPROBANTE_ESTADOCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_COMPROBANTEFORMAPAGO_COMPROBANTE" />
+        <AssociationConnector Association="Model.FK_DETALLECOMPROBANTE_COMPROBANTE" />
+        <AssociationConnector Association="Model.FK_EMPRESACOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_ESTABLECIMIENTOCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_IMPUESTOCOMPROBANTE_COMPROBANTE" />
+        <AssociationConnector Association="Model.FK_PUNTOEMISIONCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_SOCIONEGOCIOCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_TIPOCOMPROBANTECOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_VENDEDORCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_COMPROBANTEFORMAPAGO_FORMAPAGO" />
+        <AssociationConnector Association="Model.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" />
+        <AssociationConnector Association="Model.FK_DETALLECOMPROBANTE_IMPUESTO" />
+        <AssociationConnector Association="Model.FK_DETALLELISTADEPRECIO" />
+        <AssociationConnector Association="Model.FK_EJERCICIOFISCAL_EMPRESA" />
+        <AssociationConnector Association="Model.FK_TIPO_ELEMENTO" />
+        <AssociationConnector Association="Model.FK_EMPRESA" />
+        <AssociationConnector Association="Model.FK_EMPRESA_PROVEEDORCERTIFICADO" />
+        <AssociationConnector Association="Model.FK_EMPRESA_TIPOAMBIENTE" />
+        <AssociationConnector Association="Model.FK_ESTABLECIMIENTO_ToTable" />
+        <AssociationConnector Association="Model.FK_FORMAPAGO_EMPRESA" />
+        <AssociationConnector Association="Model.FK_IMPUESTO_EMPRESA" />
+        <AssociationConnector Association="Model.FK_LISTADEPRECIO_EMPRESA" />
+        <AssociationConnector Association="Model.FK_PARAMETROS_EMPRESA" />
+        <AssociationConnector Association="Model.FK_PROVEEDOREMPRESA" />
+        <AssociationConnector Association="Model.FK_SOCIONEGOCIO_ToTable" />
+        <AssociationConnector Association="Model.FK_USUARIOEMPRESA_EMPRESA" />
+        <AssociationConnector Association="Model.FK_VENDOREMPRESA" />
+        <AssociationConnector Association="Model.FK_PUNTOEMISIONESTABLECIMIENTO" />
+        <AssociationConnector Association="Model.FK_ESTADOCOMPROBANTE_TIPOESTADO" />
+        <AssociationConnector Association="Model.FK_FORMAPAGO_TIPOFORMAPAGO" />
+        <AssociationConnector Association="Model.FK_IMPUESTO_TIPOIMPUESTO" />
+        <AssociationConnector Association="Model.FK_IMPUESTOCOMPROBANTE_IMPUESTO" />
+        <AssociationConnector Association="Model.FK_LISTADEPRECIO_SOCIONEGOCIO" />
+        <AssociationConnector Association="Model.FK_PUNTOEMISIONDOCUMENTO_PUNTOEMISION" />
+        <AssociationConnector Association="Model.FK_PUNTOEMISIONAUTORIZACION_ToTable" />
+        <AssociationConnector Association="Model.FK_PUNTOEMISIONDOCUMENTOTIPOCOMPROBANTE" />
+        <AssociationConnector Association="Model.FK_SOCIONEGOCIO_TIPOIDENTIFICACION" />
+        <EntityTypeShape EntityType="Model.USUARIO" Width="1.5" PointX="7.375" PointY="1" />
+        <AssociationConnector Association="Model.FK_USUARIOEMPRESA_USUARIO" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

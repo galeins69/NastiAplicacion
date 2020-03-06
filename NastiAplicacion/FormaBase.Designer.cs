@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraNavBar;
+using NastiAplicacion.General;
 
 namespace NastiAplicacion
 {
@@ -424,7 +425,7 @@ namespace NastiAplicacion
             this.Ribbon = this.rcMain;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.rsbMain;
-            this.Text = "Principal";
+            this.Text = "EMPRESA: "+CredencialUsuario.getInstancia().getEmpresaSeleccionada().NOMBRECOMERCIAL + ".  USUARIO: " + CredencialUsuario.getInstancia().getUsuario().NOMBRECOMPLETO + ". ESTABLECIMIENTO: " + CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().NUMERO + ". PUNTO DE EMISION: "+ CredencialUsuario.getInstancia().getPuntoDeEmision().NOMBRE;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.rcMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nbMain)).EndInit();

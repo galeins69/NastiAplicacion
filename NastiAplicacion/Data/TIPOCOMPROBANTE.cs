@@ -28,6 +28,7 @@ namespace NastiAplicacion.Data
         public string FORMATO { get; set; }
         public string SIGNO { get; set; }
         public string VERSION { get; set; }
+        public byte[] ARCHIVOREPORTE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }

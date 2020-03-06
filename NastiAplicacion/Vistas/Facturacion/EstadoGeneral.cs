@@ -14,13 +14,14 @@ namespace NastiAplicacion.Vistas.Facturacion
 
         public EstadoGeneral(ControlGeneralNasti controlComprobante)
         {
+            this.controlComprobante = controlComprobante;
             estadosComprobante.Add(new EstadoClase(0, null));
             estadosComprobante.Add(new EstadoClase(1, null));
             estadosComprobante.Add(new EstadoClase(2, null));
             estadosComprobante.Add(new EstadoClase(3, new EstadoNuevo(controlComprobante)));
             estadosComprobante.Add(new EstadoClase(4, null));
             estadosComprobante.Add(new EstadoClase(5, new EstadoFirmado(controlComprobante)));
-            estadosComprobante.Add(new EstadoClase(6, null));
+            estadosComprobante.Add(new EstadoClase(6, new EstadoEmitido(controlComprobante)));
             estadosComprobante.Add(new EstadoClase(7, new EstadoAutorizado(controlComprobante)));
             estadosComprobante.Add(new EstadoClase(8, new EstadoNoAutorizado(controlComprobante)));
             estadosComprobante.Add(new EstadoClase(9, new EstadoAnulado(controlComprobante)));

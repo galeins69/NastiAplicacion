@@ -26,7 +26,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             InitializeComponent();
             this.tipoComprobante = tipoComprobante;
             DateTime hoy = DateTime.Now;
-            this.textEditDato.EditValue = String.Format(hoy.ToString(),"dd/mm/yyyy").Substring(0,10);
+            this.textEditDato.EditValue = String.Format(hoy.ToString(),"DD/MM/yyyy").Substring(0, hoy.ToString().IndexOf(" "));
         }
 
         public void setComprobanteSeleccionado(COMPROBANTE comprobante)

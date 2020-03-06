@@ -22,7 +22,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         ArticuloFormView articuloFormView = new ArticuloFormView();
 
 
-        private ArticuloView()
+        public ArticuloView()
         {
             InitializeComponent();
             this.Controls.Add(articuloFormView);
@@ -31,13 +31,13 @@ namespace NastiAplicacion.Vistas.Facturacion
             //bindingSourceSocioNegocio.Add(this.socionegocioSeleccionado);
 
         }
-        public static ArticuloView getInstancia(IMetodosFactory IMetodosFactory)
-        {
-            if (instancia == null)
-                instancia = new ArticuloView();
+        //public static ArticuloView getInstancia(IMetodosFactory IMetodosFactory)
+        //{
+        //    if (instancia == null)
+        //        instancia = new ArticuloView();
 
-            return instancia;
-        }
+        //    return instancia;
+        //}
         public ArticuloView(long codigoEmpresa)
         {
             InitializeComponent();

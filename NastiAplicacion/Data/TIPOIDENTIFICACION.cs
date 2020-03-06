@@ -22,7 +22,7 @@ namespace NastiAplicacion.Data
     
         public long CODIGOTIPOIDENTIFICACION { get; set; }
         public string NOMBRE { get; set; }
-        public string TIPOIDENTIFICACION1 { get; set; }
+        public string TIPOIDENTIFICACIONSRI { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SOCIONEGOCIO> SOCIONEGOCIO { get; set; }

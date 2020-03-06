@@ -61,6 +61,8 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonOK = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
+            this.textEditNumeroNotaCredito = new DevExpress.XtraEditors.TextEdit();
             this.lookUpEditDiasRetencion = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.textEditCreditoRetencion = new DevExpress.XtraEditors.TextEdit();
@@ -88,8 +90,6 @@
             this.memoExEditInfAdicional = new DevExpress.XtraEditors.MemoEdit();
             this.textEditTotalAPagar = new DevExpress.XtraEditors.TextEdit();
             this.cOMPROBANTEFORMAPAGOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textEditNumeroNotaCredito = new DevExpress.XtraEditors.TextEdit();
-            this.labelControl13 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.TOTALTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditEfectivo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCheque.Properties)).BeginInit();
@@ -107,6 +107,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditNumeroRetencion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNumeroNotaCredito.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDiasRetencion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCreditoRetencion.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDiasNotaCredito.Properties)).BeginInit();
@@ -129,7 +130,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoExEditInfAdicional.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTotalAPagar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMPROBANTEFORMAPAGOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditNumeroNotaCredito.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // TOTALTextEdit
@@ -177,7 +177,7 @@
             this.textEditEfectivo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditEfectivo.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditEfectivo.Size = new System.Drawing.Size(144, 26);
-            this.textEditEfectivo.TabIndex = 20;
+            this.textEditEfectivo.TabIndex = 1;
             this.textEditEfectivo.EditValueChanged += new System.EventHandler(this.textEditEfectivo_EditValueChanged);
             // 
             // textEditCheque
@@ -201,7 +201,7 @@
             this.textEditCheque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditCheque.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCheque.Size = new System.Drawing.Size(144, 26);
-            this.textEditCheque.TabIndex = 21;
+            this.textEditCheque.TabIndex = 3;
             this.textEditCheque.EditValueChanged += new System.EventHandler(this.textEditCheque_EditValueChanged);
             this.textEditCheque.EnabledChanged += new System.EventHandler(this.textEditCheque_EnabledChanged);
             // 
@@ -251,7 +251,7 @@
             this.textEditDebito.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditDebito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditDebito.Size = new System.Drawing.Size(144, 26);
-            this.textEditDebito.TabIndex = 23;
+            this.textEditDebito.TabIndex = 27;
             this.textEditDebito.EditValueChanged += new System.EventHandler(this.textEditDebito_EditValueChanged);
             this.textEditDebito.EnabledChanged += new System.EventHandler(this.textEditCheque_EnabledChanged);
             // 
@@ -260,7 +260,6 @@
             this.checkButtonRetencion.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonRetencion.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonRetencion.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            //this.checkButtonRetencion.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.botask_32x321;
             this.checkButtonRetencion.Location = new System.Drawing.Point(13, 288);
             this.checkButtonRetencion.Name = "checkButtonRetencion";
             this.checkButtonRetencion.Size = new System.Drawing.Size(123, 44);
@@ -273,7 +272,6 @@
             this.checkButtonNotaCredito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonNotaCredito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonNotaCredito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-//            this.checkButtonNotaCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.sendbehindtext_32x321;
             this.checkButtonNotaCredito.Location = new System.Drawing.Point(13, 231);
             this.checkButtonNotaCredito.Name = "checkButtonNotaCredito";
             this.checkButtonNotaCredito.Size = new System.Drawing.Size(123, 44);
@@ -286,7 +284,6 @@
             this.checkButtonCheque.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonCheque.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonCheque.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-//            this.checkButtonCheque.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.chartsrotate_32x321;
             this.checkButtonCheque.Location = new System.Drawing.Point(13, 72);
             this.checkButtonCheque.Name = "checkButtonCheque";
             this.checkButtonCheque.Size = new System.Drawing.Size(123, 44);
@@ -299,7 +296,6 @@
             this.checkButtonDebito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonDebito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonDebito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-//            this.checkButtonDebito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.contact_32x321;
             this.checkButtonDebito.Location = new System.Drawing.Point(13, 178);
             this.checkButtonDebito.Name = "checkButtonDebito";
             this.checkButtonDebito.Size = new System.Drawing.Size(123, 44);
@@ -313,7 +309,6 @@
             this.checkButtonCredito.AppearanceDisabled.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.checkButtonCredito.AppearanceDisabled.Options.UseBackColor = true;
             this.checkButtonCredito.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-//            this.checkButtonCredito.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.bocontact2_32x321;
             this.checkButtonCredito.Location = new System.Drawing.Point(13, 126);
             this.checkButtonCredito.Name = "checkButtonCredito";
             this.checkButtonCredito.Size = new System.Drawing.Size(123, 44);
@@ -325,7 +320,6 @@
             // 
             this.checkButtonEfectivo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
             this.checkButtonEfectivo.Checked = true;
-//            this.checkButtonEfectivo.ImageOptions.Image = global::NastiAplicacion.Recursos.ResourceNasti.currency_32x3211;
             this.checkButtonEfectivo.Location = new System.Drawing.Point(13, 16);
             this.checkButtonEfectivo.Name = "checkButtonEfectivo";
             this.checkButtonEfectivo.Size = new System.Drawing.Size(123, 44);
@@ -354,7 +348,7 @@
             this.textEditNotaCredito.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditNotaCredito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditNotaCredito.Size = new System.Drawing.Size(144, 26);
-            this.textEditNotaCredito.TabIndex = 26;
+            this.textEditNotaCredito.TabIndex = 50;
             this.textEditNotaCredito.EditValueChanged += new System.EventHandler(this.textEditNotaCredito_EditValueChanged);
             this.textEditNotaCredito.EnabledChanged += new System.EventHandler(this.textEditCheque_EnabledChanged);
             // 
@@ -379,7 +373,7 @@
             this.textEditRetencion.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditRetencion.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditRetencion.Size = new System.Drawing.Size(144, 26);
-            this.textEditRetencion.TabIndex = 27;
+            this.textEditRetencion.TabIndex = 52;
             this.textEditRetencion.EditValueChanged += new System.EventHandler(this.textEditRetencion_EditValueChanged);
             this.textEditRetencion.EnabledChanged += new System.EventHandler(this.textEditCheque_EnabledChanged);
             // 
@@ -391,7 +385,7 @@
             this.textEditobservacion.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.textEditobservacion.Properties.Appearance.Options.UseFont = true;
             this.textEditobservacion.Size = new System.Drawing.Size(373, 26);
-            this.textEditobservacion.TabIndex = 29;
+            this.textEditobservacion.TabIndex = 4;
             // 
             // textEditRecibido
             // 
@@ -409,7 +403,8 @@
             this.textEditRecibido.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditRecibido.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditRecibido.Size = new System.Drawing.Size(144, 26);
-            this.textEditRecibido.TabIndex = 31;
+            this.textEditRecibido.TabIndex = 2;
+            this.textEditRecibido.EditValueChanged += new System.EventHandler(this.textEditRecibido_EditValueChanged);
             // 
             // textEditCambio
             // 
@@ -426,6 +421,7 @@
             this.textEditCambio.Properties.Mask.EditMask = "c";
             this.textEditCambio.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditCambio.Properties.Mask.UseMaskAsDisplayFormat = true;
+            this.textEditCambio.Properties.ReadOnly = true;
             this.textEditCambio.Size = new System.Drawing.Size(144, 26);
             this.textEditCambio.TabIndex = 32;
             // 
@@ -470,7 +466,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditCredito.Properties.NullText = "[TARJETA DE CREDITO]";
             this.lookUpEditCredito.Size = new System.Drawing.Size(201, 20);
-            this.lookUpEditCredito.TabIndex = 36;
+            this.lookUpEditCredito.TabIndex = 23;
             // 
             // textEditAutoCredito
             // 
@@ -480,7 +476,7 @@
             this.textEditAutoCredito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.textEditAutoCredito.Properties.Appearance.Options.UseFont = true;
             this.textEditAutoCredito.Size = new System.Drawing.Size(130, 20);
-            this.textEditAutoCredito.TabIndex = 37;
+            this.textEditAutoCredito.TabIndex = 24;
             // 
             // labelControl5
             // 
@@ -503,7 +499,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lookUpEditDebito.Properties.NullText = "[TARJETA DE DEBITO]";
             this.lookUpEditDebito.Size = new System.Drawing.Size(201, 20);
-            this.lookUpEditDebito.TabIndex = 39;
+            this.lookUpEditDebito.TabIndex = 28;
             // 
             // labelControl6
             // 
@@ -523,7 +519,7 @@
             this.textEditAutoDebito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.textEditAutoDebito.Properties.Appearance.Options.UseFont = true;
             this.textEditAutoDebito.Size = new System.Drawing.Size(130, 20);
-            this.textEditAutoDebito.TabIndex = 41;
+            this.textEditAutoDebito.TabIndex = 29;
             // 
             // textEditNumeroRetencion
             // 
@@ -531,7 +527,7 @@
             this.textEditNumeroRetencion.Location = new System.Drawing.Point(411, 300);
             this.textEditNumeroRetencion.Name = "textEditNumeroRetencion";
             this.textEditNumeroRetencion.Size = new System.Drawing.Size(392, 20);
-            this.textEditNumeroRetencion.TabIndex = 44;
+            this.textEditNumeroRetencion.TabIndex = 53;
             this.textEditNumeroRetencion.EditValueChanged += new System.EventHandler(this.textEditNumeroRetencion_EditValueChanged);
             // 
             // labelControl7
@@ -622,6 +618,26 @@
             this.groupControl1.Size = new System.Drawing.Size(1084, 336);
             this.groupControl1.TabIndex = 47;
             // 
+            // labelControl13
+            // 
+            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.labelControl13.Appearance.Options.UseFont = true;
+            this.labelControl13.Location = new System.Drawing.Point(340, 248);
+            this.labelControl13.Name = "labelControl13";
+            this.labelControl13.Size = new System.Drawing.Size(56, 14);
+            this.labelControl13.TabIndex = 70;
+            this.labelControl13.Text = "NUMERO:";
+            // 
+            // textEditNumeroNotaCredito
+            // 
+            this.textEditNumeroNotaCredito.Enabled = false;
+            this.textEditNumeroNotaCredito.Location = new System.Drawing.Point(411, 245);
+            this.textEditNumeroNotaCredito.Name = "textEditNumeroNotaCredito";
+            this.textEditNumeroNotaCredito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.textEditNumeroNotaCredito.Properties.Appearance.Options.UseFont = true;
+            this.textEditNumeroNotaCredito.Size = new System.Drawing.Size(389, 20);
+            this.textEditNumeroNotaCredito.TabIndex = 51;
+            // 
             // lookUpEditDiasRetencion
             // 
             this.lookUpEditDiasRetencion.Enabled = false;
@@ -637,6 +653,7 @@
             this.lookUpEditDiasRetencion.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasRetencion.Size = new System.Drawing.Size(100, 26);
             this.lookUpEditDiasRetencion.TabIndex = 63;
+            this.lookUpEditDiasRetencion.Visible = false;
             // 
             // labelControl12
             // 
@@ -647,6 +664,7 @@
             this.labelControl12.Size = new System.Drawing.Size(60, 14);
             this.labelControl12.TabIndex = 62;
             this.labelControl12.Text = "Crédito a:";
+            this.labelControl12.Visible = false;
             // 
             // textEditCreditoRetencion
             // 
@@ -666,6 +684,7 @@
             this.textEditCreditoRetencion.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoRetencion.Size = new System.Drawing.Size(57, 26);
             this.textEditCreditoRetencion.TabIndex = 61;
+            this.textEditCreditoRetencion.Visible = false;
             // 
             // lookUpEditDiasNotaCredito
             // 
@@ -682,6 +701,7 @@
             this.lookUpEditDiasNotaCredito.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasNotaCredito.Size = new System.Drawing.Size(100, 26);
             this.lookUpEditDiasNotaCredito.TabIndex = 60;
+            this.lookUpEditDiasNotaCredito.Visible = false;
             // 
             // labelControl11
             // 
@@ -692,6 +712,7 @@
             this.labelControl11.Size = new System.Drawing.Size(60, 14);
             this.labelControl11.TabIndex = 59;
             this.labelControl11.Text = "Crédito a:";
+            this.labelControl11.Visible = false;
             // 
             // textEditCreditoNotaCredito
             // 
@@ -711,6 +732,7 @@
             this.textEditCreditoNotaCredito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoNotaCredito.Size = new System.Drawing.Size(57, 26);
             this.textEditCreditoNotaCredito.TabIndex = 58;
+            this.textEditCreditoNotaCredito.Visible = false;
             // 
             // lookUpEditDiasDebito
             // 
@@ -727,6 +749,7 @@
             this.lookUpEditDiasDebito.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasDebito.Size = new System.Drawing.Size(100, 26);
             this.lookUpEditDiasDebito.TabIndex = 57;
+            this.lookUpEditDiasDebito.Visible = false;
             // 
             // labelControl10
             // 
@@ -737,6 +760,7 @@
             this.labelControl10.Size = new System.Drawing.Size(60, 14);
             this.labelControl10.TabIndex = 56;
             this.labelControl10.Text = "Crédito a:";
+            this.labelControl10.Visible = false;
             // 
             // textEditCreditoDebito
             // 
@@ -756,6 +780,7 @@
             this.textEditCreditoDebito.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoDebito.Size = new System.Drawing.Size(57, 26);
             this.textEditCreditoDebito.TabIndex = 55;
+            this.textEditCreditoDebito.Visible = false;
             // 
             // lookUpEditDiasCredito
             // 
@@ -771,7 +796,7 @@
             this.lookUpEditDiasCredito.Properties.DisplayMember = "DESCRIPCION";
             this.lookUpEditDiasCredito.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasCredito.Size = new System.Drawing.Size(100, 26);
-            this.lookUpEditDiasCredito.TabIndex = 54;
+            this.lookUpEditDiasCredito.TabIndex = 26;
             // 
             // labelControl9
             // 
@@ -800,7 +825,7 @@
             this.textEditCreditoTarjeta.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditCreditoTarjeta.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoTarjeta.Size = new System.Drawing.Size(57, 26);
-            this.textEditCreditoTarjeta.TabIndex = 52;
+            this.textEditCreditoTarjeta.TabIndex = 25;
             // 
             // lookUpEditDiasCheque
             // 
@@ -816,7 +841,7 @@
             this.lookUpEditDiasCheque.Properties.DisplayMember = "DESCRIPCION";
             this.lookUpEditDiasCheque.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasCheque.Size = new System.Drawing.Size(100, 26);
-            this.lookUpEditDiasCheque.TabIndex = 51;
+            this.lookUpEditDiasCheque.TabIndex = 6;
             // 
             // labelControl8
             // 
@@ -845,7 +870,7 @@
             this.textEditCreditoCheque.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
             this.textEditCreditoCheque.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoCheque.Size = new System.Drawing.Size(57, 26);
-            this.textEditCreditoCheque.TabIndex = 49;
+            this.textEditCreditoCheque.TabIndex = 5;
             // 
             // lookUpEditDiasEfectivo
             // 
@@ -861,6 +886,7 @@
             this.lookUpEditDiasEfectivo.Properties.ValueMember = "CODIGOUNIDADTIEMPO";
             this.lookUpEditDiasEfectivo.Size = new System.Drawing.Size(100, 26);
             this.lookUpEditDiasEfectivo.TabIndex = 48;
+            this.lookUpEditDiasEfectivo.Visible = false;
             // 
             // labelControl1
             // 
@@ -871,6 +897,7 @@
             this.labelControl1.Size = new System.Drawing.Size(60, 14);
             this.labelControl1.TabIndex = 47;
             this.labelControl1.Text = "Crédito a:";
+            this.labelControl1.Visible = false;
             // 
             // textEditCreditoEfectivo
             // 
@@ -889,6 +916,7 @@
             this.textEditCreditoEfectivo.Properties.Mask.UseMaskAsDisplayFormat = true;
             this.textEditCreditoEfectivo.Size = new System.Drawing.Size(57, 26);
             this.textEditCreditoEfectivo.TabIndex = 46;
+            this.textEditCreditoEfectivo.Visible = false;
             // 
             // separatorControl1
             // 
@@ -990,26 +1018,6 @@
             // 
             this.cOMPROBANTEFORMAPAGOBindingSource.DataSource = typeof(NastiAplicacion.Data.COMPROBANTEFORMAPAGO);
             // 
-            // textEditNumeroNotaCredito
-            // 
-            this.textEditNumeroNotaCredito.Enabled = false;
-            this.textEditNumeroNotaCredito.Location = new System.Drawing.Point(411, 245);
-            this.textEditNumeroNotaCredito.Name = "textEditNumeroNotaCredito";
-            this.textEditNumeroNotaCredito.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.textEditNumeroNotaCredito.Properties.Appearance.Options.UseFont = true;
-            this.textEditNumeroNotaCredito.Size = new System.Drawing.Size(389, 20);
-            this.textEditNumeroNotaCredito.TabIndex = 69;
-            // 
-            // labelControl13
-            // 
-            this.labelControl13.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
-            this.labelControl13.Appearance.Options.UseFont = true;
-            this.labelControl13.Location = new System.Drawing.Point(340, 248);
-            this.labelControl13.Name = "labelControl13";
-            this.labelControl13.Size = new System.Drawing.Size(56, 14);
-            this.labelControl13.TabIndex = 70;
-            this.labelControl13.Text = "NUMERO:";
-            // 
             // FormaPagoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1044,6 +1052,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditNumeroNotaCredito.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDiasRetencion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditCreditoRetencion.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditDiasNotaCredito.Properties)).EndInit();
@@ -1066,7 +1075,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoExEditInfAdicional.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditTotalAPagar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMPROBANTEFORMAPAGOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditNumeroNotaCredito.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

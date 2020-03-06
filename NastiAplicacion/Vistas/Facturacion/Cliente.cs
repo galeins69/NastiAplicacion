@@ -12,6 +12,7 @@ using NastiAplicacion.Data;
 using System.Media;
 using NastiAplicacion.Vistas.General;
 using NastiAplicacion.Vistas.SocioNegocio;
+using NastiAplicacion.General;
 
 namespace NastiAplicacion.Vistas.Facturacion
 {
@@ -49,7 +50,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             if (e.NewValue == null) return;
             if (e.NewValue.ToString().Length < 5) return;
-            SOCIONEGOCIO registro = fs.buscarSocioNegocio(e.NewValue.ToString());
+            SOCIONEGOCIO registro = fs.buscarSocioNegocio(e.NewValue.ToString(), CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA);
             if (registro != null)
                 this.bindingSource.DataSource = registro;
             else

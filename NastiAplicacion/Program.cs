@@ -6,8 +6,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
+using NastiAplicacion.Data;
 using NastiAplicacion.General;
+using NastiAplicacion.General.Generador;
 using NastiAplicacion.Reportes;
+using NastiAplicacion.Servicio;
+using NastiAplicacion.Utiles;
+using NastiAplicacion.Vistas.General;
 using NastiAplicacion.Vistas.SocioNegocio;
 
 namespace NastiAplicacion
@@ -21,8 +26,18 @@ namespace NastiAplicacion
         static void Main(string[] arguments)
         {
             WindowsFormsSettings.ApplyDemoSettings();
+
+            /*prueba para establecimiento*/
+            //FormEstablecimiento formEstablecimiento = new FormEstablecimiento(1);
+            //Application.Run(formEstablecimiento);
             //ReportView form = new ReportView();
             //Application.Run(form);
+            //COMPROBANTE comp = new FacturaServicio().getComprobante(4);
+            //GeneradorFactura generador = new GeneradorFactura(comp);
+            //generador.GenerarXML();
+            //Correo c = new Correo();
+            //c.enviarCorreo("robayo.galo@gmail.com");
+            /*pruena para aplicación general*/
             Application.Run(new LoginForm());
             DevExpress.Utils.LocalizationHelper.SetCurrentCulture(arguments);
             CultureInfo nastiCulture = (CultureInfo)Application.CurrentCulture.Clone();

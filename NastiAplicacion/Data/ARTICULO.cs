@@ -53,6 +53,7 @@ namespace NastiAplicacion.Data
         public string PRECIOVARIABLE { get; set; }
     
         public virtual EMPRESA EMPRESA { get; set; }
+        public virtual IMPUESTO IMPUESTO { get; set; }
         public virtual TIPOARTICULO TIPOARTICULO { get; set; }
         public virtual UNIDAD UNIDAD { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -67,6 +68,5 @@ namespace NastiAplicacion.Data
         public virtual ICollection<DETALLECOMPROBANTE> DETALLECOMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DETALLELISTADEPRECIO> DETALLELISTADEPRECIO { get; set; }
-        public virtual IMPUESTO IMPUESTO { get; set; }
     }
 }

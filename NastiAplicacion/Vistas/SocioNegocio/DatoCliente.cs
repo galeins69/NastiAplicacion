@@ -12,6 +12,7 @@ using DevExpress.XtraEditors.DXErrorProvider;
 using NastiAplicacion.Servicio;
 using NastiAplicacion.Vistas.General;
 using NastiAplicacion.Enumerador;
+using NastiAplicacion.General;
 
 namespace NastiAplicacion.Vistas.SocioNegocio
 {
@@ -89,7 +90,7 @@ namespace NastiAplicacion.Vistas.SocioNegocio
         public bool validarDocumentoCliente()
         {
             bindingSource.EndEdit();
-            SOCIONEGOCIO cliente = facturaServcio.buscarSocioNegocio(datoCliente.NUMERODOCUMENTO);
+            SOCIONEGOCIO cliente = facturaServcio.buscarSocioNegocio(datoCliente.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA);
             if (cliente != null)
             {
                 MessageBox.Show("Cliente con documento: " + cliente.NUMERODOCUMENTO + " ya existe");

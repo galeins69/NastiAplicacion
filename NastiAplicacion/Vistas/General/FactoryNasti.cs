@@ -50,17 +50,22 @@ namespace NastiAplicacion.Vistas.General
             IMetodosFactory IMetodosFactory = (IMetodosFactory)new MetodosFactory();
             if (nombreControl == "FacturaFormView")
             {
-                controlGeneralNasti = (ControlGeneralNasti)FacturaForm.getInstancia(IMetodosFactory);
+                controlGeneralNasti = (ControlGeneralNasti) new FacturaForm();
                 controlGeneralNasti.setDatosIniciales();
             }
             if (nombreControl == "ArticuloView")
             {
-                controlGeneralNasti = (ControlGeneralNasti)ArticuloView.getInstancia(IMetodosFactory);
+                controlGeneralNasti = (ControlGeneralNasti) new ArticuloView();
+                controlGeneralNasti.setDatosIniciales();
+            }
+            if (nombreControl == "EmpresaView")
+            {
+                controlGeneralNasti = (ControlGeneralNasti) new EmpresaForm();
                 controlGeneralNasti.setDatosIniciales();
             }
             if (nombreControl == "NastiReporteView")
             {
-                controlGeneralNasti = (ControlGeneralNasti)NastiReporteView.getInstancia(IMetodosFactory);
+                controlGeneralNasti = (ControlGeneralNasti) new NastiReporteView();
                 controlGeneralNasti.setDatosIniciales();
             }
             return controlGeneralNasti;

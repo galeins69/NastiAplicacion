@@ -24,6 +24,7 @@ namespace NastiAplicacion.Data
         }
     
         public long CODIGOSOCIONEGOCIO { get; set; }
+        public Nullable<long> CODIGOEMPRESA { get; set; }
         public string RAZONSOCIAL { get; set; }
         public string NUMERODOCUMENTO { get; set; }
         public string DIRECCION { get; set; }
@@ -43,7 +44,7 @@ namespace NastiAplicacion.Data
         public Nullable<System.DateTime> FECHANACIMIENTO { get; set; }
         public string NOMBRECOMERCIAL { get; set; }
         public Nullable<decimal> SUELDO { get; set; }
-        public Nullable<long> CODIGOTIPOIDENTIFICACION { get; set; }
+        public long CODIGOTIPOIDENTIFICACION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CLIENTE> CLIENTE { get; set; }
@@ -51,6 +52,7 @@ namespace NastiAplicacion.Data
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE1 { get; set; }
+        public virtual EMPRESA EMPRESA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LISTADEPRECIO> LISTADEPRECIO { get; set; }
         public virtual TIPOIDENTIFICACION TIPOIDENTIFICACION { get; set; }

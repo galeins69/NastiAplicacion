@@ -43,7 +43,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = false;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonAnular", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
-            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonFormaPago", true).FirstOrDefault();
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
         }
 
@@ -120,7 +120,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonAnular", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
-            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonFormaPago", true).FirstOrDefault();
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
@@ -175,6 +175,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         public EstadoAutorizado(ControlGeneralNasti controlComprobante)
         {
             this.controlComprobante = controlComprobante;
+           
         }
 
         public void anular()
@@ -196,8 +197,6 @@ namespace NastiAplicacion.Vistas.Facturacion
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonFormaPago", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonAnular", true).FirstOrDefault();
-            if (btn1 != null) btn1.Enabled = true;
-            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonFormaPago", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
@@ -319,6 +318,81 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             XtraMessageBox.Show("EL COMPROBANTE YA SE ENCUENTRA VALIDADO.");
 
+        }
+    }
+    class EstadoEmitido : IEstadoComprobante
+    {
+
+        ControlGeneralNasti controlComprobante;
+        String mensaje;
+
+        public EstadoEmitido(ControlGeneralNasti controlComprobante)
+        {
+            this.controlComprobante = controlComprobante;
+        }
+
+        public void anular()
+        {
+            this.controlComprobante.Anular();
+        }
+
+        public void asignarControles()
+        {
+            SimpleButton btn1;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonAutorizar", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonPendiente", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonNuevo", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonImprimir", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonFormaPago", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonAnular", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+        }
+
+        public void autorizar()
+        {
+            mensaje = "NO SE PUEDE AUTORIZAR UN DOCUMENTO PENDIENTE";
+        }
+
+        public void firmar()
+        {
+            mensaje = "NO SE PUEDE AUTORIZAR UN DOCUMENTO PENDIENTE";
+        }
+
+        public void generarXML()
+        {
+            mensaje = "NO SE PUEDE AUTORIZAR UN DOCUMENTO PENDIENTE";
+        }
+
+        public void grabar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void grabar(long codigoEstado)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void imprimir()
+        {
+            controlComprobante.Imprimir();
+        }
+
+        public void pendiente()
+        {
+            controlComprobante.GrabarPendiente();
+        }
+
+        public void validar()
+        {
+            controlComprobante.validarDatos();
         }
     }
     class EstadoNoAutorizado : IEstadoComprobante
@@ -457,7 +531,7 @@ namespace NastiAplicacion.Vistas.Facturacion
 
         public void grabar(long codigoEstado)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void imprimir()

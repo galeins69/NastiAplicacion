@@ -17,6 +17,7 @@ namespace NastiAplicacion.General.Modelo
         [XmlElement]
         public InfoTributaria infoTributaria;
         public InfoFactura infoFactura;
+        [XmlElement(ElementName = "detalles")]
         public Detalles detalles;
         public InfoAdicional infoAdicional;
     }
@@ -51,16 +52,20 @@ namespace NastiAplicacion.General.Modelo
         public String direccionComprador;
         public Decimal totalSinImpuestos;
         public Decimal totalDescuento;
+        [XmlElement(ElementName = "totalConImpuestos")]
         public TotalConImpuestos totalConImpuestos;
         public Decimal propina;
         public Decimal importeTotal;
         public String moneda;
         public String placa;
+        [XmlElement(ElementName = "pagos")]
         public Pagos pagos;
         public Compensaciones compensaciones;
     }
+
     public class TotalConImpuestos
     {
+        [XmlElement(ElementName = "totalImpuesto")]
         public List<TotalImpuesto> totalImpuesto;
 
         public List<TotalImpuesto> getTotalImpuesto()
@@ -73,6 +78,8 @@ namespace NastiAplicacion.General.Modelo
         }
 
     }
+
+
     public class TotalImpuesto
     {
         public String codigo;
@@ -80,12 +87,15 @@ namespace NastiAplicacion.General.Modelo
         public Decimal baseImponible;
         public Decimal tarifa;
         public Decimal valor;
+        [System.Xml.Serialization.XmlIgnoreAttribute]
         public Decimal descuentoAdicional;
+        [System.Xml.Serialization.XmlIgnoreAttribute]
         public Decimal valorDevolucionIva;
 
     }
     public class Pagos
     {
+        [XmlElement(ElementName = "pago")]
         public List<Pago> pago;
 
         public List<Pago> gePagos()
@@ -124,6 +134,7 @@ namespace NastiAplicacion.General.Modelo
     }
     public class Detalles
     {
+        [XmlElement(ElementName = "detalle")]
         public List<Detalle> detalle;
 
         public List<Detalle> getDetalle()
@@ -147,6 +158,7 @@ namespace NastiAplicacion.General.Modelo
         public Decimal descuento;
         public Decimal precioTotalSinImpuesto;
         public DetallesAdicionales detallesAdicionales;
+        [XmlElement(ElementName = "impuestos")]
         public Impuestos impuestos;
     }
     public class DetallesAdicionales
@@ -169,7 +181,7 @@ namespace NastiAplicacion.General.Modelo
     }
     public class Impuestos
     {
-
+        [XmlElement(ElementName = "impuesto")]
         public List<Impuesto> impuesto;
         public List<Impuesto> getImpuesto()
         {
@@ -191,6 +203,7 @@ namespace NastiAplicacion.General.Modelo
     }
     public class InfoAdicional
     {
+        [XmlElement(ElementName = "campoAdicional")]
         public List<CampoAdicional> campoAdicional;
         public List<CampoAdicional> getCampoAdicional()
         {
@@ -201,9 +214,13 @@ namespace NastiAplicacion.General.Modelo
             return this.campoAdicional;
         }
     }
+   
     public class CampoAdicional
     {
-        public String value;
+        [XmlText]
+         public String value;
+        [XmlAttribute]
         public String nombre;
+       
     }
 }

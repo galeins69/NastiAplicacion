@@ -13,6 +13,7 @@ namespace NastiAplicacion.Servicio
 
     class ArticuloServicio
     {
+
         KippaEntities kippaEntities = new KippaEntities();
 
 
@@ -150,7 +151,7 @@ namespace NastiAplicacion.Servicio
 
         public IEnumerable<BODEGASTOCK> getArticuloStock(long codigoEstablecimiento, string descripcion)
         {
-            return (from bodegastock in kippaEntities.BODEGASTOCK where bodegastock.BODEGA.CODIGOESTABLECIMIENTO == codigoEstablecimiento || SqlMethods.Like(bodegastock.ARTICULO.DESCRIPCION, '%' + descripcion + '%') select bodegastock).ToList();
+            return (from bodegastock in kippaEntities.BODEGASTOCK where bodegastock.BODEGA.CODIGOESTABLECIMIENTO == codigoEstablecimiento && bodegastock.ARTICULO.DESCRIPCION.Contains(descripcion) select bodegastock).Include("ARTICULO").Include("ARTICULO.IMPUESTO").ToList();
         }
     
     }

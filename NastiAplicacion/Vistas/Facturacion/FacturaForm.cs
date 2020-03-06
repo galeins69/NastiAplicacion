@@ -5,6 +5,7 @@ using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
 using NastiAplicacion.Data;
 using NastiAplicacion.General;
+using NastiAplicacion.General.Generador;
 using NastiAplicacion.Properties;
 using NastiAplicacion.Reportes;
 using NastiAplicacion.Servicio;
@@ -19,7 +20,8 @@ using System.Windows.Forms;
 
 namespace NastiAplicacion.Vistas.Facturacion
 {
-    public partial class FacturaForm : ControlGeneralNasti
+   public partial class FacturaForm : ControlGeneralNasti
+   //public partial class FacturaForm : UserControl
     {
         protected FacturaServicio facturaServicio = new FacturaServicio();
         private SOCIONEGOCIO socionegocioSeleccionado = new SOCIONEGOCIO();
@@ -35,15 +37,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         private long codigoEmpresa;
         private COMPROBANTE comprobante;
 
-
-        public static FacturaForm getInstancia(IMetodosFactory IMetodosFactory)
-        {
-            if (FacturaForm.instancia == null)
-                FacturaForm.instancia = new FacturaForm();
-            return FacturaForm.instancia;
-        }
-
-        public FacturaForm()
+public FacturaForm()
         {
             InitializeComponent();
             this.Name = nameof(FacturaForm);
@@ -55,65 +49,13 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.DatosIniciales();
         }
 
-        public void DatosIniciales()
-        {
-            this.Tag = (object)"FACTURA";
-            this.facturaServicio = new FacturaServicio();
-            this.socionegocioSeleccionado = new SOCIONEGOCIO();
-            this.detalleComprobanteList = new List<DETALLECOMPROBANTE>();
-            this.bindingListDetalleComprobante = new BindingList<DETALLECOMPROBANTE>((IList<DETALLECOMPROBANTE>)this.detalleComprobanteList);
-            this.codigoEmpresa = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
-            this.CODIGOTIPOCOMPROBANTELookUpEdit.Properties.DataSource = (object)this.facturaServicio.getTipoComprobante();
-            this.CODIGOESTABLECIMIENTOLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getEstablecimiento(this.codigoEmpresa);
-            this.CODIGOPUNTOEMISIONLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getPuntoEmision(CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
-            this.bindingSourceSocioNegocio.DataSource = (object)this.socionegocioSeleccionado;
-            this.DETALLECOMPROBANTEGridControl.DataSource = (object)this.bindingListDetalleComprobante;
-            this.CODIGOLISTADEPRECIOLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getListadoDePrecio(this.codigoEmpresa);
-            IEnumerable<LISTADEPRECIO> listadoDePrecio = this.facturaServicio.getListadoDePrecio(this.codigoEmpresa);
-            this.CODIGOLISTADEPRECIOLookUpEdit.Properties.DataSource = (object)listadoDePrecio;
-            this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.DataSource = (object)this.facturaServicio.getEstadoComprobante();
-            this.listadoBodega = this.facturaServicio.getBodega(this.codigoEmpresa, CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
-            this.CODIGOBODEGALookUpEdit.Properties.ValueMember = "CODIGOBODEGA";
-            this.CODIGOBODEGALookUpEdit.Properties.DisplayMember = "NOMBRE";
-            this.CODIGOBODEGALookUpEdit.Properties.DataSource = (object)this.listadoBodega;
-            this.comprobante = new COMPROBANTE();
-            this.comprobante.CODIGOPUNTOEMISION = CredencialUsuario.getInstancia().getPuntoDeEmision().CODIGOPUNTOEMISION;
-            this.comprobante.CODIGOESTABLECIMIENTO = CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO;
-            this.comprobante.FECHAEMISION = DateTime.Now;
-            this.comprobante.CODIGOTIPOCOMPROBANTE = 1L;
-            this.comprobante.CODIGOLISTADEPRECIO = new long?(listadoDePrecio.Min<LISTADEPRECIO>((Func<LISTADEPRECIO, long>)(x => x.CODIGOLISTADEPRECIO)));
-            this.comprobante.CODIGOESTADOCOMPROBANTE = 3L;
-            this.comprobante.CODIGOEMPRESA = this.codigoEmpresa;
-            this.comprobante.CODIGOBODEGA = new long?(this.listadoBodega.First<BODEGA>().CODIGOBODEGA);
-            this.cOMPROBANTEBindingSource.DataSource = (object)this.comprobante;
-            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(3L);
-            this.setcodigoEstado(3L);
-            this.limpiarErrores((Control)this);
-        }
-        public void IniciarImpuestos()
-        {
-            this.bindingListImpuestoComprobante = (BindingList<IMPUESTOCOMPROBANTE>)null;
-            this.impuestoComprobanteList = new List<IMPUESTOCOMPROBANTE>();
-            foreach (IMPUESTO impuesto in this.facturaServicio.getImpuestos(this.codigoEmpresa, 2L))
-                this.impuestoComprobanteList.Add(new IMPUESTOCOMPROBANTE()
-                {
-                    BASEIMPONIBLE = Decimal.Zero,
-                    CODIGOIMPUESTO = impuesto.CODIGOIMPUESTO,
-                    IMPUESTO = impuesto,
-                    PORCENTAJE = impuesto.PORCENTAJE / new Decimal(100),
-                    VALORIMPUESTO = Decimal.Zero
-                });
-            this.bindingListImpuestoComprobante = new BindingList<IMPUESTOCOMPROBANTE>((IList<IMPUESTOCOMPROBANTE>)this.impuestoComprobanteList);
-            this.IMPUESTOCOMPROBANTEGridControl.DataSource = (object)this.bindingListImpuestoComprobante;
-            this.gridViewImpuestoComprobante.UpdateTotalSummary();
-        }
-
+        #region Eventos
         private void textEditDocumento_EditValueChanged(object sender, EventArgs e)
         {
             BaseEdit baseEdit = (BaseEdit)sender;
             if (baseEdit.Text == "" || baseEdit.Text == null || baseEdit.Text.Length < 8)
                 return;
-            this.socionegocioSeleccionado = this.facturaServicio.buscarSocioNegocio(baseEdit.Text);
+            this.socionegocioSeleccionado = this.facturaServicio.buscarSocioNegocio(baseEdit.Text,this.codigoEmpresa);
             if (this.socionegocioSeleccionado == null)
             {
                 if (XtraMessageBox.Show("El cliente con documento " + baseEdit.EditValue + " no existe. Desea crearlo?", "Atención", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -126,7 +68,8 @@ namespace NastiAplicacion.Vistas.Facturacion
                 else
                     this.socionegocioSeleccionado = new SOCIONEGOCIO();
             }
-            this.bindingSourceSocioNegocio.DataSource = (object)this.socionegocioSeleccionado;
+            if (this.socionegocioSeleccionado!=null)
+                this.bindingSourceSocioNegocio.DataSource = (object)this.socionegocioSeleccionado;
         }
         private void textEditDocumento_ButtonClick(object sender, ButtonPressedEventArgs e)
         {
@@ -141,7 +84,6 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             this.EstadoComprobanteActual.pendiente();
         }
-
         private void buttonEdit1_EditValueChanged(object sender, EventArgs e)
         {
             if (sender == null)
@@ -284,7 +226,6 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             this.Insertar();
         }
-
         private void gridViewDetalleComprobante_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
             if (e.Column.FieldName == "CANTIDAD")
@@ -301,19 +242,16 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.gridViewDetalleComprobante.SetRowCellValue(e.RowHandle, "TOTAL", (object)((Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "BASEIMPONIBLE") + (Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "VALORIMPUESTO")));
             this.calcularImpuestos();
         }
-
         private void simpleButtonImprimir_Click(object sender, EventArgs e)
         {
             this.simpleButtonImprimir.Enabled = false;
             this.EstadoComprobanteActual.imprimir();
             this.simpleButtonImprimir.Enabled = true;
         }
-
         private void simpleButtonAutorizar_Click(object sender, EventArgs e)
         {
             this.EstadoComprobanteActual.autorizar();
         }
-
         private void DETALLECOMPROBANTEGridControl_ProcessGridKey(object sender, KeyEventArgs e)
         {
             GridView focusedView = (sender as GridControl).FocusedView as GridView;
@@ -326,7 +264,6 @@ namespace NastiAplicacion.Vistas.Facturacion
             }
             this.calcularImpuestos();
         }
-
         private void simpleButtonRecuperar_Click(object sender, EventArgs e)
         {
             RecuperarPendienteForm recuperarPendienteForm = new RecuperarPendienteForm();
@@ -347,14 +284,22 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.IMPUESTOCOMPROBANTEGridControl.EndUpdate();
             this.cOMPROBANTEBindingSource.EndEdit();
             this.calcularImpuestos();
-            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(10L);
+            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(3L);
         }
-
+        private void simpleButtonFormaPago_Click(object sender, EventArgs e)
+        {
+            int num = (int)new PagoForm(this.comprobante).ShowDialog();
+        }
+        private void simpleButtonAnular_Click(object sender, EventArgs e)
+        {
+            this.EstadoComprobanteActual.anular();
+            this.comprobante.CODIGOESTADOCOMPROBANTE = 9L;
+            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(9L);
+        }
         private Decimal getPrecio(long codigoListaDePrecio, long codigoArticulo, long? codigoSocioNegocio)
         {
             return this.facturaServicio.getPrecio(codigoListaDePrecio, codigoArticulo, codigoSocioNegocio);
         }
-
         private DETALLECOMPROBANTE existeArticulo(ARTICULO articulo, Decimal cantidad)
         {
             if (this.gridViewDetalleComprobante.DataRowCount == 0)
@@ -374,7 +319,63 @@ namespace NastiAplicacion.Vistas.Facturacion
             }
             return (DETALLECOMPROBANTE)null;
         }
+        #endregion Eventos
 
+        #region Métodos
+
+        public void DatosIniciales()
+        {
+            this.Tag = (object)"FACTURA";
+            this.facturaServicio = new FacturaServicio();
+            this.socionegocioSeleccionado = new SOCIONEGOCIO();
+            this.detalleComprobanteList = new List<DETALLECOMPROBANTE>();
+            this.bindingListDetalleComprobante = new BindingList<DETALLECOMPROBANTE>((IList<DETALLECOMPROBANTE>)this.detalleComprobanteList);
+            this.codigoEmpresa = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
+            this.CODIGOTIPOCOMPROBANTELookUpEdit.Properties.DataSource = (object)this.facturaServicio.getTipoComprobante();
+            this.CODIGOESTABLECIMIENTOLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getEstablecimiento(this.codigoEmpresa);
+            this.CODIGOPUNTOEMISIONLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getPuntoEmision(CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
+            this.bindingSourceSocioNegocio.DataSource = (object)this.socionegocioSeleccionado;
+            this.DETALLECOMPROBANTEGridControl.DataSource = (object)this.bindingListDetalleComprobante;
+            this.CODIGOLISTADEPRECIOLookUpEdit.Properties.DataSource = (object)this.facturaServicio.getListadoDePrecio(this.codigoEmpresa);
+            IEnumerable<LISTADEPRECIO> listadoDePrecio = this.facturaServicio.getListadoDePrecio(this.codigoEmpresa);
+            this.CODIGOLISTADEPRECIOLookUpEdit.Properties.DataSource = (object)listadoDePrecio;
+            this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.DataSource = (object)this.facturaServicio.getEstadoComprobante();
+            this.listadoBodega = this.facturaServicio.getBodega(this.codigoEmpresa, CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
+            this.CODIGOBODEGALookUpEdit.Properties.ValueMember = "CODIGOBODEGA";
+            this.CODIGOBODEGALookUpEdit.Properties.DisplayMember = "NOMBRE";
+            this.CODIGOBODEGALookUpEdit.Properties.DataSource = (object)this.listadoBodega;
+            this.comprobante = new COMPROBANTE();
+            this.comprobante.CODIGOPUNTOEMISION = CredencialUsuario.getInstancia().getPuntoDeEmision().CODIGOPUNTOEMISION;
+            this.comprobante.CODIGOESTABLECIMIENTO = CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO;
+            this.comprobante.FECHAEMISION = DateTime.Now;
+            this.comprobante.CODIGOTIPOCOMPROBANTE = 1L;
+            this.comprobante.CODIGOLISTADEPRECIO = new long?(listadoDePrecio.Min<LISTADEPRECIO>((Func<LISTADEPRECIO, long>)(x => x.CODIGOLISTADEPRECIO)));
+            this.comprobante.CODIGOESTADOCOMPROBANTE = 3L;
+            this.comprobante.CODIGOEMPRESA = this.codigoEmpresa;
+            this.comprobante.CODIGOBODEGA = new long?(this.listadoBodega.First<BODEGA>().CODIGOBODEGA);
+            this.cOMPROBANTEBindingSource.DataSource = (object)this.comprobante;
+            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(3L);
+            this.EstadoComprobanteActual.asignarControles();
+            this.setcodigoEstado(3L);
+            this.limpiarErrores((Control)this);
+        }
+        public void IniciarImpuestos()
+        {
+            this.bindingListImpuestoComprobante = (BindingList<IMPUESTOCOMPROBANTE>)null;
+            this.impuestoComprobanteList = new List<IMPUESTOCOMPROBANTE>();
+            foreach (IMPUESTO impuesto in this.facturaServicio.getImpuestos(this.codigoEmpresa, 2L))
+                this.impuestoComprobanteList.Add(new IMPUESTOCOMPROBANTE()
+                {
+                    BASEIMPONIBLE = Decimal.Zero,
+                    CODIGOIMPUESTO = impuesto.CODIGOIMPUESTO,
+                    IMPUESTO = impuesto,
+                    PORCENTAJE = impuesto.PORCENTAJE / new Decimal(100),
+                    VALORIMPUESTO = Decimal.Zero
+                });
+            this.bindingListImpuestoComprobante = new BindingList<IMPUESTOCOMPROBANTE>((IList<IMPUESTOCOMPROBANTE>)this.impuestoComprobanteList);
+            this.IMPUESTOCOMPROBANTEGridControl.DataSource = (object)this.bindingListImpuestoComprobante;
+            this.gridViewImpuestoComprobante.UpdateTotalSummary();
+        }
         public void calcularImpuestos()
         {
             this.TOTALTextEdit.EditValue = (object)0;
@@ -415,12 +416,10 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.comprobante.TOTAL = Math.Round(d1, 2);
             this.gridViewImpuestoComprobante.UpdateTotalSummary();
         }
-
         public override void Imprimir()
         {
             new ServicioImpresion().imprimir(1L, this.comprobante);
         }
-
         public override void GrabarPendiente()
         {
             this.simpleButtonPendiente.Enabled = false;
@@ -445,7 +444,6 @@ namespace NastiAplicacion.Vistas.Facturacion
                 this.simpleButtonPendiente.Enabled = true;
             }
         }
-
         public override void Grabar(long estado)
         {
             if (!this.validarDatos())
@@ -454,7 +452,6 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.comprobante.CODIGOESTADOCOMPROBANTE = estado;
             this.comprobante = this.facturaServicio.grabarComprobante(this.comprobante, this.detalleComprobanteList, this.impuestoComprobanteList, this.detalleFormaPago, this.socionegocioSeleccionado, CredencialUsuario.getInstancia(), (TIPOCOMPROBANTE)this.CODIGOTIPOCOMPROBANTELookUpEdit.GetSelectedDataRow());
         }
-
         public override bool validarDatos()
         {
             if (!this.dxValidationProvider1.Validate())
@@ -470,7 +467,6 @@ namespace NastiAplicacion.Vistas.Facturacion
             int num1 = (int)XtraMessageBox.Show("No existen impuestos para facturar");
             return false;
         }
-
         public override void Autorizar()
         {
             this.simpleButtonAutorizar.Enabled = false;
@@ -491,16 +487,25 @@ namespace NastiAplicacion.Vistas.Facturacion
                     if (formaPagoForm.DialogResult == DialogResult.OK)
                     {
                         this.detalleFormaPago = formaPagoForm.getComprobanteFormaPago();
-                        this.Grabar(7L);
+                        this.Grabar(6L);
                     }
                     this.comprobante.PUNTOEMISION = CredencialUsuario.getInstancia().getPuntoDeEmision();
+                    if (this.comprobante.PUNTOEMISION.ELECTRONICO.Equals("S"))
+                        this.autorizarSri(this.comprobante);
                     this.Imprimir();
                     this.simpleButtonAutorizar.Enabled = true;
                     this.DatosIniciales();
                 }
             }
         }
-
+        public void autorizarSri(COMPROBANTE comprobante)
+        {
+            COMPROBANTE comp = new FacturaServicio().getComprobante(comprobante.CODIGOCOMPROBANTE);
+            GeneradorFactura generador = new GeneradorFactura(comprobante);
+            generador.GenerarXML();
+            
+            
+        }
         public override void Anular()
         {
             if (XtraMessageBox.Show("Desea anular la factura " + (object)this.comprobante.NUMEROCOMPROBANTE + "?", "Atención", MessageBoxButtons.YesNo) != DialogResult.Yes)
@@ -508,15 +513,14 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.Grabar(9L);
             this.comprobante.CODIGOESTADOCOMPROBANTE = 9L;
             this.EstadoComprobanteActual = this.estadosComprobante.getEstado(9L);
+            this.EstadoComprobanteActual.asignarControles();
         }
-
         public override void Insertar()
         {
             if (XtraMessageBox.Show("Desea crear una nueva factura? ", "Atención", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
             this.DatosIniciales();
         }
-
         public override void Buscar()
         {
             FormBuscarComprobante buscarComprobante = new FormBuscarComprobante(1L);
@@ -536,20 +540,40 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.IMPUESTOCOMPROBANTEGridControl.EndUpdate();
             this.cOMPROBANTEBindingSource.EndEdit();
             this.EstadoComprobanteActual = this.estadosComprobante.getEstado(this.comprobante.CODIGOESTADOCOMPROBANTE);
+            this.EstadoComprobanteActual.asignarControles();
         }
+        #endregion Métodos
 
-        private void simpleButtonFormaPago_Click(object sender, EventArgs e)
+        private void simpleButtonReprocesar_Click(object sender, EventArgs e)
         {
-            int num = (int)new PagoForm(this.comprobante).ShowDialog();
+            GeneradorFactura generador = new GeneradorFactura(this.comprobante);
+            generador.GenerarXML();
+            if (generador.getRespuestaAutorizacion() == null)
+            {
+                XtraMessageBox.Show("NO SE PUDO AUTORIZAR COMPROBANTE");
+                return;
+            }
+            if (generador.getRespuestaAutorizacion().getAutorizaciones() == null)
+            {
+                XtraMessageBox.Show("NO EXISTE CONEXIÓN CON EL SRI O REVISE SU CONEXIÓN AL INTERNET.\nEL COMPROBANTE PUEDE SER IMPRESO.");
+                return;
+            }
+            if (generador.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getEstado().Equals("AUTORIZADO"))
+            {
+                XtraMessageBox.Show("COMPROBANTE AUTORIZADO");
+                this.EstadoComprobanteActual = this.estadosComprobante.getEstado(this.comprobante.CODIGOESTADOCOMPROBANTE);
+            }
+            else
+                XtraMessageBox.Show(generador.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getMensajes().getMensaje()[0].getMensaje());
+            this.comprobante = new FacturaServicio().getComprobante(this.comprobante.CODIGOCOMPROBANTE);
+            this.cOMPROBANTEBindingSource.DataSource = this.comprobante;
+            this.EstadoComprobanteActual.asignarControles();
         }
 
-        private void simpleButtonAnular_Click(object sender, EventArgs e)
+        private void CODIGOESTADOCOMPROBANTELookUpEdit_DoubleClick(object sender, EventArgs e)
         {
-            this.EstadoComprobanteActual.anular();
-            this.comprobante.CODIGOESTADOCOMPROBANTE = 9L;
-            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(9L);
+
         }
-
-
     }
 }
+

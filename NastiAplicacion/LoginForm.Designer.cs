@@ -42,12 +42,14 @@
             this.lookUpEditEstablecimiento = new DevExpress.XtraEditors.LookUpEdit();
             this.lookUpEditPuntoEmision = new DevExpress.XtraEditors.LookUpEdit();
             this.labelControlPuntoEmision = new DevExpress.XtraEditors.LabelControl();
+            this.uSUARIOEMPRESABindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.textEditUsuario.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClave.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEmpresa.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEstablecimiento.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPuntoEmision.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOEMPRESABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditUsuario
@@ -85,7 +87,7 @@
             // simpleButtonIngresar
             // 
             this.simpleButtonIngresar.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.simpleButtonIngresar.Location = new System.Drawing.Point(124, 185);
+            this.simpleButtonIngresar.Location = new System.Drawing.Point(137, 171);
             this.simpleButtonIngresar.Name = "simpleButtonIngresar";
             this.simpleButtonIngresar.Size = new System.Drawing.Size(93, 23);
             this.simpleButtonIngresar.TabIndex = 4;
@@ -95,7 +97,7 @@
             // simpleButtonSalir
             // 
             this.simpleButtonSalir.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Office2003;
-            this.simpleButtonSalir.Location = new System.Drawing.Point(223, 185);
+            this.simpleButtonSalir.Location = new System.Drawing.Point(236, 171);
             this.simpleButtonSalir.Name = "simpleButtonSalir";
             this.simpleButtonSalir.Size = new System.Drawing.Size(93, 23);
             this.simpleButtonSalir.TabIndex = 5;
@@ -156,7 +158,7 @@
             // 
             // lookUpEditPuntoEmision
             // 
-            this.lookUpEditPuntoEmision.Location = new System.Drawing.Point(117, 136);
+            this.lookUpEditPuntoEmision.Location = new System.Drawing.Point(117, 132);
             this.lookUpEditPuntoEmision.Name = "lookUpEditPuntoEmision";
             this.lookUpEditPuntoEmision.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -171,12 +173,16 @@
             // 
             // labelControlPuntoEmision
             // 
-            this.labelControlPuntoEmision.Location = new System.Drawing.Point(30, 139);
+            this.labelControlPuntoEmision.Location = new System.Drawing.Point(38, 135);
             this.labelControlPuntoEmision.Name = "labelControlPuntoEmision";
             this.labelControlPuntoEmision.Size = new System.Drawing.Size(70, 13);
             this.labelControlPuntoEmision.TabIndex = 11;
             this.labelControlPuntoEmision.Text = "Punto Emisión:";
             this.labelControlPuntoEmision.Visible = false;
+            // 
+            // uSUARIOEMPRESABindingSource
+            // 
+            this.uSUARIOEMPRESABindingSource.DataSource = typeof(NastiAplicacion.Data.USUARIOEMPRESA);
             // 
             // LoginForm
             // 
@@ -184,7 +190,7 @@
             this.ActiveGlowColor = System.Drawing.Color.White;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 239);
+            this.ClientSize = new System.Drawing.Size(414, 240);
             this.ControlBox = false;
             this.Controls.Add(this.lookUpEditPuntoEmision);
             this.Controls.Add(this.labelControlPuntoEmision);
@@ -213,6 +219,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEmpresa.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditEstablecimiento.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditPuntoEmision.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOEMPRESABindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,5 +240,6 @@
         private DevExpress.XtraEditors.LookUpEdit lookUpEditEstablecimiento;
         private DevExpress.XtraEditors.LookUpEdit lookUpEditPuntoEmision;
         private DevExpress.XtraEditors.LabelControl labelControlPuntoEmision;
+        private System.Windows.Forms.BindingSource uSUARIOEMPRESABindingSource;
     }
 }

@@ -4,6 +4,7 @@ using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraGrid.Views.Grid;
 using NastiAplicacion.Data;
+using NastiAplicacion.Enumerador;
 using NastiAplicacion.General;
 using NastiAplicacion.Servicio;
 using System;
@@ -38,7 +39,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.comprobanteFormaPago.VALOR = this.comprobante.TOTAL;
             comprobanteFormaPagoList.Add(this.comprobanteFormaPago);
             this.cOMPROBANTEFORMAPAGOBindingSource.DataSource = comprobanteFormaPagoList;
-
+            if (this.comprobante.ESTADOCOMPROBANTE.CODIGOESTADOCOMPROBANTE == (long)EnumEstadoComprobante.AUTORIZADO || this.comprobante.ESTADOCOMPROBANTE.CODIGOESTADOCOMPROBANTE == (long)EnumEstadoComprobante.ANULADO)
+                this.simpleButtonOK.Enabled = false;
         }
 
         private void PagoForm_Load(object sender, EventArgs e)

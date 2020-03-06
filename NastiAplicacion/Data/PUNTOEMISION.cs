@@ -27,6 +27,7 @@ namespace NastiAplicacion.Data
         public Nullable<long> CODIGOESTABLECIMIENTO { get; set; }
         public string ELECTRONICO { get; set; }
         public string DIRECTORIOREPORTES { get; set; }
+        public byte[] ARCHIVOREPORTE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTE> COMPROBANTE { get; set; }

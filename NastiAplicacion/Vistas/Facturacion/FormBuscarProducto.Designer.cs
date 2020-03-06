@@ -76,7 +76,7 @@
             // gridColumnCodigo
             // 
             this.gridColumnCodigo.Caption = "Código";
-            this.gridColumnCodigo.FieldName = "CODIGO";
+            this.gridColumnCodigo.FieldName = "ARTICULO.CODIGO";
             this.gridColumnCodigo.Name = "gridColumnCodigo";
             this.gridColumnCodigo.Visible = true;
             this.gridColumnCodigo.VisibleIndex = 0;
@@ -85,7 +85,7 @@
             // gridColumnDescripcion
             // 
             this.gridColumnDescripcion.Caption = "Descripción del producto";
-            this.gridColumnDescripcion.FieldName = "DESCRIPCION";
+            this.gridColumnDescripcion.FieldName = "ARTICULO.DESCRIPCION";
             this.gridColumnDescripcion.Name = "gridColumnDescripcion";
             this.gridColumnDescripcion.Visible = true;
             this.gridColumnDescripcion.VisibleIndex = 1;
@@ -94,7 +94,7 @@
             // gridColumn1
             // 
             this.gridColumn1.Caption = "Precio de venta";
-            this.gridColumn1.FieldName = "PRECIOVENTA";
+            this.gridColumn1.FieldName = "ARTICULO.PRECIOVENTA";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
             this.gridColumn1.VisibleIndex = 2;
@@ -103,7 +103,7 @@
             // gridColumnStock
             // 
             this.gridColumnStock.Caption = "Stock";
-            this.gridColumnStock.FieldName = "CANTIDAD";
+            this.gridColumnStock.FieldName = "ARTICULO.CANTIDAD";
             this.gridColumnStock.Name = "gridColumnStock";
             this.gridColumnStock.Visible = true;
             this.gridColumnStock.VisibleIndex = 3;

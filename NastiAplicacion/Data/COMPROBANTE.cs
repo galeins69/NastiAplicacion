@@ -46,8 +46,12 @@ namespace NastiAplicacion.Data
         public Nullable<decimal> VALORRECIBIDO { get; set; }
         public Nullable<decimal> CAMBIO { get; set; }
         public Nullable<long> CODIGOBODEGA { get; set; }
+        public string NOVEDAD { get; set; }
+        public Nullable<System.DateTime> FECHAAUTORIZACION { get; set; }
+        public Nullable<long> CODIGOEJERCICIOFISCAL { get; set; }
     
         public virtual BODEGA BODEGA { get; set; }
+        public virtual EJERCICIOFISCAL EJERCICIOFISCAL { get; set; }
         public virtual ESTADOCOMPROBANTE ESTADOCOMPROBANTE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMPROBANTEFORMAPAGO> COMPROBANTEFORMAPAGO { get; set; }

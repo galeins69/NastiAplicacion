@@ -36,6 +36,16 @@ namespace NastiAplicacion.Vistas.General
         {
 
         }
+
+        private void progressPanel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void setTexto(string texto)
+        {
+            this.progressPanel1.Caption = texto + ". Espere por favor..";
+        }
     }
 }
   

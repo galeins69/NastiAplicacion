@@ -427,6 +427,11 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.DialogResult = DialogResult.None;
             this.Close();
         }
+
+        private void textEditRecibido_EditValueChanged(object sender, EventArgs e)
+        {
+            this.textEditCambio.EditValue =  Convert.ToDecimal(((TextEdit)sender).EditValue) - Convert.ToDecimal(this.textEditEfectivo.EditValue);
+        }
     }
 
 }

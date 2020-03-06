@@ -18,7 +18,7 @@ using NastiAplicacion.Enumerador;
 namespace NastiAplicacion.Vistas.Facturacion
 {
 
-   //public  partial class FacturaView :UserControl 
+  // public  partial class FacturaView :UserControl 
     public partial class FacturaView : ControlGeneralNasti
     {
         private static FacturaView instancia;
@@ -26,7 +26,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         private EMPRESA empresaSelecionada = CredencialUsuario.getInstancia().getEmpresaSeleccionada();
         private SOCIONEGOCIO socionegocioSeleccionado = new SOCIONEGOCIO();
         private BindingSource bindingSourceSocioNegocio = new BindingSource();
-        private IEnumerable<V_SOCIONEGOCIO> listaVendedores;
+        private IEnumerable<SOCIONEGOCIO> listaVendedores;
         private IEnumerable<LISTADEPRECIO> listaPrecios;
         private IEnumerable<BODEGA> listaBodegas;
 
@@ -47,7 +47,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             listaVendedores= facturaServicio.getVendedores(empresaSelecionada.CODIGOEMPRESA);
             listaPrecios = facturaServicio.getListadoDePrecio(empresaSelecionada.CODIGOEMPRESA);
-            listaBodegas = facturaServicio.getBodega(empresaSelecionada.CODIGOEMPRESA);
+            listaBodegas = facturaServicio.getBodega(empresaSelecionada.CODIGOEMPRESA, CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
             this.textEditEstablecimiento.EditValue = CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().NUMERO;
             this.textEditPuntoEmision.EditValue = CredencialUsuario.getInstancia().getPuntoDeEmision().NOMBRE;
             this.dateEditFechaEmision.EditValue = DateTime.Now;
@@ -55,7 +55,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.lookUpEditVendedor.Properties.DisplayMember = "RAZONSOCIAL";
             this.lookUpEditVendedor.Properties.DataSource = listaVendedores;
             if (listaVendedores.Count()>0)
-                this.lookUpEditVendedor.EditValue = listaVendedores.First().CODIGO;
+                this.lookUpEditVendedor.EditValue = listaVendedores.First().CODIGOSOCIONEGOCIO;
             this.lookUpEditListaDePrecio.Properties.ValueMember = "CODIGOLISTADEPRECIO";
             this.lookUpEditListaDePrecio.Properties.DisplayMember = "DESCRIPCION";
             this.lookUpEditListaDePrecio.Properties.DataSource = listaPrecios;
@@ -87,7 +87,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             BaseEdit edit = (BaseEdit)sender;
             if (edit.Text == "") return;
             Utiles.Utiles util = new Utiles.Utiles();
-            socionegocioSeleccionado = facturaServicio.buscarSocioNegocio(edit.Text);
+            socionegocioSeleccionado = facturaServicio.buscarSocioNegocio(edit.Text,empresaSelecionada.CODIGOEMPRESA);
             if (socionegocioSeleccionado == null)
             {
                 socionegocioSeleccionado = new SOCIONEGOCIO();

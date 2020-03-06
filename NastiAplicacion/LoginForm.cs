@@ -80,11 +80,17 @@ namespace NastiAplicacion
                 }
                 else
                 {
+                    if (credencial.getEmpresas().Count()==1)
+                    {
+                        credencial.setEmpresaSeleccionada(credencial.getEmpresas().First());
+                    }
+
                     this.lookUpEditEmpresa.Properties.DataSource = credencial.getEmpresas();
                     this.lookUpEditEmpresa.Properties.DisplayMember = "NOMBRECOMERCIAL";
                     this.lookUpEditEmpresa.Properties.ValueMember = "CODIGOEMPRESA";
                     this.lookUpEditEmpresa.Visible = true;
                     this.labelControlEmpresa.Visible = true;
+                    this.lookUpEditEmpresa.EditValue = credencial.getEmpresaSeleccionada().CODIGOEMPRESA;
                     notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
                     notEmptyValidationRule.ErrorText = "Seleccione una empresa";
                     dxValidationProvider1.SetValidationRule(this.lookUpEditEmpresa, notEmptyValidationRule);
@@ -93,7 +99,7 @@ namespace NastiAplicacion
             else
                 DevExpress.XtraEditors.XtraMessageBox.Show("Nombre de usuario o clave incorrecta.", "Atención");
 
-            if (credencial.getUsuario() != null && credencial.getEmpresas() != null && credencial.getEmpresaSeleccionada()!=null)
+            if (credencial.getUsuario() != null && credencial.getEmpresas() != null && credencial.getEmpresaSeleccionada()!=null && credencial.getEstablecimientoSeleccionado()!=null && credencial.getPuntoDeEmision()!=null)
                 this.Close();
 
         }
@@ -102,7 +108,8 @@ namespace NastiAplicacion
         {
             
             credencial.setEmpresaSeleccionada((EMPRESA)((DevExpress.XtraEditors.LookUpEdit)sender).GetSelectedDataRow());
-            this.lookUpEditEstablecimiento.Properties.DataSource = this.loginServicio.getEstablecientoPorEmpresa(credencial.getEmpresaSeleccionada().CODIGOEMPRESA);
+            IEnumerable<ESTABLECIMIENTO> listaPuntoEmimsion= this.loginServicio.getEstablecientoPorEmpresa(credencial.getEmpresaSeleccionada().CODIGOEMPRESA); ;
+            this.lookUpEditEstablecimiento.Properties.DataSource = listaPuntoEmimsion;
             this.lookUpEditEstablecimiento.Properties.DisplayMember = "NUMERO";
             this.lookUpEditEstablecimiento.Properties.ValueMember = "CODIGOESTABLECIMIENTO";
             this.lookUpEditEstablecimiento.Visible = true;
@@ -110,6 +117,8 @@ namespace NastiAplicacion
             notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
             notEmptyValidationRule.ErrorText = "Seleccione un establecimiento";
             dxValidationProvider1.SetValidationRule(this.lookUpEditEstablecimiento, notEmptyValidationRule);
+            if (listaPuntoEmimsion.Count() == 1)
+                this.lookUpEditEstablecimiento.EditValue = listaPuntoEmimsion.First().CODIGOESTABLECIMIENTO;
         }
 
         
@@ -117,7 +126,8 @@ namespace NastiAplicacion
         private void lookUpEditEstablecimiento_EditValueChanged(object sender, EventArgs e)
         {
             credencial.setEstablecimientoSeleccionado((ESTABLECIMIENTO)((DevExpress.XtraEditors.LookUpEdit)sender).GetSelectedDataRow());
-            this.lookUpEditPuntoEmision.Properties.DataSource = this.loginServicio.getPuntoEmisionPorEstablecimiento(credencial.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
+            IEnumerable<PUNTOEMISION> listaPuntosEmision = this.loginServicio.getPuntoEmisionPorEstablecimiento(credencial.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO);
+            this.lookUpEditPuntoEmision.Properties.DataSource = listaPuntosEmision;
             this.lookUpEditPuntoEmision.Properties.DisplayMember = "NOMBRE";
             this.lookUpEditPuntoEmision.Properties.ValueMember = "CODIGOPUNTOEMISION";
             this.lookUpEditPuntoEmision.Visible = true;
@@ -125,6 +135,10 @@ namespace NastiAplicacion
             notEmptyValidationRule.ConditionOperator = ConditionOperator.IsNotBlank;
             notEmptyValidationRule.ErrorText = "Seleccione un punto de emisión";
             dxValidationProvider1.SetValidationRule(this.lookUpEditPuntoEmision, notEmptyValidationRule);
+            if (listaPuntosEmision.Count()==1)
+            {
+                this.lookUpEditPuntoEmision.EditValue = listaPuntosEmision.First().CODIGOPUNTOEMISION;
+            }
 
         }
 

@@ -108,7 +108,8 @@ namespace NastiAplicacion.Vistas.Facturacion
                 {
                     if (!verificarCabecera(cabecera, row))
                     {
-                        MessageBox.Show("Archivo excel no cumple con el formato adecuado.");
+                        progres.Hide();
+                       MessageBox.Show("Archivo excel no cumple con el formato adecuado.");
                         return;
                     }
                 }
@@ -139,7 +140,7 @@ namespace NastiAplicacion.Vistas.Facturacion
                     }
                     catch (Exception ex)
                     {
-
+                        XtraMessageBox.Show(ex.ToString());
                     }
                 }
                 i++;

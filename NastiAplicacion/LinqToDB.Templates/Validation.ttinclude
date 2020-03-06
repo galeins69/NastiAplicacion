@@ -23,7 +23,9 @@ void ValidationImpl()
 		if (props.Count > 0)
 		{
 			if (!Model.Usings.Contains("System.Collections.Generic"))
+			{
 				Model.Usings.Add("System.Collections.Generic");
+			}
 
 			var isValid      = new Method(() => "bool", "IsValid", new Func<string>[] { () => cl.Name + " obj" }) { IsStatic = true };
 			var validator    = new Class("CustomValidator", isValid) { IsStatic = true, };
@@ -54,7 +56,7 @@ void ValidationImpl()
 				cl.Attributes.Add(
 					new Attribute("CustomValidation",
 						"typeof(" + cl.Name + ".CustomValidator)",
-						"\"" + mname + "\"")
+						ToStringLiteral(mname))
 						{
 							IsSeparated = true
 						});
@@ -67,7 +69,7 @@ void ValidationImpl()
 				var validate = new Method(() => "ValidationResult", mname,
 					new Func<string>[] { () => cl.Name + " obj", () => p.BuildType().Trim() + " value" }) { IsStatic = true };
 
-				validate.BodyBuilders.Add(() => new [] 
+				validate.BodyBuilders.Add(() => new []
 				{
 					"var list = new List<ValidationResult>();",
 					"",

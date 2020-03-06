@@ -1,5 +1,6 @@
 ﻿using NastiAplicacion.Data;
 using NastiAplicacion.Enumerador;
+using NastiAplicacion.General;
 using NastiAplicacion.Servicio;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace NastiAplicacion.Vistas.SocioNegocio
         public bool validarDocumentoCliente()
         {
             this.sOCIONEGOCIOBindingSource.EndEdit();
-            SOCIONEGOCIO cliente = facturaServcio.buscarSocioNegocio(DatoCliente.NUMERODOCUMENTO);
+            SOCIONEGOCIO cliente = facturaServcio.buscarSocioNegocio(DatoCliente.NUMERODOCUMENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA);
             if (cliente != null)
             {
                 MessageBox.Show("Cliente con documento: " + cliente.NUMERODOCUMENTO + " ya existe");
