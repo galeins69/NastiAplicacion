@@ -285,6 +285,7 @@ public FacturaForm()
             this.cOMPROBANTEBindingSource.EndEdit();
             this.calcularImpuestos();
             this.EstadoComprobanteActual = this.estadosComprobante.getEstado(3L);
+            this.EstadoComprobanteActual.asignarControles();
         }
         private void simpleButtonFormaPago_Click(object sender, EventArgs e)
         {
@@ -573,6 +574,11 @@ public FacturaForm()
         private void CODIGOESTADOCOMPROBANTELookUpEdit_DoubleClick(object sender, EventArgs e)
         {
 
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            this.Buscar();
         }
     }
 }

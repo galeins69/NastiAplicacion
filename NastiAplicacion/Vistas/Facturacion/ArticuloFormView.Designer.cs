@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule12 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule3 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
@@ -39,7 +40,6 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule8 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule9 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule10 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule11 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
@@ -97,6 +97,21 @@
             this.ItemForGRAFICO = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSECCION = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.simpleButtonAutorizar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonAnular = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonReprocesar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonPendiente = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonRecuperar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonFormaPago = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonNuevo = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonImprimir = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
@@ -158,6 +173,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForGRAFICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSECCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -167,16 +186,17 @@
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
             this.xtraTabControl1.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabControl1.Size = new System.Drawing.Size(789, 535);
+            this.xtraTabControl1.Size = new System.Drawing.Size(929, 535);
             this.xtraTabControl1.TabIndex = 0;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
             // 
             // xtraTabPage1
             // 
+            this.xtraTabPage1.Controls.Add(this.groupControl2);
             this.xtraTabPage1.Controls.Add(this.dataLayoutControl1);
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(787, 533);
+            this.xtraTabPage1.Size = new System.Drawing.Size(927, 533);
             this.xtraTabPage1.Text = "sd";
             // 
             // dataLayoutControl1
@@ -204,6 +224,7 @@
             this.dataLayoutControl1.Controls.Add(this.SOLOCOMPRASTextEdit);
             this.dataLayoutControl1.Controls.Add(this.ESTADOTextEdit);
             this.dataLayoutControl1.Controls.Add(this.GRAFICOPictureEdit);
+            this.dataLayoutControl1.Controls.Add(this.groupControl1);
             this.dataLayoutControl1.DataSource = this.aRTICULOBindingSource;
             this.dataLayoutControl1.Location = new System.Drawing.Point(3, 3);
             this.dataLayoutControl1.Name = "dataLayoutControl1";
@@ -237,10 +258,10 @@
             this.CODIGOTextEdit.Size = new System.Drawing.Size(237, 20);
             this.CODIGOTextEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOTextEdit.TabIndex = 5;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "INGRESE UN CODIGO PARA EL PRODUCTO";
-            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.CODIGOTextEdit, conditionValidationRule1);
+            conditionValidationRule12.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule12.ErrorText = "INGRESE UN CODIGO PARA EL PRODUCTO";
+            conditionValidationRule12.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.CODIGOTextEdit, conditionValidationRule12);
             // 
             // DESCRIPCIONTextEdit
             // 
@@ -251,10 +272,10 @@
             this.DESCRIPCIONTextEdit.Size = new System.Drawing.Size(610, 20);
             this.DESCRIPCIONTextEdit.StyleController = this.dataLayoutControl1;
             this.DESCRIPCIONTextEdit.TabIndex = 7;
-            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule2.ErrorText = "Ingrese un nombre para el producto";
-            conditionValidationRule2.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.DESCRIPCIONTextEdit, conditionValidationRule2);
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "Ingrese un nombre para el producto";
+            conditionValidationRule1.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.DESCRIPCIONTextEdit, conditionValidationRule1);
             // 
             // COSTOTextEdit
             // 
@@ -269,10 +290,10 @@
             this.COSTOTextEdit.Size = new System.Drawing.Size(238, 20);
             this.COSTOTextEdit.StyleController = this.dataLayoutControl1;
             this.COSTOTextEdit.TabIndex = 13;
-            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
-            conditionValidationRule3.ErrorText = "El costo debe ser mayo a 0 (cero)";
-            conditionValidationRule3.Value1 = "0";
-            this.dxValidationProvider1.SetValidationRule(this.COSTOTextEdit, conditionValidationRule3);
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
+            conditionValidationRule2.ErrorText = "El costo debe ser mayo a 0 (cero)";
+            conditionValidationRule2.Value1 = "0";
+            this.dxValidationProvider1.SetValidationRule(this.COSTOTextEdit, conditionValidationRule2);
             // 
             // PRECIOVENTATextEdit
             // 
@@ -287,10 +308,10 @@
             this.PRECIOVENTATextEdit.Size = new System.Drawing.Size(236, 20);
             this.PRECIOVENTATextEdit.StyleController = this.dataLayoutControl1;
             this.PRECIOVENTATextEdit.TabIndex = 8;
-            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
-            conditionValidationRule4.ErrorText = "EL precio de venta debe ser mayor a 0 (cero)";
-            conditionValidationRule4.Value1 = "0";
-            this.dxValidationProvider1.SetValidationRule(this.PRECIOVENTATextEdit, conditionValidationRule4);
+            conditionValidationRule3.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
+            conditionValidationRule3.ErrorText = "EL precio de venta debe ser mayor a 0 (cero)";
+            conditionValidationRule3.Value1 = "0";
+            this.dxValidationProvider1.SetValidationRule(this.PRECIOVENTATextEdit, conditionValidationRule3);
             // 
             // CANTIDADTextEdit
             // 
@@ -305,10 +326,10 @@
             this.CANTIDADTextEdit.Size = new System.Drawing.Size(238, 20);
             this.CANTIDADTextEdit.StyleController = this.dataLayoutControl1;
             this.CANTIDADTextEdit.TabIndex = 9;
-            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
-            conditionValidationRule5.ErrorText = "La cantidad no debe ser negativa";
-            conditionValidationRule5.Value1 = "0";
-            this.dxValidationProvider1.SetValidationRule(this.CANTIDADTextEdit, conditionValidationRule5);
+            conditionValidationRule4.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
+            conditionValidationRule4.ErrorText = "La cantidad no debe ser negativa";
+            conditionValidationRule4.Value1 = "0";
+            this.dxValidationProvider1.SetValidationRule(this.CANTIDADTextEdit, conditionValidationRule4);
             // 
             // CODIGOIMPUESTOLookUpEdit
             // 
@@ -326,10 +347,10 @@
             this.CODIGOIMPUESTOLookUpEdit.Size = new System.Drawing.Size(236, 20);
             this.CODIGOIMPUESTOLookUpEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOIMPUESTOLookUpEdit.TabIndex = 10;
-            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule6.ErrorText = "Seleccione un imuesto";
-            conditionValidationRule6.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.CODIGOIMPUESTOLookUpEdit, conditionValidationRule6);
+            conditionValidationRule5.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule5.ErrorText = "Seleccione un imuesto";
+            conditionValidationRule5.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.CODIGOIMPUESTOLookUpEdit, conditionValidationRule5);
             // 
             // SECCIONTextEdit
             // 
@@ -385,10 +406,10 @@
             this.SALDOINICIALTextEdit.Size = new System.Drawing.Size(236, 20);
             this.SALDOINICIALTextEdit.StyleController = this.dataLayoutControl1;
             this.SALDOINICIALTextEdit.TabIndex = 12;
-            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
-            conditionValidationRule7.ErrorText = "El saldo inicial debe ser mayor a 0 (cero)";
-            conditionValidationRule7.Value1 = "0";
-            this.dxValidationProvider1.SetValidationRule(this.SALDOINICIALTextEdit, conditionValidationRule7);
+            conditionValidationRule6.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.GreaterOrEqual;
+            conditionValidationRule6.ErrorText = "El saldo inicial debe ser mayor a 0 (cero)";
+            conditionValidationRule6.Value1 = "0";
+            this.dxValidationProvider1.SetValidationRule(this.SALDOINICIALTextEdit, conditionValidationRule6);
             // 
             // DESCRIPCIONCORTATextEdit
             // 
@@ -446,9 +467,9 @@
             this.CODIGOTIPOARTICULOLookUpEdit.Size = new System.Drawing.Size(238, 20);
             this.CODIGOTIPOARTICULOLookUpEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOTIPOARTICULOLookUpEdit.TabIndex = 11;
-            conditionValidationRule8.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule8.ErrorText = "Seleccione un tipo de artículo";
-            this.dxValidationProvider1.SetValidationRule(this.CODIGOTIPOARTICULOLookUpEdit, conditionValidationRule8);
+            conditionValidationRule7.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule7.ErrorText = "Seleccione un tipo de artículo";
+            this.dxValidationProvider1.SetValidationRule(this.CODIGOTIPOARTICULOLookUpEdit, conditionValidationRule7);
             // 
             // VENTASCheckEdit
             // 
@@ -462,11 +483,11 @@
             this.VENTASCheckEdit.Size = new System.Drawing.Size(298, 19);
             this.VENTASCheckEdit.StyleController = this.dataLayoutControl1;
             this.VENTASCheckEdit.TabIndex = 20;
-            conditionValidationRule9.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.AnyOf;
-            conditionValidationRule9.ErrorText = "Seleccione si es visible en ventas";
-            conditionValidationRule9.Values.Add("S");
-            conditionValidationRule9.Values.Add("N");
-            this.dxValidationProvider1.SetValidationRule(this.VENTASCheckEdit, conditionValidationRule9);
+            conditionValidationRule8.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.AnyOf;
+            conditionValidationRule8.ErrorText = "Seleccione si es visible en ventas";
+            conditionValidationRule8.Values.Add("S");
+            conditionValidationRule8.Values.Add("N");
+            this.dxValidationProvider1.SetValidationRule(this.VENTASCheckEdit, conditionValidationRule8);
             // 
             // INVENTARIOCheckEdit
             // 
@@ -500,10 +521,10 @@
             this.CODIGOUNIDADLookUpEdit.Size = new System.Drawing.Size(237, 20);
             this.CODIGOUNIDADLookUpEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOUNIDADLookUpEdit.TabIndex = 6;
-            conditionValidationRule10.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule10.ErrorText = "Seleccione una unidad de medida";
-            conditionValidationRule10.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
-            this.dxValidationProvider1.SetValidationRule(this.CODIGOUNIDADLookUpEdit, conditionValidationRule10);
+            conditionValidationRule9.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule9.ErrorText = "Seleccione una unidad de medida";
+            conditionValidationRule9.ErrorType = DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical;
+            this.dxValidationProvider1.SetValidationRule(this.CODIGOUNIDADLookUpEdit, conditionValidationRule9);
             // 
             // FECHACREACIONDateEdit
             // 
@@ -550,11 +571,11 @@
             this.SOLOCOMPRASTextEdit.Size = new System.Drawing.Size(299, 19);
             this.SOLOCOMPRASTextEdit.StyleController = this.dataLayoutControl1;
             this.SOLOCOMPRASTextEdit.TabIndex = 19;
-            conditionValidationRule11.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.AnyOf;
-            conditionValidationRule11.ErrorText = "Seleccione si es visible en compras";
-            conditionValidationRule11.Values.Add("S");
-            conditionValidationRule11.Values.Add("N");
-            this.dxValidationProvider1.SetValidationRule(this.SOLOCOMPRASTextEdit, conditionValidationRule11);
+            conditionValidationRule10.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.AnyOf;
+            conditionValidationRule10.ErrorText = "Seleccione si es visible en compras";
+            conditionValidationRule10.Values.Add("S");
+            conditionValidationRule10.Values.Add("N");
+            this.dxValidationProvider1.SetValidationRule(this.SOLOCOMPRASTextEdit, conditionValidationRule10);
             // 
             // ESTADOTextEdit
             // 
@@ -875,6 +896,161 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
+            // simpleButtonAutorizar
+            // 
+            this.simpleButtonAutorizar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
+            this.simpleButtonAutorizar.Location = new System.Drawing.Point(4, 65);
+            this.simpleButtonAutorizar.Name = "simpleButtonAutorizar";
+            this.simpleButtonAutorizar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonAutorizar.TabIndex = 1;
+            this.simpleButtonAutorizar.Text = "Autorizar";
+            // 
+            // simpleButtonAnular
+            // 
+            this.simpleButtonAnular.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
+            this.simpleButtonAnular.Location = new System.Drawing.Point(4, 401);
+            this.simpleButtonAnular.Name = "simpleButtonAnular";
+            this.simpleButtonAnular.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonAnular.TabIndex = 8;
+            this.simpleButtonAnular.Text = "Anular";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Controls.Add(this.simpleButtonReprocesar);
+            this.groupControl1.Controls.Add(this.simpleButtonAutorizar);
+            this.groupControl1.Controls.Add(this.simpleButtonPendiente);
+            this.groupControl1.Controls.Add(this.simpleButtonAnular);
+            this.groupControl1.Controls.Add(this.simpleButtonRecuperar);
+            this.groupControl1.Controls.Add(this.simpleButtonFormaPago);
+            this.groupControl1.Controls.Add(this.simpleButtonNuevo);
+            this.groupControl1.Controls.Add(this.simpleButtonImprimir);
+            this.groupControl1.Location = new System.Drawing.Point(12, 475);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.ShowCaption = false;
+            this.groupControl1.Size = new System.Drawing.Size(766, 54);
+            this.groupControl1.TabIndex = 10;
+            this.groupControl1.Text = "Comandos";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
+            this.simpleButton1.Location = new System.Drawing.Point(4, 9);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton1.TabIndex = 10;
+            this.simpleButton1.Text = "Buscar";
+            // 
+            // simpleButtonReprocesar
+            // 
+            this.simpleButtonReprocesar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.drilldown_32x32;
+            this.simpleButtonReprocesar.Location = new System.Drawing.Point(4, 457);
+            this.simpleButtonReprocesar.Name = "simpleButtonReprocesar";
+            this.simpleButtonReprocesar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonReprocesar.TabIndex = 9;
+            this.simpleButtonReprocesar.Text = "Reprocesar";
+            // 
+            // simpleButtonPendiente
+            // 
+            this.simpleButtonPendiente.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.converttorange_32x32;
+            this.simpleButtonPendiente.Location = new System.Drawing.Point(4, 121);
+            this.simpleButtonPendiente.Name = "simpleButtonPendiente";
+            this.simpleButtonPendiente.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonPendiente.TabIndex = 3;
+            this.simpleButtonPendiente.Text = "Pendiente";
+            // 
+            // simpleButtonRecuperar
+            // 
+            this.simpleButtonRecuperar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.loadfrom_32x32;
+            this.simpleButtonRecuperar.Location = new System.Drawing.Point(4, 177);
+            this.simpleButtonRecuperar.Name = "simpleButtonRecuperar";
+            this.simpleButtonRecuperar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonRecuperar.TabIndex = 4;
+            this.simpleButtonRecuperar.Text = "Recuperar";
+            // 
+            // simpleButtonFormaPago
+            // 
+            this.simpleButtonFormaPago.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.financial_32x32;
+            this.simpleButtonFormaPago.Location = new System.Drawing.Point(4, 345);
+            this.simpleButtonFormaPago.Name = "simpleButtonFormaPago";
+            this.simpleButtonFormaPago.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonFormaPago.TabIndex = 7;
+            this.simpleButtonFormaPago.Text = "Formas pago";
+            // 
+            // simpleButtonNuevo
+            // 
+            this.simpleButtonNuevo.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.add_32x32;
+            this.simpleButtonNuevo.Location = new System.Drawing.Point(4, 233);
+            this.simpleButtonNuevo.Name = "simpleButtonNuevo";
+            this.simpleButtonNuevo.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonNuevo.TabIndex = 5;
+            this.simpleButtonNuevo.Text = "Nuevo";
+            // 
+            // simpleButtonImprimir
+            // 
+            this.simpleButtonImprimir.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
+            this.simpleButtonImprimir.Location = new System.Drawing.Point(4, 289);
+            this.simpleButtonImprimir.Name = "simpleButtonImprimir";
+            this.simpleButtonImprimir.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonImprimir.TabIndex = 6;
+            this.simpleButtonImprimir.Text = "Imprimir";
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
+            this.simpleButton2.Location = new System.Drawing.Point(4, 65);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "Grabar";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
+            this.simpleButton3.Location = new System.Drawing.Point(4, 181);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton3.TabIndex = 8;
+            this.simpleButton3.Text = "Anular";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.Controls.Add(this.simpleButton4);
+            this.groupControl2.Controls.Add(this.simpleButton2);
+            this.groupControl2.Controls.Add(this.simpleButton3);
+            this.groupControl2.Controls.Add(this.simpleButton10);
+            this.groupControl2.Location = new System.Drawing.Point(799, 14);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.ShowCaption = false;
+            this.groupControl2.Size = new System.Drawing.Size(118, 516);
+            this.groupControl2.TabIndex = 10;
+            this.groupControl2.Text = "Comandos";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
+            this.simpleButton4.Location = new System.Drawing.Point(4, 9);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton4.TabIndex = 10;
+            this.simpleButton4.Text = "Buscar";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
+            this.simpleButton10.Location = new System.Drawing.Point(4, 123);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton10.TabIndex = 6;
+            this.simpleButton10.Text = "Imprimir";
+            // 
             // ArticuloFormView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -882,7 +1058,7 @@
             this.AutoSize = true;
             this.Controls.Add(this.xtraTabControl1);
             this.Name = "ArticuloFormView";
-            this.Size = new System.Drawing.Size(789, 535);
+            this.Size = new System.Drawing.Size(929, 535);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
@@ -944,6 +1120,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForGRAFICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSECCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1007,5 +1187,20 @@
         private DevExpress.XtraEditors.ToggleSwitch ESTADOTextEdit;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.PictureEdit GRAFICOPictureEdit;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton4;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton simpleButton3;
+        private DevExpress.XtraEditors.SimpleButton simpleButton10;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonReprocesar;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonAutorizar;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonPendiente;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonAnular;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonRecuperar;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonFormaPago;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonNuevo;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonImprimir;
     }
 }

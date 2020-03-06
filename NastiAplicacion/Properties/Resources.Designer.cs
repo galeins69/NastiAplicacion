@@ -143,6 +143,16 @@ namespace NastiAplicacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap close_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("close_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap converttorange_32x32 {
             get {
                 object obj = ResourceManager.GetObject("converttorange_32x32", resourceCulture);
@@ -196,6 +206,16 @@ namespace NastiAplicacion.Properties {
         public static System.Drawing.Bitmap doublelast_32x32 {
             get {
                 object obj = ResourceManager.GetObject("doublelast_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap drilldown_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("drilldown_32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +306,16 @@ namespace NastiAplicacion.Properties {
         public static System.Drawing.Bitmap find_32x32 {
             get {
                 object obj = ResourceManager.GetObject("find_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap find_32x321 {
+            get {
+                object obj = ResourceManager.GetObject("find_32x321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

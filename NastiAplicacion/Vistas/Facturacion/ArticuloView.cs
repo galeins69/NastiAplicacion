@@ -28,6 +28,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.Controls.Add(articuloFormView);
 
             setDatosIniciales();
+            this.EstadoComprobanteActual = this.estadosComprobante.getEstado(3L);
             //bindingSourceSocioNegocio.Add(this.socionegocioSeleccionado);
 
         }

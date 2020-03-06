@@ -648,12 +648,6 @@
     <Compile Include="Vistas\Facturacion\Cliente.Designer.cs">
       <DependentUpon>Cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Facturacion\FacturaView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Vistas\Facturacion\FacturaView.Designer.cs">
-      <DependentUpon>FacturaView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\Facturacion\PagoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -795,9 +789,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Facturacion\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Facturacion\FacturaView.resx">
-      <DependentUpon>FacturaView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Facturacion\FormaPagoForm.resx">
       <DependentUpon>FormaPagoForm.cs</DependentUpon>
@@ -1040,6 +1031,9 @@
     <None Include="Resources\differentfirstpage_32x32.png" />
     <None Include="Resources\formatnumbercurrency_32x322.png" />
     <None Include="Resources\geopoint_16x16.png" />
+    <None Include="Resources\close_32x32.png" />
+    <None Include="Resources\drilldown_32x32.png" />
+    <None Include="Resources\find_32x321.png" />
     <Content Include="Resources\IconoProducto16x16.bmp" />
     <None Include="Resources\open2_16x16.png" />
     <None Include="Resources\loadmap_16x16.png" />

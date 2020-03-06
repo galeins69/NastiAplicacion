@@ -29,6 +29,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             InitializeComponent();
             datosIniciales();
+            this.textEditEfectivo.Focus();
         }
         public FormaPagoForm(COMPROBANTE comprobante)
         {

@@ -42,7 +42,7 @@ namespace NastiAplicacion.Servicio
 
         public TIPOARTICULO getTipoArticulo(string tipoArticulo)
         {
-            return (from tipoarticulo in kippaEntities.TIPOARTICULO orderby tipoarticulo.NOMBRE where tipoarticulo.NOMBRE == tipoArticulo select tipoarticulo).FirstOrDefault();
+            return (from tipoarticulo in kippaEntities.TIPOARTICULO orderby tipoarticulo.NOMBRE where tipoarticulo.NOMBRE.ToUpper() == tipoArticulo.ToUpper() select tipoarticulo).FirstOrDefault();
         }
 
         public IEnumerable<IMPUESTO> getImpuestos(long codigoEmpresa, long codigoTipoImpuesto)
@@ -151,7 +151,9 @@ namespace NastiAplicacion.Servicio
 
         public IEnumerable<BODEGASTOCK> getArticuloStock(long codigoEstablecimiento, string descripcion)
         {
+            kippaEntities.Configuration.LazyLoadingEnabled = false;
             return (from bodegastock in kippaEntities.BODEGASTOCK where bodegastock.BODEGA.CODIGOESTABLECIMIENTO == codigoEstablecimiento && bodegastock.ARTICULO.DESCRIPCION.Contains(descripcion) select bodegastock).Include("ARTICULO").Include("ARTICULO.IMPUESTO").ToList();
+            kippaEntities.Configuration.LazyLoadingEnabled = true;
         }
     
     }

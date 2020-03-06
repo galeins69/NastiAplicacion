@@ -102,49 +102,56 @@ namespace NastiAplicacion.Vistas.Facturacion
             DataTable table = result.Tables[0];
             progres.setData(0, table.Rows.Count, 1);
             progres.Show();
-            foreach (DataRow row in table.Rows)
+            try
             {
-                if (i == 0) //revisar cabecera
+                foreach (DataRow row in table.Rows)
                 {
-                    if (!verificarCabecera(cabecera, row))
+                    if (i == 0) //revisar cabecera
                     {
-                        progres.Hide();
-                       MessageBox.Show("Archivo excel no cumple con el formato adecuado.");
-                        return;
+                        if (!verificarCabecera(cabecera, row))
+                        {
+                            progres.Hide();
+                            MessageBox.Show("Archivo excel no cumple con el formato adecuado.");
+                            return;
+                        }
                     }
+                    else
+                    {
+                        Decimal numero;
+                        articulo = new ARTICULO();
+                        articulo.CODIGO = row[1].ToString();
+                        articulo.DESCRIPCION = row[2].ToString();
+                        articulo.PRECIOVENTA = Decimal.TryParse(row[3].ToString(), out numero) ? Decimal.Parse(row[3].ToString()) : 0;
+                        articulo.CANTIDAD = Decimal.TryParse(row[4].ToString(), out numero) ? Decimal.Parse(row[4].ToString()) : 0;
+                        articulo.CODIGOTIPOARTICULO = articuloservicio.getTipoArticulo(row[5].ToString()).CODIGOTIPOARTICULO;
+                        articulo.CODIGOIMPUESTO = articuloservicio.getImpuesto(CodigoEmpresa, row[6].ToString()).CODIGOIMPUESTO;
+                        articulo.SOLOCOMPRAS = row[7].ToString();
+                        articulo.VENTAS = row[8].ToString();
+                        articulo.CODIGOUNIDAD = articuloservicio.getUnidad(CodigoEmpresa, row[9].ToString()).CODIGOUNIDAD;
+                        articulo.SALDOINICIAL = Decimal.TryParse(row[10].ToString(), out numero) ? Decimal.Parse(row[10].ToString()) : 0;
+                        articulo.SECCION = row[11].ToString();
+                        articulo.DESCRIPCIONCORTA = row[12].ToString();
+                        articulo.CODIGOEMPRESA = CodigoEmpresa;
+                        articulo.COSTO = 0;
+                        articulo.ESTADO = "A";
+                        articulo.FECHACREACION = DateTime.Now;
+                        articulo.FECHAMODIFICACION = DateTime.Now;
+                        try
+                        {
+                            articuloservicio.grabarArticuloImport(articulo);
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(ex.ToString());
+                        }
+                    }
+                    i++;
+                    progres.refreshData();
                 }
-                else
-                {
-                    Decimal numero;
-                    articulo = new ARTICULO();
-                    articulo.CODIGO = row[1].ToString();
-                    articulo.DESCRIPCION = row[2].ToString();
-                    articulo.PRECIOVENTA = Decimal.TryParse(row[3].ToString(), out numero) ? Decimal.Parse(row[3].ToString()) : 0;
-                    articulo.CANTIDAD = Decimal.TryParse(row[4].ToString(), out numero) ? Decimal.Parse(row[4].ToString()) : 0;
-                    articulo.CODIGOTIPOARTICULO = articuloservicio.getTipoArticulo(row[5].ToString()).CODIGOTIPOARTICULO;
-                    articulo.CODIGOIMPUESTO = articuloservicio.getImpuesto(CodigoEmpresa, row[6].ToString()).CODIGOIMPUESTO;
-                    articulo.SOLOCOMPRAS = row[7].ToString();
-                    articulo.VENTAS = row[8].ToString();
-                    articulo.CODIGOUNIDAD = articuloservicio.getUnidad(CodigoEmpresa, row[9].ToString()).CODIGOUNIDAD;
-                    articulo.SALDOINICIAL = Decimal.TryParse(row[10].ToString(), out numero) ? Decimal.Parse(row[10].ToString()) : 0;
-                    articulo.SECCION = row[11].ToString();
-                    articulo.DESCRIPCIONCORTA = row[12].ToString();
-                    articulo.CODIGOEMPRESA = CodigoEmpresa;
-                    articulo.COSTO = 0;
-                    articulo.ESTADO = "A";
-                    articulo.FECHACREACION = DateTime.Now;
-                    articulo.FECHAMODIFICACION = DateTime.Now;
-                    try
-                    {
-                        articuloservicio.grabarArticuloImport(articulo);
-                    }
-                    catch (Exception ex)
-                    {
-                        XtraMessageBox.Show(ex.ToString());
-                    }
-                }
-                i++;
-                progres.refreshData();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Error en la definición de la hoja Excel");
             }
             progres.Close();
 
@@ -180,7 +187,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             formaBuscar.ShowDialog();
             if (formaBuscar.DialogResult == DialogResult.OK)
             {
-                this.aRTICULOBindingSource.DataSource = formaBuscar.getProductoSeleccionado();
+                this.aRTICULOBindingSource.DataSource = formaBuscar.getProductoSeleccionado().ARTICULO;
             }
         }
 
@@ -207,6 +214,10 @@ namespace NastiAplicacion.Vistas.Facturacion
             }
         }
 
+        private void simpleButton4_Click(object sender, EventArgs e)
+        {
+            this.buscar();
+        }
     }
 
 }

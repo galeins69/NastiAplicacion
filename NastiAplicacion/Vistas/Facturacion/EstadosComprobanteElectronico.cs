@@ -536,7 +536,7 @@ namespace NastiAplicacion.Vistas.Facturacion
 
         public void imprimir()
         {
-            mensaje = "NO SE PUEDE AUTORIZAR UN DOCUMENTO PENDIENTE";
+            controlComprobante.Imprimir();
         }
 
         public void pendiente()

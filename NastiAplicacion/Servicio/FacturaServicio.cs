@@ -94,7 +94,7 @@ namespace NastiAplicacion.Servicio
         public IEnumerable<SOCIONEGOCIO> buscarSociosDeNegocio(String texto,long codigoEmpresa)
         {
             IEnumerable<SOCIONEGOCIO> registros;
-            registros = (from socionegocio in kippaEntities.SOCIONEGOCIO where (socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim()) && socionegocio.CODIGOEMPRESA==codigoEmpresa) select socionegocio).ToList();
+            registros = (from socionegocio in kippaEntities.SOCIONEGOCIO where ((socionegocio.RAZONSOCIAL.Trim().Contains(texto.Trim()) || socionegocio.NUMERODOCUMENTO.Trim().Contains(texto.Trim())) && socionegocio.CODIGOEMPRESA==codigoEmpresa) select socionegocio).ToList();
             //kippaEntities.Dispose();
             return registros;
         }
@@ -286,9 +286,8 @@ namespace NastiAplicacion.Servicio
                     if (comprobante.CODIGOESTADOCOMPROBANTE != 10L)
                     {
                         COMPROBANTE comprobante1 = comprobante;
-                        nullable1 = puntoEmisionDocumento.NUMERODOCUMENTO;
-                        long num1 = nullable1.Value;
-                        comprobante1.NUMEROCOMPROBANTE = num1;
+                        puntoEmisionDocumento = this.getNumeroComprobante(comprobante.CODIGOTIPOCOMPROBANTE, credencialUsuario.getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, credencialUsuario.getPuntoDeEmision().CODIGOPUNTOEMISION);
+                        comprobante1.NUMEROCOMPROBANTE = (long)puntoEmisionDocumento.NUMERODOCUMENTO;
                         COMPROBANTE comprobante2 = comprobante;
                         NastiAplicacion.Utiles.Utiles utiles = new NastiAplicacion.Utiles.Utiles();
                         DateTime fechaemision = comprobante.FECHAEMISION;
