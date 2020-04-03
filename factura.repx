@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="19.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v19.1, Version=19.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="Report1" ScriptsSource="using System.Linq;&#xD;&#xA;long parametro;&#xD;&#xA;&#xD;&#xA;private void Report1_DataSourceDemanded(object sender, System.EventArgs e) {&#xD;&#xA;  Nasti.Datos.KippaEntities kippaEntities = new Nasti.Datos.KippaEntities();&#xD;&#xA; parametro=Convert.ToInt32(this.Parameters[&quot;codigoComprobante&quot;].Value);&#xD;&#xA;  DataSource = (from c in kippaEntities.COMPROBANTE.Include(&quot;DETALLECOMPROBANTE&quot;).Include(&quot;IMPUESTOCOMPROBANTE&quot;) where c.CODIGOCOMPROBANTE==this.parametro select c).ToList();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;private void subreport1_BeforePrint(object sender, System.Drawing.Printing.PrintEventArgs e) {&#xD;&#xA;((XRSubreport)sender).ReportSource.DataSource = ((XRSubreport)sender).Report.DataSource;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;" Margins="52, 45, 237, 100" PageWidth="850" PageHeight="1100" Version="19.1" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Visible="false" Description="Codigo de Comprobante" ValueInfo="0" Name="codigoComprobante" Type="#Ref-2" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="4" ControlType="TopMarginBand" Name="TopMargin" HeightF="236.666687">
+      <Controls>
+        <Item1 Ref="5" ControlType="XRLabel" Name="label1" Multiline="true" Text="AUTORIZACIÓN:" SizeF="112.019218,18" LocationFloat="0, 211.955139" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="6" UseFont="false" />
+        </Item1>
+        <Item2 Ref="7" ControlType="XRLabel" Name="label17" Multiline="true" Text="AMBIENTE:" SizeF="83.97435,18" LocationFloat="0, 174.484" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="8" UseFont="false" />
+        </Item2>
+        <Item3 Ref="9" ControlType="XRLabel" Name="label14" Multiline="true" Text="FACTURA:" SizeF="112.019218,23" LocationFloat="0, 151.484039" Font="Times New Roman, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="10" UseFont="false" />
+        </Item3>
+        <Item4 Ref="11" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" TextAlignment="TopRight" SizeF="163.157,23" LocationFloat="112.019218, 151.484039" Font="Times New Roman, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="12" Expression="[ESTABLECIMIENTO].[NUMERO]+'-'+[PUNTOEMISION].[NOMBRE]+'-'+PadLeft([NUMEROCOMPROBANTE],9,'0')" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="13" UseFont="false" />
+        </Item4>
+        <Item5 Ref="14" ControlType="XRLabel" Name="label16" Multiline="true" Text="label16" SizeF="227.374939,18" LocationFloat="309.375, 82.66665" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="15" Expression="Iif([EMPRESA].[LLEVACONTABILIDAD]=='S','LLEVA CONTABILIDAD','NO LLEVA CONTABILIDAD')" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="16" UseFont="false" />
+        </Item5>
+        <Item6 Ref="17" ControlType="XRLabel" Name="label15" Multiline="true" Text="label15" SizeF="216.250183,18" LocationFloat="536.7499, 82.66665" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="18" Expression="Iif([EMPRESA].[CONTRIBUYENTEESPECIAL]=='S','CONTRIBUYENTE ESPECIAL NO:'+[EMPRESA].[NUMERORESOLUCION],'')" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="19" UseFont="false" />
+        </Item6>
+        <Item7 Ref="20" ControlType="XRLabel" Name="label13" Multiline="true" Text="DIRECCION SUCURSAL:" SizeF="160.416672,18" LocationFloat="148.958328, 118.666649" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="21" UseFont="false" />
+        </Item7>
+        <Item8 Ref="22" ControlType="XRLabel" Name="label12" Multiline="true" Text="DIRECCION MATRIZ:" SizeF="160.416641,17.9999924" LocationFloat="148.958328, 100.666679" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="23" UseFont="false" />
+        </Item8>
+        <Item9 Ref="24" ControlType="XRLabel" Name="label11" Multiline="true" Text="RUC:" SizeF="56.25,18" LocationFloat="148.958328, 82.66665" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="25" UseFont="false" />
+        </Item9>
+        <Item10 Ref="26" ControlType="XRLabel" Name="label10" Multiline="true" Text="label10" SizeF="443.625061,18" LocationFloat="309.375, 118.666649" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="27" Expression="[ESTABLECIMIENTO].[DIRECCION]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="28" UseFont="false" />
+        </Item10>
+        <Item11 Ref="29" ControlType="XRLabel" Name="label9" Multiline="true" Text="label9" TextAlignment="TopCenter" SizeF="604.041748,18" LocationFloat="148.958328, 64.66666" Font="Times New Roman, 9pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="30" Expression="[EMPRESA].[NOMBRECOMERCIAL]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="31" UseFont="false" UseTextAlignment="false" />
+        </Item11>
+        <Item12 Ref="32" ControlType="XRPictureBox" Name="pictureBox1" Sizing="StretchImage" SizeF="148.958328,92.83333" LocationFloat="0, 41.6666679">
+          <ExpressionBindings>
+            <Item1 Ref="33" Expression="[EMPRESA].[LOGO]" PropertyName="ImageSource" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item12>
+        <Item13 Ref="34" ControlType="XRLabel" Name="label8" Multiline="true" Text="label8" SizeF="93.1890945,18" LocationFloat="83.9743652, 174.484" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="35" Expression="[EMPRESA].[TIPOAMBIENTE].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item13>
+        <Item14 Ref="36" ControlType="XRLabel" Name="label7" Multiline="true" Text="label7" SizeF="104.166672,18" LocationFloat="205.208328, 82.66665" Font="Times New Roman, 10pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="37" Expression="[EMPRESA].[RUC]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="38" UseFont="false" />
+        </Item14>
+        <Item15 Ref="39" ControlType="XRLabel" Name="label6" Multiline="true" Text="label6" TextAlignment="TopCenter" SizeF="604.041748,23" LocationFloat="148.958328, 41.6666679" Font="Times New Roman, 11pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="40" Expression="[EMPRESA].[NOMBRE]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="41" UseFont="false" UseTextAlignment="false" />
+        </Item15>
+        <Item16 Ref="42" ControlType="XRLabel" Name="label5" Multiline="true" Text="label5" SizeF="443.625031,17.9999924" LocationFloat="309.375, 100.666679" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="43" Expression="[EMPRESA].[DIRECCION1]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="44" UseFont="false" />
+        </Item16>
+        <Item17 Ref="45" ControlType="XRBarCode" Name="barCode1" AutoModule="true" SizeF="471.269348,60.4711227" LocationFloat="281.7307, 151.484039" Font="Verdana, 8.25pt, charSet=0" Padding="10,10,0,0,100">
+          <Symbology Ref="46" Name="Codabar" WideNarrowRatio="2" />
+          <ExpressionBindings>
+            <Item1 Ref="47" Expression="[CLAVEDEACCESO]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="48" UseFont="false" />
+        </Item17>
+        <Item18 Ref="49" ControlType="XRLabel" Name="label3" Multiline="true" Text="label3" SizeF="471.269348,23" LocationFloat="112.019218, 211.955139" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="50" Expression="iif([AUTORIZACION]==null,[CLAVEDEACCESO],[AUTORIZACION])" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+        </Item18>
+      </Controls>
+    </Item1>
+    <Item2 Ref="51" ControlType="DetailBand" Name="Detail" KeepTogetherWithDetailReports="true" HeightF="0" />
+    <Item3 Ref="52" ControlType="BottomMarginBand" Name="BottomMargin" />
+    <Item4 Ref="53" ControlType="PageHeaderBand" Name="PageHeader" HeightF="25">
+      <Controls>
+        <Item1 Ref="54" ControlType="XRTable" Name="table1" SizeF="753,25" LocationFloat="9.536743E-05, 0" Font="Times New Roman, 8pt" Borders="All">
+          <Rows>
+            <Item1 Ref="55" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="56" ControlType="XRTableCell" Name="tableCell1" Weight="0.33455903481135407" Multiline="true" Text="CODIGO" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="57" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="58" ControlType="XRTableCell" Name="tableCell2" Weight="0.31732049525526668" Multiline="true" Text="CANTIDAD" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="59" UseTextAlignment="false" />
+                </Item2>
+                <Item3 Ref="60" ControlType="XRTableCell" Name="tableCell3" Weight="1.0657500559488888" Multiline="true" Text="DESCRIPCION" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="61" UseTextAlignment="false" />
+                </Item3>
+                <Item4 Ref="62" ControlType="XRTableCell" Name="tableCell4" Weight="0.32703798296904973" Multiline="true" Text="P.V.P" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="63" UsePadding="false" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="64" ControlType="XRTableCell" Name="tableCell5" Weight="0.32703798296904973" Multiline="true" Text="DESC." TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="65" UsePadding="false" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="66" ControlType="XRTableCell" Name="tableCell7" Weight="0.32703798296904973" Multiline="true" Text="IMP" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="67" UsePadding="false" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="68" ControlType="XRTableCell" Name="tableCell6" Weight="0.32703798296904973" Multiline="true" Text="TOTAL" TextAlignment="TopCenter" Padding="2,2,0,0,100">
+                  <StylePriority Ref="69" UsePadding="false" UseTextAlignment="false" />
+                </Item7>
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="70" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item4>
+    <Item5 Ref="71" ControlType="DetailReportBand" Name="DetailReport" Level="1" DataMember="IMPUESTOCOMPROBANTE" DataSource="#Ref-0" Padding="0,0,0,0,100">
+      <Bands>
+        <Item1 Ref="72" ControlType="DetailBand" Name="Detail1" HeightF="14.9999943">
+          <Controls>
+            <Item1 Ref="73" ControlType="XRTable" Name="table3" SizeF="350.4359,14.9999943" LocationFloat="402.5642, 0" Font="Times New Roman, 8pt" Borders="Left, Top, Right">
+              <Rows>
+                <Item1 Ref="74" ControlType="XRTableRow" Name="tableRow6" Weight="1">
+                  <Cells>
+                    <Item1 Ref="75" ControlType="XRTableCell" Name="tableCell16" Weight="2.0627568525442652" Multiline="true" Text="tableCell16" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="76" Expression="'SUBTOTAL '+[IMPUESTO].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="77" UseFont="false" />
+                    </Item1>
+                    <Item2 Ref="78" ControlType="XRTableCell" Name="tableCell17" Weight="1.4416027832031251" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" Text="tableCell17" TextAlignment="TopRight" Padding="2,20,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="79" Expression="[BASEIMPONIBLE]" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="80" UsePadding="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item1>
+              </Rows>
+              <StylePriority Ref="81" UseFont="false" UseBorders="false" />
+            </Item1>
+          </Controls>
+        </Item1>
+        <Item2 Ref="82" ControlType="GroupFooterBand" Name="GroupFooter1" HeightF="60.57448">
+          <Controls>
+            <Item1 Ref="83" ControlType="XRTable" Name="table2" SizeF="350.435883,60.13888" LocationFloat="402.564178, 0" Borders="All">
+              <Rows>
+                <Item1 Ref="84" ControlType="XRTableRow" Name="tableRow2" Weight="0.25">
+                  <Cells>
+                    <Item1 Ref="85" ControlType="XRTableCell" Name="tableCell8" Weight="1.2588294723433251" KeepTogether="true" Multiline="true" Text="SUBTOTAL SIN IMPUESTO:&#xD;&#xA;" TextAlignment="MiddleLeft" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="86" UseFont="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="87" ControlType="XRTableCell" Name="tableCell9" Weight="0.87976022096107953" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" Text="tableCell9" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="88" Expression="SUM([BASEIMPONIBLE])" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="89" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item1>
+                <Item2 Ref="90" ControlType="XRTableRow" Name="tableRow3" Weight="0.25">
+                  <Cells>
+                    <Item1 Ref="91" ControlType="XRTableCell" Name="tableCell10" Weight="1.2588294723433251" Multiline="true" Text="DESCUENTO:" TextAlignment="MiddleLeft" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="92" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="93" ControlType="XRTableCell" Name="tableCell11" Weight="0.87976022096107953" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" NullValueText="0.0" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="94" Expression="[COMPROBANTE].[DESCUENTOADICIONAL]" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="95" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item2>
+                <Item3 Ref="96" ControlType="XRTableRow" Name="tableRow4" Weight="0.25">
+                  <Cells>
+                    <Item1 Ref="97" ControlType="XRTableCell" Name="tableCell12" Weight="1.2588294723433251" Multiline="true" Text="IVA 12%" TextAlignment="MiddleLeft" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="98" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="99" ControlType="XRTableCell" Name="tableCell13" Weight="0.87976022096107953" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" Text="tableCell13" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="100" Expression="sum(IIF([IMPUESTO].[CODIGOTIPOIMPUESTO]==2,[VALORIMPUESTO],0))" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="101" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item3>
+                <Item4 Ref="102" ControlType="XRTableRow" Name="tableRow5" Weight="0.25">
+                  <Cells>
+                    <Item1 Ref="103" ControlType="XRTableCell" Name="tableCell14" Weight="1.2588294148266055" Multiline="true" Text="VALOR TOTAL" TextAlignment="MiddleLeft" Font="Times New Roman, 8pt, style=Bold" Padding="2,2,0,0,100">
+                      <StylePriority Ref="104" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item1>
+                    <Item2 Ref="105" ControlType="XRTableCell" Name="tableCell15" Weight="0.87976027847779914" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" Text="tableCell15" TextAlignment="TopRight" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+                      <ExpressionBindings>
+                        <Item1 Ref="106" Expression="[COMPROBANTE].[TOTAL]" PropertyName="Text" EventName="BeforePrint" />
+                      </ExpressionBindings>
+                      <StylePriority Ref="107" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+                    </Item2>
+                  </Cells>
+                </Item4>
+              </Rows>
+              <StylePriority Ref="108" UseBorders="false" />
+            </Item1>
+          </Controls>
+        </Item2>
+        <Item3 Ref="109" ControlType="GroupHeaderBand" Name="GroupHeader2" HeightF="16.7763176">
+          <Controls>
+            <Item1 Ref="110" ControlType="XRTable" Name="table4" SizeF="300,15.0000067" LocationFloat="0, 0">
+              <Rows>
+                <Item1 Ref="111" ControlType="XRTableRow" Name="tableRow7" Weight="1">
+                  <Cells>
+                    <Item1 Ref="112" ControlType="XRTableCell" Name="tableCell18" Weight="1" Multiline="true" Padding="2,2,0,0,100" />
+                    <Item2 Ref="113" ControlType="XRTableCell" Name="tableCell19" Weight="1" Multiline="true" Padding="2,2,0,0,100" />
+                    <Item3 Ref="114" ControlType="XRTableCell" Name="tableCell20" Weight="1" Multiline="true" Padding="2,2,0,0,100" />
+                  </Cells>
+                </Item1>
+              </Rows>
+            </Item1>
+          </Controls>
+        </Item3>
+      </Bands>
+    </Item5>
+    <Item6 Ref="115" ControlType="DetailReportBand" Name="DetailReport1" Level="2" DataMember="COMPROBANTEFORMAPAGO" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="116" ControlType="DetailBand" Name="Detail2" HeightF="20.2083588">
+          <Controls>
+            <Item1 Ref="117" ControlType="XRLabel" Name="label26" Multiline="true" Text="label26" SizeF="309.375,20.2083588" LocationFloat="0, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="118" Expression="[FORMAPAGO].[TIPOFORMAPAGO].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="119" UseFont="false" />
+            </Item1>
+            <Item2 Ref="120" ControlType="XRLabel" Name="label25" TextFormatString="{0:###,###,###,##0.00}" Multiline="true" Text="label25" TextAlignment="TopRight" SizeF="189.048187,20.2083588" LocationFloat="309.375, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="121" Expression="[VALOR]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="122" UseFont="false" />
+            </Item2>
+          </Controls>
+        </Item1>
+        <Item2 Ref="123" ControlType="GroupHeaderBand" Name="GroupHeader1" HeightF="23.958334">
+          <Controls>
+            <Item1 Ref="124" ControlType="XRLabel" Name="label24" Multiline="true" Text="FORMAS DE PAGO" SizeF="431.125061,18.8333187" LocationFloat="0, 0" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+              <StylePriority Ref="125" UseFont="false" />
+            </Item1>
+          </Controls>
+        </Item2>
+      </Bands>
+    </Item6>
+    <Item7 Ref="126" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="23">
+      <Controls>
+        <Item1 Ref="127" ControlType="XRLabel" Name="label27" Multiline="true" AutoWidth="true" CanShrink="true" Text="label27" SizeF="743,23" LocationFloat="0, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="128" Expression="[INFORMACIONADICIONAL]" PropertyName="Text" EventName="BeforePrint" />
+          </ExpressionBindings>
+          <StylePriority Ref="129" UseFont="false" />
+        </Item1>
+      </Controls>
+    </Item7>
+    <Item8 Ref="130" ControlType="DetailReportBand" Name="DetailReport2" Level="0" DataMember="DETALLECOMPROBANTE" DataSource="#Ref-0">
+      <Bands>
+        <Item1 Ref="131" ControlType="DetailBand" Name="Detail3" HeightF="14.9999933">
+          <Controls>
+            <Item1 Ref="132" ControlType="XRLabel" Name="label23" Multiline="true" Text="label23" TextAlignment="TopRight" SizeF="75.61536,14.9999933" LocationFloat="594.582642, 0" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="133" Expression="[DETALLECOMPROBANTE].[VALORIMPUESTO]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="134" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+            </Item1>
+            <Item2 Ref="135" ControlType="XRLabel" Name="label22" Multiline="true" Text="label22" TextAlignment="TopRight" SizeF="82.08649,14.9999933" LocationFloat="670.198, 0" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="136" Expression="[DETALLECOMPROBANTE].[BASEIMPONIBLE]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="137" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+            </Item2>
+            <Item3 Ref="138" ControlType="XRLabel" Name="label21" Multiline="true" Text="label21" TextAlignment="TopRight" SizeF="82.08655,14.9999933" LocationFloat="512.4961, 0" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="139" Expression="[DETALLECOMPROBANTE].[DESCUENTO]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="140" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+            </Item3>
+            <Item4 Ref="141" ControlType="XRLabel" Name="label20" Multiline="true" Text="label20" TextAlignment="TopRight" SizeF="77.71365,14.9999933" LocationFloat="430.409546, 0" Font="Times New Roman, 8pt" Padding="2,20,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="142" Expression="[DETALLECOMPROBANTE].[PVP]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="143" UseFont="false" UsePadding="false" UseTextAlignment="false" />
+            </Item4>
+            <Item5 Ref="144" ControlType="XRLabel" Name="label19" Multiline="true" Text="label19" SizeF="267.5033,14.9999933" LocationFloat="162.906265, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="145" Expression="[DETALLECOMPROBANTE].[ARTICULO].[DESCRIPCION]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="146" UseFont="false" />
+            </Item5>
+            <Item6 Ref="147" ControlType="XRLabel" Name="label18" Multiline="true" Text="label18" TextAlignment="TopLeft" SizeF="78.93194,14.9999933" LocationFloat="83.97433, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="148" Expression="[DETALLECOMPROBANTE].[CANTIDAD]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="149" UseFont="false" UseTextAlignment="false" />
+            </Item6>
+            <Item7 Ref="150" ControlType="XRLabel" Name="label4" Multiline="true" Text="label4" TextAlignment="TopLeft" SizeF="83.97433,14.9999933" LocationFloat="0, 0" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+              <ExpressionBindings>
+                <Item1 Ref="151" Expression="[DETALLECOMPROBANTE].[ARTICULO].[CODIGO]" PropertyName="Text" EventName="BeforePrint" />
+              </ExpressionBindings>
+              <StylePriority Ref="152" UseFont="false" UseTextAlignment="false" />
+            </Item7>
+          </Controls>
+        </Item1>
+      </Bands>
+    </Item8>
+  </Bands>
+  <Scripts Ref="153" OnDataSourceDemanded="Report1_DataSourceDemanded" OnBeforePrint="Report1_BeforePrint" />
+  <Watermark Ref="154" Font="Times New Roman, 19pt" />
+  <ReportPrintOptions Ref="155" DetailCountAtDesignTime="2" />
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v19.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiIC8+" />
+  </ComponentStorage>
+  <ObjectStorage>
+    <Item1 ObjectType="DevExpress.XtraReports.Serialization.ObjectStorageInfo, DevExpress.XtraReports.v19.1" Ref="2" Content="System.Int32" Type="System.Type" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

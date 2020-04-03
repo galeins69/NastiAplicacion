@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Reportes.Facturación
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Reportes.Facturación
 {
     partial class FacturaReport
     {
@@ -317,7 +319,7 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(NastiAplicacion.Data.COMPROBANTE);
+            this.bindingSource1.DataSource = typeof(COMPROBANTE);
             // 
             // FacturaReport
             // 

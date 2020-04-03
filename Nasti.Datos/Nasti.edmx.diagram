@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b92287eab383424a92659c51aabce106" Name="Diagram1" ZoomLevel="72">
+        <EntityTypeShape EntityType="Nasti.Modelo.ARTICULO" Width="1.5" PointX="10.5" PointY="62.125" />
+        <EntityTypeShape EntityType="Nasti.Modelo.ARTICULOCOMPONENTE" Width="1.5" PointX="12.75" PointY="77" />
+        <EntityTypeShape EntityType="Nasti.Modelo.ARTICULOIMPUESTO" Width="1.5" PointX="12.75" PointY="55.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.BODEGA" Width="1.5" PointX="7.5" PointY="61.125" />
+        <EntityTypeShape EntityType="Nasti.Modelo.BODEGASTOCK" Width="1.5" PointX="15.75" PointY="63.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.CLIENTE" Width="1.5" PointX="5.25" PointY="44.875" />
+        <EntityTypeShape EntityType="Nasti.Modelo.COMPROBANTE" Width="1.5" PointX="13.5" PointY="58.375" />
+        <EntityTypeShape EntityType="Nasti.Modelo.COMPROBANTEADICIONAL" Width="1.5" PointX="15.75" PointY="70" />
+        <EntityTypeShape EntityType="Nasti.Modelo.COMPROBANTEFORMAPAGO" Width="1.5" PointX="18.75" PointY="57.625" />
+        <EntityTypeShape EntityType="Nasti.Modelo.CONDICIONPAGO" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Nasti.Modelo.DETALLECOMPROBANTE" Width="1.5" PointX="15.75" PointY="53.375" />
+        <EntityTypeShape EntityType="Nasti.Modelo.DETALLECOMPROBANTEADICIONAL" Width="1.5" PointX="15.75" PointY="67.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.DETALLELISTADEPRECIO" Width="1.5" PointX="12.75" PointY="51.375" />
+        <EntityTypeShape EntityType="Nasti.Modelo.ELEMENTO" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="Nasti.Modelo.EMPRESA" Width="1.5" PointX="3" PointY="37.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.ESTABLECIMIENTO" Width="1.5" PointX="5.25" PointY="85.125" />
+        <EntityTypeShape EntityType="Nasti.Modelo.ESTADOCOMPROBANTE" Width="1.5" PointX="11.25" PointY="80.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.FORMAPAGO" Width="1.5" PointX="8.25" PointY="47.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.IMPUESTO" Width="1.5" PointX="8.25" PointY="42.375" />
+        <EntityTypeShape EntityType="Nasti.Modelo.IMPUESTOCOMPROBANTE" Width="1.5" PointX="18.75" PointY="53.375" />
+        <EntityTypeShape EntityType="Nasti.Modelo.LISTADEPRECIO" Width="1.5" PointX="8.25" PointY="39.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PARAMETRO" Width="1.5" PointX="5.25" PointY="88.625" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PRODUCTO" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PROVEEDOR" Width="1.5" PointX="5.25" PointY="34.875" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PROVEEDORCERTIFICADO" Width="1.5" PointX="0.75" PointY="40.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PUNTOEMISION" Width="1.5" PointX="7.5" PointY="84.875" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PUNTOEMISIONAUTORIZACION" Width="1.5" PointX="12" PointY="85.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.PUNTOEMISIONDOCUMENTO" Width="1.5" PointX="9.75" PointY="85" />
+        <EntityTypeShape EntityType="Nasti.Modelo.SOCIONEGOCIO" Width="1.5" PointX="11.25" PointY="41.25" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TABLAIMPUESTOS" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOAMBIENTE" Width="1.5" PointX="0.75" PointY="43.625" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOARTICULO" Width="1.5" PointX="8.25" PointY="65.125" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOCOMPROBANTE" Width="1.5" PointX="11.25" PointY="70.75" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOELEMENTO" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOESTADO" Width="1.5" PointX="9" PointY="80.625" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOFORMAPAGO" Width="1.5" PointX="6" PointY="54.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOIDENTIFICACION" Width="1.5" PointX="9" PointY="50.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.TIPOIMPUESTO" Width="1.5" PointX="6" PointY="51.625" />
+        <EntityTypeShape EntityType="Nasti.Modelo.UNIDAD" Width="1.5" PointX="5.25" PointY="92.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.UNIDADTIEMPO" Width="1.5" PointX="16.5" PointY="60.125" />
+        <EntityTypeShape EntityType="Nasti.Modelo.USUARIO" Width="1.5" PointX="9" PointY="34.875" />
+        <EntityTypeShape EntityType="Nasti.Modelo.USUARIOEMPRESA" Width="1.5" PointX="11.25" PointY="36.5" />
+        <EntityTypeShape EntityType="Nasti.Modelo.V_SOCIONEGOCIO" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Nasti.Modelo.VENDEDOR" Width="1.5" PointX="5.25" PointY="41.5" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULO_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULO_IMPUESTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULO_TIPOARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULO_UNIDAD" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULOCOMPONENTE_ARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULOCOMPONENTE_ARTICULOCOMP" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULOIMPUESTO_ARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_BODEGASTOCK_ARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLECOMPROBANTE_ARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLELISTADEPRECIOARTICULO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULOCOMPONENTE_UNIDAD" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ARTICULOIMPUESTO_IMPUESTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_BODEGA_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_BODEGA_ESTABLECIMIENTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_BODEGASTOCK_BODEGA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTE_BODEGA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLECOMPROBANTE_BODEGA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_CLIENTE_SOCIONEGOCIO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_CODIGOEMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTE_ESTADOCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTEADICIONAL_ToTable" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTEFORMAPAGO_COMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLECOMPROBANTE_COMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLECOMPROBANTEADICIONAL_ToTable" />
+        <AssociationConnector Association="Nasti.Modelo.FK_EMPRESACOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ESTABLECIMIENTOCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_IMPUESTOCOMPROBANTE_COMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PUNTOEMISIONCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_SOCIONEGOCIOCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_TIPOCOMPROBANTECOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_VENDEDORCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTEFORMAPAGO_FORMAPAGO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_COMPROBANTEFORMAPAGO_UNIDADTIEMPO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLECOMPROBANTE_IMPUESTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_DETALLELISTADEPRECIO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_TIPO_ELEMENTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_EMPRESA_PROVEEDORCERTIFICADO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_EMPRESA_TIPOAMBIENTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ESTABLECIMIENTO_ToTable" />
+        <AssociationConnector Association="Nasti.Modelo.FK_FORMAPAGO_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_IMPUESTO_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_LISTADEPRECIO_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PARAMETROS_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PROVEEDOREMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_SOCIONEGOCIO_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_USUARIOEMPRESA_EMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_VENDOREMPRESA" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PUNTOEMISIONESTABLECIMIENTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_ESTADOCOMPROBANTE_TIPOESTADO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_FORMAPAGO_TIPOFORMAPAGO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_IMPUESTO_TIPOIMPUESTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_IMPUESTOCOMPROBANTE_IMPUESTO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_LISTADEPRECIO_SOCIONEGOCIO" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PUNTOEMISIONDOCUMENTO_PUNTOEMISION" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PUNTOEMISIONAUTORIZACION_ToTable" />
+        <AssociationConnector Association="Nasti.Modelo.FK_PUNTOEMISIONDOCUMENTOTIPOCOMPROBANTE" />
+        <AssociationConnector Association="Nasti.Modelo.FK_SOCIONEGOCIO_TIPOIDENTIFICACION" />
+        <AssociationConnector Association="Nasti.Modelo.FK_USUARIOEMPRESA_USUARIO" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

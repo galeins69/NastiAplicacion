@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
-using NastiAplicacion.Data;
-using NastiAplicacion.Servicio;
+using Nasti.Datos;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,31 +23,30 @@ namespace NastiAplicacion.Reportes
         {
             try
             {
-            byte[] formatoReporte;
-            PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = (from puntoE in comprobante.PUNTOEMISION.PUNTOEMISIONDOCUMENTO where puntoE.CODIGOTIPOCOMPROBANTE == comprobante.TIPOCOMPROBANTE.CODIGOTIPOCOMPROBANTE select puntoE).FirstOrDefault();
-            if (puntoEmisionDocumento.ARCHIVOREPORTE != null)
-                
-            {
-                formatoReporte = puntoEmisionDocumento.ARCHIVOREPORTE;
-            }
-            else
-                if (comprobante.TIPOCOMPROBANTE.ARCHIVOREPORTE == null)
+                byte[] formatoReporte;
+                PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = (from puntoE in comprobante.PUNTOEMISION.PUNTOEMISIONDOCUMENTO where puntoE.CODIGOTIPOCOMPROBANTE == comprobante.TIPOCOMPROBANTE.CODIGOTIPOCOMPROBANTE select puntoE).FirstOrDefault();
+                if (puntoEmisionDocumento.ARCHIVOREPORTE != null)
+
+                {
+                    formatoReporte = puntoEmisionDocumento.ARCHIVOREPORTE;
+                }
+                else
+                    if (comprobante.TIPOCOMPROBANTE.ARCHIVOREPORTE == null)
                 {
                     XtraMessageBox.Show("NO SE HAN DEFINIDO REPORTE DE FACTURA");
                     return;
                 }
                 else
                     formatoReporte = comprobante.TIPOCOMPROBANTE.ARCHIVOREPORTE;
-            System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(formatoReporte);
-            xtraReport.LoadLayout(memoryStream);
-            Parameter parametro = new DevExpress.XtraReports.Parameters.Parameter();
-            parametro.Value = comprobante.CODIGOCOMPROBANTE;
-            parametro.Name = "codigoComprobante";
-            formaReporte.WindowState = FormWindowState.Maximized;
-            xtraReport.Parameters["codigoComprobante"].Value = comprobante.CODIGOCOMPROBANTE;
-            //xtraReport.Parameters["textoMarcaAgua"].Value = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ?"LA INFORMACIÓN IMPRESA NO TIENE VALIDEZ.\\rCOMPROBANTE GENERADO EN EL AMBIENTE DE PRUEBAS":"");
-            xtraReport.DrawWatermark= (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? true: false);
-            xtraReport.Watermark.Text = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? "LA INFORMACIÓN IMPRESA NO TIENE VALIDEZ." + Environment.NewLine + "COMPROBANTE GENERADO EN EL AMBIENTE DE PRUEBAS" : "");
+                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(formatoReporte);
+                xtraReport.LoadLayout(memoryStream);
+                Parameter parametro = new DevExpress.XtraReports.Parameters.Parameter();
+                parametro.Value = comprobante.CODIGOCOMPROBANTE;
+                parametro.Name = "codigoComprobante";
+                formaReporte.WindowState = FormWindowState.Maximized;
+                xtraReport.Parameters["codigoComprobante"].Value = comprobante.CODIGOCOMPROBANTE;
+                xtraReport.DrawWatermark = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? true : false);
+                xtraReport.Watermark.Text = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? "LA INFORMACIÓN IMPRESA NO TIENE VALIDEZ." + Environment.NewLine + "COMPROBANTE GENERADO EN EL AMBIENTE DE PRUEBAS" : "");
                 formaReporte.Text = comprobante.TIPOCOMPROBANTE.NOMBRE + "-" + comprobante.NUMEROCOMPROBANTE;
                 formaReporte.getdocumentViewer1().DocumentSource = xtraReport;
                 formaReporte.getdocumentViewer1().Show();
@@ -59,6 +58,45 @@ namespace NastiAplicacion.Reportes
                 XtraMessageBox.Show(ex.ToString());
             }
         }
+        public byte[] exportarPdf(long tipoDocumento, COMPROBANTE comprobante)
+        {
+            try
+            {
+                byte[] formatoReporte;
+                PUNTOEMISIONDOCUMENTO puntoEmisionDocumento = (from puntoE in comprobante.PUNTOEMISION.PUNTOEMISIONDOCUMENTO where puntoE.CODIGOTIPOCOMPROBANTE == comprobante.TIPOCOMPROBANTE.CODIGOTIPOCOMPROBANTE select puntoE).FirstOrDefault();
+                if (puntoEmisionDocumento.ARCHIVOREPORTE != null)
 
+                {
+                    formatoReporte = puntoEmisionDocumento.ARCHIVOREPORTE;
+                }
+                else
+                    if (comprobante.TIPOCOMPROBANTE.ARCHIVOREPORTE == null)
+                {
+                    XtraMessageBox.Show("NO SE HAN DEFINIDO REPORTE DE FACTURA");
+                    return null;
+                }
+                else
+                    formatoReporte = comprobante.TIPOCOMPROBANTE.ARCHIVOREPORTE;
+                System.IO.MemoryStream memoryStream = new System.IO.MemoryStream(formatoReporte);
+                xtraReport.LoadLayout(memoryStream);
+                Parameter parametro = new DevExpress.XtraReports.Parameters.Parameter();
+                parametro.Value = comprobante.CODIGOCOMPROBANTE;
+                parametro.Name = "codigoComprobante"; ;
+                xtraReport.Parameters["codigoComprobante"].Value = comprobante.CODIGOCOMPROBANTE;
+                xtraReport.DrawWatermark = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? true : false);
+                xtraReport.Watermark.Text = (comprobante.CLAVEDEACCESO.Substring(23, 1).Equals("1") ? "LA INFORMACIÓN IMPRESA NO TIENE VALIDEZ." + Environment.NewLine + "COMPROBANTE GENERADO EN EL AMBIENTE DE PRUEBAS" : "");
+                formaReporte.Text = comprobante.TIPOCOMPROBANTE.NOMBRE + "-" + comprobante.NUMEROCOMPROBANTE;
+                formaReporte.getdocumentViewer1().DocumentSource = xtraReport;
+                var archivopdf = new MemoryStream(); 
+                xtraReport.ExportToPdf(archivopdf);
+                return archivopdf.ToArray();
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show(ex.ToString());
+            }
+            return null;
+        }
     }
+   
 }

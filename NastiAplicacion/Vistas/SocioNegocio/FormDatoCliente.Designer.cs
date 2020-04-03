@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.SocioNegocio
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.SocioNegocio
 {
     partial class FormDatoCliente
     {
@@ -468,9 +470,8 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_16x16;
+            this.simpleButton1.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x32;
             this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
             this.simpleButton1.Location = new System.Drawing.Point(229, 351);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(76, 53);
@@ -480,7 +481,7 @@
             // 
             // sOCIONEGOCIOBindingSource
             // 
-            this.sOCIONEGOCIOBindingSource.DataSource = typeof(NastiAplicacion.Data.SOCIONEGOCIO);
+            this.sOCIONEGOCIOBindingSource.DataSource = typeof(Nasti.Datos.SOCIONEGOCIO);
             // 
             // FormDatoCliente
             // 

@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.General;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 
 namespace NastiAplicacion
 {

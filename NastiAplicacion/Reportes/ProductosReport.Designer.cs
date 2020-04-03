@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Reportes
+﻿using Nasti.Datos.Servicio;
+
+namespace NastiAplicacion.Reportes
 {
     partial class ProductosReport
     {
@@ -511,12 +513,12 @@
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataSource = typeof(NastiAplicacion.Servicio.ArticuloServicio);
+            this.bindingSource1.DataSource = typeof(ArticuloServicio);
             // 
             // objectDataSource1
             // 
             this.objectDataSource1.DataMember = "getProductos";
-            this.objectDataSource1.DataSource = typeof(NastiAplicacion.Servicio.ArticuloServicio);
+            this.objectDataSource1.DataSource = typeof(ArticuloServicio);
             this.objectDataSource1.Name = "objectDataSource1";
             parameter1.Name = "codigoEmpresa";
             parameter1.Type = typeof(long);
@@ -526,7 +528,7 @@
             // 
             // bindingSource2
             // 
-            this.bindingSource2.DataSource = typeof(NastiAplicacion.Servicio.ArticuloServicio);
+            this.bindingSource2.DataSource = typeof(ArticuloServicio);
             // 
             // ProductosReport
             // 

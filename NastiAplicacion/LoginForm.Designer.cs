@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion
 {
     partial class LoginForm
     {
@@ -182,7 +184,7 @@
             // 
             // uSUARIOEMPRESABindingSource
             // 
-            this.uSUARIOEMPRESABindingSource.DataSource = typeof(NastiAplicacion.Data.USUARIOEMPRESA);
+            this.uSUARIOEMPRESABindingSource.DataSource = typeof(USUARIOEMPRESA);
             // 
             // LoginForm
             // 

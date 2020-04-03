@@ -1,7 +1,7 @@
 ﻿using DevExpress.XtraEditors;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using NastiAplicacion.General;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

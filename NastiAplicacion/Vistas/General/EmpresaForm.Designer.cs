@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.General
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.General
 {
     partial class EmpresaForm
     {
@@ -581,7 +583,7 @@
             // 
             // eMPRESABindingSource1
             // 
-            this.eMPRESABindingSource1.DataSource = typeof(NastiAplicacion.Data.EMPRESA);
+            this.eMPRESABindingSource1.DataSource = typeof(EMPRESA);
             // 
             // simpleButtonSubirFirma
             // 

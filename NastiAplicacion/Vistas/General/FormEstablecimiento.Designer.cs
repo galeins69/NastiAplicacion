@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.General
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.General
 {
     partial class FormEstablecimiento
     {
@@ -99,7 +101,7 @@
             // 
             // eSTABLECIMIENTOBindingSource
             // 
-            this.eSTABLECIMIENTOBindingSource.DataSource = typeof(NastiAplicacion.Data.ESTABLECIMIENTO);
+            this.eSTABLECIMIENTOBindingSource.DataSource = typeof(ESTABLECIMIENTO);
             // 
             // gridViewEstablecimientos
             // 
@@ -173,7 +175,7 @@
             // 
             // pUNTOEMISIONBindingSource
             // 
-            this.pUNTOEMISIONBindingSource.DataSource = typeof(NastiAplicacion.Data.PUNTOEMISION);
+            this.pUNTOEMISIONBindingSource.DataSource = typeof(PUNTOEMISION);
             // 
             // gridViewPuntoEmision
             // 
@@ -240,7 +242,7 @@
             // 
             // pUNTOEMISIONDOCUMENTOBindingSource
             // 
-            this.pUNTOEMISIONDOCUMENTOBindingSource.DataSource = typeof(NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO);
+            this.pUNTOEMISIONDOCUMENTOBindingSource.DataSource = typeof(PUNTOEMISIONDOCUMENTO);
             // 
             // gridViewDocumentos
             // 
@@ -368,7 +370,7 @@
             // 
             // pUNTOEMSIONDOCUMENTOBindingSource
             // 
-            this.pUNTOEMSIONDOCUMENTOBindingSource.DataSource = typeof(NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO);
+            this.pUNTOEMSIONDOCUMENTOBindingSource.DataSource = typeof(PUNTOEMISIONDOCUMENTO);
             // 
             // FormEstablecimiento
             // 

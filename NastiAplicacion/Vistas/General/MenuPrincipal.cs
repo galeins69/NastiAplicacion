@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraNavBar;
-using NastiAplicacion.Data;
-using NastiAplicacion.Enumerador;
+using Nasti.Datos;
+using Nasti.Datos.Enumerador;
 using NastiAplicacion.Recursos;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

@@ -1,5 +1,5 @@
-﻿using NastiAplicacion.Data;
-using NastiAplicacion.Servicio;
+﻿using Nasti.Datos;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

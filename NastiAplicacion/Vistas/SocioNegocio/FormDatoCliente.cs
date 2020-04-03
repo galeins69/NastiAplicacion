@@ -1,8 +1,4 @@
-﻿using NastiAplicacion.Data;
-using NastiAplicacion.Enumerador;
-using NastiAplicacion.General;
-using NastiAplicacion.Servicio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,6 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nasti.Datos;
+using Nasti.Datos.Servicio;
+using Nasti.Datos.Enumerador;
+using NastiAplicacion.General;
+using Nasti.Datos.Utiles;
+using DevExpress.XtraEditors;
 
 namespace NastiAplicacion.Vistas.SocioNegocio
 {
@@ -19,7 +21,7 @@ namespace NastiAplicacion.Vistas.SocioNegocio
 
         private SOCIONEGOCIO datoCliente = new SOCIONEGOCIO();
         private FacturaServicio facturaServcio = new FacturaServicio();
-        private Utiles.Utiles utiles = new Utiles.Utiles();
+        private Nasti.Datos.Utiles.Utiles utiles = new Nasti.Datos.Utiles.Utiles();
 
         public SOCIONEGOCIO DatoCliente { get => datoCliente; set => datoCliente = value; }
 
@@ -59,6 +61,8 @@ namespace NastiAplicacion.Vistas.SocioNegocio
                                 return;
                             }
             }
+            if (this.DatoCliente.CODIGOEMPRESA == null)
+                this.datoCliente.CODIGOEMPRESA = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
             this.datoCliente=new FacturaServicio().grabarSocioNegocio(this.DatoCliente);
             this.DialogResult = DialogResult.OK;
             this.Close();

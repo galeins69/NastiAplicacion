@@ -32,7 +32,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>\\Users\robay\OneDrive\Kippa\Instaladores\Nasti\1.00.00\</InstallUrl>
     <ApplicationRevision>11</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <ApplicationVersion>1.0.0.11</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -69,7 +69,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>favicon.ico</ApplicationIcon>
@@ -78,50 +78,50 @@
     <StartupObject>NastiAplicacion.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Nasti2.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>NastiFirma.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.CodeParser.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.DataAccess.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.DataAccess.v18.2.UI, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Dialogs.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Office.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Pdf.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.RichEdit.v18.2.Export, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v18.2.UI, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpo.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v18.2.Extensions, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v18.2.Wizard, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraDialogs.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v18.2.Core, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.Charts.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v19.1.UI, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Dialogs.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Pdf.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v19.1.Export, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v19.1.UI, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v19.1.Extensions, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v19.1.Wizard, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraDialogs.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v19.1.Core, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraNavBar.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+    <Reference Include="DevExpress.XtraNavBar.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
-    <Reference Include="DevExpress.XtraPivotGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v18.2.Extensions, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraRichEdit.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraVerticalGrid.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraWizard.v18.2, Version=18.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPivotGrid.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v19.1.Extensions, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraRichEdit.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraWizard.v19.1, Version=19.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -131,146 +131,11 @@
     <Reference Include="EntityFramework6.Npgsql, Version=6.4.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework6.Npgsql.6.4.0\lib\net461\EntityFramework6.Npgsql.dll</HintPath>
     </Reference>
-    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
-    </Reference>
     <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
     </Reference>
-    <Reference Include="IKVM.AWT.WinForms, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.AWT.WinForms.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Beans, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Beans.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Charsets, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Charsets.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Cldrdata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Cldrdata.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Corba, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Corba.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Core, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Jdbc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Jdbc.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Localedata, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Localedata.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Management, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Management.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Media, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Misc, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Misc.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Naming, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Naming.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Nashorn, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Nashorn.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Remoting, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Remoting.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Security, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.SwingAWT, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.SwingAWT.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Text, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Tools, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.Util, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.Util.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.API, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.API.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Bind, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Bind.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Crypto, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Crypto.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Parse, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Parse.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.Transform, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.Transform.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.WebServices, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.WebServices.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.OpenJDK.XML.XPath, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.OpenJDK.XML.XPath.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="IKVM.Runtime.JNI, Version=8.1.5717.0, Culture=neutral, PublicKeyToken=13235d27fcbfff58, processorArchitecture=MSIL">
-      <HintPath>..\packages\IKVM.8.1.5717.0\lib\IKVM.Runtime.JNI.dll</HintPath>
-    </Reference>
     <Reference Include="linq2db, Version=2.9.4.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
       <HintPath>..\packages\linq2db.2.9.4\lib\net46\linq2db.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
     <Reference Include="Npgsql, Version=4.1.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.1.2\lib\net461\Npgsql.dll</HintPath>
@@ -285,21 +150,13 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.7.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Interactive.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
@@ -309,15 +166,9 @@
     <Reference Include="System.Linq.Async, Version=4.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Async.4.0.0\lib\net461\System.Linq.Async.dll</HintPath>
     </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
-    </Reference>
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -356,148 +207,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Data\ARTICULO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ARTICULOCOMPONENTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ARTICULOIMPUESTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\BODEGA.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\BODEGASTOCK.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CLIENTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\COMPROBANTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\COMPROBANTEFORMAPAGO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\CONDICIONPAGO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DETALLECOMPROBANTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DETALLELISTADEPRECIO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EJERCICIOFISCAL.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ELEMENTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EMPRESA.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ESTABLECIMIENTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ESTADOCOMPROBANTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\FORMAPAGO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\IMPUESTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\IMPUESTOCOMPROBANTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\LISTADEPRECIO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ModeloNasti.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloNasti.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ModeloNasti.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ModeloNasti.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModeloNasti.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PARAMETRO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PRODUCTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PROVEEDOR.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PROVEEDORCERTIFICADO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PUNTOEMISION.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PUNTOEMISIONAUTORIZACION.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\PUNTOEMISIONDOCUMENTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\SOCIONEGOCIO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TABLAIMPUESTOS.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOAMBIENTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOARTICULO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOCOMPROBANTE.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOELEMENTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOESTADO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOFORMAPAGO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOIDENTIFICACION.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\TIPOIMPUESTO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\UNIDAD.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\UNIDADTIEMPO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\USUARIO.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\USUARIOEMPRESA.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\VENDEDOR.cs">
-      <DependentUpon>ModeloNasti.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Enumerador\Enumeradores.cs" />
     <Compile Include="FormaBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -507,7 +216,6 @@
     <Compile Include="General\Commando.cs" />
     <Compile Include="General\CredencialUsuario.cs" />
     <Compile Include="General\ErrorNasti.cs" />
-    <Compile Include="General\Factura.cs" />
     <Compile Include="General\GeneradorFactura.cs" />
     <Compile Include="General\Interfaces.cs" />
     <Compile Include="General\SRI\RespuestaSolicitud.cs" />
@@ -578,11 +286,8 @@
       <DependentUpon>ReportViewerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ServicioImpresion.cs" />
-    <Compile Include="Servicio\ArticuloServicio.cs" />
-    <Compile Include="Servicio\FacturaServicio.cs" />
-    <Compile Include="Servicio\GeneralServicio.cs" />
-    <Compile Include="Servicio\ReportesServicio.cs" />
     <Compile Include="Utiles\EnvioComprobanteWs.cs" />
+    <Compile Include="Utiles\NastiUtil.cs" />
     <Compile Include="Vistas\Facturacion\ArticuloFormView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -615,6 +320,12 @@
     <Compile Include="Vistas\Facturacion\FormaPagoForm.Designer.cs">
       <DependentUpon>FormaPagoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Facturacion\FormArticuloBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\Facturacion\FormArticuloBodega.Designer.cs">
+      <DependentUpon>FormArticuloBodega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Facturacion\FormBuscarComprobante.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -627,15 +338,12 @@
     <Compile Include="Vistas\Facturacion\FormBuscarProducto.Designer.cs">
       <DependentUpon>FormBuscarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Facturacion\LoginServicio.cs" />
-    <Compile Include="Servicio\MenuServicio.cs" />
     <Compile Include="SplashScreenNasti.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SplashScreenNasti.Designer.cs">
       <DependentUpon>SplashScreenNasti.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utiles\Utiles.cs" />
     <Compile Include="Vistas\ControlGeneralNasti.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -793,6 +501,9 @@
     <EmbeddedResource Include="Vistas\Facturacion\FormaPagoForm.resx">
       <DependentUpon>FormaPagoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\Facturacion\FormArticuloBodega.resx">
+      <DependentUpon>FormArticuloBodega.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Facturacion\FormBuscarComprobante.resx">
       <DependentUpon>FormBuscarComprobante.cs</DependentUpon>
     </EmbeddedResource>
@@ -839,10 +550,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\RecepcionComprobantesOfflineService.wsdl" />
-    <EntityDeploy Include="Data\ModeloNasti.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModeloNasti.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="Connected Services\ServiceReference2\AutorizacionComprobantesOfflineService.wsdl" />
     <None Include="Connected Services\ServiceReference2\NastiAplicacion.ServiceReference2.autorizacionComprobanteLoteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -855,9 +562,6 @@
     </None>
     <None Include="Connected Services\ServiceReference2\NastiAplicacion.ServiceReference2.respuestaLote.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Data\ModeloNasti.edmx.diagram">
-      <DependentUpon>ModeloNasti.edmx</DependentUpon>
     </None>
     <None Include="LinqToDB.Templates\DataAnnotations.ttinclude" />
     <None Include="LinqToDB.Templates\DataModel.ttinclude" />
@@ -875,64 +579,9 @@
     <None Include="LinqToDB.Templates\PluralizationService.ttinclude" />
     <None Include="LinqToDB.Templates\T4Model.ttinclude" />
     <None Include="LinqToDB.Templates\Validation.ttinclude" />
-    <None Include="Nasti2.pfx" />
-    <None Include="NastiAplicacion_TemporaryKey.pfx" />
+    <None Include="Nasti.pfx" />
+    <None Include="NastiFirma.pfx" />
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ARTICULOIMPUESTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.BODEGA.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.BODEGASTOCK.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.CLIENTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.CLIENTE1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTE1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.COMPROBANTEFORMAPAGO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.CONDICIONPAGO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.CONDICIONPAGO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLECOMPROBANTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLECOMPROBANTE1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.DETALLELISTADEPRECIO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ELEMENTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.EMPRESA.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.EMPRESA1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTABLECIMIENTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTABLECIMIENTO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.ESTADOCOMPROBANTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.FORMAPAGO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTOCOMPROBANTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.IMPUESTOCOMPROBANTE1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.KippaEntities.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.LISTADEPRECIO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.LISTADEPRECIO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.PROVEEDOR.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISION.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISION1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.PUNTOEMISIONDOCUMENTO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.SOCIONEGOCIO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.SOCIONEGOCIO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TABLAIMPUESTOS.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOARTICULO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOCOMPROBANTE.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOCOMPROBANTE1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOELEMENTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOESTADO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOFORMAPAGO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOIDENTIFICACION.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.TIPOIMPUESTO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.UNIDAD.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.UNIDAD1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.USUARIO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.USUARIOEMPRESA.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.VENDEDOR.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.VENDEDOR1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.V_SOCIONEGOCIO.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Data.V_SOCIONEGOCIO1.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Servicio.ArticuloServicio.datasource" />
-    <None Include="Properties\DataSources\NastiAplicacion.Servicio.FacturaServicio.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -980,25 +629,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Data\ModeloNasti.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloNasti.edmx</DependentUpon>
-      <LastGenOutput>ModeloNasti.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\ModeloNasti.edmx.sql" />
-    <Content Include="Data\ModeloNasti.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModeloNasti.edmx</DependentUpon>
-      <LastGenOutput>ModeloNasti.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
-    <Content Include="Kippa.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Kippa_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>Kippa.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\scripts_32x32.png" />
     <None Include="Resources\apply_16x16.png" />
     <None Include="Resources\apply_32x32.png" />
@@ -1077,9 +708,9 @@
       <Project>{ee1dc57a-344a-4b0a-82ce-5fd328c14894}</Project>
       <Name>Microsoft.Xades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DatosNasti\DatosNasti.csproj">
-      <Project>{25bfa070-69a6-4914-be06-107c693a350c}</Project>
-      <Name>DatosNasti</Name>
+    <ProjectReference Include="..\Nasti.Datos\Nasti.Datos.csproj">
+      <Project>{366b3f3c-3ad3-4698-a2cd-6b0b4298174f}</Project>
+      <Name>Nasti.Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\RecursosNasti\RecursosNasti.csproj">
       <Project>{f6ed32cd-9352-4d59-ab4c-908c50416f06}</Project>
@@ -1120,7 +751,24 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference2\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="ExcelDataReader">
+      <Version>3.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="IKVM">
+      <Version>8.1.5717</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces">
+      <Version>1.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Bcl.Build">
+      <Version>1.0.21</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
+    <Folder Include="Servicio\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

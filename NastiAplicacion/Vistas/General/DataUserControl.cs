@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 
 namespace NastiAplicacion.Vistas.General
 {
@@ -19,14 +19,9 @@ namespace NastiAplicacion.Vistas.General
         private int totalRegistros;
         private bool registroModificado = false;
         BindingSource aBindingSource;
-        NastiAplicacion.Data.KippaEntities dbContext;
+        Nasti.Datos.KippaEntities dbContext;
 
-        //public DataUserControl()
-        //{
-        //    InitializeComponent();
-        //    //codigoEmpresa=CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
-        //}
-
+        
         public int RegistroInicial { get => registroInicial; set => registroInicial = value; }
         public bool RegistroModificado { get => registroModificado; set => registroModificado = value; }
         public long CodigoEmpresa { get => codigoEmpresa; set => codigoEmpresa = value; }

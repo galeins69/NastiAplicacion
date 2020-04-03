@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.Vistas.General;
 using NastiAplicacion.General;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 
 namespace NastiAplicacion.Vistas.Facturacion
 {

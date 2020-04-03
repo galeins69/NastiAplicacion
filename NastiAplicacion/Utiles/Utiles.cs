@@ -6,26 +6,13 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
-using java.util;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using DevExpress.XtraEditors;
-using java.io;
-using java.security;
-using java.security.cert;
-using javax.xml.parsers;
-using javax.xml.transform;
-using javax.xml.transform.dom;
-using javax.xml.transform.stream;
-using org.w3c.dom;
-using java.net;
 using static NastiAplicacion.Utiles.AutoridadCertificante;
-using java.lang.reflect;
-using org.xml.sax;
 using System.Xml;
 using System.Net.Mail;
 using System.Net;
-using NastiAplicacion.Data;
 using NastiAplicacion.Servicio;
 using NastiAplicacion.General;
 using FirmaXadesNet;
@@ -810,7 +797,7 @@ namespace NastiAplicacion.Utiles
             parametros.Signer = new FirmaXadesNet.Crypto.Signer(MontCertificat);
             Stream streamDocumento = new MemoryStream(archivo);
             var docFirmado = xadesService.Sign(streamDocumento, parametros);
-            docFirmado.Save(@"C:\Users\robay\AppData\Local\Temp\firmado3.xml");
+            //docFirmado.Save(@"C:\Users\robay\AppData\Local\Temp\firmado3.xml");
             return System.Text.Encoding.UTF8.GetBytes(docFirmado.Document.OuterXml);
 
             

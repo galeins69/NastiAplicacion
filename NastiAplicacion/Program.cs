@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using NastiAplicacion.General;
 using NastiAplicacion.General.Generador;
 using NastiAplicacion.Reportes;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.Utiles;
 using NastiAplicacion.Vistas.General;
 using NastiAplicacion.Vistas.SocioNegocio;
@@ -45,6 +45,9 @@ namespace NastiAplicacion
             nastiCulture.NumberFormat.CurrencyDecimalDigits = 2;
             if (CredencialUsuario.getInstancia().getUsuario() != null)
                 Application.Run(FormaBase.getInstancia());
+            //ServicioImpresion servicio = new ServicioImpresion();
+            //COMPROBANTE comprobante = new FacturaServicio().getComprobante(5);
+            //servicio.exportarPdf(comprobante.CODIGOTIPOCOMPROBANTE, comprobante);
         }
     }
 }

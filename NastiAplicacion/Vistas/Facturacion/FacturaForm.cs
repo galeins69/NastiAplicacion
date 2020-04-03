@@ -3,12 +3,13 @@ using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Base;
 using DevExpress.XtraGrid.Views.Grid;
-using NastiAplicacion.Data;
+using Nasti.Datos;
+using Nasti.Datos.Servicio;
+using Nasti.Datos;
 using NastiAplicacion.General;
 using NastiAplicacion.General.Generador;
 using NastiAplicacion.Properties;
 using NastiAplicacion.Reportes;
-using NastiAplicacion.Servicio;
 using NastiAplicacion.Vistas.General;
 using NastiAplicacion.Vistas.SocioNegocio;
 using System;
@@ -228,6 +229,11 @@ public FacturaForm()
         }
         private void gridViewDetalleComprobante_CellValueChanged(object sender, CellValueChangedEventArgs e)
         {
+            if ((Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "DESCUENTO") > (Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "BASEIMPONIBLE"))
+            {
+                XtraMessageBox.Show("El valor del descuento no puede ser mayor a la base imponible: " + this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "BASEIMPONIBLE"));
+            
+            }
             if (e.Column.FieldName == "CANTIDAD")
             {
                 this.gridViewDetalleComprobante.SetRowCellValue(e.RowHandle, "BASEIMPONIBLE", (object)((Decimal)e.Value * (Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "PVP") - (Decimal)this.gridViewDetalleComprobante.GetRowCellValue(e.RowHandle, "DESCUENTO")));
@@ -451,12 +457,19 @@ public FacturaForm()
                 return;
             this.comprobante.CODIGOSOCIONEGOCIO = new long?(this.socionegocioSeleccionado.CODIGOSOCIONEGOCIO);
             this.comprobante.CODIGOESTADOCOMPROBANTE = estado;
-            this.comprobante = this.facturaServicio.grabarComprobante(this.comprobante, this.detalleComprobanteList, this.impuestoComprobanteList, this.detalleFormaPago, this.socionegocioSeleccionado, CredencialUsuario.getInstancia(), (TIPOCOMPROBANTE)this.CODIGOTIPOCOMPROBANTELookUpEdit.GetSelectedDataRow());
+            this.comprobante = this.facturaServicio.grabarComprobante(this.comprobante, this.detalleComprobanteList, this.impuestoComprobanteList, this.detalleFormaPago, this.socionegocioSeleccionado, CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().CODIGOESTABLECIMIENTO, (long)CredencialUsuario.getInstancia().getPuntoDeEmision().CODIGOESTABLECIMIENTO, CredencialUsuario.getInstancia().getEmpresaSeleccionada().RUC, (TIPOCOMPROBANTE)this.CODIGOTIPOCOMPROBANTELookUpEdit.GetSelectedDataRow(), CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOTIPOAMBIENTE.ToString(), CredencialUsuario.getInstancia().getEstablecimientoSeleccionado().NUMERO, CredencialUsuario.getInstancia().getPuntoDeEmision().NOMBRE);
+            if (this.facturaServicio.ErrorNasti != null)
+                XtraMessageBox.Show(this.facturaServicio.ErrorNasti.Error);
         }
         public override bool validarDatos()
         {
             if (!this.dxValidationProvider1.Validate())
                 return false;
+            if (this.comprobante.TOTAL<0)
+            {
+                XtraMessageBox.Show("La factura no puede se negativa");
+                return false;
+            }
             List<ErrorNasti> errorNastiList = new List<ErrorNasti>();
             if (this.gridViewDetalleComprobante.RowCount <= 0)
             {
@@ -465,7 +478,11 @@ public FacturaForm()
             }
             if (this.gridViewImpuestoComprobante.RowCount > 0)
                 return true;
-            int num1 = (int)XtraMessageBox.Show("No existen impuestos para facturar");
+            else
+            {
+                XtraMessageBox.Show("No existen impuestos para facturar");
+                return false;
+            }
             return false;
         }
         public override void Autorizar()

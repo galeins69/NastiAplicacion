@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.Facturacion
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.Facturacion
 {
     partial class PagoForm
     {
@@ -119,7 +121,7 @@
             // 
             // cOMPROBANTEFORMAPAGOBindingSource
             // 
-            this.cOMPROBANTEFORMAPAGOBindingSource.DataSource = typeof(NastiAplicacion.Data.COMPROBANTEFORMAPAGO);
+            this.cOMPROBANTEFORMAPAGOBindingSource.DataSource = typeof(COMPROBANTEFORMAPAGO);
             // 
             // gridViewPago
             // 

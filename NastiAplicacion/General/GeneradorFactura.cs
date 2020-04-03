@@ -1,10 +1,9 @@
 ﻿using DevExpress.XtraEditors;
-using javax.xml.datatype;
-using NastiAplicacion.Data;
-using NastiAplicacion.Enumerador;
-using NastiAplicacion.General.Modelo;
+using Nasti.Datos;
+using Nasti.Datos.Modelo;
+using Nasti.Datos.Enumerador;
 using NastiAplicacion.General.SRI;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.Utiles;
 using NastiAplicacion.Vistas.General;
 using System;
@@ -14,6 +13,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using static Comprobante;
+using Nasti.Datos.Utiles;
+using javax.xml.datatype;
+using NastiAplicacion.Reportes;
 
 namespace NastiAplicacion.General.Generador
 {
@@ -26,6 +28,8 @@ namespace NastiAplicacion.General.Generador
 
         protected RespuestaSolicitud respuestaSolicitud;
         protected RespuestaComprobante respuestaAutorizacion;
+        protected GeneralServicio generalServicio = new GeneralServicio();
+        protected FacturaServicio facturaServicio = new FacturaServicio();
 
         public RespuestaSolicitud getRespuestaSolicitud()
         {
@@ -55,6 +59,7 @@ namespace NastiAplicacion.General.Generador
         public void GenerarXML()
         {
             enviarComprobante();
+           
         }
 
         public bool validarFactura()
@@ -73,7 +78,7 @@ namespace NastiAplicacion.General.Generador
         {
 
             if (this.comprobante == null) return;
-            UtilesElectronico util = new UtilesElectronico();
+            Nasti.Datos.Utiles.UtilesElectronico util = new Nasti.Datos.Utiles.UtilesElectronico();
             this.comprobante = new FacturaServicio().getComprobante(this.comprobante.CODIGOCOMPROBANTE);
             FormProgressBar progress = new FormProgressBar();
             progress.setTexto("Generando XML");
@@ -84,6 +89,7 @@ namespace NastiAplicacion.General.Generador
             progress.Update();
             byte[] archivoFirmado = util.firmarArchivo(archivo, comprobante.EMPRESA.CLAVEFIRMA, comprobante.EMPRESA.CODIGOEMPRESA, comprobante.EMPRESA.FIRMAELECTRONICA, comprobante.EMPRESA.PROVEEDORCERTIFICADO.SIGLA, comprobante.EMPRESA.RUC);
             if (archivoFirmado == null)
+
             {
                 XtraMessageBox.Show("Error en el proceso de firmado. Contactese con el administrador del sistema");
                 return;
@@ -122,7 +128,9 @@ namespace NastiAplicacion.General.Generador
                         }
                         progress.setTexto("Actualizando comprobante en el sistema");
                         progress.Update();
-                        new FacturaServicio().actualizarComprobante(comprobante);
+                        facturaServicio.actualizarComprobante(comprobante);
+                        if (facturaServicio.ErrorNasti != null)
+                            XtraMessageBox.Show(facturaServicio.ErrorNasti.Error);
                         //XtraMessageBox.Show("Existe un inconveniente al autorizar el comprobante");
                     }
                     else if (respuestaSolicitud.getEstado().Equals("DEVUELTA"))
@@ -138,10 +146,19 @@ namespace NastiAplicacion.General.Generador
                                     this.respuestaAutorizacion = envio.getRespuestaAutorizacion();
                                     if (envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getEstado().Equals("AUTORIZADO"))
                                     {
+                                        progress.setTexto("COMPROBANTE AUTORIZADO");
+                                        progress.Update();
                                         comprobante.CODIGOESTADOCOMPROBANTE = (long)EnumEstadoComprobante.AUTORIZADO;
                                         XMLGregorianCalendar fec = envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getFechaAutorizacion();
                                         comprobante.FECHAAUTORIZACION = new DateTime(fec.getYear(), fec.getMonth(), fec.getDay(), fec.getHour(), fec.getMinute(), fec.getSecond());
                                         comprobante.ARCHIVOAUTORIZADO = System.Text.Encoding.UTF8.GetBytes(envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getComprobante());
+                                        //enviar correo
+                                       
+                                        progress.setTexto("Enviando por correo.");
+                                        progress.Update();
+                                        this.enviarCorreo();
+                                        
+
                                     }
                                     else
                                     {
@@ -150,6 +167,7 @@ namespace NastiAplicacion.General.Generador
                                     }
                                     progress.setTexto("Actualizando el comprobante en el sistema");
                                     new FacturaServicio().actualizarComprobante(comprobante);
+                                    progress.Update();
                                 }
                                 catch (Exception ex)
                                 {
@@ -167,10 +185,16 @@ namespace NastiAplicacion.General.Generador
                 }
 
             }
+            else
+            {
+                XtraMessageBox.Show("NO EXISTE PARAMETRO GENERAR_SRI");
+            }
 
             progress.Close();
 
         }
+
+       
         public void LlenarInformacionTributaria(String version)
         {
             factura = new Factura();
@@ -253,30 +277,35 @@ namespace NastiAplicacion.General.Generador
                 regDetalle.impuestos.impuesto.Add(regImpuesto);
                 factura.detalles.detalle.Add(regDetalle);
             }
-            factura.infoAdicional = new InfoAdicional();
-            factura.infoAdicional.campoAdicional = new List<CampoAdicional>();
-            CampoAdicional campo;
-            if (comprobante.SOCIONEGOCIO.DIRECCION != null)
+            if (comprobante.COMPROBANTEADICIONAL.Count() > 0)
             {
-                campo = new CampoAdicional();
-                campo.nombre = "Dirección";
-                campo.value = comprobante.SOCIONEGOCIO.DIRECCION;
-                factura.infoAdicional.campoAdicional.Add(campo);
+                factura.infoAdicional = new InfoAdicional();
+                factura.infoAdicional.campoAdicional = new List<CampoAdicional>();
+                CampoAdicional campo;
+                foreach (COMPROBANTEADICIONAL comprobanteAdicional in comprobante.COMPROBANTEADICIONAL)
+                {
+                    campo = new CampoAdicional();
+                    campo.nombre = comprobanteAdicional.TITULO;
+                    campo.value = comprobanteAdicional.DESCRIPCION;
+                    factura.infoAdicional.campoAdicional.Add(campo);
+                }
             }
-            if (comprobante.SOCIONEGOCIO.EMAIL != null)
+        }
+
+        public void enviarCorreo()
+        {
+            if (comprobante.CODIGOESTADOCOMPROBANTE != (long)EnumEstadoComprobante.AUTORIZADO) return;
+            PARAMETRO parametroEnvioCorreo = generalServicio.getParametro(comprobante.CODIGOEMPRESA, "ENVIAR_CORREO");
+            if (parametroEnvioCorreo==null) return;
+            if (parametroEnvioCorreo.VALORSTRING.Equals("N"))
             {
-                campo = new CampoAdicional();
-                campo.nombre = "Correo Electrónico";
-                campo.value = comprobante.SOCIONEGOCIO.EMAIL;
-                factura.infoAdicional.campoAdicional.Add(campo);
+                XtraMessageBox.Show("No se ha definido parámetro ENVIAR_CORREO");
+                return;
             }
-            if (comprobante.OBSERVACION != null)
-            {
-                campo = new CampoAdicional();
-                campo.nombre = "Observación";
-                campo.value = comprobante.OBSERVACION;
-                factura.infoAdicional.campoAdicional.Add(campo);
-            }
+            Nasti.Datos.Utiles.Correo correo = new Nasti.Datos.Utiles.Correo();
+            ServicioImpresion servicioImpresion = new ServicioImpresion();
+            var archivoPdf = servicioImpresion.exportarPdf(comprobante.CODIGOTIPOCOMPROBANTE, comprobante);
+            correo.enviarCorreo((comprobante.EMPRESA.TIPOAMBIENTE.CODIGOTIPOAMBIENTE==1?"robayo.galo@gmail.com":comprobante.SOCIONEGOCIO.EMAIL),archivoPdf,comprobante.ARCHIVOAUTORIZADO);
         }
     }
 }

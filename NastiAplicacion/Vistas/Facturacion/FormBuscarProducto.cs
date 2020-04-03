@@ -1,8 +1,8 @@
 ﻿using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraGrid.Views.Grid;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using NastiAplicacion.General;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections;
 using System.Collections.Generic;

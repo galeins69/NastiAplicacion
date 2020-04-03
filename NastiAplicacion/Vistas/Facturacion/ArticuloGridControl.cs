@@ -6,16 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.General;
-using NastiAplicacion.Enumerador;
+using Nasti.Datos.Enumerador;
 using DevExpress.XtraGrid.Columns;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.EditForm.Helpers.Controls;
 using DevExpress.XtraEditors;
 using System.ComponentModel;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using NastiAplicacion.Utiles;
 using ExcelDataReader;
 using NastiAplicacion.Vistas.General;
@@ -65,7 +65,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             FormProgressBar progres = new FormProgressBar();
             ARTICULO articulo;
-            NastiAplicacion.Utiles.Utiles util = new NastiAplicacion.Utiles.Utiles();
+            NastiUtil util = new NastiUtil();
             string[] cabecera = { "Id", "Código", "Nombre", "P.V.P", "Stock", "Tipo Articulo", "Impuesto", "compras", "Ventas", "Unidad", "Saldo Inicial", "SECCION", "DescripcionCorta" };
             int i = 0;
             DataSet result = util.getExcel();
@@ -106,7 +106,7 @@ namespace NastiAplicacion.Vistas.Facturacion
                     articulo.FECHAMODIFICACION = DateTime.Now;
                     try
                     {
-                        articuloservicio.grabarArticuloImport(articulo);
+                        articuloservicio.grabarArticuloImport(articulo, CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA);
                     }
                     catch (Exception ex)
                     {

@@ -1,6 +1,6 @@
-﻿using NastiAplicacion.Data;
+﻿using Nasti.Datos;
 using NastiAplicacion.General;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,7 +40,7 @@ namespace NastiAplicacion.Vistas.SocioNegocio
 
             IEnumerable<SOCIONEGOCIO> sociosNegocio=null;
             sociosNegocio = facturaServicio.buscarSociosDeNegocio(e.NewValue.ToString(), CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA);
-            gridControlBusqueda.DataSource = sociosNegocio;
+            gridControlBusqueda.DataSource = sociosNegocio.ToList();
 
 
         }

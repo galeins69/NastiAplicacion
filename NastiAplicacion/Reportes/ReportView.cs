@@ -1,6 +1,6 @@
 ﻿using DevExpress.XtraEditors;
 using DevExpress.XtraReports.UI;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ namespace NastiAplicacion.Reportes
 {
     public partial class ReportView : Form
     {
-        Facturación.FacturaReport facturaReport = new Facturación.FacturaReport();
+       // Facturación.FacturaReport facturaReport = new Facturación.FacturaReport();
         XtraReport xtraReport = new XtraReport();
         KippaEntities kippaEntities = new KippaEntities();
         long codigoComprobante= 50034;

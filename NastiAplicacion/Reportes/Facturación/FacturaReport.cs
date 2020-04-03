@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
 using DevExpress.XtraReports.UI;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using System.Linq;
 
 namespace NastiAplicacion.Reportes.Facturación
@@ -16,7 +16,7 @@ namespace NastiAplicacion.Reportes.Facturación
             KippaEntities kippaEntities = new KippaEntities();
             kippaEntities.Configuration.LazyLoadingEnabled = false;
             DataSource = (from c in kippaEntities.COMPROBANTE.Include("EMPRESA").Include("EMPRESA.TIPOAMBIENTE").Include("ESTABLECIMIENTO").Include("PUNTOEMISION").Include("DETALLECOMPROBANTE").Include("IMPUESTOCOMPROBANTE").Include("COMPROBANTEFORMAPAGO").Include("SOCIONEGOCIO") where c.CODIGOESTADOCOMPROBANTE==3 select c).ToList();
-            this.LoadLayout(@"C:\Users\robay\OneDrive\Kippa\Fuentes\NastiAplicacion\Reportes\FacturaReporte.repx");
+            //this.LoadLayout(@"C:\Users\robay\OneDrive\Kippa\Fuentes\NastiAplicacion\Reportes\FacturaReporte.repx");
             
         }
 

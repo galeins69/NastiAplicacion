@@ -71,7 +71,7 @@ namespace NastiAplicacion.Utiles
                 autorizacion = new Autorizacion();
                 if (nodo.InnerText.Equals("EN PROCESO"))
                 {
-                    autorizacion.setComprobante(nodo["autorizacion"]["comprobante"].InnerText);
+                    autorizacion.setComprobante(null);
                     autorizacion.setEstado(nodo["autorizacion"]["estado"].InnerText);                 
                     autorizacion.setNumeroAutorizacion(nodo["autorizacion"]["numeroAutorizacion"].InnerText);
                     Autorizacion.Mensajes msjs = new Autorizacion.Mensajes();

@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.Facturacion
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.Facturacion
 {
     partial class RecuperarPendienteForm
     {
@@ -48,7 +50,7 @@
             // 
             // cOMPROBANTEBindingSource
             // 
-            this.cOMPROBANTEBindingSource.DataSource = typeof(NastiAplicacion.Data.COMPROBANTE);
+            this.cOMPROBANTEBindingSource.DataSource = typeof(COMPROBANTE);
             // 
             // simpleButton2
             // 

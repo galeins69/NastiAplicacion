@@ -1,7 +1,7 @@
-﻿using NastiAplicacion.Data;
-using NastiAplicacion.Enumerador;
+﻿using Nasti.Datos;
+using Nasti.Datos.Enumerador;
 using NastiAplicacion.General;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,4 +1,6 @@
-﻿namespace NastiAplicacion.Vistas.Facturacion
+﻿using Nasti.Datos;
+
+namespace NastiAplicacion.Vistas.Facturacion
 {
     partial class ArticuloFormView
     {
@@ -42,6 +44,11 @@
             DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule10 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
             this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
             this.CODIGOARTICULOTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.aRTICULOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -67,6 +74,16 @@
             this.SOLOCOMPRASTextEdit = new DevExpress.XtraEditors.CheckEdit();
             this.ESTADOTextEdit = new DevExpress.XtraEditors.ToggleSwitch();
             this.GRAFICOPictureEdit = new DevExpress.XtraEditors.PictureEdit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonReprocesar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonAutorizar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonPendiente = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonAnular = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonRecuperar = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonFormaPago = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonNuevo = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonImprimir = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroupBasico = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -97,24 +114,12 @@
             this.ItemForGRAFICO = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForSECCION = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
-            this.simpleButtonAutorizar = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonAnular = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonReprocesar = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonPendiente = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonRecuperar = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonFormaPago = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonNuevo = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonImprimir = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton10 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
             this.xtraTabControl1.SuspendLayout();
             this.xtraTabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CODIGOARTICULOTextEdit.Properties)).BeginInit();
@@ -143,6 +148,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SOLOCOMPRASTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ESTADOTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRAFICOPictureEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupBasico)).BeginInit();
@@ -173,10 +180,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForGRAFICO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSECCION)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
-            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
             // 
             // xtraTabControl1
@@ -198,6 +201,60 @@
             this.xtraTabPage1.Name = "xtraTabPage1";
             this.xtraTabPage1.Size = new System.Drawing.Size(927, 533);
             this.xtraTabPage1.Text = "sd";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl2.Controls.Add(this.simpleButton5);
+            this.groupControl2.Controls.Add(this.simpleButton4);
+            this.groupControl2.Controls.Add(this.simpleButton2);
+            this.groupControl2.Controls.Add(this.simpleButton3);
+            this.groupControl2.Controls.Add(this.simpleButton10);
+            this.groupControl2.Location = new System.Drawing.Point(799, 14);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.ShowCaption = false;
+            this.groupControl2.Size = new System.Drawing.Size(118, 516);
+            this.groupControl2.TabIndex = 10;
+            this.groupControl2.Text = "Comandos";
+            // 
+            // simpleButton4
+            // 
+            this.simpleButton4.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
+            this.simpleButton4.Location = new System.Drawing.Point(4, 9);
+            this.simpleButton4.Name = "simpleButton4";
+            this.simpleButton4.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton4.TabIndex = 10;
+            this.simpleButton4.Text = "Buscar";
+            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
+            this.simpleButton2.Location = new System.Drawing.Point(4, 65);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton2.TabIndex = 1;
+            this.simpleButton2.Text = "Grabar";
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
+            this.simpleButton3.Location = new System.Drawing.Point(4, 181);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton3.TabIndex = 8;
+            this.simpleButton3.Text = "Anular";
+            // 
+            // simpleButton10
+            // 
+            this.simpleButton10.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
+            this.simpleButton10.Location = new System.Drawing.Point(4, 123);
+            this.simpleButton10.Name = "simpleButton10";
+            this.simpleButton10.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton10.TabIndex = 6;
+            this.simpleButton10.Text = "Imprimir";
             // 
             // dataLayoutControl1
             // 
@@ -247,7 +304,7 @@
             // 
             // aRTICULOBindingSource
             // 
-            this.aRTICULOBindingSource.DataSource = typeof(NastiAplicacion.Data.ARTICULO);
+            this.aRTICULOBindingSource.DataSource = typeof(Nasti.Datos.ARTICULO);
             this.aRTICULOBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.aRTICULOBindingSource_ListChanged);
             // 
             // CODIGOTextEdit
@@ -603,6 +660,108 @@
             this.GRAFICOPictureEdit.StyleController = this.dataLayoutControl1;
             this.GRAFICOPictureEdit.TabIndex = 29;
             // 
+            // groupControl1
+            // 
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Controls.Add(this.simpleButtonReprocesar);
+            this.groupControl1.Controls.Add(this.simpleButtonAutorizar);
+            this.groupControl1.Controls.Add(this.simpleButtonPendiente);
+            this.groupControl1.Controls.Add(this.simpleButtonAnular);
+            this.groupControl1.Controls.Add(this.simpleButtonRecuperar);
+            this.groupControl1.Controls.Add(this.simpleButtonFormaPago);
+            this.groupControl1.Controls.Add(this.simpleButtonNuevo);
+            this.groupControl1.Controls.Add(this.simpleButtonImprimir);
+            this.groupControl1.Location = new System.Drawing.Point(12, 475);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.ShowCaption = false;
+            this.groupControl1.Size = new System.Drawing.Size(766, 54);
+            this.groupControl1.TabIndex = 10;
+            this.groupControl1.Text = "Comandos";
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
+            this.simpleButton1.Location = new System.Drawing.Point(4, 9);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton1.TabIndex = 10;
+            this.simpleButton1.Text = "Buscar";
+            // 
+            // simpleButtonReprocesar
+            // 
+            this.simpleButtonReprocesar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.drilldown_32x32;
+            this.simpleButtonReprocesar.Location = new System.Drawing.Point(4, 457);
+            this.simpleButtonReprocesar.Name = "simpleButtonReprocesar";
+            this.simpleButtonReprocesar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonReprocesar.TabIndex = 9;
+            this.simpleButtonReprocesar.Text = "Reprocesar";
+            // 
+            // simpleButtonAutorizar
+            // 
+            this.simpleButtonAutorizar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
+            this.simpleButtonAutorizar.Location = new System.Drawing.Point(4, 65);
+            this.simpleButtonAutorizar.Name = "simpleButtonAutorizar";
+            this.simpleButtonAutorizar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonAutorizar.TabIndex = 1;
+            this.simpleButtonAutorizar.Text = "Autorizar";
+            // 
+            // simpleButtonPendiente
+            // 
+            this.simpleButtonPendiente.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.converttorange_32x32;
+            this.simpleButtonPendiente.Location = new System.Drawing.Point(4, 121);
+            this.simpleButtonPendiente.Name = "simpleButtonPendiente";
+            this.simpleButtonPendiente.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonPendiente.TabIndex = 3;
+            this.simpleButtonPendiente.Text = "Pendiente";
+            // 
+            // simpleButtonAnular
+            // 
+            this.simpleButtonAnular.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
+            this.simpleButtonAnular.Location = new System.Drawing.Point(4, 401);
+            this.simpleButtonAnular.Name = "simpleButtonAnular";
+            this.simpleButtonAnular.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonAnular.TabIndex = 8;
+            this.simpleButtonAnular.Text = "Anular";
+            // 
+            // simpleButtonRecuperar
+            // 
+            this.simpleButtonRecuperar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.loadfrom_32x32;
+            this.simpleButtonRecuperar.Location = new System.Drawing.Point(4, 177);
+            this.simpleButtonRecuperar.Name = "simpleButtonRecuperar";
+            this.simpleButtonRecuperar.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonRecuperar.TabIndex = 4;
+            this.simpleButtonRecuperar.Text = "Recuperar";
+            // 
+            // simpleButtonFormaPago
+            // 
+            this.simpleButtonFormaPago.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.financial_32x32;
+            this.simpleButtonFormaPago.Location = new System.Drawing.Point(4, 345);
+            this.simpleButtonFormaPago.Name = "simpleButtonFormaPago";
+            this.simpleButtonFormaPago.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonFormaPago.TabIndex = 7;
+            this.simpleButtonFormaPago.Text = "Formas pago";
+            // 
+            // simpleButtonNuevo
+            // 
+            this.simpleButtonNuevo.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.add_32x32;
+            this.simpleButtonNuevo.Location = new System.Drawing.Point(4, 233);
+            this.simpleButtonNuevo.Name = "simpleButtonNuevo";
+            this.simpleButtonNuevo.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonNuevo.TabIndex = 5;
+            this.simpleButtonNuevo.Text = "Nuevo";
+            // 
+            // simpleButtonImprimir
+            // 
+            this.simpleButtonImprimir.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
+            this.simpleButtonImprimir.Location = new System.Drawing.Point(4, 289);
+            this.simpleButtonImprimir.Name = "simpleButtonImprimir";
+            this.simpleButtonImprimir.Size = new System.Drawing.Size(108, 52);
+            this.simpleButtonImprimir.TabIndex = 6;
+            this.simpleButtonImprimir.Text = "Imprimir";
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -896,160 +1055,14 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
-            // simpleButtonAutorizar
+            // simpleButton5
             // 
-            this.simpleButtonAutorizar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
-            this.simpleButtonAutorizar.Location = new System.Drawing.Point(4, 65);
-            this.simpleButtonAutorizar.Name = "simpleButtonAutorizar";
-            this.simpleButtonAutorizar.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonAutorizar.TabIndex = 1;
-            this.simpleButtonAutorizar.Text = "Autorizar";
-            // 
-            // simpleButtonAnular
-            // 
-            this.simpleButtonAnular.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
-            this.simpleButtonAnular.Location = new System.Drawing.Point(4, 401);
-            this.simpleButtonAnular.Name = "simpleButtonAnular";
-            this.simpleButtonAnular.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonAnular.TabIndex = 8;
-            this.simpleButtonAnular.Text = "Anular";
-            // 
-            // groupControl1
-            // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.simpleButton1);
-            this.groupControl1.Controls.Add(this.simpleButtonReprocesar);
-            this.groupControl1.Controls.Add(this.simpleButtonAutorizar);
-            this.groupControl1.Controls.Add(this.simpleButtonPendiente);
-            this.groupControl1.Controls.Add(this.simpleButtonAnular);
-            this.groupControl1.Controls.Add(this.simpleButtonRecuperar);
-            this.groupControl1.Controls.Add(this.simpleButtonFormaPago);
-            this.groupControl1.Controls.Add(this.simpleButtonNuevo);
-            this.groupControl1.Controls.Add(this.simpleButtonImprimir);
-            this.groupControl1.Location = new System.Drawing.Point(12, 475);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(766, 54);
-            this.groupControl1.TabIndex = 10;
-            this.groupControl1.Text = "Comandos";
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
-            this.simpleButton1.Location = new System.Drawing.Point(4, 9);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(108, 52);
-            this.simpleButton1.TabIndex = 10;
-            this.simpleButton1.Text = "Buscar";
-            // 
-            // simpleButtonReprocesar
-            // 
-            this.simpleButtonReprocesar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.drilldown_32x32;
-            this.simpleButtonReprocesar.Location = new System.Drawing.Point(4, 457);
-            this.simpleButtonReprocesar.Name = "simpleButtonReprocesar";
-            this.simpleButtonReprocesar.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonReprocesar.TabIndex = 9;
-            this.simpleButtonReprocesar.Text = "Reprocesar";
-            // 
-            // simpleButtonPendiente
-            // 
-            this.simpleButtonPendiente.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.converttorange_32x32;
-            this.simpleButtonPendiente.Location = new System.Drawing.Point(4, 121);
-            this.simpleButtonPendiente.Name = "simpleButtonPendiente";
-            this.simpleButtonPendiente.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonPendiente.TabIndex = 3;
-            this.simpleButtonPendiente.Text = "Pendiente";
-            // 
-            // simpleButtonRecuperar
-            // 
-            this.simpleButtonRecuperar.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.loadfrom_32x32;
-            this.simpleButtonRecuperar.Location = new System.Drawing.Point(4, 177);
-            this.simpleButtonRecuperar.Name = "simpleButtonRecuperar";
-            this.simpleButtonRecuperar.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonRecuperar.TabIndex = 4;
-            this.simpleButtonRecuperar.Text = "Recuperar";
-            // 
-            // simpleButtonFormaPago
-            // 
-            this.simpleButtonFormaPago.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.financial_32x32;
-            this.simpleButtonFormaPago.Location = new System.Drawing.Point(4, 345);
-            this.simpleButtonFormaPago.Name = "simpleButtonFormaPago";
-            this.simpleButtonFormaPago.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonFormaPago.TabIndex = 7;
-            this.simpleButtonFormaPago.Text = "Formas pago";
-            // 
-            // simpleButtonNuevo
-            // 
-            this.simpleButtonNuevo.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.add_32x32;
-            this.simpleButtonNuevo.Location = new System.Drawing.Point(4, 233);
-            this.simpleButtonNuevo.Name = "simpleButtonNuevo";
-            this.simpleButtonNuevo.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonNuevo.TabIndex = 5;
-            this.simpleButtonNuevo.Text = "Nuevo";
-            // 
-            // simpleButtonImprimir
-            // 
-            this.simpleButtonImprimir.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
-            this.simpleButtonImprimir.Location = new System.Drawing.Point(4, 289);
-            this.simpleButtonImprimir.Name = "simpleButtonImprimir";
-            this.simpleButtonImprimir.Size = new System.Drawing.Size(108, 52);
-            this.simpleButtonImprimir.TabIndex = 6;
-            this.simpleButtonImprimir.Text = "Imprimir";
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.apply_32x321;
-            this.simpleButton2.Location = new System.Drawing.Point(4, 65);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(108, 52);
-            this.simpleButton2.TabIndex = 1;
-            this.simpleButton2.Text = "Grabar";
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.close_32x32;
-            this.simpleButton3.Location = new System.Drawing.Point(4, 181);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(108, 52);
-            this.simpleButton3.TabIndex = 8;
-            this.simpleButton3.Text = "Anular";
-            // 
-            // groupControl2
-            // 
-            this.groupControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl2.Controls.Add(this.simpleButton4);
-            this.groupControl2.Controls.Add(this.simpleButton2);
-            this.groupControl2.Controls.Add(this.simpleButton3);
-            this.groupControl2.Controls.Add(this.simpleButton10);
-            this.groupControl2.Location = new System.Drawing.Point(799, 14);
-            this.groupControl2.Name = "groupControl2";
-            this.groupControl2.ShowCaption = false;
-            this.groupControl2.Size = new System.Drawing.Size(118, 516);
-            this.groupControl2.TabIndex = 10;
-            this.groupControl2.Text = "Comandos";
-            // 
-            // simpleButton4
-            // 
-            this.simpleButton4.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.find_32x321;
-            this.simpleButton4.Location = new System.Drawing.Point(4, 9);
-            this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(108, 52);
-            this.simpleButton4.TabIndex = 10;
-            this.simpleButton4.Text = "Buscar";
-            this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
-            // 
-            // simpleButton10
-            // 
-            this.simpleButton10.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.printer_32x32;
-            this.simpleButton10.Location = new System.Drawing.Point(4, 123);
-            this.simpleButton10.Name = "simpleButton10";
-            this.simpleButton10.Size = new System.Drawing.Size(108, 52);
-            this.simpleButton10.TabIndex = 6;
-            this.simpleButton10.Text = "Imprimir";
+            this.simpleButton5.ImageOptions.Image = global::NastiAplicacion.Properties.Resources.differentfirstpage_32x32;
+            this.simpleButton5.Location = new System.Drawing.Point(5, 239);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(108, 52);
+            this.simpleButton5.TabIndex = 11;
+            this.simpleButton5.Text = "Bodegas";
             // 
             // ArticuloFormView
             // 
@@ -1062,6 +1075,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
             this.xtraTabControl1.ResumeLayout(false);
             this.xtraTabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CODIGOARTICULOTextEdit.Properties)).EndInit();
@@ -1090,6 +1105,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SOLOCOMPRASTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ESTADOTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GRAFICOPictureEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupBasico)).EndInit();
@@ -1120,10 +1137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForGRAFICO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForSECCION)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
-            this.groupControl2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1202,5 +1215,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonFormaPago;
         private DevExpress.XtraEditors.SimpleButton simpleButtonNuevo;
         private DevExpress.XtraEditors.SimpleButton simpleButtonImprimir;
+        private DevExpress.XtraEditors.SimpleButton simpleButton5;
     }
 }

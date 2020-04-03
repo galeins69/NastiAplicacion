@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using System.Data.Entity;
 using NastiAplicacion.Vistas.General;
-using NastiAplicacion.Data;
+using Nasti.Datos;
 using NastiAplicacion.General;
-using NastiAplicacion.Enumerador;
+using Nasti.Datos.Enumerador;
 using DevExpress.XtraEditors;
 using NastiAplicacion.Reportes;
+using NastiAplicacion.Utiles;
 
 namespace NastiAplicacion.Vistas.Facturacion
 {
@@ -29,7 +30,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             InitializeComponent();
             CodigoEmpresa = CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
 
-            DbContext = new NastiAplicacion.Data.KippaEntities();
+            DbContext = new Nasti.Datos.KippaEntities();
             aRTICULOBindingSource.DataSource = DbContext.ARTICULO.Local.ToBindingList();
             ABindingSource = aRTICULOBindingSource;
             iniciarDatos();
@@ -94,7 +95,7 @@ namespace NastiAplicacion.Vistas.Facturacion
         {
             FormProgressBar progres = new FormProgressBar();
             ARTICULO articulo;
-            NastiAplicacion.Utiles.Utiles util = new NastiAplicacion.Utiles.Utiles();
+            NastiUtil util = new NastiUtil();
             string[] cabecera = { "Id", "Código", "Nombre", "P.V.P", "Stock", "Tipo Articulo", "Impuesto", "compras", "Ventas", "Unidad", "Saldo Inicial", "SECCION", "DescripcionCorta" };
             int i = 0;
             DataSet result = util.getExcel();
@@ -138,7 +139,7 @@ namespace NastiAplicacion.Vistas.Facturacion
                         articulo.FECHAMODIFICACION = DateTime.Now;
                         try
                         {
-                            articuloservicio.grabarArticuloImport(articulo);
+                            articuloservicio.grabarArticuloImport(articulo,this.CodigoEmpresa);
                         }
                         catch (Exception ex)
                         {

@@ -1,24 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Nasti.Datos;
+using System.Drawing;
+using Nasti.Datos.Servicio;
 using System.Windows.Forms;
-using NastiAplicacion.Data;
-using DevExpress.XtraEditors.DXErrorProvider;
-using NastiAplicacion.Servicio;
-using NastiAplicacion.Vistas.General;
-using NastiAplicacion.Enumerador;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using NastiAplicacion.General;
+using Nasti.Datos.Enumerador;
+using System.Collections.Generic;
+using NastiAplicacion.Vistas.General;
+using DevExpress.XtraEditors.DXErrorProvider;
 
 namespace NastiAplicacion.Vistas.SocioNegocio
 {
     public partial class DatoCliente : ControlGenerico
     {
-        private Utiles.Utiles utiles = new Utiles.Utiles();
+        private Nasti.Datos.Utiles.Utiles utiles = new Nasti.Datos.Utiles.Utiles();
 
         private SOCIONEGOCIO datoCliente = new SOCIONEGOCIO();
         private FacturaServicio facturaServcio = new FacturaServicio();

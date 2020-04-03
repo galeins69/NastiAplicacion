@@ -1,5 +1,4 @@
-﻿using NastiAplicacion.Data;
-using NastiAplicacion.Vistas;
+﻿using NastiAplicacion.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Linq;

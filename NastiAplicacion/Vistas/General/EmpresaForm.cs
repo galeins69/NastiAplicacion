@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NastiAplicacion.Servicio;
+using Nasti.Datos.Servicio;
 using NastiAplicacion.General;
 using DevExpress.XtraEditors;
 using System.IO;
-using NastiAplicacion.Data;
+using Nasti.Datos;
+using Nasti.Datos.Utiles;
 
 namespace NastiAplicacion.Vistas.General
 {
@@ -22,7 +23,7 @@ namespace NastiAplicacion.Vistas.General
         private static EmpresaForm instancia;
         private System.Windows.Forms.OpenFileDialog ofd;
         GeneralServicio generalServicio = new GeneralServicio();
-        Utiles.Utiles utiles = new Utiles.Utiles();
+        Nasti.Datos.Utiles.Utiles utiles = new Nasti.Datos.Utiles.Utiles();
 
         public EmpresaForm()
         {
@@ -86,6 +87,10 @@ namespace NastiAplicacion.Vistas.General
                             generalServicio.grabarEmpresa(CredencialUsuario.getInstancia().getEmpresaSeleccionada());
                             MessageBox.Show("Firma electrónica subida exitosamente!");
                         }
+                        else
+                        {
+                            XtraMessageBox.Show(utiles.ErrorNasti.Error);
+                        }
 
                     }
                     catch (Exception ex)
@@ -119,7 +124,7 @@ namespace NastiAplicacion.Vistas.General
         {
             ofd = new OpenFileDialog();
             ofd.DefaultExt = ".jpg";
-            ofd.Filter = "Logos(.jpg) |*.jpg|*.jpeg|*.gif|*.png";
+            ofd.Filter = "Graficos(.jpg) |*.jpg|*.jpeg|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream fs = new FileStream(ofd.FileName, FileMode.Open, FileAccess.Read))
@@ -128,6 +133,7 @@ namespace NastiAplicacion.Vistas.General
                     fs.Read(b, 0, b.Length);
                     fs.Close();
                     CredencialUsuario.getInstancia().getEmpresaSeleccionada().LOGO = b;
+                    this.LOGOPictureEdit.EditValue = b;
 
                 }
             }
