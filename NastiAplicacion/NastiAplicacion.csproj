@@ -406,6 +406,12 @@
     <Compile Include="Vistas\General\FormProgressBar.Designer.cs">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\General\FormVerContenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\General\FormVerContenido.Designer.cs">
+      <DependentUpon>FormVerContenido.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\General\MenuPrincipal.cs" />
     <Compile Include="Vistas\General\MetodosFactory.cs" />
     <Compile Include="Vistas\General\NavBarPrincipal.cs" />
@@ -533,6 +539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\General\FormProgressBar.resx">
       <DependentUpon>FormProgressBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\General\FormVerContenido.resx">
+      <DependentUpon>FormVerContenido.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\SocioNegocio\DatoCliente.resx">
       <DependentUpon>DatoCliente.cs</DependentUpon>

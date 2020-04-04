@@ -47,6 +47,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = false;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = false;
         }
 
         public void autorizar()
@@ -128,6 +130,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
         }
 
         public void autorizar()
@@ -205,6 +209,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = true;
         }
 
@@ -285,6 +291,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = false;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = false;
         }
 
         public void autorizar()
@@ -363,6 +371,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
         }
 
         public void autorizar()
@@ -442,6 +452,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonCorreo", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+            btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
         }
 
         public void autorizar()
@@ -519,6 +531,8 @@ namespace NastiAplicacion.Vistas.Facturacion
             if (btn1 != null) btn1.Enabled = true;
             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonReprocesar", true).FirstOrDefault();
             if (btn1 != null) btn1.Enabled = false;
+             btn1 = (SimpleButton)controlComprobante.Controls.Find("simpleButtonXML", true).FirstOrDefault();
+            if (btn1 != null) btn1.Enabled = true;
         }
 
         public void autorizar()

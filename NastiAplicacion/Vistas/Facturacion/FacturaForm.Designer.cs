@@ -114,9 +114,10 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.simpleButtonFormaPago = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAnular = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButtonXML = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonCorreo = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonReprocesar = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonCorreo = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemSpinEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
@@ -457,7 +458,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.CODIGOLISTADEPRECIOLookUpEdit.Properties.DisplayMember = "DESCRIPCION";
             this.CODIGOLISTADEPRECIOLookUpEdit.Properties.NullText = "";
             this.CODIGOLISTADEPRECIOLookUpEdit.Properties.ValueMember = "CODIGOLISTADEPRECIO";
-            this.CODIGOLISTADEPRECIOLookUpEdit.Size = new System.Drawing.Size(185, 20);
+            this.CODIGOLISTADEPRECIOLookUpEdit.Size = new System.Drawing.Size(122, 20);
             this.CODIGOLISTADEPRECIOLookUpEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOLISTADEPRECIOLookUpEdit.TabIndex = 13;
             // 
@@ -708,7 +709,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             // CODIGOESTADOCOMPROBANTELookUpEdit
             // 
             this.CODIGOESTADOCOMPROBANTELookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.cOMPROBANTEBindingSource, "CODIGOESTADOCOMPROBANTE", true));
-            this.CODIGOESTADOCOMPROBANTELookUpEdit.Location = new System.Drawing.Point(351, 110);
+            this.CODIGOESTADOCOMPROBANTELookUpEdit.Location = new System.Drawing.Point(288, 110);
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Name = "CODIGOESTADOCOMPROBANTELookUpEdit";
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.Appearance.Options.UseTextOptions = true;
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
@@ -720,7 +721,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.NullText = "";
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.ReadOnly = true;
             this.CODIGOESTADOCOMPROBANTELookUpEdit.Properties.ValueMember = "CODIGOESTADOCOMPROBANTE";
-            this.CODIGOESTADOCOMPROBANTELookUpEdit.Size = new System.Drawing.Size(121, 20);
+            this.CODIGOESTADOCOMPROBANTELookUpEdit.Size = new System.Drawing.Size(184, 20);
             this.CODIGOESTADOCOMPROBANTELookUpEdit.StyleController = this.dataLayoutControl1;
             this.CODIGOESTADOCOMPROBANTELookUpEdit.TabIndex = 28;
             this.CODIGOESTADOCOMPROBANTELookUpEdit.DoubleClick += new System.EventHandler(this.CODIGOESTADOCOMPROBANTELookUpEdit_DoubleClick);
@@ -858,7 +859,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.ItemForCODIGOLISTADEPRECIO.Control = this.CODIGOLISTADEPRECIOLookUpEdit;
             this.ItemForCODIGOLISTADEPRECIO.Location = new System.Drawing.Point(0, 74);
             this.ItemForCODIGOLISTADEPRECIO.Name = "ItemForCODIGOLISTADEPRECIO";
-            this.ItemForCODIGOLISTADEPRECIO.Size = new System.Drawing.Size(286, 36);
+            this.ItemForCODIGOLISTADEPRECIO.Size = new System.Drawing.Size(223, 36);
             this.ItemForCODIGOLISTADEPRECIO.Text = "LISTA DE PRECIOS:";
             this.ItemForCODIGOLISTADEPRECIO.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.ItemForCODIGOLISTADEPRECIO.TextSize = new System.Drawing.Size(92, 13);
@@ -867,9 +868,9 @@ namespace NastiAplicacion.Vistas.Facturacion
             // ItemForCODIGOESTADOCOMPROBANTE
             // 
             this.ItemForCODIGOESTADOCOMPROBANTE.Control = this.CODIGOESTADOCOMPROBANTELookUpEdit;
-            this.ItemForCODIGOESTADOCOMPROBANTE.Location = new System.Drawing.Point(286, 74);
+            this.ItemForCODIGOESTADOCOMPROBANTE.Location = new System.Drawing.Point(223, 74);
             this.ItemForCODIGOESTADOCOMPROBANTE.Name = "ItemForCODIGOESTADOCOMPROBANTE";
-            this.ItemForCODIGOESTADOCOMPROBANTE.Size = new System.Drawing.Size(173, 36);
+            this.ItemForCODIGOESTADOCOMPROBANTE.Size = new System.Drawing.Size(236, 36);
             this.ItemForCODIGOESTADOCOMPROBANTE.Text = "ESTADO:";
             this.ItemForCODIGOESTADOCOMPROBANTE.TextSize = new System.Drawing.Size(45, 13);
             // 
@@ -1107,6 +1108,7 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.simpleButtonXML);
             this.groupControl1.Controls.Add(this.simpleButtonCorreo);
             this.groupControl1.Controls.Add(this.simpleButton1);
             this.groupControl1.Controls.Add(this.simpleButtonReprocesar);
@@ -1123,6 +1125,26 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.groupControl1.Size = new System.Drawing.Size(118, 516);
             this.groupControl1.TabIndex = 9;
             this.groupControl1.Text = "Comandos";
+            // 
+            // simpleButtonXML
+            // 
+            this.simpleButtonXML.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButtonXML.Location = new System.Drawing.Point(4, 474);
+            this.simpleButtonXML.Name = "simpleButtonXML";
+            this.simpleButtonXML.Size = new System.Drawing.Size(108, 38);
+            this.simpleButtonXML.TabIndex = 12;
+            this.simpleButtonXML.Text = "Ver XML";
+            this.simpleButtonXML.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
+            // simpleButtonCorreo
+            // 
+            this.simpleButtonCorreo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCorreo.ImageOptions.Image")));
+            this.simpleButtonCorreo.Location = new System.Drawing.Point(5, 430);
+            this.simpleButtonCorreo.Name = "simpleButtonCorreo";
+            this.simpleButtonCorreo.Size = new System.Drawing.Size(108, 38);
+            this.simpleButtonCorreo.TabIndex = 11;
+            this.simpleButtonCorreo.Text = "Enviar correo";
+            this.simpleButtonCorreo.Click += new System.EventHandler(this.simpleButtonCorreo_Click);
             // 
             // simpleButton1
             // 
@@ -1143,15 +1165,6 @@ namespace NastiAplicacion.Vistas.Facturacion
             this.simpleButtonReprocesar.TabIndex = 9;
             this.simpleButtonReprocesar.Text = "Reprocesar";
             this.simpleButtonReprocesar.Click += new System.EventHandler(this.simpleButtonReprocesar_Click);
-            // 
-            // simpleButtonCorreo
-            // 
-            this.simpleButtonCorreo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButtonCorreo.Location = new System.Drawing.Point(5, 430);
-            this.simpleButtonCorreo.Name = "simpleButtonCorreo";
-            this.simpleButtonCorreo.Size = new System.Drawing.Size(108, 38);
-            this.simpleButtonCorreo.TabIndex = 11;
-            this.simpleButtonCorreo.Text = "Enviar correo";
             // 
             // FacturaForm
             // 
@@ -1301,5 +1314,6 @@ namespace NastiAplicacion.Vistas.Facturacion
         private DevExpress.XtraEditors.SimpleButton simpleButtonReprocesar;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCorreo;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonXML;
     }
 }

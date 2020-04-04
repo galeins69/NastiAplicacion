@@ -19,32 +19,15 @@ namespace Pruebas
         static void Main(string[] args)
         {
 
-           
-            //servicio.exportarPdf()
+            XStreamUtil xStream = new XStreamUtil();
+            COMPROBANTE comprobante = new FacturaServicio().getComprobante(26);
+            xStream.getResuestaStream(comprobante.ARCHIVOAUTORIZADO, comprobante.CLAVEDEACCESO, comprobante.FECHAAUTORIZACION.ToString(), comprobante.ESTADOCOMPROBANTE.DESCRIPCION);
+
+
 
         }
 
-        public void envio1()
-        {
-            //var message = new MimeMessage();
-
-            //message.From.Add(new MailboxAddress("Taxym", "robayo.galo@gmail.com"));
-            //message.To.Add(new MailboxAddress("Galo", "robayo.galo@gmail.com"));
-            //message.Subject = "How you doin'?";
-            //message.Body = new TextPart("plain") { Text = @"Hey" };
-            //SmtpClient client = new SmtpClient();
-            //using (client)
-            //{
-            //    client.Connect("smtp.gmail.com", 465);
-
-
-            //    ////Note: only needed if the SMTP server requires authentication
-            //    client.Authenticate("robayo.galo@gmail.com", "Franco2020.");
-
-            //    client.Send(message);
-            //    client.Disconnect(true);
-            //}
-        }
+        
     }
 
 }

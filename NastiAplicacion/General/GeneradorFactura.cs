@@ -151,7 +151,7 @@ namespace NastiAplicacion.General.Generador
                                         comprobante.CODIGOESTADOCOMPROBANTE = (long)EnumEstadoComprobante.AUTORIZADO;
                                         XMLGregorianCalendar fec = envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getFechaAutorizacion();
                                         comprobante.FECHAAUTORIZACION = new DateTime(fec.getYear(), fec.getMonth(), fec.getDay(), fec.getHour(), fec.getMinute(), fec.getSecond());
-                                        comprobante.ARCHIVOAUTORIZADO = System.Text.Encoding.UTF8.GetBytes(envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getComprobante());
+                                        comprobante.ARCHIVOAUTORIZADO = new XStreamUtil().getResuestaStream(System.Text.Encoding.UTF8.GetBytes(envio.getRespuestaAutorizacion().getAutorizaciones().getAutorizacion()[0].getComprobante()),comprobante.CLAVEDEACCESO,comprobante.FECHAAUTORIZACION.ToString(),comprobante.ESTADOCOMPROBANTE.DESCRIPCION);
                                         //enviar correo
                                        
                                         progress.setTexto("Enviando por correo.");
@@ -194,7 +194,6 @@ namespace NastiAplicacion.General.Generador
 
         }
 
-       
         public void LlenarInformacionTributaria(String version)
         {
             factura = new Factura();
@@ -305,7 +304,7 @@ namespace NastiAplicacion.General.Generador
             Nasti.Datos.Utiles.Correo correo = new Nasti.Datos.Utiles.Correo();
             ServicioImpresion servicioImpresion = new ServicioImpresion();
             var archivoPdf = servicioImpresion.exportarPdf(comprobante.CODIGOTIPOCOMPROBANTE, comprobante);
-            correo.enviarCorreo((comprobante.EMPRESA.TIPOAMBIENTE.CODIGOTIPOAMBIENTE==1?"robayo.galo@gmail.com":comprobante.SOCIONEGOCIO.EMAIL),archivoPdf,comprobante.ARCHIVOAUTORIZADO);
+            correo.enviarCorreo(comprobante, archivoPdf);
         }
     }
 }

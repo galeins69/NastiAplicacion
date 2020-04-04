@@ -14,6 +14,10 @@ using Nasti.Datos.Modelo;
 using Nasti.Datos.Servicio;
 using MimeKit;
 using MailKit.Net.Smtp;
+using Xstream.Core;
+using System.Xml.Linq;
+using System.Security;
+using System.Xml;
 
 namespace Nasti.Datos.Utiles
 {
@@ -49,23 +53,23 @@ namespace Nasti.Datos.Utiles
             }
             catch (Exception ex)
             {
-                ErrorNasti = new ErrorNasti(3, "Utiles", ex.ToString());                
+                ErrorNasti = new ErrorNasti(3, "Utiles", ex.ToString());
                 return null;
             }
             DateTime fechaDeHoy = new DateTime();
             DateTime fechaFirma = Convert.ToDateTime(MontCertificat.GetExpirationDateString());
             if (fechaDeHoy.CompareTo(fechaFirma) > 0)
             {
-                ErrorNasti = new ErrorNasti(4, "Utiles", "Firma electrónica está caducada");                
+                ErrorNasti = new ErrorNasti(4, "Utiles", "Firma electrónica está caducada");
                 return null;
             }
             if ((fechaFirma - fechaDeHoy).TotalDays <= 30)
                 ErrorNasti = new ErrorNasti(5, "Utiles", "Quedan " + (fechaFirma - fechaDeHoy).TotalDays + " para que la firma electrónica caduque");
             empresa.FECHACADUCIDAD = fechaFirma;
             empresa.RUC = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[11].RawData).ToString().Replace("", "").Replace("\r", "");
-            empresa.NOMBRE = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[4].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "") + " "+ System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[5].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "") + " "+ System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[6].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("	", "");
-            empresa.DIRECCION1 = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[7].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "").Replace(")S9K /","");
-            empresa.TELEFONO1 = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[8].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "").Replace("	","").Replace("","");
+            empresa.NOMBRE = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[4].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "") + " " + System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[5].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "") + " " + System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[6].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("	", "");
+            empresa.DIRECCION1 = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[7].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "").Replace(")S9K /", "");
+            empresa.TELEFONO1 = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[8].RawData).ToString().Replace("", "").Replace("\r", "").Replace("", "").Replace("", "").Replace("	", "").Replace("", "");
             if (MontCertificat.GetIssuerName().Contains("SECURITY DATA"))
                 empresa.CORREOELECTRONICO = System.Text.Encoding.UTF8.GetString(MontCertificat.Extensions[14].RawData).ToString().Replace("0�", "");
             else
@@ -315,215 +319,7 @@ namespace Nasti.Datos.Utiles
                 return this.autoridadesCertificantes.Where<AutoridadCertificante>((Func<AutoridadCertificante, bool>)(x => x.s == nombre)).FirstOrDefault<AutoridadCertificante>();
             }
         }
-        //public class FirmaGenerica
-        //{
-        //    private byte[] archivoFirmado;
-        //    private Provider provider;
-        //    private X509Certificate certificado;
-        //    private PrivateKey privateKey;
-        //    private Document documento;
-
-        //    protected FirmaGenerica(byte[] directorioSalidaFirma, Provider provider, X509Certificate certificado, PrivateKey privateKey)
-        //    {
-        //        //this.directorioSalidaFirma = directorioSalidaFirma;
-        //        this.provider = provider;
-        //        this.certificado = certificado;
-        //        this.privateKey = privateKey;
-        //    }
-
-        //    public FirmaGenerica()
-        //    {
-        //    }
-
-        //    protected void execute()
-        //    {
-        //        DataToSign dataToSign = this.createDataToSign();
-        //        Document document1 = (Document)null;
-        //        FirmaXML firmaXml1 = (FirmaXML)null;
-        //        FirmaXML firmaXml2 = this.createFirmaXML();
-        //        object[] objArray = (object[])null;
-        //        try
-        //        {
-        //            objArray = firmaXml2.signFile(this.certificado, dataToSign, this.privateKey, this.provider);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            int num = (int)XtraMessageBox.Show("Error al firmar el documento: " + ex.ToString());
-        //        }
-        //        Document document2 = (Document)objArray[0];
-        //        this.documento = document2;
-              
-        //    }
-
-        //    protected virtual byte[] getSignatureFileName()
-        //    {
-        //        return (byte[])null;
-        //    }
-
-        //    protected virtual DataToSign createDataToSign()
-        //    {
-        //        return (DataToSign)null;
-        //    }
-
-        //    protected FirmaXML2 createFirmaXML()
-        //    {
-        //        FirmaXML2 firma;
-        //        try
-        //        {
-        //            firma=new FirmaXML2();
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            XtraMessageBox.Show(ex.ToString());
-        //            return null;
-        //        }
-        //        return firma;
-        //    }
-
-        //    private void saveDocumentToFile(Document document, byte[] pathfile)
-        //    {
-        //        return;
-        //        //try
-        //        //{
-        //        //    FileOutputStream fileOutputStream = new FileOutputStream(System.Text.Encoding.UTF8.GetString(pathfile));
-        //        //    UtilidadTratarNodo.saveDocumentToOutputStream(document, (java.io.OutputStream)fileOutputStream, true);
-        //        //}
-        //        //catch (System.IO.FileNotFoundException ex)
-        //        //{
-        //        //    int num = (int)XtraMessageBox.Show("FileNotFoundException: Error al salvar el documento" + (object)ex);
-        //        //}
-        //    }
-
-        //    public Document getDocument(String file)
-        //    {
-        //        Document doc = null;               
-        //        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        //        documentBuilderFactory.setNamespaceAware(true);
-        //        DocumentBuilder db = documentBuilderFactory.newDocumentBuilder();   
-        //        doc= db.parse(new ByteArrayInputStream(System.Text.Encoding.UTF8.GetBytes(file)));
-        //        return doc;
-        //    }
-
-        //    protected string getDocumentAsString(byte[] resource)
-        //    {
-        //        Document document = this.getDocument(System.Text.Encoding.UTF8.GetString(resource));
-        //        TransformerFactory transformerFactory = TransformerFactory.newInstance();
-        //        java.io.StringWriter stringWriter = new java.io.StringWriter();
-        //        try
-        //        {
-        //            transformerFactory.newTransformer().transform((Source)new DOMSource((Node)document), (Result)new StreamResult((Writer)stringWriter));
-        //        }
-        //        catch (TransformerException ex)
-        //        {
-        //            int num = (int)XtraMessageBox.Show("Error al imprimir el documento: " + ex.toString());
-        //            return (string)null;
-        //        }
-        //        return stringWriter.toString();
-        //    }
-
-        //    public byte[] getArchivoFirmado()
-        //    {
-        //        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        //        UtilidadTratarNodo.saveDocumentToOutputStream(documento, baos, true);
-        //        return baos.toByteArray();                
-
-        //    }
-
-        //    public void setDirectorioSalidaFirma(byte[] directorioSalidaFirma)
-        //    {
-        //        this.archivoFirmado = directorioSalidaFirma;
-        //    }
-
-        //    public void setProvider(Provider provider)
-        //    {
-        //        this.provider = provider;
-        //    }
-
-        //    public void setCertificado(X509Certificate certificado)
-        //    {
-        //        this.certificado = certificado;
-        //    }
-
-        //    public void setPrivateKey(PrivateKey privateKey)
-        //    {
-        //        this.privateKey = privateKey;
-        //    }
-        //}
-        //public class FirmasGenericasXAdES : FirmaGenerica
-        //{
-        //    private String archivoAFirmar;
-        //    private String archivoFirmado;
-
-        //    public FirmasGenericasXAdES()
-        //    {
-        //    }
-
-        //    public FirmasGenericasXAdES(byte[] directorioSalidaFirma, Provider provider, X509Certificate certificado, PrivateKey privateKey, byte[] archivoAFirmar, byte[] archivoFirmado)
-        //    {
-        //        this.archivoAFirmar = System.Text.Encoding.UTF8.GetString(archivoAFirmar);              
-        //        this.setDirectorioSalidaFirma(directorioSalidaFirma);
-        //        this.setProvider(provider);
-        //        this.setCertificado(certificado);
-        //        this.setPrivateKey(privateKey);
-        //    }
-
-        //    public void setDatos(byte[] archivo, Provider provider, X509Certificate certificado, PrivateKey privateKey, byte[] archivoAFirmar, byte[] archivoFirmado)
-        //    {
-        //        this.archivoAFirmar = System.Text.Encoding.UTF8.GetString(archivoAFirmar);               
-        //        this.setDirectorioSalidaFirma(archivo);
-        //        this.setProvider(provider);
-        //        this.setCertificado(certificado);
-        //        this.setPrivateKey(privateKey);
-        //    }
-
-        //    public byte[] ejecutarFirmaXades(byte[] archivoXMLFirmar, string pathDirectorioSalida, byte[] nombreArchivoFirmado, Provider provider, X509Certificate certificado, PrivateKey privateKey)
-        //    {
-        //        FirmasGenericasXAdES firmas = new FirmasGenericasXAdES();
-        //        firmas.setDatos(archivoXMLFirmar, provider, certificado, privateKey, archivoXMLFirmar, nombreArchivoFirmado);
-        //        firmas.execute();
-        //        return firmas.getArchivoFirmado();
-        //    }
-
-        //    protected override DataToSign createDataToSign()
-        //    {
-        //        DataToSign dataToSign = new DataToSign();
-        //        dataToSign.setXadesFormat(EnumFormatoFirma.XAdES_BES);
-        //        dataToSign.setEsquema(XAdESSchemas.XAdES_132);
-        //        dataToSign.setXMLEncoding("UTF-8");
-        //        dataToSign.setEnveloped(true);
-        //        dataToSign.addObject(new ObjectToSign((AbstractObjectToSign)new InternObjectToSign("comprobante"), "contenido comprobante", (ObjectIdentifier)null, "text/xml", (java.net.URI)null));
-        //        dataToSign.setParentSignNode("comprobante");
-        //        Document document = this.getDocument(this.archivoAFirmar);
-        //        dataToSign.setDocument(document);
-        //        return dataToSign;
-        //    }
-
-        //    protected override byte[] getSignatureFileName()
-        //    {
-        //        return System.Text.Encoding.UTF8.GetBytes(this.archivoFirmado);
-        //    }
-
-        //    public String getArchivoAFirmar()
-        //    {
-        //        return this.archivoAFirmar;
-        //    }
-
-        //    public void setArchivoAFirmar(String archivoAFirmar)
-        //    {
-        //        this.archivoAFirmar = archivoAFirmar;
-        //    }
-
-        //    //public  getArchivoFirmado()
-        //    //{
-        //    //    return null;
-        //    //}
-
-        //    //public void setArchivoFirmado(String archivoFirmado)
-        //    //{
-        //    //    this.archivoFirmado = archivoFirmado;
-        //    //}
-        //}
-
+        
     }
     public class RespuestaCertificado
     {
@@ -551,44 +347,8 @@ namespace Nasti.Datos.Utiles
         }
     }
 
+
    
-    //public class X500NameGeneral
-    //{
-    //    public string CN = (string)null;
-    //    public string OU = (string)null;
-    //    public string O = (string)null;
-    //    public string L = (string)null;
-    //    public string ST = (string)null;
-    //    public string C = (string)null;
-
-    //    public X500NameGeneral(string name)
-    //    {
-    //        StringTokenizer stringTokenizer = new StringTokenizer(name, ",");
-    //        while (stringTokenizer.hasMoreTokens())
-    //        {
-    //            string str1 = stringTokenizer.nextToken().Trim();
-    //            int length = str1.IndexOf("=");
-    //            if (length >= 0)
-    //            {
-    //                string str2 = str1.Substring(0, length);
-    //                string str3 = str1.Substring(length + 1);
-    //                if (nameof(CN).Equals(str2))
-    //                    this.CN = str3;
-    //                else if (nameof(OU).Equals(str2))
-    //                    this.OU = str3;
-    //                else if (nameof(O).Equals(str2))
-    //                    this.O = str3;
-    //                else if (nameof(C).Equals(str2))
-    //                    this.C = str3;
-    //                else if (nameof(L).Equals(str2))
-    //                    this.L = str3;
-    //                else if (nameof(ST).Equals(str2))
-    //                    this.ST = str3;
-    //            }
-    //        }
-    //    }
-    //}
-
     public class UtilesElectronico
     {
         private string pathTemporal = Path.GetTempPath();
@@ -626,7 +386,7 @@ namespace Nasti.Datos.Utiles
             }
             catch (Exception ex)
             {
-                errorNasti = new ErrorNasti(1000,"utiles.desSerializar",ex.ToString());
+                errorNasti = new ErrorNasti(1000, "utiles.desSerializar", ex.ToString());
                 return null;
             }
             return factura;
@@ -670,7 +430,7 @@ namespace Nasti.Datos.Utiles
             parametros.Signer = new FirmaXadesNet.Crypto.Signer(MontCertificat);
             Stream streamDocumento = new MemoryStream(archivo);
             var docFirmado = xadesService.Sign(streamDocumento, parametros);
-          
+
             return System.Text.Encoding.UTF8.GetBytes(docFirmado.Document.OuterXml);
             return archivofirmado;
         }
@@ -678,8 +438,48 @@ namespace Nasti.Datos.Utiles
     }
 
 
+    public class XStreamUtil
+    {
+
+        XmlElement xAutorizacion;
+        XmlElement xestado;
+        XmlElement xnumeroAutorizacion;
+        XmlElement xfechaAutorizacion;
+        XmlElement xcomprobante;
+
+        public byte[] getResuestaStream(byte[] xmlAutorizado, string autorizacion, string fecha, string estado)
+        {
+            XmlDeclaration xDeclaracion;
+            XmlDocument documentoAutorizado = new XmlDocument();
+            xDeclaracion=documentoAutorizado.CreateXmlDeclaration("1.0", "UTF-8", null);
+            xAutorizacion = documentoAutorizado.CreateElement("autorizacion");
+            xestado = documentoAutorizado.CreateElement("estado");
+            xestado.InnerText = estado;
+            xnumeroAutorizacion= documentoAutorizado.CreateElement("numeroAutorizacion");
+            xnumeroAutorizacion.InnerText = autorizacion;
+            xfechaAutorizacion = documentoAutorizado.CreateElement("fechaAutorizacion");
+            xfechaAutorizacion.InnerText = fecha;
+            xfechaAutorizacion.SetAttribute("class","fechaAutorizacion");
+            xcomprobante = documentoAutorizado.CreateElement("comprobante");
+            xcomprobante.InnerText = "<![CDTA[" + Encoding.UTF8.GetString(xmlAutorizado) + "]]> ";
+            xAutorizacion.AppendChild(xestado);
+            xAutorizacion.AppendChild(xnumeroAutorizacion);
+            xAutorizacion.AppendChild(xfechaAutorizacion);
+            xAutorizacion.AppendChild(xcomprobante);
+            XmlElement root = documentoAutorizado.DocumentElement;
+            documentoAutorizado.InsertBefore(xDeclaracion, root);
+            documentoAutorizado.PreserveWhitespace = true;
+            documentoAutorizado.AppendChild(xAutorizacion);
+            return Encoding.UTF8.GetBytes(documentoAutorizado.OuterXml);
+        }
+
+    }
+
+
+
     public class Correo
     {
+        private const char PaddingChar = '0';
         GeneralServicio generalServicio = new GeneralServicio();
         PARAMETRO parametroSMTPS;
         PARAMETRO parametroHOST;
@@ -689,6 +489,7 @@ namespace Nasti.Datos.Utiles
         PARAMETRO parametroDIRECCION;
         PARAMETRO parametroSUBJECT_CORREO;
         PARAMETRO parametroCUERPO_CORREO;
+        PARAMETRO parametroCONCOPIAA;
         long codigoEmpresa = 1; //CredencialUsuario.getInstancia().getEmpresaSeleccionada().CODIGOEMPRESA;
 
         public Correo()
@@ -701,22 +502,36 @@ namespace Nasti.Datos.Utiles
             parametroDIRECCION = generalServicio.getParametro(codigoEmpresa, "DIRECCION_CORREO");
             parametroSUBJECT_CORREO = generalServicio.getParametro(codigoEmpresa, "SUBJECT_CORREO");
             parametroCUERPO_CORREO = generalServicio.getParametro(codigoEmpresa, "CUERPO_CORREO");
+            parametroCONCOPIAA = generalServicio.getParametro(codigoEmpresa, "CON_COPIA_A");
 
 
         }
 
 
-        public void enviarCorreo(string enviarA,byte[] archivoPdf,byte[] archivoXML)
+        public void enviarCorreo(COMPROBANTE comprobante,byte[] archivoPdf)
         {
+            if (comprobante.SOCIONEGOCIO.EMAIL == null) return;
+            String[] direccionCorreos = comprobante.SOCIONEGOCIO.EMAIL.Split(';');
+            String[] direccionConcopiaA = parametroCONCOPIAA.VALORSTRING.Split(';');
 
             MimeMessage message = new MimeMessage();
 
             message.From.Add(new MailboxAddress(parametroUSER.VALORSTRING, parametroUSER.VALORSTRING));
-            message.To.Add(new MailboxAddress("", enviarA));
-            message.Subject = parametroSUBJECT_CORREO.VALORSTRING;
-            var body = new TextPart("plain")
+
+            foreach (String direccionCorreo in direccionCorreos)
             {
-                Text = parametroCUERPO_CORREO.VALORSTRING
+                message.To.Add(new MailboxAddress("", comprobante.EMPRESA.TIPOAMBIENTE.CODIGOTIPOAMBIENTE == 1 ? "robayo.galo@gmail.com" : direccionCorreo));
+            }
+
+            foreach (String direccionCC in direccionConcopiaA)
+            {
+                message.Bcc.Add(new MailboxAddress("", comprobante.EMPRESA.TIPOAMBIENTE.CODIGOTIPOAMBIENTE == 1 ? "robayo.galo@gmail.com" : direccionCC));
+            }
+
+            message.Subject = parametroSUBJECT_CORREO.VALORSTRING + " - " + comprobante.TIPOCOMPROBANTE.NOMBRE + " : " + comprobante.ESTABLECIMIENTO.NUMERO + "-" + comprobante.PUNTOEMISION.NOMBRE + "-" + comprobante.NUMEROCOMPROBANTE.ToString().PadLeft( 9, PaddingChar);
+            var body = new TextPart("html")
+            {
+                Text = Encoding.UTF8.GetString(parametroCUERPO_CORREO.VALORBLOB)
             };
             Multipart multipart = new Multipart("mixed");
             multipart.Add(body);
@@ -724,45 +539,45 @@ namespace Nasti.Datos.Utiles
             {
                 var attachmentPdf = new MimePart("application", "pdf")
                 {
-                    
+
                     Content = new MimeContent(new MemoryStream(archivoPdf)),
                     ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
                     ContentTransferEncoding = ContentEncoding.Base64,
-                    
+                    FileName = comprobante.CLAVEDEACCESO + ".pdf"
+
                 };
+                
                 multipart.Add(attachmentPdf);
+               
             }
-            if (archivoXML != null)
+            if (comprobante.ARCHIVOAUTORIZADO != null)
             {
                 var attachmentXML = new MimePart("text", "text/html")
                 {
-                    Content = new MimeContent(new MemoryStream(archivoXML)),
+                    Content = new MimeContent(new MemoryStream(comprobante.ARCHIVOAUTORIZADO)),
                     ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
                     ContentTransferEncoding = ContentEncoding.Base64,
-                 };
+                    FileName = comprobante.CLAVEDEACCESO + ".xml",
+                };
                 multipart.Add(attachmentXML);
             }
 
             message.Body = multipart;
-
+         
             SmtpClient client = new SmtpClient();
             using (client)
             {
                 client.Connect(parametroHOST.VALORSTRING,(int)parametroPUERTO.VALORNUMERO);
-
-
                 ////Note: only needed if the SMTP server requires authentication
                 client.Authenticate(parametroUSER.VALORSTRING, parametroCLAVE.VALORSTRING);
-
                 client.Send(message);
                 client.Disconnect(true);
             }
 
         }
-
-
-
     }
+  
+
 
 }
 

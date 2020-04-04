@@ -22,7 +22,7 @@ using System.Windows.Forms;
 namespace NastiAplicacion.Vistas.Facturacion
 {
    public partial class FacturaForm : ControlGeneralNasti
-   //public partial class FacturaForm : UserControl
+  //  partial class FacturaForm : UserControl
     {
         protected FacturaServicio facturaServicio = new FacturaServicio();
         private SOCIONEGOCIO socionegocioSeleccionado = new SOCIONEGOCIO();
@@ -596,6 +596,21 @@ public FacturaForm()
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             this.Buscar();
+        }
+
+        private void simpleButtonCorreo_Click(object sender, EventArgs e)
+        {
+            Nasti.Datos.Utiles.Correo correo = new Nasti.Datos.Utiles.Correo();
+            ServicioImpresion servicioImpresion = new ServicioImpresion();
+            var archivoPdf = servicioImpresion.exportarPdf(comprobante.CODIGOTIPOCOMPROBANTE, comprobante);
+            correo.enviarCorreo(comprobante, archivoPdf);
+            XtraMessageBox.Show("Correo enviado");
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            FormVerContenido form = new FormVerContenido(this.comprobante.ARCHIVOAUTORIZADO);
+            form.ShowDialog();
         }
     }
 }
